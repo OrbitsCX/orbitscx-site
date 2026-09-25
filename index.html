@@ -33,10 +33,19 @@
             background: #FFFFFF; 
             border: 1px solid var(--card-border); 
             border-radius: 14px; 
-            padding: 2rem 2rem 2.5rem 2rem; 
+            padding: 2.25rem 2rem 2.5rem 2rem; 
             max-width: 480px;
             margin: 1.5rem;
             box-shadow: 0 10px 25px -5px rgba(26, 17, 13, 0.08); 
+        }
+
+        /* Full Brand Logo Header */
+        .brand-logo-full {
+            width: 100%;
+            max-width: 220px;
+            height: auto;
+            display: block;
+            margin: 0 auto 1.25rem auto;
         }
 
         .status-banner { 
@@ -46,9 +55,9 @@
             background: var(--bg-sand); 
             color: var(--terracotta); 
             border: 1px solid var(--warm-tan);
-            padding: 0.6rem 1.25rem; 
+            padding: 0.55rem 1.15rem; 
             border-radius: 9999px; 
-            font-size: 0.875rem; 
+            font-size: 0.825rem; 
             font-weight: 700;
             letter-spacing: 0.02em;
             margin-bottom: 1.75rem;
@@ -68,31 +77,22 @@
             height: auto;
             max-width: 360px;
             border-radius: 8px;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.25rem;
             box-shadow: 0 4px 12px rgba(26, 17, 13, 0.12);
-        }
-
-        /* Brand Wordmark Styling */
-        .brand-logo {
-            width: 100%;
-            max-width: 260px;
-            height: auto;
-            display: block;
-            margin: 0 auto 0.5rem auto;
         }
 
         .tagline { 
             color: var(--rust); 
-            font-weight: 600; 
-            font-size: 1.05rem; 
-            margin-bottom: 1.25rem; 
+            font-weight: 700; 
+            font-size: 1.1rem; 
+            margin-bottom: 1rem; 
         }
 
         p { 
             color: #4A3B32; 
             font-size: 0.95rem; 
             line-height: 1.6; 
-            margin-bottom: 2rem; 
+            margin-bottom: 1.75rem; 
         }
 
         .btn-amazon {
@@ -115,14 +115,16 @@
 </head>
 <body>
     <div class="card">
+        <!-- Full Brand Logo -->
+        <img src="orbits cx gradient full logo.jpg" alt="Orbits CX Logo" class="brand-logo-full" onerror="this.src='orbits cx gradient full logo.png';">
+
+        <!-- Status Badge -->
         <div class="status-banner">
             <span class="status-dot"></span> Full Website Under Construction
         </div>
 
+        <!-- Book Image -->
         <img src="the CX Curve Book Picture 2.jpeg" alt="The CX Curve Book" class="book-photo">
-
-        <!-- Branded Wordmark Image -->
-        <img src="Orbits_CX_WORDMARK_gradient_lightbg.png" alt="Orbits CX" class="brand-logo">
 
         <div class="tagline">Executive Advisory & Strategic Alignment</div>
         <p>Our updated digital presence is currently under construction. In the meantime, learn how to rewire corporate DNA for relentless customer focus in <em>The CX Curve</em>.</p>
