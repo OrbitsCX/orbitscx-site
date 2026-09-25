@@ -3,82 +3,132 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Orbits CX | Coming Soon</title>
+    <title>Orbits CX | Executive Advisory</title>
     <style>
-        :root { --primary: #0F172A; --accent: #2563EB; --accent-hover: #1D4ED8; --text: #334155; --bg: #F8FAFC; }
+        :root { 
+            --umber: #1A110D;
+            --maroon: #33140E;
+            --terracotta: #802E1E;
+            --rust: #A85426;
+            --sandstone: #BF843E;
+            --warm-tan: #DAB070;
+            --bg-sand: #FAF6F0;
+            --card-border: #E8DEC8;
+        }
+
         body { 
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; 
             margin: 0; 
             padding: 0; 
-            color: var(--text); 
-            background: var(--bg); 
+            color: var(--umber); 
+            background: var(--bg-sand); 
             min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
         }
+
         .card { 
-            background: #fff; 
-            border: 1px solid #E2E8F0; 
-            border-radius: 12px; 
-            padding: 2.5rem 2rem; 
+            background: #FFFFFF; 
+            border: 1px solid var(--card-border); 
+            border-radius: 14px; 
+            padding: 2rem 2rem 2.5rem 2rem; 
             max-width: 480px;
             margin: 1.5rem;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05); 
+            box-shadow: 0 10px 25px -5px rgba(26, 17, 13, 0.08); 
         }
+
+        /* Prominent Top Banner */
+        .status-banner { 
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--bg-sand); 
+            color: var(--terracotta); 
+            border: 1px solid var(--warm-tan);
+            padding: 0.6rem 1.25rem; 
+            border-radius: 9999px; 
+            font-size: 0.875rem; 
+            font-weight: 700;
+            letter-spacing: 0.02em;
+            margin-bottom: 1.75rem;
+            text-transform: uppercase;
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            background-color: var(--rust);
+            border-radius: 50%;
+            display: inline-block;
+        }
+
         .book-photo {
             width: 100%;
             height: auto;
             max-width: 360px;
             border-radius: 8px;
             margin-bottom: 1.5rem;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-        }
-        h1 { color: var(--primary); font-size: 2.25rem; margin-bottom: 0.25rem; }
-        .tagline { color: var(--accent); font-weight: 600; font-size: 1.05rem; margin-bottom: 1.25rem; }
-        p { color: #64748B; font-size: 0.95rem; line-height: 1.6; margin-bottom: 1.75rem; }
-        
-        .btn-amazon {
-            display: inline-block;
-            background: #111827;
-            color: #FFFFFF;
-            font-weight: 600;
-            font-size: 0.95rem;
-            padding: 0.75rem 1.5rem;
-            border-radius: 8px;
-            text-decoration: none;
-            transition: background-color 0.2s ease;
-            margin-bottom: 1.5rem;
-        }
-        .btn-amazon:hover {
-            background: #1F2937;
+            box-shadow: 0 4px 12px rgba(26, 17, 13, 0.12);
         }
 
-        .status { 
-            display: block; 
-            background: #EFF6FF; 
-            color: var(--accent); 
-            padding: 0.5rem 1rem; 
-            border-radius: 9999px; 
-            font-size: 0.85rem; 
+        h1 { 
+            color: var(--umber); 
+            font-size: 2.25rem; 
+            margin-top: 0;
+            margin-bottom: 0.25rem; 
+            font-weight: 800;
+        }
+
+        .tagline { 
+            color: var(--rust); 
+            font-weight: 600; 
+            font-size: 1.05rem; 
+            margin-bottom: 1.25rem; 
+        }
+
+        p { 
+            color: #4A3B32; 
+            font-size: 0.95rem; 
+            line-height: 1.6; 
+            margin-bottom: 2rem; 
+        }
+
+        .btn-amazon {
+            display: block;
+            background: var(--terracotta);
+            color: #FFFFFF;
             font-weight: 600;
-            margin-top: 0.5rem;
+            font-size: 1rem;
+            padding: 0.85rem 1.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: background-color 0.2s ease, transform 0.1s ease;
+            box-shadow: 0 2px 6px rgba(128, 46, 30, 0.25);
+        }
+
+        .btn-amazon:hover {
+            background: var(--maroon);
         }
     </style>
 </head>
 <body>
     <div class="card">
+        <!-- Top Prominent Banner -->
+        <div class="status-banner">
+            <span class="status-dot"></span> Full Website Under Construction
+        </div>
+
         <img src="the CX Curve Book Picture 2.jpeg" alt="The CX Curve Book" class="book-photo">
+
         <h1>Orbits CX</h1>
         <div class="tagline">Executive Advisory & Strategic Alignment</div>
         <p>Our updated digital presence is currently under construction. In the meantime, learn how to rewire corporate DNA for relentless customer focus in <em>The CX Curve</em>.</p>
-        
+
         <a href="https://www.amazon.com/dp/B0H7NTRCBB" target="_blank" rel="noopener noreferrer" class="btn-amazon">
             Order The CX Curve on Amazon &rarr;
         </a>
-
-        <div class="status">Full Website Under Construction</div>
     </div>
 </body>
 </html>
