@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Orbits CX | Coming Soon</title>
     <style>
-        :root { --primary: #0F172A; --accent: #2563EB; --text: #334155; --bg: #F8FAFC; }
+        :root { --primary: #0F172A; --accent: #2563EB; --accent-hover: #1D4ED8; --text: #334155; --bg: #F8FAFC; }
         body { 
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; 
             margin: 0; 
@@ -22,31 +22,63 @@
             background: #fff; 
             border: 1px solid #E2E8F0; 
             border-radius: 12px; 
-            padding: 3rem 2rem; 
-            max-width: 500px;
+            padding: 2.5rem 2rem; 
+            max-width: 480px;
             margin: 1.5rem;
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05); 
         }
-        h1 { color: var(--primary); font-size: 2.25rem; margin-bottom: 0.5rem; }
-        .tagline { color: var(--accent); font-weight: 600; font-size: 1.1rem; margin-bottom: 1.5rem; }
-        p { color: #64748B; font-size: 1rem; line-height: 1.6; margin-bottom: 2rem; }
+        .book-photo {
+            width: 100%;
+            height: auto;
+            max-width: 360px;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+        h1 { color: var(--primary); font-size: 2.25rem; margin-bottom: 0.25rem; }
+        .tagline { color: var(--accent); font-weight: 600; font-size: 1.05rem; margin-bottom: 1.25rem; }
+        p { color: #64748B; font-size: 0.95rem; line-height: 1.6; margin-bottom: 1.75rem; }
+        
+        .btn-amazon {
+            display: inline-block;
+            background: #111827;
+            color: #FFFFFF;
+            font-weight: 600;
+            font-size: 0.95rem;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: background-color 0.2s ease;
+            margin-bottom: 1.5rem;
+        }
+        .btn-amazon:hover {
+            background: #1F2937;
+        }
+
         .status { 
-            display: inline-block; 
+            display: block; 
             background: #EFF6FF; 
             color: var(--accent); 
             padding: 0.5rem 1rem; 
             border-radius: 9999px; 
-            font-size: 0.875rem; 
-            font-weight: 600; 
+            font-size: 0.85rem; 
+            font-weight: 600;
+            margin-top: 0.5rem;
         }
     </style>
 </head>
 <body>
     <div class="card">
+        <img src="the CX Curve Book Picture 2.jpeg" alt="The CX Curve Book" class="book-photo">
         <h1>Orbits CX</h1>
         <div class="tagline">Executive Advisory & Strategic Alignment</div>
-        <p>Our updated digital presence is currently under construction. Please check back soon for insights, diagnostic tools, and publication updates.</p>
-        <div class="status">Website Under Construction</div>
+        <p>Our updated digital presence is currently under construction. In the meantime, learn how to rewire corporate DNA for relentless customer focus in <em>The CX Curve</em>.</p>
+        
+        <a href="https://www.amazon.com/dp/B0H7NTRCBB" target="_blank" rel="noopener noreferrer" class="btn-amazon">
+            Order The CX Curve on Amazon &rarr;
+        </a>
+
+        <div class="status">Full Website Under Construction</div>
     </div>
 </body>
 </html>
