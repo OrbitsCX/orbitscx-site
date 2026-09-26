@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orbits CX | Executive Advisory & Strategic Alignment</title>
+    <style>
+        :root {
+            --umber: #1A110D;
+            --maroon: #33140E;
+            --terracotta: #802E1E;
+            --rust: #A85426;
+            --sandstone: #BF843E;
+            --warm-tan: #DAB070;
+            --bg-sand: #FAF6F0;
+            --bg-white: #FFFFFF;
+            --card-border: #E8DEC8;
+            --text-dark: #1A110D;
+            --text-muted: #4A3B32;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background-color: var(--bg-sand);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        /* --- Header & Navigation --- */
+        header {
+            background-color: var(--bg-white);
+            border-bottom: 1px solid var(--card-border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 1rem 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo img {
+            height: 38px;
+            width: auto;
+            display: block;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: color 0.2s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--rust);
+        }
+
+        .nav-cta {
+            background-color: var(--terracotta);
+            color: #FFFFFF !important;
+            padding: 0.5rem 1.25rem;
+            border-radius: 6px;
+            transition: background-color 0.2s ease !important;
+        }
+
+        .nav-cta:hover {
+            background-color: var(--maroon) !important;
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 5rem 1.5rem 4rem 1.5rem;
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background-color: #FFFFFF;
+            border: 1px solid var(--warm-tan);
+            color: var(--terracotta);
+            font-size: 0.85rem;
+            font-weight: 700;
+            padding: 0.4rem 1rem;
+            border-radius: 9999px;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            margin-bottom: 1.25rem;
+        }
+
+        .hero h1 {
+            font-size: 2.75rem;
+            line-height: 1.2;
+            color: var(--umber);
+            font-weight: 800;
+            margin-bottom: 1.25rem;
+        }
+
+        .hero p {
+            font-size: 1.15rem;
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+            max-width: 580px;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .btn-primary {
+            background-color: var(--terracotta);
+            color: #FFFFFF;
+            font-weight: 600;
+            padding: 0.85rem 1.75rem;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: background-color 0.2s ease;
+            box-shadow: 0 3px 8px rgba(128, 46, 30, 0.25);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--maroon);
+        }
+
+        .btn-secondary {
+            color: var(--rust);
+            font-weight: 600;
+            padding: 0.85rem 1.25rem;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .btn-secondary:hover {
+            color: var(--terracotta);
+        }
+
+        .hero-image-card {
+            background-color: var(--bg-white);
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 10px 25px -5px rgba(26, 17, 13, 0.08);
+            text-align: center;
+        }
+
+        .hero-image-card img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(26, 17, 13, 0.12);
+        }
+
+        /* --- Pillars Section --- */
+        .pillars-section {
+            background-color: var(--bg-white);
+            border-top: 1px solid var(--card-border);
+            border-bottom: 1px solid var(--card-border);
+            padding: 4rem 1.5rem;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title h2 {
+            font-size: 2rem;
+            color: var(--umber);
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+        }
+
+        .section-title p {
+            color: var(--rust);
+            font-weight: 600;
+            font-size: 1.05rem;
+        }
+
+        .pillars-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .pillar-card {
+            background-color: var(--bg-sand);
+            border: 1px solid var(--card-border);
+            border-radius: 10px;
+            padding: 2rem;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .pillar-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 20px rgba(26, 17, 13, 0.06);
+        }
+
+        .pillar-number {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--sandstone);
+            margin-bottom: 0.75rem;
+        }
+
+        .pillar-card h3 {
+            font-size: 1.25rem;
+            color: var(--umber);
+            margin-bottom: 0.75rem;
+        }
+
+        .pillar-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        /* --- Book Highlight Section --- */
+        .book-section {
+            padding: 5rem 1.5rem;
+        }
+
+        .book-grid {
+            display: grid;
+            grid-template-columns: 0.8fr 1.2fr;
+            gap: 3rem;
+            align-items: center;
+            background-color: var(--bg-white);
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            padding: 3rem;
+            box-shadow: 0 10px 25px -5px rgba(26, 17, 13, 0.08);
+        }
+
+        .book-grid img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(26, 17, 13, 0.12);
+        }
+
+        .book-content h2 {
+            font-size: 2rem;
+            color: var(--umber);
+            margin-bottom: 0.5rem;
+        }
+
+        .book-author {
+            color: var(--rust);
+            font-weight: 700;
+            font-size: 1rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .book-quote {
+            border-left: 3px solid var(--warm-tan);
+            padding-left: 1rem;
+            font-style: italic;
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+        }
+
+        /* --- Footer --- */
+        footer {
+            background-color: var(--umber);
+            color: var(--bg-sand);
+            padding: 3rem 1.5rem 2rem 1.5rem;
+            border-top: 1px solid var(--maroon);
+        }
+
+        .footer-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid rgba(218, 176, 112, 0.2);
+        }
+
+        .footer-logo img {
+            height: 32px;
+            filter: brightness(0) invert(1);
+        }
+
+        .footer-contact a {
+            color: var(--warm-tan);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .footer-bottom {
+            max-width: 1100px;
+            margin: 1.5rem auto 0 auto;
+            text-align: center;
+            font-size: 0.85rem;
+            color: rgba(250, 246, 240, 0.6);
+        }
+
+        /* Responsive Tweaks */
+        @media (max-width: 850px) {
+            .hero, .book-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            .pillars-grid {
+                grid-template-columns: 1fr;
+            }
+            .nav-links {
+                display: none; /* Can add mobile toggle later */
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Navigation -->
+    <header>
+        <div class="nav-container">
+            <a href="#" class="nav-logo">
+                <img src="Orbits_CX_WORDMARK_gradient_lightbg.png" alt="Orbits CX">
+            </a>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#advisory">Executive Advisory</a></li>
+                <li><a href="#book">The CX Curve</a></li>
+                <li><a href="mailto:stephen@orbitscx.com" class="nav-cta">Contact</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Main Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <span class="hero-badge">Executive Advisory & Alignment</span>
+            <h1>Rewiring Corporate DNA for Relentless Customer Focus</h1>
+            <p>Orbits CX helps executive teams bridge the gap between customer strategy and operational execution, creating sustained corporate alignment and measurable business performance.</p>
+            <div class="hero-actions">
+                <a href="#book" class="btn-primary">Explore The CX Curve</a>
+                <a href="mailto:stephen@orbitscx.com" class="btn-secondary">Direct Inquiry &rarr;</a>
+            </div>
+        </div>
+        <div class="hero-image-card">
+            <img src="orbits cx gradient full logo.jpg" alt="Orbits CX Full Logo" onerror="this.src='orbits cx gradient full logo.png';">
+        </div>
+    </section>
+
+    <!-- Core Pillars Section -->
+    <section class="pillars-section" id="advisory">
+        <div class="container">
+            <div class="section-title">
+                <h2>Strategic Advisory Pillars</h2>
+                <p>Architecting CX Alignment Across the Enterprise</p>
+            </div>
+            <div class="pillars-grid">
+                <div class="pillar-card">
+                    <div class="pillar-number">01</div>
+                    <h3>Executive Alignment</h3>
+                    <p>Unifying executive leadership around a singular customer-centric vision, eliminating departmental silos, and locking in strategic objectives.</p>
+                </div>
+                <div class="pillar-card">
+                    <div class="pillar-number">02</div>
+                    <h3>Operational Rewiring</h3>
+                    <p>Aligning internal processes, metrics, and incentives to directly reinforce customer retention, expansion, and long-term value.</p>
+                </div>
+                <div class="pillar-card">
+                    <div class="pillar-number">03</div>
+                    <h3>Performance CX</h3>
+                    <p>Transforming customer experience initiatives into hard revenue growth and operational margin improvements.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Book Feature Section -->
+    <section class="book-section" id="book">
+        <div class="container">
+            <div class="book-grid">
+                <div class="book-media">
+                    <img src="the CX Curve Book Picture 2.jpeg" alt="The CX Curve Book">
+                </div>
+                <div class="book-content">
+                    <h2>The CX Curve</h2>
+                    <div class="book-author">By Stephen McBride</div>
+                    <div class="book-quote">
+                        "McBride's book, The CX Curve, will really shake up how businesses think about their customers."
+                        <br><small>&mdash; Tim Loynes, General Manager, Zinwave Ltd, UK</small>
+                    </div>
+                    <p style="margin-bottom: 1.5rem; color: var(--text-muted);">Discover actionable frameworks designed for leaders seeking to transform their customer experience architecture from a cost center into a competitive engine.</p>
+                    <a href="https://www.amazon.com/dp/B0H7NTRCBB" target="_blank" rel="noopener noreferrer" class="btn-amazon btn-primary" style="display: inline-block;">
+                        Order on Amazon &rarr;
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-logo">
+                <img src="Orbits_CX_WORDMARK_gradient_lightbg.png" alt="Orbits CX">
+            </div>
+            <div class="footer-contact">
+                <a href="mailto:stephen@orbitscx.com">stephen@orbitscx.com</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; Orbits CX. All rights reserved.
+        </div>
+    </footer>
+
+</body>
+</html>
