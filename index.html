@@ -48,7 +48,7 @@
             margin: 0 auto 1.25rem auto;
         }
 
-        /* Clean Status Banner Without Dot */
+        /* Clean Status Banner */
         .status-banner { 
             display: inline-block;
             background: var(--bg-sand); 
@@ -97,10 +97,25 @@
             text-decoration: none;
             transition: background-color 0.2s ease, transform 0.1s ease;
             box-shadow: 0 2px 6px rgba(128, 46, 30, 0.25);
+            margin-bottom: 1.25rem;
         }
 
         .btn-amazon:hover {
             background: var(--maroon);
+        }
+
+        .email-link {
+            display: inline-block;
+            color: var(--rust);
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .email-link:hover {
+            color: var(--terracotta);
+            text-decoration: underline;
         }
     </style>
 </head>
@@ -109,7 +124,7 @@
         <!-- Full Brand Logo -->
         <img src="orbits cx gradient full logo.jpg" alt="Orbits CX Logo" class="brand-logo-full" onerror="this.src='orbits cx gradient full logo.png';">
 
-        <!-- Status Badge (No Dot) -->
+        <!-- Status Badge -->
         <div class="status-banner">
             Full Website Under Construction
         </div>
@@ -122,6 +137,11 @@
 
         <a href="https://www.amazon.com/dp/B0H7NTRCBB" target="_blank" rel="noopener noreferrer" class="btn-amazon">
             Order The CX Curve on Amazon &rarr;
+        </a>
+
+        <!-- Direct Email Link -->
+        <a href="mailto:stephen@orbitscx.com" class="email-link">
+            Direct Inquiry: stephen@orbitscx.com
         </a>
     </div>
 </body>
