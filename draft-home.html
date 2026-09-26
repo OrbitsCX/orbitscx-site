@@ -296,6 +296,25 @@
         .bio-sidebar {
             border-right: 1px solid var(--card-border);
             padding-right: 2rem;
+            text-align: center;
+        }
+
+        .bio-portrait {
+            width: 150px;
+            height: 150px;
+            margin: 0 auto 1.5rem auto;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 3px solid var(--warm-tan);
+            box-shadow: 0 6px 16px rgba(26, 17, 13, 0.12);
+        }
+
+        .portrait-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            display: block;
         }
 
         .bio-name {
@@ -319,6 +338,7 @@
             display: flex;
             flex-direction: column;
             gap: 1.25rem;
+            text-align: left;
         }
 
         .bio-stat-item {
@@ -418,7 +438,7 @@
 
         .book-grid img {
             width: 100%;
-            height auto;
+            height: auto;
             border-radius: 8px;
             box-shadow: 0 4px 12px rgba(26, 17, 13, 0.12);
         }
@@ -595,6 +615,9 @@
         <div class="container">
             <div class="bio-card">
                 <div class="bio-sidebar">
+                    <div class="bio-portrait">
+                        <img src="Stephen_McBride_Profile.png" alt="Stephen McBride" class="portrait-img">
+                    </div>
                     <div class="bio-name">Stephen McBride</div>
                     <div class="bio-title">Founder & Innovation Architect</div>
                     <ul class="bio-stats">
