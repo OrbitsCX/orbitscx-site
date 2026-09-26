@@ -176,12 +176,43 @@
             box-shadow: 0 4px 12px rgba(26, 17, 13, 0.12);
         }
 
+        /* --- Metric Highlight Banner --- */
+        .metric-banner {
+            background-color: var(--maroon);
+            color: var(--bg-sand);
+            padding: 2rem 1.5rem;
+            border-top: 1px solid var(--card-border);
+            border-bottom: 1px solid var(--card-border);
+        }
+
+        .metric-grid {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+            text-align: center;
+        }
+
+        .metric-item strong {
+            display: block;
+            font-size: 2rem;
+            color: var(--warm-tan);
+            font-weight: 800;
+        }
+
+        .metric-item span {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: rgba(250, 246, 240, 0.85);
+        }
+
         /* --- Pillars Section --- */
         .pillars-section {
             background-color: var(--bg-white);
-            border-top: 1px solid var(--card-border);
-            border-bottom: 1px solid var(--card-border);
             padding: 4rem 1.5rem;
+            border-bottom: 1px solid var(--card-border);
         }
 
         .container {
@@ -245,9 +276,132 @@
             line-height: 1.5;
         }
 
+        /* --- Executive Bio Section --- */
+        .bio-section {
+            padding: 5rem 1.5rem 2.5rem 1.5rem;
+        }
+
+        .bio-card {
+            background-color: var(--bg-white);
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            padding: 3rem;
+            box-shadow: 0 10px 25px -5px rgba(26, 17, 13, 0.08);
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 3rem;
+            align-items: start;
+        }
+
+        .bio-sidebar {
+            border-right: 1px solid var(--card-border);
+            padding-right: 2rem;
+        }
+
+        .bio-name {
+            font-size: 1.75rem;
+            font-weight: 800;
+            color: var(--umber);
+            margin-bottom: 0.25rem;
+        }
+
+        .bio-title {
+            color: var(--rust);
+            font-weight: 700;
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+        }
+
+        .bio-stats {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+        }
+
+        .bio-stat-item {
+            font-size: 0.88rem;
+            color: var(--text-muted);
+        }
+
+        .bio-stat-item strong {
+            display: block;
+            color: var(--umber);
+            font-size: 1.05rem;
+        }
+
+        .bio-content p {
+            color: var(--text-muted);
+            font-size: 1rem;
+            margin-bottom: 1.25rem;
+            line-height: 1.7;
+        }
+
+        .edu-block {
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--card-border);
+        }
+
+        .edu-title {
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--rust);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.75rem;
+        }
+
+        .edu-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+        }
+
+        .edu-item {
+            background-color: var(--bg-sand);
+            border: 1px solid var(--card-border);
+            padding: 0.85rem;
+            border-radius: 6px;
+        }
+
+        .edu-item strong {
+            display: block;
+            color: var(--umber);
+            font-size: 0.9rem;
+            margin-bottom: 0.2rem;
+        }
+
+        .edu-item span {
+            display: block;
+            color: var(--text-muted);
+            font-size: 0.8rem;
+        }
+
+        .partner-tags {
+            display: flex;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--card-border);
+        }
+
+        .partner-tag {
+            background-color: var(--bg-sand);
+            border: 1px solid var(--card-border);
+            color: var(--umber);
+            font-weight: 700;
+            font-size: 0.8rem;
+            padding: 0.35rem 0.85rem;
+            border-radius: 4px;
+        }
+
         /* --- Book Highlight Section --- */
         .book-section {
-            padding: 5rem 1.5rem;
+            padding: 2.5rem 1.5rem 5rem 1.5rem;
         }
 
         .book-grid {
@@ -264,7 +418,7 @@
 
         .book-grid img {
             width: 100%;
-            height: auto;
+            height auto;
             border-radius: 8px;
             box-shadow: 0 4px 12px rgba(26, 17, 13, 0.12);
         }
@@ -329,15 +483,27 @@
 
         /* Responsive Tweaks */
         @media (max-width: 850px) {
-            .hero, .book-grid {
+            .hero, .book-grid, .bio-card {
                 grid-template-columns: 1fr;
                 gap: 2rem;
+            }
+            .metric-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .edu-grid {
+                grid-template-columns: 1fr;
+            }
+            .bio-sidebar {
+                border-right: none;
+                border-bottom: 1px solid var(--card-border);
+                padding-right: 0;
+                padding-bottom: 1.5rem;
             }
             .pillars-grid {
                 grid-template-columns: 1fr;
             }
             .nav-links {
-                display: none; /* Can add mobile toggle later */
+                display: none;
             }
         }
     </style>
@@ -362,7 +528,7 @@
     <!-- Main Hero Section -->
     <section class="hero">
         <div class="hero-content">
-            <span class="hero-badge">Executive Advisory & Alignment</span>
+            <span class="hero-badge">Executive Advisory & Innovation Alignment</span>
             <h1>Rewiring Corporate DNA for Relentless Customer Focus</h1>
             <p>Orbits CX helps executive teams bridge the gap between customer strategy and operational execution, creating sustained corporate alignment and measurable business performance.</p>
             <div class="hero-actions">
@@ -372,6 +538,28 @@
         </div>
         <div class="hero-image-card">
             <img src="orbits cx gradient full logo.jpg" alt="Orbits CX Full Logo" onerror="this.src='orbits cx gradient full logo.png';">
+        </div>
+    </section>
+
+    <!-- Metric Banner -->
+    <section class="metric-banner">
+        <div class="metric-grid">
+            <div class="metric-item">
+                <strong>$300M &rarr; $2B+</strong>
+                <span>Iomega Scaling Track Record</span>
+            </div>
+            <div class="metric-item">
+                <strong>$100M+</strong>
+                <span>Wilson Connectivity Revenue Expansion</span>
+            </div>
+            <div class="metric-item">
+                <strong>6 U.S. Patents</strong>
+                <span>Software & Product Innovation</span>
+            </div>
+            <div class="metric-item">
+                <strong>Billion-Dollar</strong>
+                <span>Strategic Ecosystem Deals</span>
+            </div>
         </div>
     </section>
 
@@ -397,6 +585,67 @@
                     <div class="pillar-number">03</div>
                     <h3>Performance CX</h3>
                     <p>Transforming customer experience initiatives into hard revenue growth and operational margin improvements.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Executive Bio Section -->
+    <section class="bio-section" id="about">
+        <div class="container">
+            <div class="bio-card">
+                <div class="bio-sidebar">
+                    <div class="bio-name">Stephen McBride</div>
+                    <div class="bio-title">Founder & Innovation Architect</div>
+                    <ul class="bio-stats">
+                        <li class="bio-stat-item">
+                            <strong>Author & Strategist</strong>
+                            <em>The CX Curve</em>
+                        </li>
+                        <li class="bio-stat-item">
+                            <strong>Proven Growth Scale</strong>
+                            Scaled revenue from $300M to $2B+ (Iomega) and $100M+ (Wilson)[cite: 4, 7, 10]
+                        </li>
+                        <li class="bio-stat-item">
+                            <strong>6 U.S. Patents</strong>
+                            Cloud Synchronization, System Architecture & Product Design[cite: 6, 10]
+                        </li>
+                        <li class="bio-stat-item">
+                            <strong>Founder & CEO</strong>
+                            Kahuna Creations Inc.[cite: 6]
+                        </li>
+                    </ul>
+                </div>
+                <div class="bio-content">
+                    <p>Stephen McBride is an author, executive advisor, and innovation architect with a track record of driving scale across enterprise technology, consumer hardware, and global distribution[cite: 6, 9, 10]. Over a career spanning senior executive roles at Iomega, StorageTek/Oracle, and Wilson Connectivity, he has architected product strategies that scaled companies from zero to market leadership[cite: 4, 6, 7, 10].</p>
+                    <p>Known for negotiating landmark enterprise partnerships with market leaders like Microsoft, Apple, and Verizon, Stephen combines technical depth with commercial execution[cite: 10]. As Founder & CEO of Kahuna Creations, he created an outdoor recreation brand and invented the world’s first land paddle (U.S. Patent 8,636,306)[cite: 6].</p>
+                    <p>Through Orbits CX and his book <em>The CX Curve: Rewiring Corporate DNA for Relentless Customer Focus</em>, Stephen serves as a strategic advisor to CEOs, PE partners, and leadership teams—delivering actionable frameworks to eliminate technological blind spots, integrate AI operations, and turn customer experience into a predictable revenue engine[cite: 9, 10].</p>
+                    
+                    <div class="edu-block">
+                        <div class="edu-title">Executive Credentials & Education</div>
+                        <div class="edu-grid">
+                            <div class="edu-item">
+                                <strong>Stanford GSB</strong>
+                                <span>Executive Program & Boot Camp[cite: 11]</span>
+                            </div>
+                            <div class="edu-item">
+                                <strong>BYU Marriott School</strong>
+                                <span>BS, Business Administration[cite: 11]</span>
+                            </div>
+                            <div class="edu-item">
+                                <strong>Pragmatic Institute</strong>
+                                <span>Certified Product Manager[cite: 11]</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="partner-tags">
+                        <span class="partner-tag">Iomega ($2B Scale)[cite: 4, 10]</span>
+                        <span class="partner-tag">Wilson Connectivity</span>
+                        <span class="partner-tag">Oracle / StorageTek[cite: 6]</span>
+                        <span class="partner-tag">Stanford GSB Exec[cite: 11]</span>
+                        <span class="partner-tag">Enterprise Strategic Alliances[cite: 10]</span>
+                    </div>
                 </div>
             </div>
         </div>
