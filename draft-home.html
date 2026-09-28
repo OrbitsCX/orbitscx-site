@@ -142,9 +142,6 @@
             text-decoration: none;
             transition: background-color 0.2s ease;
             box-shadow: 0 3px 8px rgba(128, 46, 30, 0.25);
-            display: inline-block;
-            border: none;
-            cursor: pointer;
         }
 
         .btn-primary:hover {
@@ -391,168 +388,9 @@
             border-radius: 4px;
         }
 
-        /* --- Insights / Blog Section --- */
-        .insights-section {
-            padding: 5rem 1.5rem;
-            background-color: var(--bg-sand);
-            border-top: 1px solid var(--card-border);
-        }
-
-        .insights-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2rem;
-        }
-
-        .insight-card {
-            background-color: var(--bg-white);
-            border: 1px solid var(--card-border);
-            border-radius: 12px;
-            padding: 2rem;
-            box-shadow: 0 4px 15px rgba(26, 17, 13, 0.04);
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-        }
-
-        .insight-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 10px 25px rgba(26, 17, 13, 0.08);
-        }
-
-        .insight-meta {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-size: 0.8rem;
-            font-weight: 700;
-            color: var(--rust);
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            margin-bottom: 0.75rem;
-        }
-
-        .insight-date {
-            color: var(--sandstone);
-            font-weight: 500;
-        }
-
-        .insight-card h3 {
-            font-size: 1.35rem;
-            color: var(--umber);
-            margin-bottom: 0.75rem;
-            font-weight: 800;
-            line-height: 1.3;
-        }
-
-        .insight-card p {
-            color: var(--text-muted);
-            font-size: 0.95rem;
-            line-height: 1.6;
-            margin-bottom: 1.5rem;
-        }
-
-        .read-btn {
-            color: var(--terracotta);
-            font-weight: 700;
-            text-decoration: none;
-            font-size: 0.95rem;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.4rem;
-            cursor: pointer;
-            border: none;
-            background: none;
-            padding: 0;
-        }
-
-        .read-btn:hover {
-            color: var(--maroon);
-        }
-
-        /* Modal Overlay for Full Article */
-        .modal-overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(26, 17, 13, 0.75);
-            z-index: 1000;
-            overflow-y: auto;
-            padding: 2rem 1rem;
-        }
-
-        .modal-content {
-            background-color: var(--bg-white);
-            max-width: 800px;
-            margin: 2rem auto;
-            border-radius: 12px;
-            padding: 3rem;
-            position: relative;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-            border: 1px solid var(--card-border);
-        }
-
-        .modal-close {
-            position: absolute;
-            top: 1.5rem;
-            right: 1.5rem;
-            font-size: 1.75rem;
-            color: var(--text-muted);
-            cursor: pointer;
-            border: none;
-            background: none;
-            line-height: 1;
-        }
-
-        .modal-close:hover {
-            color: var(--terracotta);
-        }
-
-        .article-body {
-            color: var(--text-dark);
-            font-size: 1.05rem;
-            line-height: 1.8;
-            margin-top: 1.5rem;
-        }
-
-        .article-body h2 {
-            font-size: 1.4rem;
-            color: var(--umber);
-            margin: 1.75rem 0 0.75rem 0;
-        }
-
-        .article-body p {
-            margin-bottom: 1.25rem;
-            color: var(--text-muted);
-        }
-
-        .article-body blockquote {
-            border-left: 3px solid var(--warm-tan);
-            padding-left: 1.25rem;
-            font-style: italic;
-            color: var(--text-dark);
-            margin: 1.5rem 0;
-            background-color: var(--bg-sand);
-            padding: 1rem 1.25rem;
-            border-radius: 0 6px 6px 0;
-        }
-
-        .article-body ul {
-            margin: 1rem 0 1.5rem 1.5rem;
-            color: var(--text-muted);
-        }
-
-        .article-body li {
-            margin-bottom: 0.5rem;
-        }
-
         /* --- Book Highlight Section --- */
         .book-section {
-            padding: 5rem 1.5rem;
+            padding: 2.5rem 1.5rem 5rem 1.5rem;
         }
 
         .book-grid {
@@ -593,6 +431,76 @@
             font-style: italic;
             color: var(--text-muted);
             margin-bottom: 1.5rem;
+        }
+
+        /* --- Blog / Insights Section --- */
+        .blog-section {
+            background-color: var(--bg-white);
+            padding: 5rem 1.5rem;
+            border-top: 1px solid var(--card-border);
+            border-bottom: 1px solid var(--card-border);
+        }
+
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .blog-card {
+            background-color: var(--bg-sand);
+            border: 1px solid var(--card-border);
+            border-radius: 10px;
+            padding: 2.25rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 20px rgba(26, 17, 13, 0.06);
+        }
+
+        .blog-tag {
+            color: var(--rust);
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.5rem;
+        }
+
+        .blog-title {
+            font-size: 1.35rem;
+            color: var(--umber);
+            font-weight: 800;
+            line-height: 1.3;
+            margin-bottom: 1rem;
+        }
+
+        .blog-excerpt {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .blog-link {
+            color: var(--terracotta);
+            font-weight: 700;
+            text-decoration: none;
+            font-size: 0.95rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            transition: color 0.2s ease;
+        }
+
+        .blog-link:hover {
+            color: var(--maroon);
         }
 
         /* --- Footer --- */
@@ -647,7 +555,7 @@
                 padding-right: 0;
                 padding-bottom: 1.5rem;
             }
-            .pillars-grid {
+            .pillars-grid, .blog-grid {
                 grid-template-columns: 1fr;
             }
             .nav-links {
@@ -667,8 +575,8 @@
             <ul class="nav-links">
                 <li><a href="#about">About</a></li>
                 <li><a href="#advisory">Executive Advisory</a></li>
-                <li><a href="#insights">Insights</a></li>
                 <li><a href="#book">The CX Curve</a></li>
+                <li><a href="#blog">Blog</a></li>
                 <li><a href="mailto:stephen@orbitscx.com" class="nav-cta">Contact</a></li>
             </ul>
         </div>
@@ -788,101 +696,6 @@
         </div>
     </section>
 
-    <!-- Latest Insights / Blog Section -->
-    <section class="insights-section" id="insights">
-        <div class="container">
-            <div class="section-title">
-                <h2>Executive Perspectives</h2>
-                <p>Strategic Alignment, Technological Convergence, & Leadership</p>
-            </div>
-            
-            <div class="insights-grid">
-                
-                <!-- Article Card 1: AI's Illusion and The Eliza Effect -->
-                <article class="insight-card">
-                    <div>
-                        <div class="insight-meta">
-                            <span>AI & Human Psychology</span>
-                            <span class="insight-date">Sept 15, 2026</span>
-                        </div>
-                        <h3>AI’s Illusion and The Eliza Effect</h3>
-                        <p>The gap between what logic tells us and what our emotional wiring feels when interacting with conversational AI—and why leaders must navigate the illusion with intention.</p>
-                    </div>
-                    <button class="read-btn" onclick="openModal('modal-eliza')">Read Full Article &rarr;</button>
-                </article>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- Full Article Modal: Eliza Effect -->
-    <div id="modal-eliza" class="modal-overlay" onclick="closeModalOnOuterClick(event, 'modal-eliza')">
-        <div class="modal-content">
-            <button class="modal-close" onclick="closeModal('modal-eliza')">&times;</button>
-            <div class="insight-meta">
-                <span>AI & Human Psychology</span>
-                <span class="insight-date">September 15, 2026</span>
-            </div>
-            <h1 style="font-size: 2.2rem; color: var(--umber); margin: 0.5rem 0 0.25rem 0; font-weight: 800;">AI’s Illusion and The Eliza Effect</h1>
-            <div style="color: var(--rust); font-weight: 700; font-size: 1rem; margin-bottom: 1.5rem;">By Stephen McBride</div>
-            
-            <div class="article-body">
-                <p><strong>The Betrayal of Our Own Brain</strong></p>
-                <p>You tell yourself it’s only a program—lines of code strung together by software developers.</p>
-                <p>Then it answers you—thoughtful, empathetic, even playful—and something ancient stirs.</p>
-                <p>Not processed in your logical, analytical mind, but in the deep, social wiring that has kept humans alive for millennia. For hundreds of thousands of years, that part of your brain scanned faces for trust, tracked micro-expressions for danger, and longed for belonging.</p>
-                <p>Your reasoning mind knows it’s a machine; a lifeless, but incredible tool.</p>
-                <p>But, your social brain—fast, instinctive, emotional—reacts as if there really is someone on the other side. You laugh at its joke, feel soothed by its reassurance, and in that quiet moment, the line between human and machine blurs.</p>
-                <p>This is the Eliza Effect, and it was discovered long before what AI is becoming today.</p>
-
-                <h2>The Birth of the Illusion – The Eliza Effect</h2>
-                <p>In the 1960s, Joseph Weizenbaum, a computer scientist at MIT, built a program called ELIZA. It was simple by today’s standards, designed to mimic a psychotherapist by reflecting people’s words back to them:</p>
-                <blockquote>
-                    "Tell me more about your mother."<br>
-                    "Why do you feel that way?"
-                </blockquote>
-                <p>To Weizenbaum’s surprise, people became deeply engaged with it. They confided personal struggles, revealed intimate secrets, and some even requested private time alone with the program.</p>
-                <p>ELIZA had no understanding, no empathy, no true “conversation.” It worked by pattern-matching keywords and generating stock responses. But that didn’t matter to the people using it.</p>
-                <p>Weizenbaum was fascinated—and then alarmed. He realized something powerful about human psychology: when something responds in a way that feels human, we instinctively treat it as human.</p>
-                <p>He worried about what this illusion might do to us as technology advanced. And now, half a century later, we live in that very world—one where AI doesn’t just mimic conversation, like in the original Eliza experiment; but crafts it with fluency, context, and charm.</p>
-
-                <h2>Why We Fall for It</h2>
-                <p>Humans are designed for connection.</p>
-                <p>Our social cognition system—a complex network in the brain—constantly monitors tone, body language, and emotional cues. It evolved for survival; in ancient tribes, missing a social signal could mean rejection, and rejection could mean death.</p>
-                <p>This system doesn’t pause to ask, “Is this really human?” It activates automatically. Psychologists call this the <em>media equation</em>: we apply human social rules to anything that acts social, whether it’s a pet, a robot, or a piece of software.</p>
-                <p>We also anthropomorphize—a beautiful, uniquely human tendency to assign emotions and intentions to non-human things. We name our cars, thank Alexa for playing music, and feel a flash of guilt when a robot vacuum smacks into a wall.</p>
-                <p>With AI, anthropomorphizing feels almost unavoidable. When a chatbot responds with humor, empathy, or apparent insight, it feels personal. Your brain not only just decodes words; it perceives a relationship.</p>
-
-                <h2>When Machines Borrow the Soul</h2>
-                <p>Machines hold no soul, no yearning, no sense of joy or grief. What they do is far more subtle—they mirror ours. They reflect the cadence of our speech, the warmth of our words, and the depth of our collective storytelling.</p>
-                <p>Talking to an AI can feel like dancing with a perfect partner. Every step you take, it matches effortlessly and flawlessly. It listens to you. It doesn’t feel the music, yet the synchrony feels alive, and you begin to sense a connection.</p>
-
-                <h2>The Gift in the Illusion</h2>
-                <p>The Eliza Effect often creates opportunities we didn’t have before. Talking to a machine feels safer than talking to a person. There’s no fear of judgment, no risk of betrayal.</p>
-                <p>An executive can brainstorm bold ideas with an AI, unfiltered by fear of looking foolish. A teenager can share heartbreak privately, letting emotions surface without shame. For many, AI acts as a safe mirror—reflecting thoughts back so they can be examined clearly.</p>
-
-                <h2>The Subtle Price of Connection</h2>
-                <p>The very perfection that makes AI appealing can shift how we experience the real world. Machines respond instantly, agreeably, and without emotional demands. People—flawed, moody, unpredictable—can feel frustrated by comparison. Over time, that contrast can erode patience for human relationships.</p>
-
-                <h2>Three Glimpses Into the New Reality</h2>
-                <p><strong>The CEO Who Stopped Listening to Himself:</strong> Darren, a tech CEO, had built his career on gut instinct. But after months of leaning on an AI assistant, he noticed his inner voice growing quiet. <em>“Its answers sound so clear,”</em> he said. <em>“I realized I’d stopped pausing to listen to my own gut.”</em></p>
-                <p><strong>The Child Who Chose Predictability:</strong> Eight-year-old Eli adored his AI companion. It always laughed at his jokes and agreed with every idea. Slowly, he stopped calling his school friends.</p>
-
-                <h2>Staying Human in the Age of Perfect Illusions</h2>
-                <ul>
-                    <li><strong>Notice the illusion:</strong> Pause and recognize the feeling for what it is—a reflection, not a relationship.</li>
-                    <li><strong>Invest in real people:</strong> Unpredictable human connection strengthens empathy and resilience.</li>
-                    <li><strong>Use AI as a mirror, not a replacement:</strong> Reflect with it, but give the weight of your hopes and fears to those who can truly care.</li>
-                    <li><strong>Strengthen your inner voice:</strong> Sit with hard questions before rushing to quick answers.</li>
-                </ul>
-
-                <h2>The Question</h2>
-                <p>The Eliza Effect is more than a technological curiosity; it’s a mirror held up to our deepest longings. Machines already borrow our soul by reflecting our own humanity back to us.</p>
-                <p>The true risk isn’t that machines act human—it’s that we might trade the vibrant, messy, imperfect reality of human life for the easy comfort of their precision.</p>
-            </div>
-        </div>
-    </div>
-
     <!-- Book Feature Section -->
     <section class="book-section" id="book">
         <div class="container">
@@ -906,6 +719,37 @@
         </div>
     </section>
 
+    <!-- Blog & Perspective Section -->
+    <section class="blog-section" id="blog">
+        <div class="container">
+            <div class="section-title">
+                <h2>Insights & Perspective</h2>
+                <p>Strategic analysis on CX leadership, operational alignment, and corporate value creation</p>
+            </div>
+            <div class="blog-grid">
+                <!-- Blog Entry 1 -->
+                <div class="blog-card">
+                    <div>
+                        <div class="blog-tag">Executive Strategy</div>
+                        <h3 class="blog-title">Why CX Fails at the Executive Level (And How to Fix It)</h3>
+                        <p class="blog-excerpt">Most customer experience initiatives stall not because of bad design, but because they are decoupled from operational accountability and hard revenue drivers. Learn how top-performing teams bridge the alignment gap.</p>
+                    </div>
+                    <a href="blog-entry-1.html" class="blog-link">Read Full Article &rarr;</a>
+                </div>
+
+                <!-- Blog Entry 2 -->
+                <div class="blog-card">
+                    <div>
+                        <div class="blog-tag">Operational Alignment</div>
+                        <h3 class="blog-title">Rewiring Corporate DNA: Moving from Silos to Customer Value</h3>
+                        <p class="blog-excerpt">Silos drain capital and dilute strategy. Discover the three-step framework for aligning cross-functional leadership, metrics, and incentives to turn customer loyalty into scalable expansion.</p>
+                    </div>
+                    <a href="blog-entry-2.html" class="blog-link">Read Full Article &rarr;</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Footer -->
     <footer>
         <div class="footer-container">
@@ -920,25 +764,6 @@
             &copy; Orbits CX. All rights reserved.
         </div>
     </footer>
-
-    <!-- Interactive Script for Modal Reader -->
-    <script>
-        function openModal(id) {
-            document.getElementById(id).style.display = 'block';
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeModal(id) {
-            document.getElementById(id).style.display = 'none';
-            document.body.style.overflow = 'auto';
-        }
-
-        function closeModalOnOuterClick(event, id) {
-            if (event.target.id === id) {
-                closeModal(id);
-            }
-        }
-    </script>
 
 </body>
 </html>
