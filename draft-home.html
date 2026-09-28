@@ -460,12 +460,31 @@
             font-weight: 500;
         }
 
-        .insight-card h3 {
+        /* Clickable article title */
+        .insight-title-link {
+            display: block;
             font-size: 1.35rem;
             color: var(--umber);
             margin-bottom: 0.75rem;
             font-weight: 800;
             line-height: 1.3;
+            text-decoration: none;
+            cursor: pointer;
+            border: none;
+            background: none;
+            padding: 0;
+            text-align: left;
+            font-family: inherit;
+            transition: color 0.2s ease;
+        }
+
+        .insight-title-link:hover {
+            color: var(--terracotta);
+        }
+
+        .insight-card.featured .insight-title-link {
+            font-size: 1.9rem;
+            margin-bottom: 1rem;
         }
 
         .insight-card p {
@@ -475,22 +494,14 @@
             margin-bottom: 1.5rem;
         }
 
-        .read-btn {
+        .read-hint {
             color: var(--terracotta);
             font-weight: 700;
-            text-decoration: none;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             display: inline-flex;
             align-items: center;
             gap: 0.4rem;
-            cursor: pointer;
-            border: none;
-            background: none;
-            padding: 0;
-        }
-
-        .read-btn:hover {
-            color: var(--maroon);
+            margin-top: auto;
         }
 
         /* Modal Overlay for Full Article */
@@ -684,7 +695,7 @@
             .insight-card.featured {
                 padding: 2rem;
             }
-            .insight-card.featured h3 {
+            .insight-card.featured .insight-title-link {
                 font-size: 1.5rem;
             }
         }
@@ -839,10 +850,10 @@
                             <span>Product Leadership &amp; AI</span>
                             <span class="insight-date">Oct 01, 2026</span>
                         </div>
-                        <h3>&ldquo;AI-ify&rdquo; Your Products &ndash; And &ldquo;The AI Golden Rule&rdquo;</h3>
+                        <a class="insight-title-link" onclick="openModal('modal-ai-golden-rule')">&ldquo;AI-ify&rdquo; Your Products &ndash; And &ldquo;The AI Golden Rule&rdquo;</a>
                         <p>A practical playbook for CPOs and product leaders to avoid chasing hype, preserve user agency, and build human-centered AI that drives retention and ROI.</p>
                     </div>
-                    <button class="read-btn" onclick="openModal('modal-ai-golden-rule')">Read Full Article &rarr;</button>
+                    <span class="read-hint">Read Full Article &rarr;</span>
                 </article>
 
                 <!-- Article: AI's Illusion and The Eliza Effect -->
@@ -852,10 +863,10 @@
                             <span>AI &amp; Human Psychology</span>
                             <span class="insight-date">Sept 15, 2026</span>
                         </div>
-                        <h3>AI&rsquo;s Illusion and The Eliza Effect</h3>
+                        <a class="insight-title-link" onclick="openModal('modal-eliza')">AI&rsquo;s Illusion and The Eliza Effect</a>
                         <p>The gap between what logic tells us and what our emotional wiring feels when interacting with conversational AI&mdash;and why leaders must navigate the illusion with intention.</p>
                     </div>
-                    <button class="read-btn" onclick="openModal('modal-eliza')">Read Full Article &rarr;</button>
+                    <span class="read-hint">Read Full Article &rarr;</span>
                 </article>
 
                 <!-- Article: The AI Gold Rush -->
@@ -865,10 +876,10 @@
                             <span>Innovation &amp; AI Strategy</span>
                             <span class="insight-date">July 20, 2026</span>
                         </div>
-                        <h3>The AI Gold Rush: Designing Innovations That Stick</h3>
+                        <a class="insight-title-link" onclick="openModal('modal-ai-gold-rush')">The AI Gold Rush: Designing Innovations That Stick</a>
                         <p>Why most AI innovations fade after the hype cycle&mdash;and how the SPIRAL framework engineers momentum and resonance to turn novelty into lasting habit.</p>
                     </div>
-                    <button class="read-btn" onclick="openModal('modal-ai-gold-rush')">Read Full Article &rarr;</button>
+                    <span class="read-hint">Read Full Article &rarr;</span>
                 </article>
 
             </div>
@@ -913,12 +924,4 @@
                 <p>AI missteps are costly but avoidable when guided by The AI Golden Rule, which prevents three critical pitfalls:</p>
                 <p><strong>1. Overreach:</strong> Happens when AI makes decisions without user consent, stripping away autonomy and breeding resentment. Instead of empowering CX, such systems feel controlling. The solution lies in prioritizing user control with clear opt-in mechanisms and customizable settings.</p>
                 <p><strong>2. Silent Disengagement:</strong> Creeps in when AI delivers irrelevant or opaque outputs, undermining users&rsquo; sense of competence. Without transparency or context, users lose confidence, quietly reducing engagement. Addressing this requires AI to provide clear, relevant suggestions grounded in user data and explained in plain terms.</p>
-                <p><strong>3. Resource Waste:</strong> Occurs when AI is built for hype rather than solving real user problems, draining budgets and missing ROI. Aligning AI with specific, user-defined needs ensures resources are invested wisely.</p>
-
-                <h2>The Solution: CX Curve + ORBITS Model</h2>
-                <p>The CX Curve maps how emotions, from frustration to trust to delight, shape adoption. The ORBITS model provides a step-by-step guide to apply The AI Golden Rule:</p>
-                <ul>
-                    <li><strong>Obstacle:</strong> Pinpoint user friction points without overstepping their autonomy. Use AI to detect inefficiencies in workflows, but ensure suggestions are optional and respect user preferences.</li>
-                    <li><strong>Research:</strong> Design AI to enhance decision-making confidence. Model suggestions based on anonymized user data, providing transparent reasoning to make outputs feel trustworthy.</li>
-                    <li><strong>Benchmark:</strong> Align AI outputs with users&rsquo; specific goals. Configure systems to adapt to individual priorities through customizable settings.</li>
-                    <li><strong>Invest:</strong> Support user onboarding with personalized nud
+                <p><strong>3. Resource Waste:</strong> Occurs when AI is built for hype rather than solving real user problems, draining budgets and
