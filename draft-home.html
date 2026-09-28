@@ -525,6 +525,12 @@
             margin: 1.75rem 0 0.75rem 0;
         }
 
+        .article-body h3 {
+            font-size: 1.2rem;
+            color: var(--rust);
+            margin: 1.25rem 0 0.5rem 0;
+        }
+
         .article-body p {
             margin-bottom: 1.25rem;
             color: var(--text-muted);
@@ -569,7 +575,7 @@
 
         .book-grid img {
             width: 100%;
-            height: auto;
+            height auto;
             border-radius: 8px;
             box-shadow: 0 4px 12px rgba(26, 17, 13, 0.12);
         }
@@ -797,6 +803,19 @@
             </div>
             
             <div class="insights-grid">
+
+                <!-- Article Card 2: AI-ify Your Products & The AI Golden Rule -->
+                <article class="insight-card">
+                    <div>
+                        <div class="insight-meta">
+                            <span>Product Leadership & AI</span>
+                            <span class="insight-date">Oct 01, 2026</span>
+                        </div>
+                        <h3>“AI-ify” Your Products – And “The AI Golden Rule”</h3>
+                        <p>A practical playbook for CPOs and product leaders to avoid chasing hype, preserve user agency, and build human-centered AI that drives retention and ROI.</p>
+                    </div>
+                    <button class="read-btn" onclick="openModal('modal-ai-golden-rule')">Read Full Article &rarr;</button>
+                </article>
                 
                 <!-- Article Card 1: AI's Illusion and The Eliza Effect -->
                 <article class="insight-card">
@@ -814,6 +833,74 @@
             </div>
         </div>
     </section>
+
+    <!-- Full Article Modal: AI Golden Rule -->
+    <div id="modal-ai-golden-rule" class="modal-overlay" onclick="closeModalOnOuterClick(event, 'modal-ai-golden-rule')">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('modal-ai-golden-rule')">&times;</button>
+            <div class="insight-meta">
+                <span>Product Leadership & AI</span>
+                <span class="insight-date">October 1, 2026</span>
+            </div>
+            <h1 style="font-size: 2.2rem; color: var(--umber); margin: 0.5rem 0 0.25rem 0; font-weight: 800;">“AI-ify” Your Products – And “The AI Golden Rule”</h1>
+            <div style="color: var(--rust); font-weight: 700; font-size: 1rem; margin-bottom: 1.5rem;">By Stephen McBride</div>
+            
+            <div class="article-body">
+                <p>You’re a CPO, and the board’s pushing hard to “AI-ify” your product by next quarter, googly-eyed by competitors’ “AI-powered” buzz. You roll out an AI recommendation engine, expecting a win, but users hate it—irrelevant suggestions, no control, and a 20% engagement drop in a week. Why?</p>
+                <p>Chasing AI hype over user needs is a mistake that sinks 80% of AI projects (McKinsey, Gartner). Instead of racing to keep up, you can be a smarter leader, building AI that users trust and love. This blueprint shows you how, starting with a principle that delivers ROI without the fallout.</p>
+
+                <h2>A Practical Guide for Product Leaders</h2>
+                <p>With 32% of consumers switching brands after one poor experience (PwC, 2022), human-centered AI is critical. This series introduces a playbook built on a core principle that ensures your AI delivers ROI by prioritizing users.</p>
+
+                <h2>The AI Golden Rule: “AI Must Empower Human Agency”</h2>
+                <p>The cornerstone of human-centered AI is simple but powerful: <strong>AI must empower human agency.</strong> This is a practical filter for every feature, preventing costly missteps and building trust.</p>
+                <p>Grounded in Self-Determination Theory, it translates into three actionable pillars:</p>
+                <ul>
+                    <li><strong>Autonomy:</strong> Ensures users steer AI with opt-outs and clear choices, like GitHub Copilot’s optional code suggestions.</li>
+                    <li><strong>Competence:</strong> Comes from transparent explanations that build confidence, as seen in Duolingo’s adaptive feedback.</li>
+                    <li><strong>Relatedness:</strong> Fosters collaboration and community, such as Slack’s AI nudges for team workflows.</li>
+                </ul>
+                <p>Together, these pillars turn AI from a gimmick into a feature users can’t live without.</p>
+
+                <h2>Why Human-Centered AI Wins</h2>
+                <p>Chasing AI hype dooms projects. Features labeled “AI-powered” often miss real problems and undermine user control. Take Salesforce Einstein’s early models, which predicted lead scores without explanations, frustrating reps and hurting autonomy. The fix—transparent reasoning, like <em>“This lead ranks #1 due to recent engagement,”</em> and user overrides—boosted adoption by 25%.</p>
+                <p>In contrast, Spotify Discover Weekly empowers users to skip, save, or share playlists with clear logic, such as <em>“Based on your recent listens,”</em> driving 80% user engagement.</p>
+                <p>Ignoring human agency leads to eroded trust (as with Alexa’s misheard commands creating unease), silent churn (where poor recommendations caused 19% of Netflix users to cut usage), and wasted resources (like IBM’s Watson Health burning $4B on misaligned features).</p>
+
+                <h2>From Principle to Practice: Your AI Playbook</h2>
+                <h3>Where AI Goes Wrong—and How to Fix It</h3>
+                <p>AI missteps are costly but avoidable when guided by The AI Golden Rule, which prevents three critical pitfalls:</p>
+                <p><strong>1. Overreach:</strong> Happens when AI makes decisions without user consent, stripping away autonomy and breeding resentment. Instead of empowering CX, such systems feel controlling. The solution lies in prioritizing user control with clear opt-in mechanisms and customizable settings.</p>
+                <p><strong>2. Silent Disengagement:</strong> Creeps in when AI delivers irrelevant or opaque outputs, undermining users’ sense of competence. Without transparency or context, users lose confidence, quietly reducing engagement. Addressing this requires AI to provide clear, relevant suggestions grounded in user data and explained in plain terms.</p>
+                <p><strong>3. Resource Waste:</strong> Occurs when AI is built for hype rather than solving real user problems, draining budgets and missing ROI. Aligning AI with specific, user-defined needs ensures resources are invested wisely.</p>
+
+                <h2>The Solution: CX Curve + ORBITS Model</h2>
+                <p>The CX Curve maps how emotions, from frustration to trust to delight, shape adoption. The ORBITS model provides a step-by-step guide to apply The AI Golden Rule:</p>
+                <ul>
+                    <li><strong>Obstacle:</strong> Pinpoint user friction points without overstepping their autonomy. Use AI to detect inefficiencies in workflows, but ensure suggestions are optional and respect user preferences.</li>
+                    <li><strong>Research:</strong> Design AI to enhance decision-making confidence. Model suggestions based on anonymized user data, providing transparent reasoning to make outputs feel trustworthy.</li>
+                    <li><strong>Benchmark:</strong> Align AI outputs with users’ specific goals. Configure systems to adapt to individual priorities through customizable settings.</li>
+                    <li><strong>Invest:</strong> Support user onboarding with personalized nudges. Use AI to guide users through initial interactions with tailored prompts that adapt to their progress.</li>
+                    <li><strong>Transform:</strong> Build lasting habits by celebrating user milestones. Implement AI-driven rewards for small achievements to encourage engagement.</li>
+                    <li><strong>Share:</strong> Amplify user advocacy by enabling seamless sharing of AI-generated outputs, strengthening community and connection.</li>
+                </ul>
+
+                <h2>Trust-Focused Metrics</h2>
+                <p>Success is measured through specific metrics:</p>
+                <ul>
+                    <li><strong>Feature Adoption Rate:</strong> Tracks the percentage of users enabling AI suggestions (Target: &gt;60%).</li>
+                    <li><strong>User Retention:</strong> Measures the percentage of users returning after 30 days (Target: &gt;75%).</li>
+                    <li><strong>User Sentiment Trend (UST):</strong> Monitors real-time shifts in user sentiment via micro-surveys or behavioral signals, aiming for a consistent positive trend over 2 weeks.</li>
+                </ul>
+
+                <p>At every ORBITS step, the AI Golden Rule ensures AI respects user control, boosting ROI and loyalty.</p>
+                
+                <blockquote style="margin-top: 2rem;">
+                    This article draws on principles from my book, <em>"The CX Curve: Rewiring Corporate DNA for Relentless Customer Focus"</em>.
+                </blockquote>
+            </div>
+        </div>
+    </div>
 
     <!-- Full Article Modal: Eliza Effect -->
     <div id="modal-eliza" class="modal-overlay" onclick="closeModalOnOuterClick(event, 'modal-eliza')">
