@@ -1,54 +1,371 @@
-import numpy as np
-import pandas as pd
-
-class DataPipeline:
-    def __init__(self, target_column: str):
-        self.target_column = target_column
-        self.mean_values = {}
-        
-    def fit(self, df: pd.DataFrame):
-        """Calculate and store feature metrics from training data."""
-        numeric_cols = df.select_dtypes(include=[np.number]).columns
-        for col in numeric_cols:
-            if col != self.target_column:
-                self.mean_values[col] = df[col].mean()
-        return self
-
-    def transform(self, df: pd.DataFrame) -> pd.DataFrame:
-        """Apply missing value imputation and feature scaling."""
-        df_transformed = df.copy()
-        
-        # Impute missing numeric values using fitted means
-        for col, mean_val in self.mean_values.items():
-            if col in df_transformed.columns:
-                df_transformed[col] = df_transformed[col].fillna(mean_val)
-                
-        # Standardize features (Z-score normalization)
-        for col in self.mean_values.keys():
-            if col in df_transformed.columns:
-                std = df_transformed[col].std()
-                if std != 0:
-                    df_transformed[col] = (df_transformed[col] - self.mean_values[col]) / std
-                    
-        return df_transformed
-
-    def fit_transform(self, df: pd.DataFrame) -> pd.DataFrame:
-        """Fit parameters and transform input data in a single step."""
-        return self.fit(df).transform(df)
-
-# Example Execution
-if __name__ == "__main__":
-    # Sample Dataset Construction
-    raw_data = {
-        'feature_a': [10.0, 12.0, np.nan, 14.0, 15.0],
-        'feature_b': [100, 200, 150, np.nan, 300],
-        'target': [0, 1, 0, 1, 0]
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The CX Curve | Corporate Strategy & Alignment</title>
+  <style>
+    /* Global Styles & Design Tokens */
+    :root {
+      --navy: #0F172A;
+      --slate: #475569;
+      --light-gray: #F8FAFC;
+      --border-gray: #E2E8F0;
+      --accent-blue: #2563EB;
+      --accent-hover: #1D4ED8;
+      --text-dark: #1E293B;
+      --text-muted: #64748B;
+      --white: #FFFFFF;
     }
-    df_raw = pd.DataFrame(raw_data)
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      color: var(--text-dark);
+      background-color: var(--light-gray);
+      line-height: 1.6;
+    }
+
+    a {
+      color: var(--accent-blue);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    /* Layout Containers */
+    header {
+      background-color: var(--navy);
+      color: var(--white);
+      padding: 1.5rem 2rem;
+      border-bottom: 3px solid var(--accent-blue);
+    }
+
+    .header-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      color: var(--white);
+    }
+
+    .logo span {
+      color: var(--accent-blue);
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 1.5rem;
+    }
+
+    nav a {
+      color: #94A3B8;
+      font-weight: 500;
+    }
+
+    nav a:hover {
+      color: var(--white);
+      text-decoration: none;
+    }
+
+    .hero {
+      background-color: var(--navy);
+      color: var(--white);
+      padding: 4rem 2rem;
+      text-align: center;
+    }
+
+    .hero-content {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .hero h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      line-height: 1.2;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      color: #94A3B8;
+      margin-bottom: 2rem;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      background-color: var(--accent-blue);
+      color: var(--white);
+      padding: 0.75rem 1.5rem;
+      border-radius: 6px;
+      font-weight: 600;
+      transition: background-color 0.2s ease;
+    }
+
+    .btn-primary:hover {
+      background-color: var(--accent-hover);
+      text-decoration: none;
+    }
+
+    .main-layout {
+      max-width: 1200px;
+      margin: 3rem auto;
+      padding: 0 1.5rem;
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 3rem;
+    }
+
+    /* Post Feed & Card Styles */
+    .post-feed {
+      display: flex;
+      flex-direction: column;
+      gap: 2.5rem;
+    }
+
+    .post-card {
+      background: var(--white);
+      border: 1px solid var(--border-gray);
+      border-radius: 8px;
+      padding: 2rem;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    }
+
+    .post-card.featured {
+      border-left: 4px solid var(--accent-blue);
+    }
+
+    .post-meta {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 0.75rem;
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+    }
+
+    .post-category {
+      background-color: #EFF6FF;
+      color: var(--accent-blue);
+      padding: 0.2rem 0.6rem;
+      border-radius: 4px;
+      font-weight: 600;
+      text-transform: uppercase;
+      font-size: 0.75rem;
+    }
+
+    .post-title {
+      font-size: 1.75rem;
+      margin-bottom: 1rem;
+      color: var(--navy);
+      line-height: 1.3;
+    }
+
+    .post-content p {
+      margin-bottom: 1.25rem;
+      color: #334155;
+    }
+
+    .post-content h3 {
+      font-size: 1.25rem;
+      margin: 1.5rem 0 0.75rem 0;
+      color: var(--navy);
+    }
+
+    .post-content ul, .post-content ol {
+      margin-bottom: 1.25rem;
+      padding-left: 1.5rem;
+    }
+
+    .post-content li {
+      margin-bottom: 0.5rem;
+    }
+
+    .post-footer {
+      margin-top: 1.5rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--border-gray);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    /* Sidebar Styles */
+    .sidebar {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    .widget {
+      background: var(--white);
+      border: 1px solid var(--border-gray);
+      border-radius: 8px;
+      padding: 1.5rem;
+    }
+
+    .widget-title {
+      font-size: 1.1rem;
+      color: var(--navy);
+      margin-bottom: 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid var(--light-gray);
+    }
+
+    .widget-content p {
+      font-size: 0.95rem;
+      color: var(--slate);
+      margin-bottom: 1rem;
+    }
+
+    footer {
+      background-color: var(--navy);
+      color: #94A3B8;
+      text-align: center;
+      padding: 2rem;
+      margin-top: 4rem;
+      font-size: 0.875rem;
+    }
+
+    @media (max-width: 768px) {
+      .main-layout {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="header-container">
+      <div class="logo">The <span>CX Curve</span></div>
+      <nav>
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#framework">Framework</a></li>
+          <li><a href="#book">The Book</a></li>
+          <li><a href="#workshops">Workshops</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Rewiring Corporate DNA for Relentless Customer Focus</h1>
+      <p>Actionable framework models, organizational alignment strategies, and executive insights.</p>
+      <a href="#latest" class="btn-primary">Read Latest Articles</a>
+    </div>
+  </section>
+
+  <!-- Main Content Layout -->
+  <main class="main-layout" id="latest">
     
-    # Process Pipeline
-    pipeline = DataPipeline(target_column='target')
-    df_processed = pipeline.fit_transform(df_raw)
-    
-    print("Processed Dataset:")
-    print(df_processed)
+    <!-- Blog Feed -->
+    <section class="post-feed">
+
+      <!-- NEW BLOG ENTRY (Latest Draft) -->
+      <article class="post-card featured">
+        <div class="post-meta">
+          <span class="post-category">Executive Strategy</span>
+          <span>September 28, 2026</span>
+          <span>5 min read</span>
+        </div>
+        <h2 class="post-title">The Alignment Trap: Why Internal Efficiency Kills External Value</h2>
+        <div class="post-content">
+          <p>Most corporate restructuring efforts fail for a single fundamental reason: they optimize for internal functional metrics rather than actual customer outcomes. When executive teams focus exclusively on cost reduction and localized efficiency, they introduce systemic friction across organizational boundaries.</p>
+          
+          <h3>The Mechanics of Organizational Friction</h3>
+          <p>When engineering, operations, and business development operate in functional silos, each department optimizes for its own specific KPI. However, the end customer experiences the enterprise as a single entity, not a collection of independent units.</p>
+          
+          <ul>
+            <li><strong>Isolated Prioritization:</strong> Engineering builds for technical elegance, Sales sells based on immediate quotas, and Operations cuts delivery overhead.</li>
+            <li><strong>Value Leakage:</strong> Hand-off points between divisions become primary source points for customer churn.</li>
+            <li><strong>Misaligned Capital Allocation:</strong> Capital is directed toward incremental functional fixes rather than cross-functional workflow improvements.</li>
+          </ul>
+
+          <p>To eliminate this gap, executive leadership must systematically realign incentive structures to mirror the customer's actual operational journey.</p>
+        </div>
+        <div class="post-footer">
+          <a href="#" class="btn-primary" style="padding: 0.5rem 1rem; font-size: 0.875rem;">Read Full Paper</a>
+        </div>
+      </article>
+
+      <!-- PREVIOUS BLOG ENTRY 1 -->
+      <article class="post-card">
+        <div class="post-meta">
+          <span class="post-category">Operations</span>
+          <span>August 14, 2026</span>
+          <span>8 min read</span>
+        </div>
+        <h2 class="post-title">Quantifying Friction in High-Touch B2B Engagements</h2>
+        <div class="post-content">
+          <p>Measuring customer experience in high-touch B2B relationships requires moving past simple net promoter scores. This article outlines the mathematical models needed to isolate, measure, and price operational friction within complex service delivery systems.</p>
+        </div>
+        <div class="post-footer">
+          <a href="#" style="font-weight: 600;">Read Article &rarr;</a>
+        </div>
+      </article>
+
+      <!-- PREVIOUS BLOG ENTRY 2 -->
+      <article class="post-card">
+        <div class="post-meta">
+          <span class="post-category">Methodology</span>
+          <span>July 02, 2026</span>
+          <span>6 min read</span>
+        </div>
+        <h2 class="post-title">The Core Pillars of the CX Alignment Framework</h2>
+        <div class="post-content">
+          <p>An overview of the foundational architecture detailed in <em>The CX Curve</em>. Learn how to map cross-functional execution pathways and restructure organizational reporting to preserve strategic focus during scaling phases.</p>
+        </div>
+        <div class="post-footer">
+          <a href="#" style="font-weight: 600;">Read Article &rarr;</a>
+        </div>
+      </article>
+
+    </section>
+
+    <!-- Sidebar Content -->
+    <aside class="sidebar">
+      <div class="widget">
+        <h3 class="widget-title">About the Author</h3>
+        <div class="widget-content">
+          <p>Executive strategy advisor and author focusing on corporate alignment, operational scaling, and cross-functional performance architectures.</p>
+        </div>
+      </div>
+
+      <div class="widget">
+        <h3 class="widget-title">The CX Curve Book</h3>
+        <div class="widget-content">
+          <p>Discover the blueprint for eliminating structural friction and aligning organizational execution around core value drivers.</p>
+          <a href="#book" class="btn-primary" style="display: block; text-align: center;">Learn More</a>
+        </div>
+      </div>
+    </aside>
+
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2026 The CX Curve. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>
