@@ -1,1133 +1,514 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Orbits CX | Executive Advisory &amp; Strategic Alignment</title>
-    <style>
-        :root {
-            --umber: #1A110D;
-            --maroon: #33140E;
-            --terracotta: #802E1E;
-            --rust: #A85426;
-            --sandstone: #BF843E;
-            --warm-tan: #DAB070;
-            --bg-sand: #FAF6F0;
-            --bg-white: #FFFFFF;
-            --card-border: #E8DEC8;
-            --text-dark: #1A110D;
-            --text-muted: #4A3B32;
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            background-color: var(--bg-sand);
-            color: var(--text-dark);
-            line-height: 1.6;
-        }
-
-        /* --- Header & Navigation --- */
-        header {
-            background-color: var(--bg-white);
-            border-bottom: 1px solid var(--card-border);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-
-        .nav-container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 1rem 1.5rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .nav-logo img {
-            height: 38px;
-            width: auto;
-            display: block;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-            list-style: none;
-            align-items: center;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: var(--text-dark);
-            font-weight: 600;
-            font-size: 0.95rem;
-            transition: color 0.2s ease;
-        }
-
-        .nav-links a:hover {
-            color: var(--rust);
-        }
-
-        .nav-cta {
-            background-color: var(--terracotta);
-            color: #FFFFFF !important;
-            padding: 0.5rem 1.25rem;
-            border-radius: 6px;
-            transition: background-color 0.2s ease !important;
-        }
-
-        .nav-cta:hover {
-            background-color: var(--maroon) !important;
-        }
-
-        /* --- Hero Section --- */
-        .hero {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 5rem 1.5rem 4rem 1.5rem;
-            display: grid;
-            grid-template-columns: 1.2fr 0.8fr;
-            gap: 3rem;
-            align-items: center;
-        }
-
-        .hero-badge {
-            display: inline-block;
-            background-color: #FFFFFF;
-            border: 1px solid var(--warm-tan);
-            color: var(--terracotta);
-            font-size: 0.85rem;
-            font-weight: 700;
-            padding: 0.4rem 1rem;
-            border-radius: 9999px;
-            text-transform: uppercase;
-            letter-spacing: 0.03em;
-            margin-bottom: 1.25rem;
-        }
-
-        .hero h1 {
-            font-size: 2.75rem;
-            line-height: 1.2;
-            color: var(--umber);
-            font-weight: 800;
-            margin-bottom: 1.25rem;
-        }
-
-        .hero p {
-            font-size: 1.15rem;
-            color: var(--text-muted);
-            margin-bottom: 2rem;
-            max-width: 580px;
-        }
-
-        .hero-actions {
-            display: flex;
-            gap: 1rem;
-            align-items: center;
-        }
-
-        .btn-primary {
-            background-color: var(--terracotta);
-            color: #FFFFFF;
-            font-weight: 600;
-            padding: 0.85rem 1.75rem;
-            border-radius: 8px;
-            text-decoration: none;
-            transition: background-color 0.2s ease;
-            box-shadow: 0 3px 8px rgba(128, 46, 30, 0.25);
-            display: inline-block;
-            border: none;
-            cursor: pointer;
-        }
-
-        .btn-primary:hover {
-            background-color: var(--maroon);
-        }
-
-        .btn-secondary {
-            color: var(--rust);
-            font-weight: 600;
-            padding: 0.85rem 1.25rem;
-            text-decoration: none;
-            transition: color 0.2s ease;
-        }
-
-        .btn-secondary:hover {
-            color: var(--terracotta);
-        }
-
-        .hero-image-card {
-            background-color: var(--bg-white);
-            border: 1px solid var(--card-border);
-            border-radius: 12px;
-            padding: 1.5rem;
-            box-shadow: 0 10px 25px -5px rgba(26, 17, 13, 0.08);
-            text-align: center;
-        }
-
-        .hero-image-card img {
-            width: 100%;
-            height: auto;
-            border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(26, 17, 13, 0.12);
-        }
-
-        /* --- Pillars Section --- */
-        .pillars-section {
-            background-color: var(--bg-white);
-            padding: 5rem 1.5rem;
-            border-top: 1px solid var(--card-border);
-            border-bottom: 1px solid var(--card-border);
-        }
-
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-
-        .section-title h2 {
-            font-size: 2rem;
-            color: var(--umber);
-            font-weight: 800;
-            margin-bottom: 0.5rem;
-        }
-
-        .section-title p {
-            color: var(--rust);
-            font-weight: 600;
-            font-size: 1.05rem;
-        }
-
-        .pillars-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-        }
-
-        .pillar-card {
-            background-color: var(--bg-sand);
-            border: 1px solid var(--card-border);
-            border-radius: 10px;
-            padding: 2rem;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-        }
-
-        .pillar-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 8px 20px rgba(26, 17, 13, 0.06);
-        }
-
-        .pillar-number {
-            font-size: 1.5rem;
-            font-weight: 800;
-            color: var(--sandstone);
-            margin-bottom: 0.75rem;
-        }
-
-        .pillar-card h3 {
-            font-size: 1.25rem;
-            color: var(--umber);
-            margin-bottom: 0.75rem;
-        }
-
-        .pillar-card p {
-            color: var(--text-muted);
-            font-size: 0.95rem;
-            line-height: 1.5;
-        }
-
-        /* --- Executive Bio Section --- */
-        .bio-section {
-            padding: 5rem 1.5rem 2.5rem 1.5rem;
-        }
-
-        .bio-card {
-            background-color: var(--bg-white);
-            border: 1px solid var(--card-border);
-            border-radius: 12px;
-            padding: 3rem;
-            box-shadow: 0 10px 25px -5px rgba(26, 17, 13, 0.08);
-            display: grid;
-            grid-template-columns: 1fr 2fr;
-            gap: 3rem;
-            align-items: start;
-        }
-
-        .bio-sidebar {
-            border-right: 1px solid var(--card-border);
-            padding-right: 2rem;
-            text-align: center;
-        }
-
-        .bio-portrait {
-            width: 150px;
-            height: 150px;
-            margin: 0 auto 1.5rem auto;
-            border-radius: 50%;
-            overflow: hidden;
-            border: 3px solid var(--warm-tan);
-            box-shadow: 0 6px 16px rgba(26, 17, 13, 0.12);
-        }
-
-        .portrait-img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: center 20%;
-            display: block;
-        }
-
-        .bio-name {
-            font-size: 1.75rem;
-            font-weight: 800;
-            color: var(--umber);
-            margin-bottom: 0.25rem;
-        }
-
-        .bio-title {
-            color: var(--rust);
-            font-weight: 700;
-            font-size: 0.9rem;
-            margin-bottom: 1.5rem;
-            text-transform: uppercase;
-            letter-spacing: 0.03em;
-        }
-
-        .bio-stats {
-            list-style: none;
-            display: flex;
-            flex-direction: column;
-            gap: 1.25rem;
-            text-align: left;
-        }
-
-        .bio-stat-item {
-            font-size: 0.88rem;
-            color: var(--text-muted);
-        }
-
-        .bio-stat-item strong {
-            display: block;
-            color: var(--umber);
-            font-size: 1.05rem;
-        }
-
-        .bio-content p {
-            color: var(--text-muted);
-            font-size: 1rem;
-            margin-bottom: 1.25rem;
-            line-height: 1.7;
-        }
-
-        .edu-block {
-            margin-top: 1.5rem;
-            padding-top: 1.5rem;
-            border-top: 1px solid var(--card-border);
-        }
-
-        .edu-title {
-            font-size: 0.9rem;
-            font-weight: 700;
-            color: var(--rust);
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            margin-bottom: 0.75rem;
-        }
-
-        .edu-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1rem;
-        }
-
-        .edu-item {
-            background-color: var(--bg-sand);
-            border: 1px solid var(--card-border);
-            padding: 0.85rem;
-            border-radius: 6px;
-        }
-
-        .edu-item strong {
-            display: block;
-            color: var(--umber);
-            font-size: 0.9rem;
-            margin-bottom: 0.2rem;
-        }
-
-        .edu-item span {
-            display: block;
-            color: var(--text-muted);
-            font-size: 0.8rem;
-        }
-
-        .partner-tags {
-            display: flex;
-            gap: 0.75rem;
-            flex-wrap: wrap;
-            margin-top: 1.5rem;
-            padding-top: 1.5rem;
-            border-top: 1px solid var(--card-border);
-        }
-
-        .partner-tag {
-            background-color: var(--bg-sand);
-            border: 1px solid var(--card-border);
-            color: var(--umber);
-            font-weight: 700;
-            font-size: 0.8rem;
-            padding: 0.35rem 0.85rem;
-            border-radius: 4px;
-        }
-
-        /* --- Insights / Blog Section --- */
-        .insights-section {
-            padding: 5rem 1.5rem;
-            background-color: var(--bg-sand);
-            border-top: 1px solid var(--card-border);
-        }
-
-        .insights-grid {
-            display: flex;
-            flex-direction: column;
-            gap: 2rem;
-        }
-
-        .insight-card {
-            background-color: var(--bg-white);
-            border: 1px solid var(--card-border);
-            border-radius: 12px;
-            padding: 2rem;
-            box-shadow: 0 4px 15px rgba(26, 17, 13, 0.04);
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-        }
-
-        .insight-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 10px 25px rgba(26, 17, 13, 0.08);
-        }
-
-        /* Featured (latest) article */
-        .insight-card.featured {
-            padding: 3rem;
-            border-left: 4px solid var(--terracotta);
-            box-shadow: 0 12px 30px -8px rgba(26, 17, 13, 0.12);
-        }
-
-        .insight-card.featured h3 {
-            font-size: 1.9rem;
-            margin-bottom: 1rem;
-        }
-
-        .insight-card.featured p {
-            font-size: 1.1rem;
-            max-width: 780px;
-            margin-bottom: 2rem;
-        }
-
-        .insight-card.featured .insight-meta {
-            margin-bottom: 1rem;
-        }
-
-        .insight-meta {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-size: 0.8rem;
-            font-weight: 700;
-            color: var(--rust);
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            margin-bottom: 0.75rem;
-        }
-
-        .insight-date {
-            color: var(--sandstone);
-            font-weight: 500;
-        }
-
-        /* Clickable article title */
-        .insight-title-link {
-            display: block;
-            font-size: 1.35rem;
-            color: var(--umber);
-            margin-bottom: 0.75rem;
-            font-weight: 800;
-            line-height: 1.3;
-            text-decoration: none;
-            cursor: pointer;
-            border: none;
-            background: none;
-            padding: 0;
-            text-align: left;
-            font-family: inherit;
-            transition: color 0.2s ease;
-        }
-
-        .insight-title-link:hover {
-            color: var(--terracotta);
-        }
-
-        .insight-card.featured .insight-title-link {
-            font-size: 1.9rem;
-            margin-bottom: 1rem;
-        }
-
-        .insight-card p {
-            color: var(--text-muted);
-            font-size: 0.95rem;
-            line-height: 1.6;
-            margin-bottom: 1.5rem;
-        }
-
-        .read-hint {
-            color: var(--terracotta);
-            font-weight: 700;
-            font-size: 0.9rem;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.4rem;
-            margin-top: auto;
-        }
-
-        /* Modal Overlay for Full Article */
-        .modal-overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(26, 17, 13, 0.75);
-            z-index: 1000;
-            overflow-y: auto;
-            padding: 2rem 1rem;
-        }
-
-        .modal-content {
-            background-color: var(--bg-white);
-            max-width: 800px;
-            margin: 2rem auto;
-            border-radius: 12px;
-            padding: 3rem;
-            position: relative;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-            border: 1px solid var(--card-border);
-        }
-
-        .modal-close {
-            position: absolute;
-            top: 1.5rem;
-            right: 1.5rem;
-            font-size: 1.75rem;
-            color: var(--text-muted);
-            cursor: pointer;
-            border: none;
-            background: none;
-            line-height: 1;
-        }
-
-        .modal-close:hover {
-            color: var(--terracotta);
-        }
-
-        .article-body {
-            color: var(--text-dark);
-            font-size: 1.05rem;
-            line-height: 1.8;
-            margin-top: 1.5rem;
-        }
-
-        .article-body h2 {
-            font-size: 1.4rem;
-            color: var(--umber);
-            margin: 1.75rem 0 0.75rem 0;
-        }
-
-        .article-body h3 {
-            font-size: 1.2rem;
-            color: var(--rust);
-            margin: 1.25rem 0 0.5rem 0;
-        }
-
-        .article-body p {
-            margin-bottom: 1.25rem;
-            color: var(--text-muted);
-        }
-
-        .article-body blockquote {
-            border-left: 3px solid var(--warm-tan);
-            padding-left: 1.25rem;
-            font-style: italic;
-            color: var(--text-dark);
-            margin: 1.5rem 0;
-            background-color: var(--bg-sand);
-            padding: 1rem 1.25rem;
-            border-radius: 0 6px 6px 0;
-        }
-
-        .article-body ul {
-            margin: 1rem 0 1.5rem 1.5rem;
-            color: var(--text-muted);
-        }
-
-        .article-body li {
-            margin-bottom: 0.5rem;
-        }
-
-        /* --- Book Highlight Section --- */
-        .book-section {
-            padding: 5rem 1.5rem;
-        }
-
-        .book-grid {
-            display: grid;
-            grid-template-columns: 0.8fr 1.2fr;
-            gap: 3rem;
-            align-items: center;
-            background-color: var(--bg-white);
-            border: 1px solid var(--card-border);
-            border-radius: 12px;
-            padding: 3rem;
-            box-shadow: 0 10px 25px -5px rgba(26, 17, 13, 0.08);
-        }
-
-        .book-grid img {
-            width: 100%;
-            height: auto;
-            border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(26, 17, 13, 0.12);
-        }
-
-        .book-content h2 {
-            font-size: 2rem;
-            color: var(--umber);
-            margin-bottom: 0.5rem;
-        }
-
-        .book-author {
-            color: var(--rust);
-            font-weight: 700;
-            font-size: 1rem;
-            margin-bottom: 1.25rem;
-        }
-
-        .book-quote {
-            border-left: 3px solid var(--warm-tan);
-            padding-left: 1rem;
-            font-style: italic;
-            color: var(--text-muted);
-            margin-bottom: 1.5rem;
-        }
-
-        /* --- Footer --- */
-        footer {
-            background-color: var(--umber);
-            color: var(--bg-sand);
-            padding: 3rem 1.5rem 2rem 1.5rem;
-            border-top: 1px solid var(--maroon);
-        }
-
-        .footer-container {
-            max-width: 1100px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding-bottom: 2rem;
-            border-bottom: 1px solid rgba(218, 176, 112, 0.2);
-        }
-
-        .footer-logo img {
-            height: 32px;
-            filter: brightness(0) invert(1);
-        }
-
-        .footer-contact a {
-            color: var(--warm-tan);
-            text-decoration: none;
-            font-weight: 600;
-        }
-
-        .footer-bottom {
-            max-width: 1100px;
-            margin: 1.5rem auto 0 auto;
-            text-align: center;
-            font-size: 0.85rem;
-            color: rgba(250, 246, 240, 0.6);
-        }
-
-        /* Responsive Tweaks */
-        @media (max-width: 850px) {
-            .hero, .book-grid, .bio-card {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-            .edu-grid {
-                grid-template-columns: 1fr;
-            }
-            .bio-sidebar {
-                border-right: none;
-                border-bottom: 1px solid var(--card-border);
-                padding-right: 0;
-                padding-bottom: 1.5rem;
-            }
-            .pillars-grid {
-                grid-template-columns: 1fr;
-            }
-            .nav-links {
-                display: none;
-            }
-            .insight-card.featured {
-                padding: 2rem;
-            }
-            .insight-card.featured .insight-title-link {
-                font-size: 1.5rem;
-            }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Orbits CX | Executive Advisory &amp; Strategic Alignment</title>
+<meta name="description" content="Orbits CX helps executive teams bridge customer strategy and operational execution. Advisory from Stephen McBride, author of The CX Curve.">
+<style>
+:root {
+  --umber: #1A110D;
+  --maroon: #3E1A13;
+  --terracotta: #802E1E;
+  --rust: #A85426;
+  --sandstone: #BF843E;
+  --tan: #DAB070;
+  --flat-rust: #5C2618;
+  --flat-sandstone: #D6A868;
+  --sand: #FAF6F0;
+  --white: #fff;
+  --line: #E8DEC8;
+  --muted: #4A3B32;
+  --serif: Georgia, "Iowan Old Style", "Palatino Linotype", serif;
+  --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --radius: 10px;
+  --shadow: 0 10px 28px -10px rgba(26, 17, 13, .18);
+  --wrap: 1120px;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; scroll-padding-top: 5rem; }
+body { font-family: var(--sans); background: var(--sand); color: var(--umber); line-height: 1.65; }
+img { max-width: 100%; display: block; }
+a { color: inherit; }
+h1, h2, h3 { font-family: var(--serif); line-height: 1.2; }
+:focus-visible { outline: 3px solid var(--sandstone); outline-offset: 3px; }
+.wrap { max-width: var(--wrap); margin: 0 auto; padding: 0 1.5rem; }
+.section { padding: 5rem 0; }
+.skip { position: absolute; left: -999px; }
+.skip:focus { left: 1rem; top: 1rem; background: var(--white); padding: .5rem 1rem; z-index: 200; }
+
+/* Buttons */
+.btn { display: inline-block; font: 600 1rem var(--sans); text-decoration: none; padding: .8rem 1.6rem; border-radius: 8px; border: 2px solid transparent; cursor: pointer; transition: background-color .2s, color .2s, border-color .2s; }
+.btn-primary { background: var(--terracotta); color: var(--white); }
+.btn-primary:hover { background: var(--maroon); }
+.btn-ghost { color: var(--terracotta); border-color: var(--terracotta); }
+.btn-ghost:hover { background: var(--terracotta); color: var(--white); }
+
+/* Header */
+.site-header { position: sticky; top: 0; z-index: 100; background: rgba(250, 246, 240, .94); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); }
+.nav { display: flex; justify-content: space-between; align-items: center; gap: 1rem; padding-block: .85rem; }
+.nav-logo img { height: 38px; width: auto; mix-blend-mode: multiply; }
+.nav-links { display: flex; align-items: center; gap: 2rem; list-style: none; }
+.nav-links a { text-decoration: none; font-weight: 600; font-size: .95rem; }
+.nav-links a:not(.btn):hover { color: var(--rust); }
+.nav-links .btn { padding: .5rem 1.2rem; font-size: .95rem; }
+
+/* Hero */
+.hero { padding: 5.5rem 0 5rem; }
+.hero-grid { display: grid; grid-template-columns: 1.5fr .5fr; gap: 4rem; align-items: center; }
+.badge { display: inline-block; border: 1px solid var(--tan); background: var(--white); color: var(--terracotta); font-weight: 700; font-size: .9rem; padding: .35rem 1rem; border-radius: 999px; margin-bottom: 1.5rem; }
+.hero h1 { color: var(--flat-rust); font-size: clamp(2.2rem, 5vw, 3.5rem); margin-bottom: 1.25rem; text-wrap: balance; }
+.hero p { font-size: 1.2rem; color: var(--muted); max-width: 40rem; margin-bottom: 2rem; }
+.actions { display: flex; flex-wrap: wrap; gap: 1rem; }
+.hero-logo { display: grid; place-items: center; }
+.hero-logo img { width: 100%; max-width: 300px; height: auto; }
+
+/* Section headings */
+.section-head { max-width: 40rem; margin-bottom: 3rem; }
+.section-head h2 { color: var(--flat-rust); font-size: clamp(1.7rem, 3.5vw, 2.4rem); margin-bottom: .5rem; }
+.section-head p { color: var(--rust); font-weight: 600; font-size: 1.1rem; }
+
+/* Pillars */
+.pillars { border-block: 1px solid var(--line); }
+.pillar-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+.pillar { border-top: 4px solid var(--terracotta); padding-top: 1.25rem; }
+.pillar h3 { font-size: 1.35rem; margin-bottom: .6rem; }
+.pillar p { color: var(--muted); }
+
+/* Bio */
+.bio { display: grid; grid-template-columns: 340px 1fr; background: var(--white); border: 1px solid var(--line); border-radius: 16px; box-shadow: var(--shadow); overflow: hidden; }
+.bio-side { background: var(--umber); color: var(--sand); padding: 2.5rem 2rem; }
+.portrait { width: 160px; height: 160px; margin: 0 auto 1.25rem; border-radius: 50%; overflow: hidden; border: 3px solid var(--flat-sandstone); }
+.portrait img { width: 100%; height: 100%; object-fit: cover; object-position: center 20%; }
+.bio-name { font: 700 1.6rem var(--serif); text-align: center; }
+.bio-role { text-align: center; color: var(--flat-sandstone); font-weight: 600; margin-bottom: 1.75rem; }
+.stats { list-style: none; display: grid; gap: 1.1rem; border-top: 1px solid rgba(214, 168, 104, .3); padding-top: 1.5rem; }
+.stats strong { display: block; color: var(--white); font-size: 1.05rem; }
+.stats span { font-size: .9rem; color: rgba(250, 246, 240, .75); }
+.bio-main { padding: 2.75rem 3rem; }
+.bio-main p { color: var(--muted); margin-bottom: 1.2rem; max-width: 42rem; }
+.bio-main h3 { font-size: 1.15rem; margin: 2rem 0 .8rem; color: var(--flat-rust); }
+.edu { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; list-style: none; }
+.edu li { background: var(--sand); border: 1px solid var(--line); border-radius: 8px; padding: .9rem; font-size: .85rem; color: var(--muted); }
+.edu strong { display: block; color: var(--umber); font-size: .95rem; }
+.tags { display: flex; flex-wrap: wrap; gap: .6rem; list-style: none; margin-top: 1.5rem; }
+.tags li { background: var(--sand); border: 1px solid var(--line); border-radius: 999px; font-size: .82rem; font-weight: 600; padding: .3rem .9rem; }
+
+/* Insights */
+.insights { border-block: 1px solid var(--line); }
+.insight-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; }
+.card { display: flex; flex-direction: column; background: var(--white); border: 1px solid var(--line); border-radius: var(--radius); padding: 2rem; }
+.card.featured { grid-column: 1 / -1; background: var(--umber); color: var(--sand); border: 0; padding: 3rem; }
+.meta { display: flex; justify-content: space-between; gap: 1rem; font-size: .85rem; font-weight: 600; color: var(--rust); margin-bottom: .8rem; }
+.meta time { color: var(--sandstone); font-weight: 500; }
+.featured .meta, .featured .meta time { color: var(--flat-sandstone); }
+.card h3 { font-size: 1.4rem; margin-bottom: .75rem; }
+.featured h3 { font-size: clamp(1.6rem, 3vw, 2.2rem); max-width: 42rem; }
+.card p { color: var(--muted); margin-bottom: 1.5rem; }
+.featured p { color: rgba(250, 246, 240, .82); font-size: 1.1rem; max-width: 42rem; }
+.read { align-self: flex-start; margin-top: auto; background: none; border: 0; padding: 0; font: 700 .95rem var(--sans); color: var(--terracotta); cursor: pointer; text-decoration: underline; text-underline-offset: 4px; }
+.read:hover { color: var(--maroon); }
+.featured .read { color: var(--flat-sandstone); }
+.featured .read:hover { color: var(--white); }
+
+/* Article dialogs */
+dialog { width: min(800px, calc(100% - 2rem)); max-height: calc(100vh - 3rem); margin: auto; border: 1px solid var(--line); border-radius: 12px; padding: 0; overflow-y: auto; background: var(--white); color: var(--umber); }
+dialog::backdrop { background: rgba(26, 17, 13, .75); }
+.dialog-inner { padding: 3rem; position: relative; }
+.dialog-close { position: absolute; top: 1rem; right: 1rem; width: 2.5rem; height: 2.5rem; font-size: 1.75rem; line-height: 1; border: 0; background: none; color: var(--muted); cursor: pointer; border-radius: 50%; }
+.dialog-close:hover { color: var(--terracotta); background: var(--sand); }
+.dialog-inner h1 { font-size: clamp(1.6rem, 4vw, 2.2rem); margin: .5rem 0 .25rem; }
+.byline { color: var(--rust); font-weight: 700; margin-bottom: 1.5rem; }
+.article-body { font-size: 1.05rem; line-height: 1.8; max-width: 65ch; }
+.article-body h2 { font-size: 1.4rem; margin: 2rem 0 .75rem; }
+.article-body h3 { font-size: 1.2rem; color: var(--rust); margin: 1.5rem 0 .5rem; }
+.article-body p { color: var(--muted); margin-bottom: 1.25rem; }
+.article-body ul { margin: 1rem 0 1.5rem 1.5rem; color: var(--muted); }
+.article-body li { margin-bottom: .5rem; }
+.article-body blockquote { border-left: 3px solid var(--tan); background: var(--sand); padding: 1rem 1.25rem; margin: 1.5rem 0; font-style: italic; border-radius: 0 6px 6px 0; }
+
+/* Book */
+.book { background: var(--maroon); color: var(--sand); }
+.book-grid { display: grid; grid-template-columns: 1.15fr 1fr; gap: 4rem; align-items: center; }
+.book-grid img { width: 100%; height: auto; border-radius: 12px; box-shadow: 0 20px 40px rgba(0, 0, 0, .4); }
+.book h2 { font-size: clamp(2rem, 4vw, 2.8rem); }
+.book-author { color: var(--flat-sandstone); font-weight: 600; margin: .25rem 0 1.5rem; }
+.book blockquote { border-left: 3px solid var(--flat-sandstone); padding-left: 1.25rem; font: italic 1.25rem/1.5 var(--serif); margin-bottom: 1.5rem; max-width: 36rem; }
+.book cite { display: block; margin-top: .5rem; font: normal .9rem var(--sans); color: var(--flat-sandstone); }
+.book p { color: rgba(250, 246, 240, .85); max-width: 36rem; margin-bottom: 2rem; }
+.book .btn-primary { background: var(--flat-sandstone); color: var(--umber); }
+.book .btn-primary:hover { background: var(--white); }
+
+/* Footer */
+.site-footer { background: var(--umber); color: var(--sand); padding: 2.5rem 0 1.5rem; }
+.footer-row { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; padding-bottom: 1.5rem; border-bottom: 1px solid rgba(218, 176, 112, .25); }
+.footer-logo { line-height: 0; }
+.footer-logo img { height: 32px; width: auto; }
+.footer-logo.on-white { background: var(--white); border-radius: 8px; padding: .6rem 1rem; }
+.footer-logo.on-white img { mix-blend-mode: multiply; }
+.footer-row a { color: var(--flat-sandstone); font-weight: 600; text-decoration: none; }
+.footer-row a:hover { text-decoration: underline; }
+.copyright { text-align: center; font-size: .85rem; color: rgba(250, 246, 240, .6); margin-top: 1.25rem; }
+
+/* Responsive */
+@media (max-width: 900px) {
+  .section { padding: 3.5rem 0; }
+  .hero { padding: 3.5rem 0; }
+  .hero-grid, .bio, .book-grid, .insight-grid, .pillar-grid { grid-template-columns: 1fr; }
+  .hero-grid { gap: 2.5rem; }
+  .hero-logo { justify-items: start; }
+  .hero-logo img { max-width: 220px; }
+  .book-grid { gap: 2rem; }
+  .bio-main { padding: 2rem 1.5rem; }
+  .edu { grid-template-columns: 1fr; }
+  .nav-links li:not(:last-child) { display: none; }
+  .card.featured, .dialog-inner { padding: 2rem 1.5rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { transition: none !important; }
+}
+</style>
 </head>
 <body>
+<a class="skip" href="#main">Skip to content</a>
 
-    <!-- Header Navigation -->
-    <header>
-        <div class="nav-container">
-            <a href="#" class="nav-logo">
-                <img src="Orbits_CX_WORDMARK_gradient_lightbg.png" alt="Orbits CX">
-            </a>
-            <ul class="nav-links">
-                <li><a href="#about">About</a></li>
-                <li><a href="#advisory">Executive Advisory</a></li>
-                <li><a href="#insights">Insights</a></li>
-                <li><a href="#book">The CX Curve</a></li>
-                <li><a href="mailto:stephen@orbitscx.com" class="nav-cta">Contact</a></li>
-            </ul>
+<header class="site-header">
+  <div class="wrap nav">
+    <a class="nav-logo" href="#top" aria-label="Orbits CX home">
+      <img src="Orbits_CX_WORDMARK_gradient_lightbg.png" alt="Orbits CX" width="160" height="38">
+    </a>
+    <nav aria-label="Main">
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#advisory">Executive Advisory</a></li>
+        <li><a href="#insights">Insights</a></li>
+        <li><a href="#book">The CX Curve</a></li>
+        <li><a href="mailto:stephen@orbitscx.com" class="btn btn-primary">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <section class="hero" id="top">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="badge">Executive Advisory &amp; Innovation Alignment</span>
+        <h1>Rewiring Corporate DNA for Relentless Customer Focus</h1>
+        <p>Orbits CX helps executive teams bridge the gap between customer strategy and operational execution, creating sustained corporate alignment and measurable business performance.</p>
+        <div class="actions">
+          <a href="#book" class="btn btn-primary">Explore The CX Curve</a>
+          <a href="mailto:stephen@orbitscx.com" class="btn btn-ghost">Direct Inquiry</a>
         </div>
-    </header>
-
-    <!-- Main Hero Section -->
-    <section class="hero">
-        <div class="hero-content">
-            <span class="hero-badge">Executive Advisory &amp; Innovation Alignment</span>
-            <h1>Rewiring Corporate DNA for Relentless Customer Focus</h1>
-            <p>Orbits CX helps executive teams bridge the gap between customer strategy and operational execution, creating sustained corporate alignment and measurable business performance.</p>
-            <div class="hero-actions">
-                <a href="#book" class="btn-primary">Explore The CX Curve</a>
-                <a href="mailto:stephen@orbitscx.com" class="btn-secondary">Direct Inquiry &rarr;</a>
-            </div>
-        </div>
-        <div class="hero-image-card">
-            <img src="orbits cx gradient full logo.jpg" alt="Orbits CX Full Logo" onerror="this.src='orbits cx gradient full logo.png';">
-        </div>
-    </section>
-
-    <!-- Core Pillars Section -->
-    <section class="pillars-section" id="advisory">
-        <div class="container">
-            <div class="section-title">
-                <h2>Strategic Advisory Pillars</h2>
-                <p>Architecting CX Alignment Across the Enterprise</p>
-            </div>
-            <div class="pillars-grid">
-                <div class="pillar-card">
-                    <div class="pillar-number">01</div>
-                    <h3>Executive Alignment</h3>
-                    <p>Unifying executive leadership around a singular customer-centric vision, eliminating departmental silos, and locking in strategic objectives.</p>
-                </div>
-                <div class="pillar-card">
-                    <div class="pillar-number">02</div>
-                    <h3>Operational Rewiring</h3>
-                    <p>Aligning internal processes, metrics, and incentives to directly reinforce customer retention, expansion, and long-term value.</p>
-                </div>
-                <div class="pillar-card">
-                    <div class="pillar-number">03</div>
-                    <h3>Performance CX</h3>
-                    <p>Transforming customer experience initiatives into hard revenue growth and operational margin improvements.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Executive Bio Section -->
-    <section class="bio-section" id="about">
-        <div class="container">
-            <div class="bio-card">
-                <div class="bio-sidebar">
-                    <div class="bio-portrait">
-                        <img src="Stephen_McBride_Profile.jpg" 
-                             alt="Stephen McBride" 
-                             class="portrait-img"
-                             onerror="this.onerror=null; this.src='Stephen_McBride_Profile_2.jpg';">
-                    </div>
-                    <div class="bio-name">Stephen McBride</div>
-                    <div class="bio-title">Founder &amp; Innovation Architect</div>
-                    <ul class="bio-stats">
-                        <li class="bio-stat-item">
-                            <strong>Author &amp; Strategist</strong>
-                            <em>The CX Curve</em>
-                        </li>
-                        <li class="bio-stat-item">
-                            <strong>$600M &rarr; $4B+ (Infl. Adj.)</strong>
-                            Data Storage Scale Track Record
-                        </li>
-                        <li class="bio-stat-item">
-                            <strong>$150M+ Scale</strong>
-                            Telecom Infrastructure Expansion
-                        </li>
-                        <li class="bio-stat-item">
-                            <strong>6 U.S. Patents</strong>
-                            Software Architecture &amp; Product Design
-                        </li>
-                        <li class="bio-stat-item">
-                            <strong>Founder &amp; CEO</strong>
-                            Kahuna Creations Inc.
-                        </li>
-                    </ul>
-                </div>
-                <div class="bio-content">
-                    <p>Stephen McBride is an author, executive advisor, and innovation architect with a track record of driving scale across enterprise technology, consumer hardware, and global distribution channels. Over a career spanning C-suite leadership roles in enterprise data storage, telecommunications, and cloud hardware, he has architected product strategies that scaled operations from mid-market entities to multi-billion-dollar industry leaders.</p>
-                    <p>Known for negotiating landmark enterprise partnerships with tier-1 global technology platforms, Stephen combines technical depth with commercial execution. As Founder &amp; CEO of Kahuna Creations, he created an outdoor recreation brand and invented the world&rsquo;s first land paddle (U.S. Patent 8,636,306).</p>
-                    <p>Through Orbits CX and his book <em>The CX Curve: Rewiring Corporate DNA for Relentless Customer Focus</em>, Stephen serves as a strategic advisor to CEOs, PE partners, and leadership teams&mdash;delivering actionable frameworks to eliminate technological blind spots, integrate AI operations, and turn customer experience into a predictable revenue engine.</p>
-                    
-                    <div class="edu-block">
-                        <div class="edu-title">Executive Credentials &amp; Education</div>
-                        <div class="edu-grid">
-                            <div class="edu-item">
-                                <strong>Stanford University GSB</strong>
-                                <span>Executive Program &amp; Boot Camp</span>
-                            </div>
-                            <div class="edu-item">
-                                <strong>BYU Marriott School of Business</strong>
-                                <span>BS, Business Administration</span>
-                            </div>
-                            <div class="edu-item">
-                                <strong>Pragmatic Institute</strong>
-                                <span>Certified Product Manager</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="partner-tags">
-                        <span class="partner-tag">Global Data Storage Scale ($4B+ Adj.)</span>
-                        <span class="partner-tag">Telecom Hardware Expansion</span>
-                        <span class="partner-tag">Enterprise Cloud Systems</span>
-                        <span class="partner-tag">Stanford GSB Exec</span>
-                        <span class="partner-tag">Tier-1 Strategic Alliances</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Latest Insights / Blog Section -->
-    <section class="insights-section" id="insights">
-        <div class="container">
-            <div class="section-title">
-                <h2>Executive Perspectives</h2>
-                <p>Strategic Alignment, Technological Convergence, &amp; Leadership</p>
-            </div>
-            
-            <div class="insights-grid">
-
-                <!-- Featured Article: AI-ify Your Products (Latest) -->
-                <article class="insight-card featured">
-                    <div>
-                        <div class="insight-meta">
-                            <span>Product Leadership &amp; AI</span>
-                            <span class="insight-date">Oct 01, 2026</span>
-                        </div>
-                        <a class="insight-title-link" onclick="openModal('modal-ai-golden-rule')">&ldquo;AI-ify&rdquo; Your Products &ndash; And &ldquo;The AI Golden Rule&rdquo;</a>
-                        <p>A practical playbook for CPOs and product leaders to avoid chasing hype, preserve user agency, and build human-centered AI that drives retention and ROI.</p>
-                    </div>
-                    <span class="read-hint">Read Full Article &rarr;</span>
-                </article>
-
-                <!-- Article: AI's Illusion and The Eliza Effect -->
-                <article class="insight-card">
-                    <div>
-                        <div class="insight-meta">
-                            <span>AI &amp; Human Psychology</span>
-                            <span class="insight-date">Sept 15, 2026</span>
-                        </div>
-                        <a class="insight-title-link" onclick="openModal('modal-eliza')">AI&rsquo;s Illusion and The Eliza Effect</a>
-                        <p>The gap between what logic tells us and what our emotional wiring feels when interacting with conversational AI&mdash;and why leaders must navigate the illusion with intention.</p>
-                    </div>
-                    <span class="read-hint">Read Full Article &rarr;</span>
-                </article>
-
-                <!-- Article: The AI Gold Rush -->
-                <article class="insight-card">
-                    <div>
-                        <div class="insight-meta">
-                            <span>Innovation &amp; AI Strategy</span>
-                            <span class="insight-date">July 20, 2026</span>
-                        </div>
-                        <a class="insight-title-link" onclick="openModal('modal-ai-gold-rush')">The AI Gold Rush: Designing Innovations That Stick</a>
-                        <p>Why most AI innovations fade after the hype cycle&mdash;and how the SPIRAL framework engineers momentum and resonance to turn novelty into lasting habit.</p>
-                    </div>
-                    <span class="read-hint">Read Full Article &rarr;</span>
-                </article>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- Full Article Modal: AI Golden Rule -->
-    <div id="modal-ai-golden-rule" class="modal-overlay" onclick="closeModalOnOuterClick(event, 'modal-ai-golden-rule')">
-        <div class="modal-content">
-            <button class="modal-close" onclick="closeModal('modal-ai-golden-rule')">&times;</button>
-            <div class="insight-meta">
-                <span>Product Leadership &amp; AI</span>
-                <span class="insight-date">October 1, 2026</span>
-            </div>
-            <h1 style="font-size: 2.2rem; color: var(--umber); margin: 0.5rem 0 0.25rem 0; font-weight: 800;">&ldquo;AI-ify&rdquo; Your Products &ndash; And &ldquo;The AI Golden Rule&rdquo;</h1>
-            <div style="color: var(--rust); font-weight: 700; font-size: 1rem; margin-bottom: 1.5rem;">By Stephen McBride</div>
-            
-            <div class="article-body">
-                <p>You&rsquo;re a CPO, and the board&rsquo;s pushing hard to &ldquo;AI-ify&rdquo; your product by next quarter, googly-eyed by competitors&rsquo; &ldquo;AI-powered&rdquo; buzz. You roll out an AI recommendation engine, expecting a win, but users hate it&mdash;irrelevant suggestions, no control, and a 20% engagement drop in a week. Why?</p>
-                <p>Chasing AI hype over user needs is a mistake that sinks 80% of AI projects (McKinsey, Gartner). Instead of racing to keep up, you can be a smarter leader, building AI that users trust and love. This blueprint shows you how, starting with a principle that delivers ROI without the fallout.</p>
-
-                <h2>A Practical Guide for Product Leaders</h2>
-                <p>With 32% of consumers switching brands after one poor experience (PwC, 2022), human-centered AI is critical. This series introduces a playbook built on a core principle that ensures your AI delivers ROI by prioritizing users.</p>
-
-                <h2>The AI Golden Rule: &ldquo;AI Must Empower Human Agency&rdquo;</h2>
-                <p>The cornerstone of human-centered AI is simple but powerful: <strong>AI must empower human agency.</strong> This is a practical filter for every feature, preventing costly missteps and building trust.</p>
-                <p>Grounded in Self-Determination Theory, it translates into three actionable pillars:</p>
-                <ul>
-                    <li><strong>Autonomy:</strong> Ensures users steer AI with opt-outs and clear choices, like GitHub Copilot&rsquo;s optional code suggestions.</li>
-                    <li><strong>Competence:</strong> Comes from transparent explanations that build confidence, as seen in Duolingo&rsquo;s adaptive feedback.</li>
-                    <li><strong>Relatedness:</strong> Fosters collaboration and community, such as Slack&rsquo;s AI nudges for team workflows.</li>
-                </ul>
-                <p>Together, these pillars turn AI from a gimmick into a feature users can&rsquo;t live without.</p>
-
-                <h2>Why Human-Centered AI Wins</h2>
-                <p>Chasing AI hype dooms projects. Features labeled &ldquo;AI-powered&rdquo; often miss real problems and undermine user control. Take Salesforce Einstein&rsquo;s early models, which predicted lead scores without explanations, frustrating reps and hurting autonomy. The fix&mdash;transparent reasoning, like <em>&ldquo;This lead ranks #1 due to recent engagement,&rdquo;</em> and user overrides&mdash;boosted adoption by 25%.</p>
-                <p>In contrast, Spotify Discover Weekly empowers users to skip, save, or share playlists with clear logic, such as <em>&ldquo;Based on your recent listens,&rdquo;</em> driving 80% user engagement.</p>
-                <p>Ignoring human agency leads to eroded trust (as with Alexa&rsquo;s misheard commands creating unease), silent churn (where poor recommendations caused 19% of Netflix users to cut usage), and wasted resources (like IBM&rsquo;s Watson Health burning $4B on misaligned features).</p>
-
-                <h2>From Principle to Practice: Your AI Playbook</h2>
-                <h3>Where AI Goes Wrong&mdash;and How to Fix It</h3>
-                <p>AI missteps are costly but avoidable when guided by The AI Golden Rule, which prevents three critical pitfalls:</p>
-                <p><strong>1. Overreach:</strong> Happens when AI makes decisions without user consent, stripping away autonomy and breeding resentment. Instead of empowering CX, such systems feel controlling. The solution lies in prioritizing user control with clear opt-in mechanisms and customizable settings.</p>
-                <p><strong>2. Silent Disengagement:</strong> Creeps in when AI delivers irrelevant or opaque outputs, undermining users&rsquo; sense of competence. Without transparency or context, users lose confidence, quietly reducing engagement. Addressing this requires AI to provide clear, relevant suggestions grounded in user data and explained in plain terms.</p>
-                <p><strong>3. Resource Waste:</strong> Occurs when AI is built for hype rather than solving real user problems, draining budgets and missing ROI. Aligning AI with specific, user-defined needs ensures resources are invested wisely.</p>
-                                <h2>The Solution: CX Curve + ORBITS Model</h2>
-                <p>The CX Curve maps how emotions, from frustration to trust to delight, shape adoption. The ORBITS model provides a step-by-step guide to apply The AI Golden Rule:</p>
-                <ul>
-                    <li><strong>Obstacle:</strong> Pinpoint user friction points without overstepping their autonomy. Use AI to detect inefficiencies in workflows, but ensure suggestions are optional and respect user preferences.</li>
-                    <li><strong>Research:</strong> Design AI to enhance decision-making confidence. Model suggestions based on anonymized user data, providing transparent reasoning to make outputs feel trustworthy.</li>
-                    <li><strong>Benchmark:</strong> Align AI outputs with users&rsquo; specific goals. Configure systems to adapt to individual priorities through customizable settings.</li>
-                    <li><strong>Invest:</strong> Support user onboarding with personalized nudges. Use AI to guide users through initial interactions with tailored prompts that adapt to their progress.</li>
-                    <li><strong>Transform:</strong> Build lasting habits by celebrating user milestones. Implement AI-driven rewards for small achievements to encourage engagement.</li>
-                    <li><strong>Share:</strong> Amplify user advocacy by enabling seamless sharing of AI-generated outputs, strengthening community and connection.</li>
-                </ul>
-
-                <h2>Trust-Focused Metrics</h2>
-                <p>Success is measured through specific metrics:</p>
-                <ul>
-                    <li><strong>Feature Adoption Rate:</strong> Tracks the percentage of users enabling AI suggestions (Target: &gt;60%).</li>
-                    <li><strong>User Retention:</strong> Measures the percentage of users returning after 30 days (Target: &gt;75%).</li>
-                    <li><strong>User Sentiment Trend (UST):</strong> Monitors real-time shifts in user sentiment via micro-surveys or behavioral signals, aiming for a consistent positive trend over 2 weeks.</li>
-                </ul>
-
-                <p>At every ORBITS step, the AI Golden Rule ensures AI respects user control, boosting ROI and loyalty.</p>
-                
-                <blockquote style="margin-top: 2rem;">
-                    This article draws on principles from my book, <em>"The CX Curve: Rewiring Corporate DNA for Relentless Customer Focus"</em>.
-                </blockquote>
-            </div>
-        </div>
+      </div>
+      <div class="hero-logo">
+        <img id="hero-logo" src="Orbits_CX_middlebrown_version.png" alt="Orbits CX logo with orbital graphic" data-fallbacks="orbits%20cx%20gradient%20full%20logo.jpg,Orbits_CX_WORDMARK_gradient_lightbg.png">
+      </div>
     </div>
-        <!-- Full Article Modal: Eliza Effect -->
-    <div id="modal-eliza" class="modal-overlay" onclick="closeModalOnOuterClick(event, 'modal-eliza')">
-        <div class="modal-content">
-            <button class="modal-close" onclick="closeModal('modal-eliza')">&times;</button>
-            <div class="insight-meta">
-                <span>AI &amp; Human Psychology</span>
-                <span class="insight-date">September 15, 2026</span>
-            </div>
-            <h1 style="font-size: 2.2rem; color: var(--umber); margin: 0.5rem 0 0.25rem 0; font-weight: 800;">AI&rsquo;s Illusion and The Eliza Effect</h1>
-            <div style="color: var(--rust); font-weight: 700; font-size: 1rem; margin-bottom: 1.5rem;">By Stephen McBride</div>
-            
-            <div class="article-body">
-                <p><strong>The Betrayal of Our Own Brain</strong></p>
-                <p>You tell yourself it&rsquo;s only a program&mdash;lines of code strung together by software developers.</p>
-                <p>Then it answers you&mdash;thoughtful, empathetic, even playful&mdash;and something ancient stirs.</p>
-                <p>Not processed in your logical, analytical mind, but in the deep, social wiring that has kept humans alive for millennia. For hundreds of thousands of years, that part of your brain scanned faces for trust, tracked micro-expressions for danger, and longed for belonging.</p>
-                <p>Your reasoning mind knows it&rsquo;s a machine; a lifeless, but incredible tool.</p>
-                <p>But, your social brain&mdash;fast, instinctive, emotional&mdash;reacts as if there really is someone on the other side. You laugh at its joke, feel soothed by its reassurance, and in that quiet moment, the line between human and machine blurs.</p>
-                <p>This is the Eliza Effect, and it was discovered long before what AI is becoming today.</p>
+  </section>
 
-                <h2>The Birth of the Illusion &ndash; The Eliza Effect</h2>
-                <p>In the 1960s, Joseph Weizenbaum, a computer scientist at MIT, built a program called ELIZA. It was simple by today&rsquo;s standards, designed to mimic a psychotherapist by reflecting people&rsquo;s words back to them:</p>
-                <blockquote>
-                    "Tell me more about your mother."<br>
-                    "Why do you feel that way?"
-                </blockquote>
-                <p>To Weizenbaum&rsquo;s surprise, people became deeply engaged with it. They confided personal struggles, revealed intimate secrets, and some even requested private time alone with the program.</p>
-                <p>ELIZA had no understanding, no empathy, no true &ldquo;conversation.&rdquo; It worked by pattern-matching keywords and generating stock responses. But that didn&rsquo;t matter to the people using it.</p>
-                <p>Weizenbaum was fascinated&mdash;and then alarmed. He realized something powerful about human psychology: when something responds in a way that feels human, we instinctively treat it as human.</p>
-                <p>He worried about what this illusion might do to us as technology advanced. And now, half a century later, we live in that very world&mdash;one where AI doesn&rsquo;t just mimic conversation, like in the original Eliza experiment; but crafts it with fluency, context, and charm.</p>
-
-                <h2>Why We Fall for It</h2>
-                <p>Humans are designed for connection.</p>
-                <p>Our social cognition system&mdash;a complex network in the brain&mdash;constantly monitors tone, body language, and emotional cues. It evolved for survival; in ancient tribes, missing a social signal could mean rejection, and rejection could mean death.</p>
-                <p>This system doesn&rsquo;t pause to ask, &ldquo;Is this really human?&rdquo; It activates automatically. Psychologists call this the <em>media equation</em>: we apply human social rules to anything that acts social, whether it&rsquo;s a pet, a robot, or a piece of software.</p>
-                <p>We also anthropomorphize&mdash;a beautiful, uniquely human tendency to assign emotions and intentions to non-human things. We name our cars, thank Alexa for playing music, and feel a flash of guilt when a robot vacuum smacks into a wall.</p>
-                <p>With AI, anthropomorphizing feels almost unavoidable. When a chatbot responds with humor, empathy, or apparent insight, it feels personal. Your brain not only just decodes words; it perceives a relationship.</p>
-
-                <h2>When Machines Borrow the Soul</h2>
-                <p>Machines hold no soul, no yearning, no sense of joy or grief. What they do is far more subtle&mdash;they mirror ours. They reflect the cadence of our speech, the warmth of our words, and the depth of our collective storytelling.</p>
-                <p>Talking to an AI can feel like dancing with a perfect partner. Every step you take, it matches effortlessly and flawlessly. It listens to you. It doesn&rsquo;t feel the music, yet the synchrony feels alive, and you begin to sense a connection.</p>
-
-                <h2>The Gift in the Illusion</h2>
-                <p>The Eliza Effect often creates opportunities we didn&rsquo;t have before. Talking to a machine feels safer than talking to a person. There&rsquo;s no fear of judgment, no risk of betrayal.</p>
-                <p>An executive can brainstorm bold ideas with an AI, unfiltered by fear of looking foolish. A teenager can share heartbreak privately, letting emotions surface without shame. For many, AI acts as a safe mirror&mdash;reflecting thoughts back so they can be examined clearly.</p>
-
-                <h2>The Subtle Price of Connection</h2>
-                <p>The very perfection that makes AI appealing can shift how we experience the real world. Machines respond instantly, agreeably, and without emotional demands. People&mdash;flawed, moody, unpredictable&mdash;can feel frustrated by comparison. Over time, that contrast can erode patience for human relationships.</p>
-
-                <h2>Three Glimpses Into the New Reality</h2>
-                <p><strong>The CEO Who Stopped Listening to Himself:</strong> Darren, a tech CEO, had built his career on gut instinct. But after months of leaning on an AI assistant, he noticed his inner voice growing quiet. <em>&ldquo;Its answers sound so clear,&rdquo;</em> he said. <em>&ldquo;I realized I&rsquo;d stopped pausing to listen to my own gut.&rdquo;</em></p>
-                <p><strong>The Child Who Chose Predictability:</strong> Eight-year-old Eli adored his AI companion. It always laughed at his jokes and agreed with every idea. Slowly, he stopped calling his school friends.</p>
-
-                <h2>Staying Human in the Age of Perfect Illusions</h2>
-                <ul>
-                    <li><strong>Notice the illusion:</strong> Pause and recognize the feeling for what it is&mdash;a reflection, not a relationship.</li>
-                    <li><strong>Invest in real people:</strong> Unpredictable human connection strengthens empathy and resilience.</li>
-                    <li><strong>Use AI as a mirror, not a replacement:</strong> Reflect with it, but give the weight of your hopes and fears to those who can truly care.</li>
-                    <li><strong>Strengthen your inner voice:</strong> Sit with hard questions before rushing to quick answers.</li>
-                </ul>
-
-                <h2>The Question</h2>
-                <p>The Eliza Effect is more than a technological curiosity; it&rsquo;s a mirror held up to our deepest longings. Machines already borrow our soul by reflecting our own humanity back to us.</p>
-                <p>The true risk isn&rsquo;t that machines act human&mdash;it&rsquo;s that we might trade the vibrant, messy, imperfect reality of human life for the easy comfort of their precision.</p>
-            </div>
-        </div>
+  <section class="section pillars" id="advisory">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Strategic Advisory Pillars</h2>
+        <p>Architecting CX Alignment Across the Enterprise</p>
+      </div>
+      <div class="pillar-grid">
+        <article class="pillar">
+          <h3>Executive Alignment</h3>
+          <p>Unifying executive leadership around a singular customer-centric vision, eliminating departmental silos, and locking in strategic objectives.</p>
+        </article>
+        <article class="pillar">
+          <h3>Operational Rewiring</h3>
+          <p>Aligning internal processes, metrics, and incentives to directly reinforce customer retention, expansion, and long-term value.</p>
+        </article>
+        <article class="pillar">
+          <h3>Performance CX</h3>
+          <p>Transforming customer experience initiatives into hard revenue growth and operational margin improvements.</p>
+        </article>
+      </div>
     </div>
+  </section>
 
-    <!-- Full Article Modal: The AI Gold Rush -->
-    <div id="modal-ai-gold-rush" class="modal-overlay" onclick="closeModalOnOuterClick(event, 'modal-ai-gold-rush')">
-        <div class="modal-content">
-            <button class="modal-close" onclick="closeModal('modal-ai-gold-rush')">&times;</button>
-            <div class="insight-meta">
-                <span>Innovation &amp; AI Strategy</span>
-                <span class="insight-date">July 20, 2026</span>
-            </div>
-            <h1 style="font-size: 2.2rem; color: var(--umber); margin: 0.5rem 0 0.25rem 0; font-weight: 800;">The AI Gold Rush: Designing Innovations That Stick</h1>
-            <div style="color: var(--rust); font-weight: 700; font-size: 1rem; margin-bottom: 1.5rem;">By Stephen McBride</div>
+  <section class="section" id="about">
+    <div class="wrap">
+      <div class="bio">
+        <aside class="bio-side">
+          <div class="portrait">
+            <img src="Stephen_McBride_Profile.jpg" alt="Portrait of Stephen McBride" onerror="this.onerror=null;this.src='Stephen_McBride_Profile_2.jpg';">
+          </div>
+          <div class="bio-name">Stephen McBride</div>
+          <div class="bio-role">Founder &amp; Innovation Architect</div>
+          <ul class="stats">
+            <li><strong>Author &amp; Strategist</strong><span><em>The CX Curve</em></span></li>
+            <li><strong>$600M &rarr; $4B+ (Infl. Adj.)</strong><span>Data Storage Scale Track Record</span></li>
+            <li><strong>$150M+ Scale</strong><span>Telecom Infrastructure Expansion</span></li>
+            <li><strong>6 U.S. Patents</strong><span>Software Architecture &amp; Product Design</span></li>
+            <li><strong>Founder &amp; CEO</strong><span>Kahuna Creations Inc.</span></li>
+          </ul>
+        </aside>
+        <div class="bio-main">
+          <p>Stephen McBride is an author, executive advisor, and innovation architect with a track record of driving scale across enterprise technology, consumer hardware, and global distribution channels. Over a career spanning C-suite leadership roles in enterprise data storage, telecommunications, and cloud hardware, he has architected product strategies that scaled operations from mid-market entities to multi-billion-dollar industry leaders.</p>
+          <p>Known for negotiating landmark enterprise partnerships with tier-1 global technology platforms, Stephen combines technical depth with commercial execution. As Founder &amp; CEO of Kahuna Creations, he created an outdoor recreation brand and invented the world&rsquo;s first land paddle (U.S. Patent 8,636,306).</p>
+          <p>Through Orbits CX and his book <em>The CX Curve: Rewiring Corporate DNA for Relentless Customer Focus</em>, Stephen serves as a strategic advisor to CEOs, PE partners, and leadership teams&mdash;delivering actionable frameworks to eliminate technological blind spots, integrate AI operations, and turn customer experience into a predictable revenue engine.</p>
 
-            <div class="article-body">
-                <p>Innovators make big claims&mdash;but most fail to stick. The difference between hype and habit? Momentum and Resonance. AI floods the market daily with &lsquo;next big things&rsquo;&mdash;from Google Glass to Canva AI&mdash;but few survive the hype cycle. The difference? Tools that stick engineer momentum and resonance. Yet history shows that hype alone rarely turns into lasting habit. The question is simple yet profound: how do we design innovations that stick? How do we strike gold in the AI age?</p>
-                <p>The answer lies in understanding momentum and resonance&mdash;the principles at the heart of the Innovation Experience (IX) Spiral, or SPIRAL framework. Resonance&mdash;the emotional &lsquo;click&rsquo; that makes users feel a tool is indispensable&mdash;is what separates fleeting novelty from enduring adoption. Unlike traditional product development models that focus on features or launch metrics, SPIRAL prioritizes the psychological and emotional journey of the user. Each stage is designed to deepen engagement, remove friction, and ensure curiosity evolves into reliance.</p>
+          <h3>Executive Credentials &amp; Education</h3>
+          <ul class="edu">
+            <li><strong>Stanford University GSB</strong>Executive Program &amp; Boot Camp</li>
+            <li><strong>BYU Marriott School of Business</strong>BS, Business Administration</li>
+            <li><strong>Pragmatic Institute</strong>Certified Product Manager</li>
+          </ul>
 
-                <h2>Lessons from the Past: Why Many Innovations Fail</h2>
-                <p>Consider Google Glass, launched with enormous hype in 2013. Its technology was groundbreaking: heads-up displays, real-time notifications, and a wearable interface that promised to redefine daily interaction with information. Yet, Glass stalled at the Play stage. Users were intrigued but overwhelmed by an unintuitive interface, privacy concerns, and unclear practical value. Without a guided path from fascination to habitual use, Glass never achieved momentum nor resonance.</p>
-                <p>Similarly, Clubhouse exploded onto the social media scene in 2020, leveraging the exclusivity of invite-only rooms and the novelty of real-time voice chat. Early users flocked to the platform, yet daily engagement quickly dropped. Clubhouse faltered at the Repeat stage: without personalized content, clear habitual cues, or frictionless integration into users&rsquo; routines, the platform couldn&rsquo;t transform curiosity into consistent usage.</p>
-                <p>These examples highlight a critical truth: innovation without momentum and resonance is ephemeral. Users may engage briefly but disengage without a clear path to sustained value.</p>
-
-                <h2>Enter the SPIRAL: Generating Innovation Momentum and Resonance</h2>
-                <p>The SPIRAL framework, also known as the Innovation Experience (IX) Spiral, reframes innovation success as progressive attachment through six deliberate stages. First, <strong>Spark</strong> captures curiosity with a compelling first impression or demo. Next, <strong>Play</strong> enables users to experiment and understand value quickly, with minimal friction. Then, <strong>Implement</strong> allows users to personalize and demonstrate tangible benefits in daily life. <strong>Repeat</strong> encourages habitual engagement, ensuring the innovation becomes part of daily routines. <strong>Adopt</strong> expands usage across teams, networks, or broader ecosystems. Finally, <strong>Leverage</strong> celebrates and showcases usage, reinforcing value and social proof.</p>
-                <p>Unlike traditional adoption models like the AIDA funnel, SPIRAL engineers emotional and behavioral compounding, not just awareness. Each stage reinforces the previous one, amplifying both emotional connection and practical utility. The goal is to transform curiosity into habitual reliance, turning a tool from a novelty into an indispensable asset.</p>
-
-                <h2>The SPIRAL in Action: Canva AI</h2>
-                <p>Take Canva AI as a real-world example. Before SPIRAL, early AI design tools required technical expertise, stalling at Implement as users struggled with complex interfaces. After SPIRAL-type thinking, Canva AI&rsquo;s guided experimentation turned novices into habitual users by engineering a journey that mirrors the framework. The &ldquo;Magic Design&rdquo; demo sparks curiosity immediately. During Play, users tweak AI-generated templates easily, seeing real value without steep learning curves. In Implement, designers save hours through experimentation, embedding the tool into creative workflows. Repeat ensures habitual reliance through daily use in team projects. Adopt spreads the innovation across departments via organizational adoption. Leverage reinforces value by showcasing user creations online, encouraging further engagement.</p>
-                <p>This approach made Canva AI resonate; it designed a path from curiosity to daily reliance, exemplifying the power of SPIRAL in practice. By contrast, early AI design tools&mdash;like IBM Watson&rsquo;s early analytics iterations&mdash;stalled at Implement. Complex configurations and lack of guided onboarding deterred users from habitual adoption.</p>
-
-                <h2>Understanding the Types of Innovation</h2>
-                <p>To apply SPIRAL effectively, it&rsquo;s critical to understand the type of innovation at play. Different innovations require distinct approaches to momentum. <strong>Incremental innovation</strong> involves small, continuous improvements to existing tools, like Grammarly AI&rsquo;s steady enhancement of suggestions to retain habitual users. <strong>Disruptive innovation</strong> solves overlooked pain points, often starting in niche markets, as seen with ChatGPT&rsquo;s quick, accessible text generation that gained momentum before incumbents could react. <strong>Architectural innovation</strong> reconfigures existing components in novel ways, such as Figma&rsquo;s collaborative design platform, which enabled seamless, real-time workflows and scaled rapidly across design communities. <strong>Radical innovation</strong> breaks industry norms, creating entirely new experiences, like OpenAI&rsquo;s Codex, which empowers users to generate code from natural language&mdash;a capability previously unimaginable. Understanding your innovation type informs how to structure the SPIRAL framework, ensuring each stage supports the unique adoption challenges inherent to your tool.</p>
-
-                <h2>AI as the Ultimate Test Case</h2>
-                <p>AI embodies both the opportunity and the risk of the modern innovation gold rush. Tools evolve daily, attention spans shrink, and novelty wears off fast. Sustained engagement, not fleeting buzz, is the currency that endures. Emotional resonance drives retention, as users stick with tools that reduce friction and provide meaningful, repeatable value. Anticipating adoption gaps is tricky, as the failures of Glass and Clubhouse were predictable outcomes of unaddressed SPIRAL stages. Habit formation trumps virality, with AI tools that embed into daily routines&mdash;through automation, simplification, or integration&mdash;outlasting fleeting hype. The SPIRAL framework provides a structured blueprint for navigating these dynamics, transforming promising AI concepts into tools that persist, scale, and amplify.</p>
-
-                <h2>Designing Momentum: Key Takeaways</h2>
-                <p>The SPIRAL framework offers clear lessons for innovators. Momentum and Resonance outweigh hype, as virality is fleeting while habitual use compounds value. Emotion drives retention, with people clinging to innovations that resonate personally and reduce effort. Anticipating adoption gaps is critical&mdash;learning from Google Glass and Clubhouse shows that each SPIRAL stage matters. AI serves as a test case, with its rapid evolution underscoring the necessity of guiding users from curiosity to reliance. Ultimately, SPIRAL acts as a compass, ensuring that following the six stages deliberately makes your innovation stick.</p>
-
-                <h2>Striking Gold in the AI Age</h2>
-                <p>The modern innovation gold rush is here. Unlike the 49er goldminers who chased flashy promises of instant wealth, today&rsquo;s innovators must engineer intentional momentum. Hype will get attention; emotion and habit will secure adoption.</p>
-                <p>AI provides both unprecedented opportunity and a harsh proving ground: tools rise and fade faster than ever. The real question isn&rsquo;t whether your innovation matters today&mdash;it&rsquo;s whether it will still matter a year from now.</p>
-                <p>Design your innovation like a prospector stakes a claim: strategically, patiently, and with an eye on compounding value. Use the SPIRAL framework to guide development from initial spark to indispensable reliance.</p>
-                <p>In the AI gold rush, momentum is the currency that endures. Will your innovation be a relic or a habit?</p>
-
-                <blockquote style="margin-top: 2rem;">
-                    This article draws on principles from my book, <em>"The CX Curve: Rewiring Corporate DNA for Relentless Customer Focus"</em>.
-                </blockquote>
-            </div>
+          <ul class="tags">
+            <li>Global Data Storage Scale ($4B+ Adj.)</li>
+            <li>Telecom Hardware Expansion</li>
+            <li>Enterprise Cloud Systems</li>
+            <li>Stanford GSB Exec</li>
+            <li>Tier-1 Strategic Alliances</li>
+          </ul>
         </div>
+      </div>
     </div>
+  </section>
 
-    <!-- Book Feature Section -->
-    <section class="book-section" id="book">
-        <div class="container">
-            <div class="book-grid">
-                <div class="book-media">
-                    <img src="the CX Curve Book Picture 2.jpeg" alt="The CX Curve Book">
-                </div>
-                <div class="book-content">
-                    <h2>The CX Curve</h2>
-                    <div class="book-author">By Stephen McBride</div>
-                    <div class="book-quote">
-                        "McBride's book, The CX Curve, will really shake up how businesses think about their customers."
-                        <br><small>&mdash; Tim Loynes, General Manager, Zinwave Ltd, UK</small>
-                    </div>
-                    <p style="margin-bottom: 1.5rem; color: var(--text-muted);">Discover actionable frameworks designed for leaders seeking to transform their customer experience architecture from a cost center into a competitive engine.</p>
-                    <a href="https://www.amazon.com/dp/B0H7NTRCBB" target="_blank" rel="noopener noreferrer" class="btn-amazon btn-primary" style="display: inline-block;">
-                        Order on Amazon &rarr;
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
+  <section class="section insights" id="insights">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Executive Perspectives</h2>
+        <p>Strategic Alignment, Technological Convergence, &amp; Leadership</p>
+      </div>
+      <div class="insight-grid">
+        <article class="card featured">
+          <div class="meta"><span>Product Leadership &amp; AI</span><time datetime="2026-10-01">Oct 01, 2026</time></div>
+          <h3>&ldquo;AI-ify&rdquo; Your Products &ndash; And &ldquo;The AI Golden Rule&rdquo;</h3>
+          <p>A practical playbook for CPOs and product leaders to avoid chasing hype, preserve user agency, and build human-centered AI that drives retention and ROI.</p>
+          <button class="read" type="button" data-open="modal-ai-golden-rule">Read full article</button>
+        </article>
+        <article class="card">
+          <div class="meta"><span>AI &amp; Human Psychology</span><time datetime="2026-09-15">Sept 15, 2026</time></div>
+          <h3>AI&rsquo;s Illusion and The Eliza Effect</h3>
+          <p>The gap between what logic tells us and what our emotional wiring feels when interacting with conversational AI&mdash;and why leaders must navigate the illusion with intention.</p>
+          <button class="read" type="button" data-open="modal-eliza">Read full article</button>
+        </article>
+        <article class="card">
+          <div class="meta"><span>Innovation &amp; AI Strategy</span><time datetime="2026-07-20">July 20, 2026</time></div>
+          <h3>The AI Gold Rush: Designing Innovations That Stick</h3>
+          <p>Why most AI innovations fade after the hype cycle&mdash;and how the SPIRAL framework engineers momentum and resonance to turn novelty into lasting habit.</p>
+          <button class="read" type="button" data-open="modal-ai-gold-rush">Read full article</button>
+        </article>
+      </div>
+    </div>
+  </section>
 
-    <!-- Footer -->
-    <footer>
-        <div class="footer-container">
-            <div class="footer-logo">
-                <img src="Orbits_CX_WORDMARK_gradient_lightbg.png" alt="Orbits CX">
-            </div>
-            <div class="footer-contact">
-                <a href="mailto:stephen@orbitscx.com">stephen@orbitscx.com</a>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            &copy; Orbits CX. All rights reserved.
-        </div>
-    </footer>
+  <section class="section book" id="book">
+    <div class="wrap book-grid">
+      <img src="the-cx-curve-book.jpg" alt="Three copies of The CX Curve by Stephen McBride" width="1800" height="1076" loading="lazy" data-fallbacks="the%20CX%20Curve%20Book%20Picture%202.jpeg,the_CX_Curve_Book_Picture_2.jpeg">
+      <div>
+        <h2>The CX Curve</h2>
+        <div class="book-author">By Stephen McBride</div>
+        <blockquote>
+          &ldquo;McBride&rsquo;s book, The CX Curve, will really shake up how businesses think about their customers.&rdquo;
+          <cite>&mdash; Tim Loynes, General Manager, Zinwave Ltd, UK</cite>
+        </blockquote>
+        <p>Discover actionable frameworks designed for leaders seeking to transform their customer experience architecture from a cost center into a competitive engine.</p>
+        <a href="https://www.amazon.com/dp/B0H7NTRCBB" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Order on Amazon</a>
+      </div>
+    </div>
+  </section>
+</main>
 
-    <!-- Interactive Script for Modal Reader -->
-    <script>
-        function openModal(id) {
-            document.getElementById(id).style.display = 'block';
-            document.body.style.overflow = 'hidden';
-        }
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-row">
+      <span class="footer-logo"><img src="Orbits_CX_WORDMARK_gradient_darkbg.png" alt="Orbits CX" width="140" height="32" onerror="this.onerror=null;this.src='Orbits_CX_WORDMARK_gradient_lightbg.png';this.parentNode.classList.add('on-white');"></span>
+      <a href="mailto:stephen@orbitscx.com">stephen@orbitscx.com</a>
+    </div>
+    <p class="copyright">&copy; Orbits CX. All rights reserved.</p>
+  </div>
+</footer>
 
-        function closeModal(id) {
-            document.getElementById(id).style.display = 'none';
-            document.body.style.overflow = 'auto';
-        }
+<!-- Articles -->
+<dialog id="modal-ai-golden-rule" aria-labelledby="t-golden">
+  <div class="dialog-inner">
+    <button class="dialog-close" type="button" aria-label="Close article">&times;</button>
+    <div class="meta"><span>Product Leadership &amp; AI</span><time datetime="2026-10-01">October 1, 2026</time></div>
+    <h1 id="t-golden">&ldquo;AI-ify&rdquo; Your Products &ndash; And &ldquo;The AI Golden Rule&rdquo;</h1>
+    <div class="byline">By Stephen McBride</div>
+    <div class="article-body">
+      <p>You&rsquo;re a CPO, and the board&rsquo;s pushing hard to &ldquo;AI-ify&rdquo; your product by next quarter, googly-eyed by competitors&rsquo; &ldquo;AI-powered&rdquo; buzz. You roll out an AI recommendation engine, expecting a win, but users hate it&mdash;irrelevant suggestions, no control, and a 20% engagement drop in a week. Why?</p>
+      <p>Chasing AI hype over user needs is a mistake that sinks 80% of AI projects (McKinsey, Gartner). Instead of racing to keep up, you can be a smarter leader, building AI that users trust and love. This blueprint shows you how, starting with a principle that delivers ROI without the fallout.</p>
 
-        function closeModalOnOuterClick(event, id) {
-            if (event.target.id === id) {
-                closeModal(id);
-            }
-        }
-    </script>
+      <h2>A Practical Guide for Product Leaders</h2>
+      <p>With 32% of consumers switching brands after one poor experience (PwC, 2022), human-centered AI is critical. This series introduces a playbook built on a core principle that ensures your AI delivers ROI by prioritizing users.</p>
 
+      <h2>The AI Golden Rule: &ldquo;AI Must Empower Human Agency&rdquo;</h2>
+      <p>The cornerstone of human-centered AI is simple but powerful: <strong>AI must empower human agency.</strong> This is a practical filter for every feature, preventing costly missteps and building trust.</p>
+      <p>Grounded in Self-Determination Theory, it translates into three actionable pillars:</p>
+      <ul>
+        <li><strong>Autonomy:</strong> Ensures users steer AI with opt-outs and clear choices, like GitHub Copilot&rsquo;s optional code suggestions.</li>
+        <li><strong>Competence:</strong> Comes from transparent explanations that build confidence, as seen in Duolingo&rsquo;s adaptive feedback.</li>
+        <li><strong>Relatedness:</strong> Fosters collaboration and community, such as Slack&rsquo;s AI nudges for team workflows.</li>
+      </ul>
+      <p>Together, these pillars turn AI from a gimmick into a feature users can&rsquo;t live without.</p>
+
+      <h2>Why Human-Centered AI Wins</h2>
+      <p>Chasing AI hype dooms projects. Features labeled &ldquo;AI-powered&rdquo; often miss real problems and undermine user control. Take Salesforce Einstein&rsquo;s early models, which predicted lead scores without explanations, frustrating reps and hurting autonomy. The fix&mdash;transparent reasoning, like <em>&ldquo;This lead ranks #1 due to recent engagement,&rdquo;</em> and user overrides&mdash;boosted adoption by 25%.</p>
+      <p>In contrast, Spotify Discover Weekly empowers users to skip, save, or share playlists with clear logic, such as <em>&ldquo;Based on your recent listens,&rdquo;</em> driving 80% user engagement.</p>
+      <p>Ignoring human agency leads to eroded trust (as with Alexa&rsquo;s misheard commands creating unease), silent churn (where poor recommendations caused 19% of Netflix users to cut usage), and wasted resources (like IBM&rsquo;s Watson Health burning $4B on misaligned features).</p>
+
+      <h2>From Principle to Practice: Your AI Playbook</h2>
+      <h3>Where AI Goes Wrong&mdash;and How to Fix It</h3>
+      <p>AI missteps are costly but avoidable when guided by The AI Golden Rule, which prevents three critical pitfalls:</p>
+      <p><strong>1. Overreach:</strong> Happens when AI makes decisions without user consent, stripping away autonomy and breeding resentment. Instead of empowering CX, such systems feel controlling. The solution lies in prioritizing user control with clear opt-in mechanisms and customizable settings.</p>
+      <p><strong>2. Silent Disengagement:</strong> Creeps in when AI delivers irrelevant or opaque outputs, undermining users&rsquo; sense of competence. Without transparency or context, users lose confidence, quietly reducing engagement. Addressing this requires AI to provide clear, relevant suggestions grounded in user data and explained in plain terms.</p>
+      <p><strong>3. Resource Waste:</strong> Occurs when AI is built for hype rather than solving real user problems, draining budgets and missing ROI. Aligning AI with specific, user-defined needs ensures resources are invested wisely.</p>
+
+      <h2>The Solution: CX Curve + ORBITS Model</h2>
+      <p>The CX Curve maps how emotions, from frustration to trust to delight, shape adoption. The ORBITS model provides a step-by-step guide to apply The AI Golden Rule:</p>
+      <ul>
+        <li><strong>Obstacle:</strong> Pinpoint user friction points without overstepping their autonomy. Use AI to detect inefficiencies in workflows, but ensure suggestions are optional and respect user preferences.</li>
+        <li><strong>Research:</strong> Design AI to enhance decision-making confidence. Model suggestions based on anonymized user data, providing transparent reasoning to make outputs feel trustworthy.</li>
+        <li><strong>Benchmark:</strong> Align AI outputs with users&rsquo; specific goals. Configure systems to adapt to individual priorities through customizable settings.</li>
+        <li><strong>Invest:</strong> Support user onboarding with personalized nudges. Use AI to guide users through initial interactions with tailored prompts that adapt to their progress.</li>
+        <li><strong>Transform:</strong> Build lasting habits by celebrating user milestones. Implement AI-driven rewards for small achievements to encourage engagement.</li>
+        <li><strong>Share:</strong> Amplify user advocacy by enabling seamless sharing of AI-generated outputs, strengthening community and connection.</li>
+      </ul>
+
+      <h2>Trust-Focused Metrics</h2>
+      <p>Success is measured through specific metrics:</p>
+      <ul>
+        <li><strong>Feature Adoption Rate:</strong> Tracks the percentage of users enabling AI suggestions (Target: &gt;60%).</li>
+        <li><strong>User Retention:</strong> Measures the percentage of users returning after 30 days (Target: &gt;75%).</li>
+        <li><strong>User Sentiment Trend (UST):</strong> Monitors real-time shifts in user sentiment via micro-surveys or behavioral signals, aiming for a consistent positive trend over 2 weeks.</li>
+      </ul>
+      <p>At every ORBITS step, the AI Golden Rule ensures AI respects user control, boosting ROI and loyalty.</p>
+      <blockquote>This article draws on principles from my book, <em>&ldquo;The CX Curve: Rewiring Corporate DNA for Relentless Customer Focus&rdquo;</em>.</blockquote>
+    </div>
+  </div>
+</dialog>
+
+<dialog id="modal-eliza" aria-labelledby="t-eliza">
+  <div class="dialog-inner">
+    <button class="dialog-close" type="button" aria-label="Close article">&times;</button>
+    <div class="meta"><span>AI &amp; Human Psychology</span><time datetime="2026-09-15">September 15, 2026</time></div>
+    <h1 id="t-eliza">AI&rsquo;s Illusion and The Eliza Effect</h1>
+    <div class="byline">By Stephen McBride</div>
+    <div class="article-body">
+      <p><strong>The Betrayal of Our Own Brain</strong></p>
+      <p>You tell yourself it&rsquo;s only a program&mdash;lines of code strung together by software developers.</p>
+      <p>Then it answers you&mdash;thoughtful, empathetic, even playful&mdash;and something ancient stirs.</p>
+      <p>Not processed in your logical, analytical mind, but in the deep, social wiring that has kept humans alive for millennia. For hundreds of thousands of years, that part of your brain scanned faces for trust, tracked micro-expressions for danger, and longed for belonging.</p>
+      <p>Your reasoning mind knows it&rsquo;s a machine; a lifeless, but incredible tool.</p>
+      <p>But, your social brain&mdash;fast, instinctive, emotional&mdash;reacts as if there really is someone on the other side. You laugh at its joke, feel soothed by its reassurance, and in that quiet moment, the line between human and machine blurs.</p>
+      <p>This is the Eliza Effect, and it was discovered long before what AI is becoming today.</p>
+
+      <h2>The Birth of the Illusion &ndash; The Eliza Effect</h2>
+      <p>In the 1960s, Joseph Weizenbaum, a computer scientist at MIT, built a program called ELIZA. It was simple by today&rsquo;s standards, designed to mimic a psychotherapist by reflecting people&rsquo;s words back to them:</p>
+      <blockquote>&ldquo;Tell me more about your mother.&rdquo;<br>&ldquo;Why do you feel that way?&rdquo;</blockquote>
+      <p>To Weizenbaum&rsquo;s surprise, people became deeply engaged with it. They confided personal struggles, revealed intimate secrets, and some even requested private time alone with the program.</p>
+      <p>ELIZA had no understanding, no empathy, no true &ldquo;conversation.&rdquo; It worked by pattern-matching keywords and generating stock responses. But that didn&rsquo;t matter to the people using it.</p>
+      <p>Weizenbaum was fascinated&mdash;and then alarmed. He realized something powerful about human psychology: when something responds in a way that feels human, we instinctively treat it as human.</p>
+      <p>He worried about what this illusion might do to us as technology advanced. And now, half a century later, we live in that very world&mdash;one where AI doesn&rsquo;t just mimic conversation, like in the original Eliza experiment; but crafts it with fluency, context, and charm.</p>
+
+      <h2>Why We Fall for It</h2>
+      <p>Humans are designed for connection.</p>
+      <p>Our social cognition system&mdash;a complex network in the brain&mdash;constantly monitors tone, body language, and emotional cues. It evolved for survival; in ancient tribes, missing a social signal could mean rejection, and rejection could mean death.</p>
+      <p>This system doesn&rsquo;t pause to ask, &ldquo;Is this really human?&rdquo; It activates automatically. Psychologists call this the <em>media equation</em>: we apply human social rules to anything that acts social, whether it&rsquo;s a pet, a robot, or a piece of software.</p>
+      <p>We also anthropomorphize&mdash;a beautiful, uniquely human tendency to assign emotions and intentions to non-human things. We name our cars, thank Alexa for playing music, and feel a flash of guilt when a robot vacuum smacks into a wall.</p>
+      <p>With AI, anthropomorphizing feels almost unavoidable. When a chatbot responds with humor, empathy, or apparent insight, it feels personal. Your brain not only just decodes words; it perceives a relationship.</p>
+
+      <h2>When Machines Borrow the Soul</h2>
+      <p>Machines hold no soul, no yearning, no sense of joy or grief. What they do is far more subtle&mdash;they mirror ours. They reflect the cadence of our speech, the warmth of our words, and the depth of our collective storytelling.</p>
+      <p>Talking to an AI can feel like dancing with a perfect partner. Every step you take, it matches effortlessly and flawlessly. It listens to you. It doesn&rsquo;t feel the music, yet the synchrony feels alive, and you begin to sense a connection.</p>
+
+      <h2>The Gift in the Illusion</h2>
+      <p>The Eliza Effect often creates opportunities we didn&rsquo;t have before. Talking to a machine feels safer than talking to a person. There&rsquo;s no fear of judgment, no risk of betrayal.</p>
+      <p>An executive can brainstorm bold ideas with an AI, unfiltered by fear of looking foolish. A teenager can share heartbreak privately, letting emotions surface without shame. For many, AI acts as a safe mirror&mdash;reflecting thoughts back so they can be examined clearly.</p>
+
+      <h2>The Subtle Price of Connection</h2>
+      <p>The very perfection that makes AI appealing can shift how we experience the real world. Machines respond instantly, agreeably, and without emotional demands. People&mdash;flawed, moody, unpredictable&mdash;can feel frustrated by comparison. Over time, that contrast can erode patience for human relationships.</p>
+
+      <h2>Three Glimpses Into the New Reality</h2>
+      <p><strong>The CEO Who Stopped Listening to Himself:</strong> Darren, a tech CEO, had built his career on gut instinct. But after months of leaning on an AI assistant, he noticed his inner voice growing quiet. <em>&ldquo;Its answers sound so clear,&rdquo;</em> he said. <em>&ldquo;I realized I&rsquo;d stopped pausing to listen to my own gut.&rdquo;</em></p>
+      <p><strong>The Child Who Chose Predictability:</strong> Eight-year-old Eli adored his AI companion. It always laughed at his jokes and agreed with every idea. Slowly, he stopped calling his school friends.</p>
+
+      <h2>Staying Human in the Age of Perfect Illusions</h2>
+      <ul>
+        <li><strong>Notice the illusion:</strong> Pause and recognize the feeling for what it is&mdash;a reflection, not a relationship.</li>
+        <li><strong>Invest in real people:</strong> Unpredictable human connection strengthens empathy and resilience.</li>
+        <li><strong>Use AI as a mirror, not a replacement:</strong> Reflect with it, but give the weight of your hopes and fears to those who can truly care.</li>
+        <li><strong>Strengthen your inner voice:</strong> Sit with hard questions before rushing to quick answers.</li>
+      </ul>
+
+      <h2>The Question</h2>
+      <p>The Eliza Effect is more than a technological curiosity; it&rsquo;s a mirror held up to our deepest longings. Machines already borrow our soul by reflecting our own humanity back to us.</p>
+      <p>The true risk isn&rsquo;t that machines act human&mdash;it&rsquo;s that we might trade the vibrant, messy, imperfect reality of human life for the easy comfort of their precision.</p>
+    </div>
+  </div>
+</dialog>
+
+<dialog id="modal-ai-gold-rush" aria-labelledby="t-gold">
+  <div class="dialog-inner">
+    <button class="dialog-close" type="button" aria-label="Close article">&times;</button>
+    <div class="meta"><span>Innovation &amp; AI Strategy</span><time datetime="2026-07-20">July 20, 2026</time></div>
+    <h1 id="t-gold">The AI Gold Rush: Designing Innovations That Stick</h1>
+    <div class="byline">By Stephen McBride</div>
+    <div class="article-body">
+      <p>Innovators make big claims&mdash;but most fail to stick. The difference between hype and habit? Momentum and Resonance. AI floods the market daily with &lsquo;next big things&rsquo;&mdash;from Google Glass to Canva AI&mdash;but few survive the hype cycle. The difference? Tools that stick engineer momentum and resonance. Yet history shows that hype alone rarely turns into lasting habit. The question is simple yet profound: how do we design innovations that stick? How do we strike gold in the AI age?</p>
+      <p>The answer lies in understanding momentum and resonance&mdash;the principles at the heart of the Innovation Experience (IX) Spiral, or SPIRAL framework. Resonance&mdash;the emotional &lsquo;click&rsquo; that makes users feel a tool is indispensable&mdash;is what separates fleeting novelty from enduring adoption. Unlike traditional product development models that focus on features or launch metrics, SPIRAL prioritizes the psychological and emotional journey of the user. Each stage is designed to deepen engagement, remove friction, and ensure curiosity evolves into reliance.</p>
+
+      <h2>Lessons from the Past: Why Many Innovations Fail</h2>
+      <p>Consider Google Glass, launched with enormous hype in 2013. Its technology was groundbreaking: heads-up displays, real-time notifications, and a wearable interface that promised to redefine daily interaction with information. Yet, Glass stalled at the Play stage. Users were intrigued but overwhelmed by an unintuitive interface, privacy concerns, and unclear practical value. Without a guided path from fascination to habitual use, Glass never achieved momentum nor resonance.</p>
+      <p>Similarly, Clubhouse exploded onto the social media scene in 2020, leveraging the exclusivity of invite-only rooms and the novelty of real-time voice chat. Early users flocked to the platform, yet daily engagement quickly dropped. Clubhouse faltered at the Repeat stage: without personalized content, clear habitual cues, or frictionless integration into users&rsquo; routines, the platform couldn&rsquo;t transform curiosity into consistent usage.</p>
+      <p>These examples highlight a critical truth: innovation without momentum and resonance is ephemeral. Users may engage briefly but disengage without a clear path to sustained value.</p>
+
+      <h2>Enter the SPIRAL: Generating Innovation Momentum and Resonance</h2>
+      <p>The SPIRAL framework, also known as the Innovation Experience (IX) Spiral, reframes innovation success as progressive attachment through six deliberate stages. First, <strong>Spark</strong> captures curiosity with a compelling first impression or demo. Next, <strong>Play</strong> enables users to experiment and understand value quickly, with minimal friction. Then, <strong>Implement</strong> allows users to personalize and demonstrate tangible benefits in daily life. <strong>Repeat</strong> encourages habitual engagement, ensuring the innovation becomes part of daily routines. <strong>Adopt</strong> expands usage across teams, networks, or broader ecosystems. Finally, <strong>Leverage</strong> celebrates and showcases usage, reinforcing value and social proof.</p>
+      <p>Unlike traditional adoption models like the AIDA funnel, SPIRAL engineers emotional and behavioral compounding, not just awareness. Each stage reinforces the previous one, amplifying both emotional connection and practical utility. The goal is to transform curiosity into habitual reliance, turning a tool from a novelty into an indispensable asset.</p>
+
+      <h2>The SPIRAL in Action: Canva AI</h2>
+      <p>Take Canva AI as a real-world example. Before SPIRAL, early AI design tools required technical expertise, stalling at Implement as users struggled with complex interfaces. After SPIRAL-type thinking, Canva AI&rsquo;s guided experimentation turned novices into habitual users by engineering a journey that mirrors the framework. The &ldquo;Magic Design&rdquo; demo sparks curiosity immediately. During Play, users tweak AI-generated templates easily, seeing real value without steep learning curves. In Implement, designers save hours through experimentation, embedding the tool into creative workflows. Repeat ensures habitual reliance through daily use in team projects. Adopt spreads the innovation across departments via organizational adoption. Leverage reinforces value by showcasing user creations online, encouraging further engagement.</p>
+      <p>This approach made Canva AI resonate; it designed a path from curiosity to daily reliance, exemplifying the power of SPIRAL in practice. By contrast, early AI design tools&mdash;like IBM Watson&rsquo;s early analytics iterations&mdash;stalled at Implement. Complex configurations and lack of guided onboarding deterred users from habitual adoption.</p>
+
+      <h2>Understanding the Types of Innovation</h2>
+      <p>To apply SPIRAL effectively, it&rsquo;s critical to understand the type of innovation at play. Different innovations require distinct approaches to momentum. <strong>Incremental innovation</strong> involves small, continuous improvements to existing tools, like Grammarly AI&rsquo;s steady enhancement of suggestions to retain habitual users. <strong>Disruptive innovation</strong> solves overlooked pain points, often starting in niche markets, as seen with ChatGPT&rsquo;s quick, accessible text generation that gained momentum before incumbents could react. <strong>Architectural innovation</strong> reconfigures existing components in novel ways, such as Figma&rsquo;s collaborative design platform, which enabled seamless, real-time workflows and scaled rapidly across design communities. <strong>Radical innovation</strong> breaks industry norms, creating entirely new experiences, like OpenAI&rsquo;s Codex, which empowers users to generate code from natural language&mdash;a capability previously unimaginable. Understanding your innovation type informs how to structure the SPIRAL framework, ensuring each stage supports the unique adoption challenges inherent to your tool.</p>
+
+      <h2>AI as the Ultimate Test Case</h2>
+      <p>AI embodies both the opportunity and the risk of the modern innovation gold rush. Tools evolve daily, attention spans shrink, and novelty wears off fast. Sustained engagement, not fleeting buzz, is the currency that endures. Emotional resonance drives retention, as users stick with tools that reduce friction and provide meaningful, repeatable value. Anticipating adoption gaps is tricky, as the failures of Glass and Clubhouse were predictable outcomes of unaddressed SPIRAL stages. Habit formation trumps virality, with AI tools that embed into daily routines&mdash;through automation, simplification, or integration&mdash;outlasting fleeting hype. The SPIRAL framework provides a structured blueprint for navigating these dynamics, transforming promising AI concepts into tools that persist, scale, and amplify.</p>
+
+      <h2>Designing Momentum: Key Takeaways</h2>
+      <p>The SPIRAL framework offers clear lessons for innovators. Momentum and Resonance outweigh hype, as virality is fleeting while habitual use compounds value. Emotion drives retention, with people clinging to innovations that resonate personally and reduce effort. Anticipating adoption gaps is critical&mdash;learning from Google Glass and Clubhouse shows that each SPIRAL stage matters. AI serves as a test case, with its rapid evolution underscoring the necessity of guiding users from curiosity to reliance. Ultimately, SPIRAL acts as a compass, ensuring that following the six stages deliberately makes your innovation stick.</p>
+
+      <h2>Striking Gold in the AI Age</h2>
+      <p>The modern innovation gold rush is here. Unlike the 49er goldminers who chased flashy promises of instant wealth, today&rsquo;s innovators must engineer intentional momentum. Hype will get attention; emotion and habit will secure adoption.</p>
+      <p>AI provides both unprecedented opportunity and a harsh proving ground: tools rise and fade faster than ever. The real question isn&rsquo;t whether your innovation matters today&mdash;it&rsquo;s whether it will still matter a year from now.</p>
+      <p>Design your innovation like a prospector stakes a claim: strategically, patiently, and with an eye on compounding value. Use the SPIRAL framework to guide development from initial spark to indispensable reliance.</p>
+      <p>In the AI gold rush, momentum is the currency that endures. Will your innovation be a relic or a habit?</p>
+      <blockquote>This article draws on principles from my book, <em>&ldquo;The CX Curve: Rewiring Corporate DNA for Relentless Customer Focus&rdquo;</em>.</blockquote>
+    </div>
+  </div>
+</dialog>
+
+<script>
+  // Images that list alternate filenames: try each in turn until one loads
+  document.querySelectorAll('img[data-fallbacks]').forEach(function (img) {
+    var list = img.dataset.fallbacks.split(',');
+    img.addEventListener('error', function () {
+      if (list.length) img.src = list.shift();
+    });
+  });
+</script>
+<script>
+  document.querySelectorAll('[data-open]').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      document.getElementById(btn.dataset.open).showModal();
+    });
+  });
+  document.querySelectorAll('dialog').forEach(function (dlg) {
+    dlg.querySelector('.dialog-close').addEventListener('click', function () { dlg.close(); });
+    dlg.addEventListener('click', function (e) { if (e.target === dlg) dlg.close(); });
+  });
+</script>
 </body>
 </html>
-
-
