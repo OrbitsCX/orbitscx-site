@@ -129,8 +129,8 @@ dialog::backdrop { background: rgba(26, 17, 13, .75); }
 
 /* Book */
 .book { background: var(--maroon); color: var(--sand); }
-.book-grid { display: grid; grid-template-columns: 340px 1fr; gap: 4rem; align-items: center; }
-.book-grid img { width: 100%; border-radius: 8px; box-shadow: 0 20px 40px rgba(0, 0, 0, .4); }
+.book-grid { display: grid; grid-template-columns: 1.15fr 1fr; gap: 4rem; align-items: center; }
+.book-grid img { width: 100%; height: auto; border-radius: 12px; box-shadow: 0 20px 40px rgba(0, 0, 0, .4); }
 .book h2 { font-size: clamp(2rem, 4vw, 2.8rem); }
 .book-author { color: var(--flat-sandstone); font-weight: 600; margin: .25rem 0 1.5rem; }
 .book blockquote { border-left: 3px solid var(--flat-sandstone); padding-left: 1.25rem; font: italic 1.25rem/1.5 var(--serif); margin-bottom: 1.5rem; max-width: 36rem; }
@@ -159,7 +159,6 @@ dialog::backdrop { background: rgba(26, 17, 13, .75); }
   .hero-logo { justify-items: start; }
   .hero-logo img { max-width: 220px; }
   .book-grid { gap: 2rem; }
-  .book-grid img { max-width: 260px; }
   .bio-main { padding: 2rem 1.5rem; }
   .edu { grid-template-columns: 1fr; }
   .nav-links li:not(:last-child) { display: none; }
@@ -304,7 +303,7 @@ dialog::backdrop { background: rgba(26, 17, 13, .75); }
 
   <section class="section book" id="book">
     <div class="wrap book-grid">
-      <img src="the CX Curve Book Picture 2.jpeg" alt="Cover of The CX Curve by Stephen McBride">
+      <img src="the-cx-curve-book.jpg" alt="Three copies of The CX Curve by Stephen McBride" width="1800" height="1076" loading="lazy" data-fallbacks="the%20CX%20Curve%20Book%20Picture%202.jpeg,the_CX_Curve_Book_Picture_2.jpeg">
       <div>
         <h2>The CX Curve</h2>
         <div class="book-author">By Stephen McBride</div>
@@ -492,14 +491,13 @@ dialog::backdrop { background: rgba(26, 17, 13, .75); }
 </dialog>
 
 <script>
-  // Hero logo: try each fallback filename in turn until one loads
-  (function () {
-    var img = document.getElementById('hero-logo');
+  // Images that list alternate filenames: try each in turn until one loads
+  document.querySelectorAll('img[data-fallbacks]').forEach(function (img) {
     var list = img.dataset.fallbacks.split(',');
     img.addEventListener('error', function () {
       if (list.length) img.src = list.shift();
     });
-  })();
+  });
 </script>
 <script>
   document.querySelectorAll('[data-open]').forEach(function (btn) {
