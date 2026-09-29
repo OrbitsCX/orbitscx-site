@@ -142,8 +142,10 @@ dialog::backdrop { background: rgba(26, 17, 13, .75); }
 /* Footer */
 .site-footer { background: var(--umber); color: var(--sand); padding: 2.5rem 0 1.5rem; }
 .footer-row { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; padding-bottom: 1.5rem; border-bottom: 1px solid rgba(218, 176, 112, .25); }
-.footer-logo { background: var(--white); border-radius: 8px; padding: .6rem 1rem; line-height: 0; }
-.footer-logo img { height: 32px; width: auto; mix-blend-mode: multiply; }
+.footer-logo { line-height: 0; }
+.footer-logo img { height: 32px; width: auto; }
+.footer-logo.on-white { background: var(--white); border-radius: 8px; padding: .6rem 1rem; }
+.footer-logo.on-white img { mix-blend-mode: multiply; }
 .footer-row a { color: var(--flat-sandstone); font-weight: 600; text-decoration: none; }
 .footer-row a:hover { text-decoration: underline; }
 .copyright { text-align: center; font-size: .85rem; color: rgba(250, 246, 240, .6); margin-top: 1.25rem; }
@@ -319,7 +321,7 @@ dialog::backdrop { background: rgba(26, 17, 13, .75); }
 <footer class="site-footer">
   <div class="wrap">
     <div class="footer-row">
-      <span class="footer-logo"><img src="Orbits_CX_WORDMARK_gradient_lightbg.png" alt="Orbits CX" width="140" height="32"></span>
+      <span class="footer-logo"><img src="Orbits_CX_WORDMARK_gradient_darkbg.png" alt="Orbits CX" width="140" height="32" onerror="this.onerror=null;this.src='Orbits_CX_WORDMARK_gradient_lightbg.png';this.parentNode.classList.add('on-white');"></span>
       <a href="mailto:stephen@orbitscx.com">stephen@orbitscx.com</a>
     </div>
     <p class="copyright">&copy; Orbits CX. All rights reserved.</p>
