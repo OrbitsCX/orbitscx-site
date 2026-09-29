@@ -203,7 +203,7 @@ dialog::backdrop { background: rgba(26, 17, 13, .75); }
         </div>
       </div>
       <div class="hero-logo">
-        <img src="orbits cx gradient full logo.jpg" alt="Orbits CX full logo" onerror="this.onerror=null;this.src='orbits cx gradient full logo.png';">
+        <img id="hero-logo" src="orbits%20cx%20gradient%20full%20logo.jpg" alt="Orbits CX full logo" data-fallbacks="orbits%20cx%20gradient%20full%20logo.png,Orbits_CX_STACKED_gradient_lightbg.png,Orbits_CX_WORDMARK_gradient_lightbg.png">
       </div>
     </div>
   </section>
@@ -490,6 +490,16 @@ dialog::backdrop { background: rgba(26, 17, 13, .75); }
   </div>
 </dialog>
 
+<script>
+  // Hero logo: try each fallback filename in turn until one loads
+  (function () {
+    var img = document.getElementById('hero-logo');
+    var list = img.dataset.fallbacks.split(',');
+    img.addEventListener('error', function () {
+      if (list.length) img.src = list.shift();
+    });
+  })();
+</script>
 <script>
   document.querySelectorAll('[data-open]').forEach(function (btn) {
     btn.addEventListener('click', function () {
