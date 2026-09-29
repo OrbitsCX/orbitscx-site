@@ -55,14 +55,13 @@ h1, h2, h3 { font-family: var(--serif); line-height: 1.2; }
 
 /* Hero */
 .hero { padding: 5.5rem 0 5rem; }
-.hero-grid { display: grid; grid-template-columns: 1.25fr .75fr; gap: 4rem; align-items: center; }
+.hero-grid { display: grid; grid-template-columns: 1.5fr .5fr; gap: 4rem; align-items: center; }
 .badge { display: inline-block; border: 1px solid var(--tan); background: var(--white); color: var(--terracotta); font-weight: 700; font-size: .9rem; padding: .35rem 1rem; border-radius: 999px; margin-bottom: 1.5rem; }
 .hero h1 { color: var(--flat-rust); font-size: clamp(2.2rem, 5vw, 3.5rem); margin-bottom: 1.25rem; text-wrap: balance; }
 .hero p { font-size: 1.2rem; color: var(--muted); max-width: 40rem; margin-bottom: 2rem; }
 .actions { display: flex; flex-wrap: wrap; gap: 1rem; }
-.hero-logo { position: relative; display: grid; place-items: center; }
-.hero-logo::before { content: ""; position: absolute; inset: -12%; background: radial-gradient(closest-side, rgba(218, 176, 112, .32), rgba(218, 176, 112, 0)); }
-.hero-logo img { position: relative; width: 100%; height: auto; }
+.hero-logo { display: grid; place-items: center; }
+.hero-logo img { width: 100%; max-width: 300px; height: auto; }
 
 /* Section headings */
 .section-head { max-width: 40rem; margin-bottom: 3rem; }
@@ -157,7 +156,8 @@ dialog::backdrop { background: rgba(26, 17, 13, .75); }
   .hero { padding: 3.5rem 0; }
   .hero-grid, .bio, .book-grid, .insight-grid, .pillar-grid { grid-template-columns: 1fr; }
   .hero-grid { gap: 2.5rem; }
-  .hero-logo { max-width: 360px; }
+  .hero-logo { justify-items: start; }
+  .hero-logo img { max-width: 220px; }
   .book-grid { gap: 2rem; }
   .book-grid img { max-width: 260px; }
   .bio-main { padding: 2rem 1.5rem; }
