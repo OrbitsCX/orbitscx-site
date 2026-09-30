@@ -930,10 +930,93 @@ h1, h2, h3, h4 {
   font-size: clamp(2.4rem, 4.5vw, 4rem);
   color: var(--flat-rust);
 }
-.insight-grid {
+.insight-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 24px;
+  margin-bottom: 28px;
+}
+.insight-controls {
+  display: flex;
+  gap: 10px;
+  flex-shrink: 0;
+}
+.insight-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid var(--line);
+  background: var(--paper);
+  color: var(--flat-rust);
   display: grid;
-  grid-template-columns: 1.3fr 1fr 1fr;
+  place-items: center;
+  cursor: pointer;
+  transition: background .2s, border-color .2s, color .2s, transform .2s, opacity .2s;
+}
+.insight-btn:hover:not(:disabled) {
+  background: var(--umber);
+  border-color: var(--umber);
+  color: #fff;
+  transform: translateY(-1px);
+}
+.insight-btn:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+.insight-btn svg {
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.insight-scroller-wrap {
+  position: relative;
+  margin-right: calc(50% - 50vw + 24px);
+  margin-left: 0;
+  padding-right: 24px;
+}
+.insight-scroller {
+  display: flex;
   gap: 16px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  padding: 8px 4px 28px;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+.insight-scroller::-webkit-scrollbar { display: none; }
+
+.insight-scroller .card {
+  flex: 0 0 min(340px, 78vw);
+  width: min(340px, 78vw);
+  min-height: 300px;
+  scroll-snap-align: start;
+}
+.insight-scroller .card.featured {
+  flex: 0 0 min(400px, 85vw);
+  width: min(400px, 85vw);
+  min-height: 300px;
+}
+
+@media (max-width: 1024px) {
+  .insight-scroller-wrap {
+    padding-inline: 24px;
+    margin-inline: 0;
+  }
+}
+@media (max-width: 640px) {
+  .insight-controls { display: none; } /* swipe on phone */
+  .insight-scroller-wrap { padding-inline: 0; }
+  .insight-scroller {
+    padding-inline: 4px;
+    gap: 12px;
+  }
 }
 .card {
   background: var(--paper);
@@ -1452,17 +1535,33 @@ dialog::backdrop {
     padding-bottom: 72px;
   }
   .orbit-stage {
-    height: 380px;
     order: -1;
+    justify-self: center;
+    width: min(92vw, 400px);
+    height: min(92vw, 400px);
+    margin: 0 auto 8px;
+    transform: none;
+    /* zoom shrinks layout + paint so the full ellipse fits (Chromium/Safari) */
+    zoom: 0.46;
+  }
+  @supports not (zoom: 1) {
+    .orbit-stage {
+      /* Firefox fallback: scale from center; reserve layout box for visual size */
+      width: 880px;
+      height: 680px;
+      margin-left: calc(50% - 44vw);
+      margin-right: auto;
+      margin-bottom: calc(-680px + 46vw);
+      transform: scale(0.46);
+      transform-origin: top center;
+    }
   }
   .section-intro {
     grid-template-columns: 1fr;
     gap: 16px;
   }
   .pillar-grid,
-  .insight-grid {
-    grid-template-columns: 1fr;
-  }
+  /* insight-grid → scroller */
   .credentials { grid-template-columns: 1fr 1fr; }
   .book-visual { max-width: 420px; margin-inline: auto; width: 100%; }
   .nav-toggle { display: grid; }
@@ -1498,9 +1597,21 @@ dialog::backdrop {
   .hero h1 { font-size: clamp(2.6rem, 11vw, 3.6rem); }
   .hero-actions .btn { width: 100%; }
   .orbit-stage {
-    height: 300px;
-    transform: scale(0.40) translate(0, -8px); width: 880px;
-    margin: -20px -40px;
+    width: min(92vw, 360px);
+    height: min(92vw, 360px);
+    margin: 0 auto 4px;
+    transform: none;
+    zoom: 0.40;
+  }
+  @supports not (zoom: 1) {
+    .orbit-stage {
+      width: 880px;
+      height: 680px;
+      margin-left: calc(50% - 46vw);
+      margin-bottom: calc(-680px + 42vw);
+      transform: scale(0.40);
+      transform-origin: top center;
+    }
   }
   .hero-equation { display: none; }
   .equation-card { width: 100%; justify-content: space-between; }
@@ -1630,7 +1741,7 @@ dialog::backdrop {
       <span class="proof-item"><i></i>CEOs &amp; executive teams</span>
       <span class="proof-item"><i></i>Product &amp; CX leaders</span>
       <span class="proof-item"><i></i>Investors seeking momentum</span>
-      <span class="proof-item"><i></i>Organizations that feel slow</span>
+      <span class="proof-item"><i></i>Teams closing the gap on momentum</span>
     </div>
   </div>
 </section>
@@ -1686,7 +1797,7 @@ dialog::backdrop {
     </div>
     <div class="momentum-copy">
       <p>A company can have exceptional products, deep IP, an installed base, talented people, capital, and years of infrastructure behind it and still feel strangely slow.</p>
-      <p>That is the executive signal Orbits CX is built to investigate. The issue is often not a lack of effort. It is a lack of alignment around the customer’s journey.</p>
+      <p>That gap between expected results and actual momentum is rarely a mystery at the top — it’s a lack of shared language for why. Orbits CX is built to investigate that signal. The issue is often not a lack of effort. It is a lack of alignment around the customer’s journey.</p>
       <div class="equation-card">
         <div class="formula">P = MV</div>
         <span>Momentum = Mass × Velocity</span>
@@ -1738,8 +1849,8 @@ dialog::backdrop {
   <div class="wrap diag-grid">
     <div>
       <div class="eyebrow">Start with the signal</div>
-      <h2>Something feels off. Find out where the momentum went.</h2>
-      <p>Orbits begins with executive perspective, not a generic customer-satisfaction scorecard. We examine the journey through the eyes of the customer and identify the points where progress, confidence, or commitment starts to slow.</p>
+      <h2>When results don’t match expectations, the gap is usually in the customer journey.</h2>
+      <p>You know when results aren’t matching what you expected from the organization you’ve built. Orbits CX begins by examining the journey through the customer’s eyes — to find the Drift Zones where progress, confidence, or commitment starts to slow.</p>
       <a class="btn btn-light" href="mailto:stephen@orbitscx.com?subject=CX%20Diagnostic" style="margin-top:8px">Begin a diagnostic <span>→</span></a>
     </div>
     <div class="process">
@@ -1782,26 +1893,43 @@ dialog::backdrop {
         <div class="eyebrow">Thinking in public</div>
         <h2>Insights</h2>
       </div>
+      <div class="insight-controls" aria-label="Scroll articles">
+        <button type="button" class="insight-btn" id="insight-prev" aria-label="Previous articles">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>
+        </button>
+        <button type="button" class="insight-btn" id="insight-next" aria-label="Next articles">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg>
+        </button>
+      </div>
     </div>
-    <div class="insight-grid">
-      <article class="card featured reveal">
+    <div class="insight-scroller-wrap">
+    <div class="insight-scroller" id="insight-scroller">
+      <article class="card featured">
+        <div class="meta"><span>Innovation &amp; Strategy</span><time datetime="2026-10-12">Oct 12, 2026</time></div>
+        <h3>The Greased Pig Theory of Innovation</h3>
+        <p>Lessons from mud and chaos: invert the chase. The same move applies when the organization keeps pursuing the customer the wrong way.</p>
+        <button class="read" type="button" data-open="modal-greased-pig">Read article <span>→</span></button>
+      </article>
+
+      <article class="card">
         <div class="meta"><span>Product Leadership &amp; AI</span><time datetime="2026-10-01">Oct 1, 2026</time></div>
         <h3>“AI-ify” Your Products – And “The AI Golden Rule”</h3>
         <p>Chasing AI hype over user needs sinks most projects. A practical filter for product leaders: AI must empower human agency.</p>
         <button class="read" type="button" data-open="modal-ai-golden-rule">Read article <span>→</span></button>
       </article>
-      <article class="card reveal reveal-delay-1">
+      <article class="card">
         <div class="meta"><span>AI &amp; Human Psychology</span><time datetime="2026-09-15">Sep 15, 2026</time></div>
         <h3>AI’s Illusion and The Eliza Effect</h3>
         <p>When machines mirror our social wiring, the line between tool and relationship blurs. What that means for leaders and for us.</p>
         <button class="read" type="button" data-open="modal-eliza">Read article <span>→</span></button>
       </article>
-      <article class="card reveal reveal-delay-2">
+      <article class="card">
         <div class="meta"><span>Innovation &amp; AI Strategy</span><time datetime="2026-07-20">Jul 20, 2026</time></div>
         <h3>The AI Gold Rush: Designing Innovations That Stick</h3>
         <p>Hype fades. Momentum and resonance don’t. How the SPIRAL framework turns curiosity into habitual reliance.</p>
         <button class="read" type="button" data-open="modal-ai-gold-rush">Read article <span>→</span></button>
       </article>
+    </div>
     </div>
   </div>
 </section>
@@ -2027,6 +2155,50 @@ dialog::backdrop {
 </div>
 </dialog>
 
+<dialog aria-labelledby="t-greased-pig" id="modal-greased-pig">
+<div class="dialog-inner">
+<button aria-label="Close article" class="dialog-close" type="button">×</button>
+<div class="meta"><span>Innovation &amp; Strategy</span><time datetime="2026-10-12">October 12, 2026</time></div>
+<h1 id="t-greased-pig">The Greased Pig Theory of Innovation</h1>
+<div class="byline">Lessons in Innovation from Mud, Chaos, and Desperation · By Stephen McBride</div>
+<div class="article-body">
+<p>We were just sitting down for the rodeo at the Alameda County Fairgrounds when the announcer’s booming voice cut through the dusty air:</p>
+<p><em>“All 12- and 13-year-old boys, come on down for the Greased Pig Race!”</em></p>
+<p>Since I had just turned 12, my dad’s eyes lit up. He clenched his fist in encouragement. My stomach churned with nerves, but I didn’t back down. I nervously stepped into the pen with over 50 other kids; each of us was handed an oversized T-shirt. Cowboys unleashed a firehose, drenching the dirt and turning it into a slick, sloppy, muddy rink. Then, with a loud clang, they released the beast—a massive pig, head-to-hoof coated in thick, slippery grease, squealing like a banshee.</p>
+<p>As soon as the gate opened, chaos erupted. Kids lunged, slipped, and face-planted in the mud. The fastest and strongest reached the pig first, only to slide off its impossibly slick hide, landing in a heap. I was caught in the frenzy, arms flailing, legs churning, feeling like a lost puppy in a mosh pit. I lunged for the pig, my hands grazing its slimy coat, and crashed face-first into the muck. Mud filled my mouth, stung my eyes, and for a moment, I lay there, heart pounding, cheeks burning with the futility of it all. The crowd cheered, delighted to watch us flail. As I spat out mud, something clicked. <strong>What if I’m chasing this pig all wrong?</strong> I came up with an idea…</p>
+<h2>Inverting the Problem</h2>
+<p>I pushed myself up, wiped the mud from my eyes, and did something strange: I turned my back on the herd. While every other kid charged past me, I zigged and zagged in the complete opposite direction. Then I saw it—the pig, barreling straight toward me, while the other kids struggled, grasping and sliding off.</p>
+<p>I sprinted, heart racing, and leapt. My legs clamped around the pig’s slick head, and I held onto the beast’s back for dear life, my hands slipping but refusing to let go. The announcer’s voice echoed as he raised my muddy hand in victory.</p>
+<p>I’d won—not because I was faster, stronger, or luckier, but because I had inverted the problem. I had stumbled upon what I now call <strong>The Greased Pig Theory of Innovation</strong>: to solve a seemingly impossible problem, you must stop chasing it the way everyone else does and find a new angle.</p>
+<h2>The Three Principles of the Greased Pig Theory</h2>
+<p>As I look back on that experience—standing there, grinning from ear to ear, the pig squirming under my arm and greasing up my shirt—I realize the muddy pen was a masterclass in innovation. This theory has three core principles:</p>
+<h3>1. Invert to See</h3>
+<p>Innovators don’t outrun the crowd; they dare to run the other way. Innovation is about seeing the problem differently, not doing what everyone else is doing. In medicine, Viz.ai didn’t chase the slow herd of manual CT scan reviews by radiologists, which often delays stroke detection. Instead, they flipped the approach: their AI automatically spots strokes in brain scans and alerts specialists instantly via mobile, slashing treatment times by an average of 31 minutes and turning a critical delay into a life-saving edge.</p>
+<h3>2. Embrace the Chaos</h3>
+<p>Messy, uncertain moments—like a firehose-drenched pen or a failing project—are blank canvases. Chaos hides opportunities, waiting for someone to step outside the stampede. When Amazon launched AWS in 2006, they embraced the chaos of spare server capacity—a wasteful byproduct of e-commerce scaling—and flipped it into a cloud empire generating $107.6 billion in 2024 revenue alone, proving how market uncertainty can fuel explosive growth.</p>
+<h3>3. Dare to Look Foolish</h3>
+<p>Inversion takes courage. Running against the crowd felt ridiculous, but it was the only way to win. Innovators like Elon Musk don’t follow the herd; they ask, “What if everyone else is wrong?” and risk looking absurd to prove it. The courage to be misunderstood, even momentarily, is often the price of a breakthrough.</p>
+<h2>What are your greased pigs?</h2>
+<p>We all face “greased pigs” in our own lives—slippery, big problems that elude us despite our best efforts. This is where you apply the theory. Ask yourself:</p>
+<ul>
+<li>What “greased pig” in your life or work keeps slipping through your grasp, and how could flipping your approach reveal a new path forward?</li>
+<li>Where are you following the crowd in tackling a challenge, and what bold, opposite move could you try this week to break through?</li>
+</ul>
+<p>Here’s how to catch yours:</p>
+<ul>
+<li>Identify a problem you’re stuck on—maybe a business challenge, a personal goal, or a creative rut.</li>
+<li>Write down the “obvious” approach everyone else is taking.</li>
+<li>Invert it: What’s the opposite angle? If you’re struggling to attract customers with ads, try giving away valuable content. If you’re stuck in a career rut, consider a lateral move instead of climbing the same ladder.</li>
+<li>Test one inverted idea this week and see what happens.</li>
+</ul>
+<p>That muddy race was my first unconscious practice of The Greased Pig Theory. The pig didn’t change; I changed my approach. And that’s the core of the theory: you can’t always change the problem, but you can always change your strategy. Innovators turn chaos into advantage by flipping the problem, seeing angles others miss, and making the leap.</p>
+<p>The same move applies when the organization keeps chasing the customer the wrong way — more campaigns, more dashboards, more effort in the same direction — instead of inverting who orbits whom. Mass without a new angle still feels slow. Velocity starts when the business stops lunging with the herd and redesigns the chase around the customer.</p>
+<blockquote>“Anyone can chase greased pigs. Great innovators flip the chase, break the model, and walk away muddy but victorious.” — Stephen McBride</blockquote>
+</div>
+</div>
+</dialog>
+
+
 <script>
 (function(){
   // Mobile nav
@@ -2070,6 +2242,36 @@ dialog::backdrop {
   document.addEventListener('keydown', function(e){
     if (e.key === 'Escape') document.querySelectorAll('dialog[open]').forEach(function(d){ d.close(); });
   });
+
+
+  // Insights horizontal scroller
+  (function(){
+    var scroller = document.getElementById('insight-scroller');
+    var prev = document.getElementById('insight-prev');
+    var next = document.getElementById('insight-next');
+    if (!scroller || !prev || !next) return;
+    function cardStep() {
+      var card = scroller.querySelector('.card');
+      if (!card) return 360;
+      var style = window.getComputedStyle(scroller);
+      var gap = parseFloat(style.columnGap || style.gap) || 16;
+      return card.getBoundingClientRect().width + gap;
+    }
+    function updateBtns() {
+      var max = scroller.scrollWidth - scroller.clientWidth - 4;
+      prev.disabled = scroller.scrollLeft <= 4;
+      next.disabled = scroller.scrollLeft >= max;
+    }
+    prev.addEventListener('click', function(){
+      scroller.scrollBy({ left: -cardStep(), behavior: 'smooth' });
+    });
+    next.addEventListener('click', function(){
+      scroller.scrollBy({ left: cardStep(), behavior: 'smooth' });
+    });
+    scroller.addEventListener('scroll', updateBtns, { passive: true });
+    window.addEventListener('resize', updateBtns);
+    updateBtns();
+  })();
 
   // Scroll reveals
   if ('IntersectionObserver' in window) {
