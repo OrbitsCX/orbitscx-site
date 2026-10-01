@@ -1434,6 +1434,8 @@ h1, h2, h3, h4 {
   border-radius: var(--radius);
   transition: transform .35s var(--ease), box-shadow .35s, border-color .35s;
 }
+.card[data-open] { cursor: pointer; }
+.card[data-open]:focus-visible { outline: 2px solid var(--terracotta); outline-offset: 3px; }
 .card:hover {
   transform: translateY(-8px);
   box-shadow: 0 28px 60px rgba(26,17,13,.12);
@@ -2645,30 +2647,26 @@ dialog::backdrop {
     </div>
     <div class="insight-scroller-wrap">
     <div class="insight-scroller" id="insight-scroller">
-      <article class="card featured">
+      <article class="card featured" data-open="modal-greased-pig" role="button" tabindex="0" aria-haspopup="dialog" aria-label="Open article: The Greased Pig Theory of Innovation">
         <div class="meta"><span>Innovation &amp; Strategy</span><time datetime="2026-10-12">Oct 12, 2026</time></div>
         <h3>The Greased Pig Theory of Innovation</h3>
         <p>Lessons from mud and chaos: invert the chase. The same move applies when the organization keeps pursuing the customer the wrong way.</p>
-        <button class="read" type="button" data-open="modal-greased-pig">Read article <span>→</span></button>
       </article>
 
-      <article class="card">
+      <article class="card" data-open="modal-ai-golden-rule" role="button" tabindex="0" aria-haspopup="dialog" aria-label="Open article: “AI-ify” Your Products – And “The AI Golden Rule”">
         <div class="meta"><span>Product Leadership &amp; AI</span><time datetime="2026-10-01">Oct 1, 2026</time></div>
         <h3>“AI-ify” Your Products – And “The AI Golden Rule”</h3>
         <p>Chasing AI hype over user needs sinks most projects. A practical filter for product leaders: AI must empower human agency.</p>
-        <button class="read" type="button" data-open="modal-ai-golden-rule">Read article <span>→</span></button>
       </article>
-      <article class="card">
+      <article class="card" data-open="modal-eliza" role="button" tabindex="0" aria-haspopup="dialog" aria-label="Open article: AI’s Illusion and The Eliza Effect">
         <div class="meta"><span>AI &amp; Human Psychology</span><time datetime="2026-09-15">Sep 15, 2026</time></div>
         <h3>AI’s Illusion and The Eliza Effect</h3>
         <p>When machines mirror our social wiring, the line between tool and relationship blurs. What that means for leaders and for us.</p>
-        <button class="read" type="button" data-open="modal-eliza">Read article <span>→</span></button>
       </article>
-      <article class="card">
+      <article class="card" data-open="modal-ai-gold-rush" role="button" tabindex="0" aria-haspopup="dialog" aria-label="Open article: The AI Gold Rush: Designing Innovations That Stick">
         <div class="meta"><span>Innovation &amp; AI Strategy</span><time datetime="2026-07-20">Jul 20, 2026</time></div>
         <h3>The AI Gold Rush: Designing Innovations That Stick</h3>
         <p>Hype fades. Momentum and resonance don’t. How the SPIRAL framework turns curiosity into habitual reliance.</p>
-        <button class="read" type="button" data-open="modal-ai-gold-rush">Read article <span>→</span></button>
       </article>
     </div>
     </div>
@@ -2973,6 +2971,11 @@ dialog::backdrop {
     btn.addEventListener('click', function(){
       var dlg = document.getElementById(btn.dataset.open);
       if (dlg) dlg.showModal();
+    });
+  });
+  document.querySelectorAll('.card[data-open]').forEach(function(card){
+    card.addEventListener('keydown', function(e){
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); card.click(); }
     });
   });
   document.querySelectorAll('dialog').forEach(function(dlg){
