@@ -2326,6 +2326,100 @@ dialog::backdrop {
   .op3 .pod { transform: translateZ(2px) rotateZ(-90deg) rotateX(-42deg) rotateY(-72deg); }
 }
 
+
+/* Book endorsements — third-party credibility */
+.book-endorsements {
+  grid-column: 1 / -1;
+  margin-top: 12px;
+  padding-top: 72px;
+  border-top: 1px solid rgba(218,176,112,.16);
+}
+.book-endorsements-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 28px;
+  margin-bottom: 30px;
+}
+.book-endorsements-head .eyebrow { margin: 0; }
+.book-endorsements-note {
+  color: rgba(255,255,255,.38);
+  font-size: .75rem;
+  letter-spacing: .04em;
+}
+.book-endorsement-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-rows: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+  align-items: stretch;
+}
+.book-endorsement {
+  grid-column: span 1;
+  min-width: 0;
+  height: 100%;
+  box-sizing: border-box;
+  padding: 28px 26px 30px;
+  border: 1px solid rgba(218,176,112,.14);
+  border-radius: 12px;
+  background: rgba(255,255,255,.025);
+  transition: transform .35s var(--ease), border-color .35s, background .35s, box-shadow .35s;
+}
+.book-endorsement:hover {
+  transform: translateY(-4px);
+  border-color: rgba(218,176,112,.34);
+  background: rgba(255,255,255,.045);
+  box-shadow: 0 18px 40px rgba(0,0,0,.16);
+}
+.book-endorsement-author-label {
+  display: inline-block;
+  margin-bottom: 12px;
+  color: var(--tan);
+  font-size: .68rem;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+.book-endorsement-author {
+  background: rgba(218,176,112,.055);
+  border-color: rgba(218,176,112,.24);
+}
+.book-endorsement-mark {
+  display: block;
+  font: 700 1.7rem/1 var(--serif);
+  color: var(--sandstone);
+  margin-bottom: 14px;
+}
+.book-endorsement blockquote {
+  border: 0;
+  padding: 0;
+  margin: 0;
+  max-width: none;
+  font: italic 1rem/1.55 var(--serif);
+  color: rgba(255,255,255,.78);
+}
+.book-endorsement cite {
+  display: block;
+  margin-top: 18px;
+  font-style: normal;
+  font-family: var(--sans);
+  font-size: .76rem;
+  line-height: 1.45;
+  font-weight: 650;
+  color: var(--tan);
+  letter-spacing: .015em;
+}
+@media (max-width: 900px) {
+  .book-endorsement-grid { grid-template-columns: repeat(2, 1fr); }
+  .book-endorsement { grid-column: auto; }
+}
+@media (max-width: 640px) {
+  .book-endorsements { padding-top: 52px; }
+  .book-endorsements-head { display: block; }
+  .book-endorsements-note { display: block; margin-top: 8px; }
+  .book-endorsement-grid { grid-template-columns: 1fr; }
+}
+
 </style>
 </head>
 <body>
@@ -2444,6 +2538,46 @@ dialog::backdrop {
       </blockquote>
       <p>Discover actionable frameworks designed for leaders seeking to transform their customer experience architecture from a cost center into a competitive engine.</p>
       <a class="btn btn-primary" href="https://www.amazon.com/dp/B0H7NTRCBB" target="_blank" rel="noopener">Explore The CX Curve <span>↗</span></a>
+    </div>
+
+    <div class="book-endorsements">
+      <div class="book-endorsements-head">
+        <div class="eyebrow">Voices behind The CX Curve</div>
+        <div class="book-endorsements-note">Selected endorsements and author perspective from the back cover</div>
+      </div>
+      <div class="book-endorsement-grid">
+        <article class="book-endorsement">
+          <span class="book-endorsement-mark">“</span>
+          <blockquote>The CX Curve fundamentally shifts how businesses approach customer experience. A holistic, psychologically informed approach that drives deeper loyalty, more referrals, and sustainable growth.</blockquote>
+          <cite>Danielle Bass<br>Attorney/Partner, Honigman LLP</cite>
+        </article>
+        <article class="book-endorsement">
+          <span class="book-endorsement-mark">“</span>
+          <blockquote>Too many companies chase numbers and forget that real growth happens when customers actually trust you. A practical, smart way to focus on what really matters.</blockquote>
+          <cite>Cory Maloy<br>State of Utah Representative, Chair, House Business Committee; CEO, Maloy PR</cite>
+        </article>
+        <article class="book-endorsement">
+          <span class="book-endorsement-mark">“</span>
+          <blockquote>Forget the buzzwords. Dead-simple, high-impact playbook for building loyalty that lasts.</blockquote>
+          <cite>James Wright<br>Agile Thought Leader &amp; Author</cite>
+        </article>
+        <article class="book-endorsement">
+          <span class="book-endorsement-mark">“</span>
+          <blockquote>For any CXO looking to move beyond transactional metrics, this book is a must-read.</blockquote>
+          <cite>Bill Tolson<br>Independent Advisor, Data Governance</cite>
+        </article>
+        <article class="book-endorsement">
+          <span class="book-endorsement-mark">“</span>
+          <blockquote>The CX Curve will really shake up how businesses think about their customers. Building trust and momentum, every step of the way.</blockquote>
+          <cite>Tim Loynes<br>General Manager, Zinwave Ltd, UK</cite>
+        </article>
+        <article class="book-endorsement book-endorsement-author">
+          <span class="book-endorsement-author-label">Author perspective</span>
+          <span class="book-endorsement-mark">“</span>
+          <blockquote>When your business aligns with this curve, growth stops feeling forced. It begins to flow with clarity and direction, like gravity.</blockquote>
+          <cite>Stephen McBride<br>The CX Curve</cite>
+        </article>
+      </div>
     </div>
   </div>
 </section>
