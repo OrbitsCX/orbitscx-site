@@ -2533,6 +2533,82 @@ dialog::backdrop {
 }
 
 
+/* Desktop horizontal swipe behavior for repeated card groups.
+   Keep the main narrative vertical; use horizontal space for repeatable proof/content. */
+@media (min-width: 901px) {
+  .desktop-swipe {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+    overscroll-behavior-x: contain;
+    padding: 8px 4px 24px;
+    margin-right: calc(50% - 50vw + 24px);
+    padding-right: 44px;
+    position: relative;
+  }
+  .desktop-swipe::-webkit-scrollbar { display: none; }
+
+  .desktop-swipe > * {
+    flex: 0 0 360px;
+    width: 360px;
+    min-width: 0;
+    scroll-snap-align: start;
+  }
+
+  /* A generous next-card reveal makes the interaction discoverable without adding UI chrome. */
+  .desktop-swipe::after {
+    content: "";
+    flex: 0 0 1px;
+  }
+
+  .desktop-swipe-wrap {
+    position: relative;
+  }
+
+  /* The six endorsements become one horizontal row, materially shortening the page. */
+  .book-endorsement-grid.desktop-swipe {
+    grid-template-columns: none;
+    grid-template-rows: none;
+    gap: 14px;
+  }
+  .book-endorsement-grid.desktop-swipe > .book-endorsement {
+    flex: 0 0 min(390px, 34vw);
+    width: min(390px, 34vw);
+    height: auto;
+  }
+
+  /* Three-card groups stay compact and give the next card a deliberate glimpse. */
+  .pillar-grid.desktop-swipe,
+  .outcomes-grid.desktop-swipe,
+  .credentials.desktop-swipe {
+    gap: 18px;
+  }
+  .pillar-grid.desktop-swipe > .pillar,
+  .outcomes-grid.desktop-swipe > .outcome {
+    flex-basis: min(410px, 36vw);
+    width: min(410px, 36vw);
+  }
+  .credentials.desktop-swipe > .credential {
+    flex-basis: 300px;
+    width: 300px;
+  }
+
+  /* Signals are intentionally lighter-weight than cards. */
+  .signals-grid.desktop-swipe {
+    gap: 34px;
+    padding-bottom: 18px;
+  }
+  .signals-grid.desktop-swipe > .signal {
+    flex: 0 0 280px;
+    width: 280px;
+  }
+}
+
 /* Mobile horizontal swipe behavior for repeated tile/card groups */
 @media (max-width: 640px) {
   .mobile-swipe {
@@ -2730,7 +2806,7 @@ dialog::backdrop {
         <div class="eyebrow">Voices behind The CX Curve</div>
         <div class="book-endorsements-note">Selected endorsements and author perspective from the back cover</div>
       </div>
-      <div class="book-endorsement-grid mobile-swipe">
+      <div class="book-endorsement-grid mobile-swipe desktop-swipe">
         <article class="book-endorsement">
           <span class="book-endorsement-mark">“</span>
           <blockquote>The CX Curve fundamentally shifts how businesses approach customer experience. A holistic, psychologically informed approach that drives deeper loyalty, more referrals, and sustainable growth.</blockquote>
@@ -2809,7 +2885,7 @@ dialog::backdrop {
 </section>
 
 <section class="signals" aria-label="Credibility signals">
-  <div class="wrap signals-grid mobile-swipe">
+  <div class="wrap signals-grid mobile-swipe desktop-swipe">
     <div class="signal reveal">
       <strong>20+</strong>
       <span>Years in product, CX &amp; executive advisory</span>
@@ -2831,7 +2907,7 @@ dialog::backdrop {
 
 <section class="outcomes" aria-label="What engagement delivers">
   <div class="wrap">
-    <div class="outcomes-grid mobile-swipe">
+    <div class="outcomes-grid mobile-swipe desktop-swipe">
       <article class="outcome reveal">
         <div class="outcome-kicker">01 — Align</div>
         <h3>Leadership on one page</h3>
@@ -2877,7 +2953,7 @@ dialog::backdrop {
       </div>
       <p>Three integrated pillars that move the organization from scattered customer initiatives to a coherent system that creates measurable momentum.</p>
     </div>
-    <div class="pillar-grid mobile-swipe">
+    <div class="pillar-grid mobile-swipe desktop-swipe">
       <article class="pillar reveal">
         <span class="pillar-num">01</span>
         <h3>Executive Alignment</h3>
@@ -3021,7 +3097,7 @@ dialog::backdrop {
       <p>Stephen McBride has spent decades helping organizations close the gap between what leaders intend and what customers actually experience. He works at the intersection of product, operations, and executive decision-making — the places where customer business is either created or lost.</p>
       <p>Orbits CX is built on a simple conviction: when the organization orbits the customer, mass turns into velocity, and velocity compounds into performance.</p>
       <p>Engagements typically start with executive alignment and a CX diagnostic—then move into the operating changes that keep the system alive as the business scales.</p>
-      <div class="credentials mobile-swipe">
+      <div class="credentials mobile-swipe desktop-swipe">
         <div class="credential">
           <strong>Product Leadership</strong>
           <span>CPO &amp; product executive experience shaping what ships</span>
