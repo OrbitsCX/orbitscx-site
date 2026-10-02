@@ -2167,6 +2167,30 @@ dialog::backdrop {
   .equation-card { width: 100%; justify-content: space-between; }
   .credentials { grid-template-columns: 1fr; }
 
+  /* About section — prevent long text/content from creating a wider-than-screen column. */
+  .about-grid,
+  .about-grid > *,
+  .about-copy {
+    min-width: 0;
+    max-width: 100%;
+  }
+  .about-copy h2 {
+    font-size: clamp(2.05rem, 9.2vw, 3rem);
+    line-height: 1.06;
+    max-width: 100%;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+  }
+  .about-copy > p {
+    max-width: 100%;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+  }
+  .profile-card {
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
   /* Advisory pillars — compact mobile cards rather than tall desktop-style tiles */
   .pillar-grid {
     grid-template-columns: 1fr;
