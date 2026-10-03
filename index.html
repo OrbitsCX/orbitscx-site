@@ -3595,14 +3595,13 @@ dialog::backdrop {
 
             <!-- Axes -->
             <g class="cx-axes" stroke="#1A110D" stroke-width="1.75" fill="none">
-              <line x1="0" y1="360" x2="820" y2="360"/>
-              <line x1="0" y1="-16" x2="0" y2="360"/>
+              <path d="M -12 -8 L -12 372 L 812 372" stroke-linejoin="miter"/>
               <!-- arrow heads -->
-              <polyline points="820,360 812,355 812,365" fill="#1A110D" stroke="none"/>
-              <polyline points="0,-16 5,-8 -5,-8" fill="#1A110D" stroke="none"/>
+              <polyline points="820,372 812,367 812,377" fill="#1A110D" stroke="none"/>
+              <polyline points="-12,-16 -7,-8 -17,-8" fill="#1A110D" stroke="none"/>
             </g>
-            <text x="-42" y="180" text-anchor="middle" transform="rotate(-90 -42 180)" class="cx-axis-label">CX SATISFACTION LEVEL</text>
-            <text x="410" y="392" text-anchor="middle" class="cx-axis-label">TIME</text>
+            <text x="-54" y="180" text-anchor="middle" transform="rotate(-90 -54 180)" class="cx-axis-label">CX SATISFACTION LEVEL</text>
+            <text x="410" y="404" text-anchor="middle" class="cx-axis-label">TIME</text>
 
             <!-- The curve: matches the published CX Curve shape -->
             <!-- low in Obstacle → rise Research → peak late Benchmark/Invest → dip Transform → high Share -->
