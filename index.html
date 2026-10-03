@@ -1,148 +1,4719 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Orbits CX | Executive Advisory</title>
-    <style>
-        :root { 
-            --umber: #1A110D;
-            --maroon: #33140E;
-            --terracotta: #802E1E;
-            --rust: #A85426;
-            --sandstone: #BF843E;
-            --warm-tan: #DAB070;
-            --bg-sand: #FAF6F0;
-            --card-border: #E8DEC8;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#E8D8BA">
+<title>Orbits CX | Executive Advisory for Business Momentum</title>
+<meta name="description" content="Orbits CX helps executive teams build velocity by aligning the whole organization around the customer. Frameworks, diagnostics, and advisory built on The CX Curve.">
+<meta name="author" content="Stephen McBride">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="keywords" content="executive advisory, customer experience, CX strategy, business velocity, leadership alignment, The CX Curve, Drift Zones">
+<link rel="canonical" href="https://orbitscx.com/">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://orbitscx.com/">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://orbitscx.com/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Orbits CX: executive advisory for business momentum">
+<meta property="og:title" content="Orbits CX | Executive Advisory for Business Momentum">
+<meta property="og:description" content="Every business wants more momentum. Executive advisory that aligns the organization around the customer.">
+<meta property="og:site_name" content="Orbits CX">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://orbitscx.com/og-image.png">
+<meta name="twitter:title" content="Orbits CX | Executive Advisory for Business Momentum">
+<meta name="twitter:description" content="Every business wants more momentum. Align the organization around the customer — and velocity follows.">
+<link rel="icon" href="/favicon.ico?v=2" sizes="16x16 32x32 48x48">
+<link rel="icon" type="image/png" sizes="48x48" href="/favicon-48.png?v=2">
+<link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png?v=2">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png?v=2">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[
+{"@type":"WebSite","@id":"https://orbitscx.com/#website","url":"https://orbitscx.com/","name":"Orbits CX","publisher":{"@id":"https://orbitscx.com/#org"}},
+{"@type":"ProfessionalService","@id":"https://orbitscx.com/#org","name":"Orbits CX","url":"https://orbitscx.com/","description":"Executive advisory that aligns the whole organization around the customer to build business momentum.","email":"stephen@orbitscx.com","logo":"https://orbitscx.com/orbits-cx-logo.png","image":"https://orbitscx.com/og-image.png","founder":{"@id":"https://orbitscx.com/#stephen"},"address":{"@type":"PostalAddress","addressLocality":"St. George","addressRegion":"UT","addressCountry":"US"}},
+{"@type":"Person","@id":"https://orbitscx.com/#stephen","name":"Stephen McBride","jobTitle":"Founder, Orbits CX","worksFor":{"@id":"https://orbitscx.com/#org"},"url":"https://orbitscx.com/#about","sameAs":["https://www.linkedin.com/in/stephen-mcbride-215931/"]},
+{"@type":"Book","name":"The CX Curve","alternativeHeadline":"Rewiring Corporate DNA for Relentless Customer Focus","author":{"@id":"https://orbitscx.com/#stephen"},"image":"https://orbitscx.com/the-cx-curve-book.jpg","url":"https://www.amazon.com/dp/B0H7NTRCBB"}
+]}
+</script>
+<style>
+:root {
+  --umber: #1A110D;
+  --maroon: #3E1A13;
+  --terracotta: #802E1E;
+  --rust: #A85426;
+  --sandstone: #BF843E;
+  --tan: #DAB070;
+  --flat-rust: #5C2618;
+  --flat-sandstone: #D6A868;
+  --sand: #FAF6F0;
+  --paper: #FFFDFC;
+  --line: #E7DCC8;
+  --muted: #67584D;
+  --serif: Georgia, "Iowan Old Style", "Palatino Linotype", "Book Antiqua", serif;
+  --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Roboto, "Helvetica Neue", Arial, sans-serif;
+  --wrap: 1200px;
+  --radius: 10px;
+  --radius-sm: 6px;
+  --shadow-sm: 0 4px 16px rgba(26,17,13,.06);
+  --shadow: 0 20px 50px rgba(26,17,13,.10);
+  --shadow-lg: 0 32px 80px rgba(26,17,13,.14);
+  --ease: cubic-bezier(.22,1,.36,1);
+  --header-h: 72px;
+}
 
-        body { 
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; 
-            margin: 0; 
-            padding: 0; 
-            color: var(--umber); 
-            background: var(--bg-sand); 
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-        }
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; scroll-padding-top: calc(var(--header-h) + 16px); }
+body {
+  font-family: var(--sans);
+  color: var(--umber);
+  background: var(--sand);
+  line-height: 1.65;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; height: auto; display: block; }
+button, input { font: inherit; border: none; background: none; cursor: pointer; }
+h1, h2, h3, h4 {
+  font-family: var(--serif);
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+  font-weight: 400;
+}
 
-        .card { 
-            background: #FFFFFF; 
-            border: 1px solid var(--card-border); 
-            border-radius: 14px; 
-            padding: 2.25rem 2rem 2.5rem 2rem; 
-            max-width: 480px;
-            margin: 1.5rem;
-            box-shadow: 0 10px 25px -5px rgba(26, 17, 13, 0.08); 
-        }
+.wrap { width: min(var(--wrap), calc(100% - 128px)); margin-inline: auto; }
+.section { padding: 110px 0; position: relative; }
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--sandstone);
+}
+.eyebrow::before {
+  content: "";
+  width: 28px;
+  height: 1px;
+  background: currentColor;
+  flex-shrink: 0;
+}
 
-        /* Full Brand Logo Header */
-        .brand-logo-full {
-            width: 100%;
-            max-width: 220px;
-            height: auto;
-            display: block;
-            margin: 0 auto 1.25rem auto;
-        }
+.skip {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 9999;
+  background: #fff;
+  padding: 12px 18px;
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+}
+.skip:focus { left: 16px; top: 16px; }
 
-        /* Clean Status Banner */
-        .status-banner { 
-            display: inline-block;
-            background: var(--bg-sand); 
-            color: var(--terracotta); 
-            border: 1px solid var(--warm-tan);
-            padding: 0.55rem 1.25rem; 
-            border-radius: 9999px; 
-            font-size: 0.825rem; 
-            font-weight: 700;
-            letter-spacing: 0.02em;
-            margin-bottom: 1.75rem;
-            text-transform: uppercase;
-        }
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border-radius: var(--radius-sm);
+  padding: 14px 22px;
+  font-weight: 650;
+  font-size: 0.875rem;
+  letter-spacing: 0.01em;
+  border: 1px solid transparent;
+  transition: transform .25s var(--ease), background .25s, box-shadow .25s, color .25s, border-color .25s;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.btn:active { transform: translateY(1px); }
+.btn-primary {
+  background: var(--terracotta);
+  color: #fff;
+  box-shadow: 0 8px 24px rgba(128,46,30,.22);
+  border-radius: 8px;
+}
+.btn-primary:hover {
+  background: var(--maroon);
+  transform: translateY(-2px);
+  box-shadow: 0 14px 32px rgba(62,26,19,.28);
+}
+.btn-light {
+  background: transparent;
+  border-color: rgba(255,255,255,.32);
+  color: #fff;
+  border-radius: 8px;
+}
+.btn-light:hover {
+  background: #fff;
+  color: var(--umber);
+  border-color: #fff;
+  transform: translateY(-2px);
+}
+.btn-quiet {
+  color: var(--terracotta);
+  padding: 0;
+  border: 0;
+  font-weight: 700;
+  font-size: 0.82rem;
+}
+.btn-quiet span { transition: transform .2s var(--ease); display: inline-block; }
+.btn-quiet:hover span { transform: translateX(4px); }
 
-        .book-photo {
-            width: 100%;
-            height: auto;
-            max-width: 360px;
-            border-radius: 8px;
-            margin-bottom: 1.25rem;
-            box-shadow: 0 4px 12px rgba(26, 17, 13, 0.12);
-        }
+/* Header — floating glass bar */
+.site-header {
+  position: fixed;
+  inset: 12px 0 auto;
+  z-index: 200;
+  height: var(--header-h);
+  pointer-events: none;
+}
+.nav {
+  position: relative;
+  isolation: isolate;
+  pointer-events: auto;
+  height: var(--header-h);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 0 14px 0 28px;
+  border-radius: 22px;
+  transition: height .3s var(--ease), box-shadow .35s var(--ease);
+  box-shadow: 0 14px 44px rgba(26,17,13,.20), 0 2px 8px rgba(26,17,13,.10);
+}
+/* glass layer lives on a pseudo-element so the mobile menu overlay can still be fixed to the viewport */
+.nav::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  /* L→R: near-white tan under the logo, deeper warm tan toward the right */
+  background: linear-gradient(90deg,
+    rgba(255,252,246,.98) 0%,
+    rgba(252,245,232,.95) 28%,
+    rgba(242,226,200,.92) 70%,
+    rgba(232,210,178,.90) 100%);
+  backdrop-filter: blur(26px) saturate(1.45);
+  -webkit-backdrop-filter: blur(26px) saturate(1.45);
+  border: 1px solid rgba(255,255,255,.72);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.85), inset 0 -1px 0 rgba(92,38,24,.05);
+  transition: background .35s var(--ease);
+}
+.site-header.scrolled .nav {
+  height: calc(var(--header-h) - 8px);
+  box-shadow: 0 18px 50px rgba(26,17,13,.22), 0 2px 8px rgba(26,17,13,.08);
+}
+.site-header.scrolled .nav::before {
+  background: linear-gradient(90deg,
+    rgba(255,253,248,.99) 0%,
+    rgba(252,246,234,.97) 28%,
+    rgba(240,222,194,.95) 70%,
+    rgba(228,204,168,.93) 100%);
+}
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  height: 100%;
+  color: var(--flat-rust);
+  z-index: 10;
+}
+.brand-logo {
+  display: block;
+  height: calc(var(--header-h) - 16px);
+  width: auto;
+  object-fit: contain;
+  transition: height .3s var(--ease), transform .8s var(--ease);
+  transform-origin: 50% 50%;
+}
+.site-header.scrolled .brand-logo { height: calc(var(--header-h) - 24px); }
+.brand:hover .brand-logo,
+.brand:focus-visible .brand-logo { transform: rotate(-6deg); }
+@media (prefers-reduced-motion: reduce) {
+  .brand-logo { transition: height .3s var(--ease); }
+  .brand:hover .brand-logo { transform: none; }
+}
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 36px;
+  list-style: none;
+}
+.nav-links a:not(.btn) {
+  font-size: 0.95rem;
+  font-weight: 550;
+  letter-spacing: 0.02em;
+  color: rgba(92, 38, 24, 0.62);
+  transition: color .25s var(--ease), font-weight .25s var(--ease), transform .25s var(--ease);
+  position: relative;
+  padding-bottom: 6px;
+  display: inline-block;
+  transform: scale(1);
+  transform-origin: center bottom;
+}
+/* short soft dash — active only, never full-width */
+.nav-links a:not(.btn)::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: 12px;
+  height: 2px;
+  margin-left: -6px;
+  border-radius: 2px;
+  background: var(--terracotta);
+  opacity: 0;
+  transform: scaleX(0.6);
+  transition: opacity .25s var(--ease), transform .3s var(--ease);
+}
+.nav-links a:not(.btn):hover,
+.nav-links a:not(.btn):focus-visible {
+  color: var(--terracotta);
+  font-weight: 650;
+  transform: scale(1.03);
+}
+.nav-links a:not(.btn).is-active {
+  color: var(--terracotta);
+  font-weight: 650;
+  transform: scale(1.03);
+}
+.nav-links a:not(.btn).is-active::after {
+  opacity: 0.85;
+  transform: scaleX(1);
+}
+@media (prefers-reduced-motion: reduce) {
+  .nav-links a:not(.btn) { transition: color .2s ease; }
+  .nav-links a:not(.btn):hover,
+  .nav-links a:not(.btn):focus-visible,
+  .nav-links a:not(.btn).is-active { transform: none; }
+}
+.nav-links .btn { padding: 10px 16px; font-size: 0.78rem; }
+.nav-links .btn.nav-cta.btn-primary {
+  /* kill solid primary fill for the quiet nav treatment */
+  background: rgba(255, 252, 246, 0.35);
+  color: var(--flat-rust);
+  box-shadow: none;
+}
 
-        .tagline { 
-            color: var(--rust); 
-            font-weight: 700; 
-            font-size: 1.1rem; 
-            margin-bottom: 1rem; 
-        }
+/* Nav CTA — quiet, glass, 2027 */
+.nav-links .nav-cta {
+  position: relative;
+  padding: 9px 16px 9px 18px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  color: var(--flat-rust);
+  background: rgba(255, 252, 246, 0.35);
+  border: 1px solid rgba(128, 46, 30, 0.18);
+  border-radius: 999px;
+  box-shadow: none;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  overflow: hidden;
+  transition:
+    color .3s var(--ease),
+    background .3s var(--ease),
+    border-color .3s var(--ease),
+    box-shadow .35s var(--ease),
+    transform .3s var(--ease);
+}
+.nav-links .nav-cta::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(135deg, rgba(191,132,62,.12), transparent 55%);
+  opacity: 0;
+  transition: opacity .35s var(--ease);
+  pointer-events: none;
+}
+.nav-links .nav-cta::after {
+  content: "→";
+  display: inline-block;
+  margin-left: 6px;
+  opacity: 0.55;
+  transform: translateX(0);
+  transition: transform .3s var(--ease), opacity .3s var(--ease);
+}
+.nav-links .nav-cta:hover,
+.nav-links .nav-cta:focus-visible {
+  color: var(--terracotta);
+  background: rgba(255, 252, 246, 0.72);
+  border-color: rgba(128, 46, 30, 0.32);
+  box-shadow: 0 4px 20px rgba(128, 46, 30, 0.08), inset 0 1px 0 rgba(255,255,255,.6);
+  transform: translateY(-1px);
+}
+.nav-links .nav-cta:hover::before,
+.nav-links .nav-cta:focus-visible::before {
+  opacity: 1;
+}
+.nav-links .nav-cta:hover::after,
+.nav-links .nav-cta:focus-visible::after {
+  opacity: 1;
+  transform: translateX(3px);
+}
+.nav-links .nav-cta:active {
+  transform: translateY(0);
+  box-shadow: none;
+}
 
-        p { 
-            color: #4A3B32; 
-            font-size: 0.95rem; 
-            line-height: 1.6; 
-            margin-bottom: 1.75rem; 
-        }
+/* Nav Workbook button */
+.nav-worksheet-btn {
+  font-size: 0.95rem;
+  font-weight: 550;
+  letter-spacing: 0.02em;
+  color: rgba(92, 38, 24, 0.62);
+  padding: 0 0 6px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: color .25s var(--ease);
+}
+.nav-worksheet-btn:hover,
+.nav-worksheet-btn:focus-visible {
+  color: var(--terracotta);
+  font-weight: 650;
+}
+.nav-open .nav-worksheet-btn {
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: 14px 0;
+  font-size: 1.05rem;
+  color: var(--umber);
+  border-bottom: 1px solid var(--line);
+}
 
-        .btn-amazon {
-            display: block;
-            background: var(--terracotta);
-            color: #FFFFFF;
-            font-weight: 600;
-            font-size: 1rem;
-            padding: 0.85rem 1.5rem;
-            border-radius: 8px;
-            text-decoration: none;
-            transition: background-color 0.2s ease, transform 0.1s ease;
-            box-shadow: 0 2px 6px rgba(128, 46, 30, 0.25);
-            margin-bottom: 1.25rem;
-        }
+/* Chapter 9 callout in Book section — muted secondary note */
+.book-ch9-callout {
+  margin: 18px 0 6px;
+  padding: 14px 0 14px 16px;
+  background: transparent;
+  border: none;
+  border-left: 2px solid rgba(218, 176, 112, 0.45);
+  border-radius: 0;
+  max-width: 520px;
+}
+.book-ch9-label {
+  font-size: 0.65rem;
+  font-weight: 650;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--tan);
+  margin-bottom: 6px;
+}
+.book-ch9-callout p {
+  font-size: 0.95rem !important;
+  line-height: 1.55 !important;
+  color: rgba(255, 255, 255, 0.82) !important;
+  margin-bottom: 10px !important;
+  max-width: none !important;
+}
+.book-ch9-callout .btn-quiet {
+  font-size: 0.82rem;
+  color: var(--tan);
+}
+.book-ch9-callout .btn-quiet:hover {
+  color: #fff;
+}
+.book-cta-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  align-items: center;
+  margin-top: 18px;
+}
 
-        .btn-amazon:hover {
-            background: var(--maroon);
-        }
+/* Mobile menu toggle — clear control, matches quiet nav chrome */
+.nav-toggle {
+  display: none;
+  width: 46px;
+  height: 46px;
+  place-items: center;
+  border-radius: 999px;
+  color: var(--terracotta);
+  z-index: 10;
+  background: rgba(255, 252, 246, 0.72);
+  border: 1px solid rgba(128, 46, 30, 0.22);
+  box-shadow: 0 2px 10px rgba(26, 17, 13, 0.06), inset 0 1px 0 rgba(255,255,255,.7);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  transition: background .25s var(--ease), border-color .25s var(--ease), box-shadow .25s var(--ease), transform .2s var(--ease);
+  -webkit-tap-highlight-color: transparent;
+}
+.nav-toggle:hover,
+.nav-toggle:focus-visible {
+  background: rgba(255, 252, 246, 0.95);
+  border-color: rgba(128, 46, 30, 0.38);
+  box-shadow: 0 4px 16px rgba(128, 46, 30, 0.12), inset 0 1px 0 rgba(255,255,255,.8);
+}
+.nav-toggle:active {
+  transform: scale(0.96);
+}
+.nav-toggle svg {
+  width: 22px;
+  height: 22px;
+  stroke-width: 2.4;
+}
+.nav-toggle .icon-close { display: none; }
+.nav-open .nav-toggle {
+  background: rgba(255, 252, 246, 0.98);
+  border-color: rgba(128, 46, 30, 0.4);
+  color: var(--maroon);
+}
+.nav-open .nav-toggle .icon-open { display: none; }
+.nav-open .nav-toggle .icon-close { display: block; }
 
-        .email-link {
-            display: inline-block;
-            color: var(--rust);
-            font-size: 0.9rem;
-            font-weight: 600;
-            text-decoration: none;
-            transition: color 0.2s ease;
-        }
+/* Hero */
+.hero {
+  min-height: 100svh;
+  background: var(--umber);
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+  padding: calc(var(--header-h) + 72px) 0 100px;
+  display: flex;
+  align-items: center;
+}
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 60% 50% at 75% 40%, rgba(191,132,62,.16), transparent 55%),
+    radial-gradient(ellipse 40% 40% at 90% 85%, rgba(128,46,30,.2), transparent 50%),
+    linear-gradient(125deg, #1A110D 0%, #241410 45%, #3E1A13 100%);
+}
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0.18;
+  background-image: radial-gradient(rgba(255,255,255,.35) 0.6px, transparent 0.6px);
+  background-size: 22px 22px;
+  mask-image: linear-gradient(to right, transparent 5%, black 65%);
+  pointer-events: none;
+}
+.hero-grid {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 48px;
+  align-items: center;
+  /* do NOT set width:100% — it overrides .wrap side margins */
+}
+.hero-copy { max-width: 680px; }
+.hero .eyebrow { color: var(--tan); margin-bottom: 22px; }
+.hero h1 {
+  font-size: clamp(2.9rem, 6.2vw, 5.2rem);
+  max-width: 860px;
+  line-height: 0.96;
+  margin-bottom: 26px;
+  letter-spacing: -0.035em;
+}
+.hero h1 em {
+  font-style: normal;
+  color: var(--tan);
+}
 
-        .email-link:hover {
-            color: var(--terracotta);
-            text-decoration: underline;
-        }
-    </style>
+.hero h1 .h1-second {
+  display: block;
+  margin-top: 0.12em;
+  font-size: 0.72em;
+  letter-spacing: -0.025em;
+  color: rgba(255,255,255,.78);
+  font-weight: 400;
+}
+
+.hero-lead {
+  font-size: clamp(1.05rem, 1.6vw, 1.28rem);
+  line-height: 1.6;
+  color: rgba(255,255,255,.72);
+  max-width: 560px;
+  margin-bottom: 32px;
+}
+
+.hero-trust {
+  margin-top: 8px;
+  font-size: 0.78rem;
+  color: rgba(255,255,255,.42);
+  letter-spacing: 0.02em;
+}
+.hero-trust em {
+  font-style: italic;
+  color: rgba(218,176,112,.7);
+}
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 8px;
+  margin-bottom: 16px;
+}
+
+.hero-note {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: rgba(255,255,255,.48);
+  font-size: 0.76rem;
+  margin-top: 22px;
+}
+.hero-note i {
+  width: 6px;
+  height: 6px;
+  background: var(--sandstone);
+  border-radius: 50%;
+  box-shadow: 0 0 0 4px rgba(191,132,62,.15);
+  flex-shrink: 0;
+}
+
+/* Orbit stage — true elliptical orbits via offset-path */
+.orbit-stage {
+  --ds: 1.75; /* orbiting-dot scale: size, halo, glow and comet tail all scale together */
+  height: 680px;
+  width: 880px;
+  max-width: none;
+  position: relative;
+  display: grid;
+  place-items: center;
+  transform: translate(20px, -44px);
+  overflow: visible;
+  justify-self: end;
+  perspective: 1000px;
+  transform-style: preserve-3d;
+}
+.orbit-glow {
+  position: absolute;
+  width: 260px;
+  height: 260px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(218,176,112,.15), transparent 68%);
+  filter: blur(8px);
+  animation: pulse-glow 7s ease-in-out infinite;
+  z-index: 1;
+}
+@keyframes pulse-glow {
+  0%, 100% { opacity: 0.65; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.08); }
+}
+
+/* Visible elliptical track + container for offset-path dots */
+.orbit-ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid rgba(218,176,112,.06);
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.55;
+}
+.r2, .r4, .r6 { border-color: rgba(168,84,38,.10); }
+.r3, .r5, .r7 { border-color: rgba(218,176,112,.14); }
+
+/*
+  offset-path: ellipse(50% 50%) uses the ring's own width/height as radii,
+  so the dot is forced to travel on that ellipse (tilted by the ring's rotate).
+*/
+.orbit-ring .dot {
+  position: absolute;
+  offset-path: ellipse(50% 50% at 50% 50%);
+  offset-anchor: center;
+  offset-rotate: 0deg; /* keep dots from spinning */
+  animation-name: orbit-travel;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+@keyframes orbit-travel {
+  from { offset-distance: 0%; }
+  to   { offset-distance: 100%; }
+}
+
+/* Size + tilt (criss-cross) + period + direction */
+.r1 { width: 200px; height: 95px;  transform: rotate(-78deg); }
+.r1 .dot { animation-duration: 11s; }
+
+.r2 { width: 300px; height: 130px; transform: rotate(14deg); }
+.r2 .dot { animation-duration: 15s; }
+.r2 .dot:nth-child(1) { animation-direction: reverse; animation-delay: -3s; }
+.r2 .dot:nth-child(2) { animation-direction: reverse; animation-delay: -10.5s; }
+
+.r3 { width: 400px; height: 160px; transform: rotate(-55deg); }
+.r3 .dot { animation-duration: 20s; }
+.r3 .dot:nth-child(1) { animation-delay: -1s; }
+.r3 .dot:nth-child(2) { animation-delay: -11s; }
+
+.r4 { width: 520px; height: 190px; transform: rotate(68deg); }
+.r4 .dot { animation-duration: 27s; }
+.r4 .dot:nth-child(1) { animation-direction: reverse; animation-delay: -6s; }
+.r4 .dot:nth-child(2) { animation-direction: reverse; animation-delay: -19.5s; }
+
+.r5 { width: 640px; height: 220px; transform: rotate(-20deg); }
+.r5 .dot { animation-duration: 36s; }
+.r5 .dot:nth-child(1) { animation-delay: -4s; }
+.r5 .dot:nth-child(2) { animation-direction: reverse; animation-delay: -22s; }
+
+.r6 { width: 800px; height: 260px; transform: rotate(42deg); }
+.r6 .dot { animation-duration: 50s; }
+.r6 .dot:nth-child(1) { animation-direction: reverse; animation-delay: -8s; }
+.r6 .dot:nth-child(2) { animation-delay: -33s; }
+
+.r7 { width: 960px; height: 300px; transform: rotate(-88deg); }
+.r7 .dot { animation-duration: 68s; }
+.r7 .dot:nth-child(1) { animation-delay: -5s; }
+.r7 .dot:nth-child(2) { animation-direction: reverse; animation-delay: -39s; }
+
+.dot {
+  width: calc(8px * var(--ds, 1));
+  height: calc(8px * var(--ds, 1));
+  border-radius: 50%;
+  background: var(--tan);
+  box-shadow: 0 0 0 calc(3px * var(--ds, 1)) rgba(218,176,112,.12), 0 0 calc(16px * var(--ds, 1)) rgba(218,176,112,.5);
+  z-index: 3;
+}
+.d-xs { width: calc(4px * var(--ds, 1)); height: calc(4px * var(--ds, 1)); background: rgba(218,176,112,.75); box-shadow: 0 0 calc(8px * var(--ds, 1)) rgba(218,176,112,.4); }
+.d-sm { width: calc(6px * var(--ds, 1)); height: calc(6px * var(--ds, 1)); }
+.d-md { width: calc(8px * var(--ds, 1)); height: calc(8px * var(--ds, 1)); }
+.d-lg { width: calc(10px * var(--ds, 1)); height: calc(10px * var(--ds, 1)); background: var(--rust); box-shadow: 0 0 0 calc(3px * var(--ds, 1)) rgba(168,84,38,.12), 0 0 calc(18px * var(--ds, 1)) rgba(168,84,38,.5); }
+.d-xl { width: calc(12px * var(--ds, 1)); height: calc(12px * var(--ds, 1)); background: #fff; box-shadow: 0 0 0 calc(3px * var(--ds, 1)) rgba(255,255,255,.1), 0 0 calc(20px * var(--ds, 1)) rgba(255,255,255,.4); }
+.d-rust { background: var(--rust); box-shadow: 0 0 0 calc(3px * var(--ds, 1)) rgba(168,84,38,.12), 0 0 calc(16px * var(--ds, 1)) rgba(168,84,38,.5); }
+.d-light { background: #fff; box-shadow: 0 0 0 calc(3px * var(--ds, 1)) rgba(255,255,255,.1), 0 0 calc(14px * var(--ds, 1)) rgba(255,255,255,.4); }
+
+
+/* —— 3D orbital planes (pass in front of the sphere) —— */
+.orbit-3d {
+  position: absolute;
+  width: 280px;
+  height: 280px;
+  left: 50%;
+  top: 50%;
+  margin: -140px 0 0 -140px;
+  perspective: 900px;
+  transform-style: preserve-3d;
+  z-index: 6;
+  pointer-events: none;
+}
+.orbit-plane {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 1px solid rgba(218,176,112,.22);
+  transform-style: preserve-3d;
+  animation: plane-spin linear infinite;
+  box-shadow: 0 0 12px rgba(191,132,62,.06);
+}
+.orbit-plane::before {
+  /* subtle thickness hint */
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,.04);
+  transform: translateZ(1px);
+}
+.orbit-plane .pod {
+  position: absolute;
+  top: calc(-5px * var(--ds, 1));
+  left: calc(50% - 5px * var(--ds, 1));
+  width: calc(10px * var(--ds, 1));
+  height: calc(10px * var(--ds, 1));
+  border-radius: 50%;
+  background: var(--tan);
+  box-shadow: 0 0 0 calc(3px * var(--ds, 1)) rgba(218,176,112,.15), 0 0 calc(18px * var(--ds, 1)) rgba(218,176,112,.55);
+  transform: translateZ(2px);
+  --tc: 218,176,112;
+  --tail: calc(32px * var(--ds, 1));
+}
+.orbit-plane .pod.pod-rust {
+  background: var(--rust);
+  box-shadow: 0 0 0 calc(3px * var(--ds, 1)) rgba(168,84,38,.15), 0 0 calc(18px * var(--ds, 1)) rgba(168,84,38,.5);
+  --tc: 200,104,52;
+  --tail: calc(36px * var(--ds, 1));
+}
+.orbit-plane .pod.pod-light {
+  background: #fff;
+  width: calc(8px * var(--ds, 1));
+  height: calc(8px * var(--ds, 1));
+  top: calc(-4px * var(--ds, 1));
+  left: calc(50% - 4px * var(--ds, 1));
+  box-shadow: 0 0 0 calc(3px * var(--ds, 1)) rgba(255,255,255,.12), 0 0 calc(16px * var(--ds, 1)) rgba(255,255,255,.45);
+  --tc: 255,255,255;
+  --tail: calc(28px * var(--ds, 1));
+}
+.orbit-plane .pod.pod-sm {
+  width: calc(6px * var(--ds, 1));
+  height: calc(6px * var(--ds, 1));
+  top: calc(-3px * var(--ds, 1));
+  left: calc(50% - 3px * var(--ds, 1));
+  --tail: calc(20px * var(--ds, 1));
+}
+/* Comet tails on 3D pods (trail opposite motion) */
+.orbit-plane .pod::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 50%;
+  width: var(--tail);
+  height: 100%;
+  transform: translateY(-50%);
+  background: linear-gradient(to left, rgba(var(--tc), .55), rgba(var(--tc), 0));
+  clip-path: polygon(100% 0, 100% 100%, 0 50%);
+  pointer-events: none;
+}
+/* Pods placed on the far (bottom) side of a plane travel the opposite way on screen: flip tail */
+.orbit-plane .pod.pod-flip::after {
+  right: auto;
+  left: 50%;
+  background: linear-gradient(to right, rgba(var(--tc), .55), rgba(var(--tc), 0));
+  clip-path: polygon(0 0, 0 100%, 100% 50%);
+}
+/* Reverse-spinning plane: flip tail direction */
+.op2 .pod::after {
+  right: auto;
+  left: 50%;
+  background: linear-gradient(to right, rgba(var(--tc), .55), rgba(var(--tc), 0));
+  clip-path: polygon(0 0, 0 100%, 100% 50%);
+}
+
+/* Three non-parallel orbits — different tilt axes so they criss-cross in 3D */
+.op1 {
+  animation: plane-spin-1 14s linear infinite;
+  border-color: rgba(218,176,112,.35);
+}
+.op2 {
+  animation: plane-spin-2 19s linear infinite;
+  border-color: rgba(168,84,38,.28);
+  inset: 24px;
+}
+.op3 {
+  animation: plane-spin-3 25s linear infinite;
+  border-color: rgba(218,176,112,.25);
+  inset: -22px;
+}
+@keyframes plane-spin-1 {
+  from { transform: rotateY(18deg) rotateX(78deg) rotateZ(0deg); }
+  to   { transform: rotateY(18deg) rotateX(78deg) rotateZ(360deg); }
+}
+@keyframes plane-spin-2 {
+  from { transform: rotateY(-58deg) rotateX(55deg) rotateZ(0deg); }
+  to   { transform: rotateY(-58deg) rotateX(55deg) rotateZ(-360deg); }
+}
+@keyframes plane-spin-3 {
+  from { transform: rotateY(72deg) rotateX(42deg) rotateZ(90deg); }
+  to   { transform: rotateY(72deg) rotateX(42deg) rotateZ(450deg); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .orbit-plane { animation: none; }
+}
+
+
+/* Registered so phase colors interpolate smoothly through The CX Curve */
+@property --cx-c1 {
+  syntax: '<color>';
+  inherits: false;
+  initial-value: rgba(218,176,112,.45);
+}
+@property --cx-c2 {
+  syntax: '<color>';
+  inherits: false;
+  initial-value: rgba(168,84,38,.55);
+}
+@property --cx-c3 {
+  syntax: '<color>';
+  inherits: false;
+  initial-value: rgba(92,38,24,.85);
+}
+@property --cx-c4 {
+  syntax: '<color>';
+  inherits: false;
+  initial-value: rgba(26,17,13,.95);
+}
+@property --cx-glow {
+  syntax: '<color>';
+  inherits: false;
+  initial-value: rgba(191,132,62,.35);
+}
+@property --cx-bezel {
+  syntax: '<color>';
+  inherits: false;
+  initial-value: rgba(218,176,112,.16);
+}
+
+.orbit-core {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  border: none;
+  /* CX Curve phase colors — slow journey through the six stages */
+  --cx-c1: rgba(218,176,112,.45);
+  --cx-c2: rgba(168,84,38,.55);
+  --cx-c3: rgba(92,38,24,.85);
+  --cx-c4: rgba(26,17,13,.95);
+  --cx-glow: rgba(191,132,62,.35);
+  --cx-bezel: rgba(218,176,112,.16);
+  background:
+    radial-gradient(circle at 32% 28%, rgba(255,255,255,.55) 0%, rgba(255,255,255,.12) 18%, transparent 42%),
+    radial-gradient(circle at 50% 50%, var(--cx-c1) 0%, var(--cx-c2) 38%, var(--cx-c3) 68%, var(--cx-c4) 100%);
+  box-shadow:
+    0 12px 40px rgba(0,0,0,.45),
+    0 0 60px var(--cx-glow),
+    inset -12px -16px 28px rgba(0,0,0,.35),
+    inset 10px 12px 24px rgba(255,255,255,.12);
+  z-index: 3;
+  position: relative;
+  animation: cx-curve-phase 120s ease-in-out infinite;
+}
+@keyframes cx-curve-phase {
+  /* 0%  Obstacle — near-black */
+  0%, 100% {
+    --cx-c1: rgba(60,40,32,.55);
+    --cx-c2: rgba(40,26,20,.7);
+    --cx-c3: rgba(26,17,13,.9);
+    --cx-c4: rgba(12,8,6,.98);
+    --cx-glow: rgba(80,50,35,.25);
+    --cx-bezel: rgba(120,90,70,.14);
+  }
+  /* Research — deep maroon */
+  16.6% {
+    --cx-c1: rgba(120,45,40,.5);
+    --cx-c2: rgba(90,30,28,.65);
+    --cx-c3: rgba(60,20,18,.88);
+    --cx-c4: rgba(30,12,10,.97);
+    --cx-glow: rgba(128,46,30,.3);
+    --cx-bezel: rgba(160,70,55,.16);
+  }
+  /* Benchmark — terracotta / rust */
+  33.3% {
+    --cx-c1: rgba(200,90,55,.5);
+    --cx-c2: rgba(168,84,38,.6);
+    --cx-c3: rgba(100,40,25,.88);
+    --cx-c4: rgba(40,18,12,.96);
+    --cx-glow: rgba(168,84,38,.38);
+    --cx-bezel: rgba(200,120,70,.18);
+  }
+  /* Invest — burnt orange */
+  50% {
+    --cx-c1: rgba(230,130,50,.55);
+    --cx-c2: rgba(200,100,35,.6);
+    --cx-c3: rgba(140,60,25,.85);
+    --cx-c4: rgba(55,25,12,.95);
+    --cx-glow: rgba(200,110,40,.4);
+    --cx-bezel: rgba(230,150,80,.2);
+  }
+  /* Transform — amber orange */
+  66.6% {
+    --cx-c1: rgba(245,170,60,.55);
+    --cx-c2: rgba(224,140,40,.6);
+    --cx-c3: rgba(170,90,30,.82);
+    --cx-c4: rgba(70,35,15,.94);
+    --cx-glow: rgba(230,150,50,.42);
+    --cx-bezel: rgba(240,180,90,.22);
+  }
+  /* Share — golden yellow */
+  83.3% {
+    --cx-c1: rgba(255,210,100,.55);
+    --cx-c2: rgba(240,180,70,.58);
+    --cx-c3: rgba(200,140,45,.8);
+    --cx-c4: rgba(90,55,20,.92);
+    --cx-glow: rgba(240,190,80,.45);
+    --cx-bezel: rgba(255,210,120,.24);
+  }
+}
+
+.orbit-core::after {
+  content: "";
+  position: absolute;
+  inset: 8%;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 25%, rgba(255,255,255,.2), transparent 55%);
+  pointer-events: none;
+}
+/* Comet trails: a tapered, fading tail that follows each dot along its path */
+.orbit-ring .dot { offset-rotate: auto; --tc: 218,176,112; --tail: calc(30px * var(--ds, 1)); }
+/* dots that travel against the path direction need the tail flipped */
+.r2 .dot:nth-child(1), .r2 .dot:nth-child(2),
+.r4 .dot:nth-child(1), .r4 .dot:nth-child(2),
+.r5 .dot:nth-child(2),
+.r6 .dot:nth-child(1),
+.r7 .dot:nth-child(2) { offset-rotate: reverse; }
+.orbit-ring .dot.d-rust, .orbit-ring .dot.d-lg { --tc: 200,104,52; }
+.orbit-ring .dot.d-light, .orbit-ring .dot.d-xl { --tc: 255,255,255; }
+.orbit-ring .dot.d-xs { --tail: calc(12px * var(--ds, 1)); }
+.orbit-ring .dot.d-sm { --tail: calc(24px * var(--ds, 1)); }
+.orbit-ring .dot.d-md { --tail: calc(32px * var(--ds, 1)); }
+.orbit-ring .dot.d-lg { --tail: calc(44px * var(--ds, 1)); }
+.orbit-ring .dot.d-xl { --tail: calc(56px * var(--ds, 1)); }
+.orbit-ring .dot::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 50%;
+  width: var(--tail);
+  height: 100%;
+  transform: translateY(-50%);
+  background: linear-gradient(to left, rgba(var(--tc), .6), rgba(var(--tc), 0));
+  clip-path: polygon(100% 0, 100% 100%, 0 50%);
+  pointer-events: none;
+}
+
+/* Very faint ripple leaving the core, one slow wave every 12s */
+.core-pulse {
+  position: absolute;
+  width: 92px;
+  height: 92px;
+  box-sizing: border-box;
+  border: 1px solid rgba(218,176,112,1);
+  border-radius: 50%;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0;
+  animation: core-ripple 12s linear 1.5s infinite;
+}
+@keyframes core-ripple {
+  0%   { width: 92px;  height: 92px;  opacity: 0; }
+  6%   { opacity: .16; }
+  75%  { width: 960px; height: 960px; opacity: 0; }
+  100% { width: 960px; height: 960px; opacity: 0; }
+}
+
+/* Facets line under the hero paragraph */
+.hero-lead--tight { margin-bottom: 18px; }
+.hero-facets {
+  max-width: 560px;
+  margin: 0 0 32px;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-size: 0.7rem;
+  font-weight: 700;
+  line-height: 2;
+  color: var(--tan);
+}
+.hero-facets span { white-space: nowrap; }
+.hero-facets span { margin-right: 1.5em; }
+.hero-facets span::before {
+  content: "";
+  display: inline-block;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: currentColor;
+  opacity: .6;
+  margin-right: .8em;
+  vertical-align: middle;
+  position: relative;
+  top: -1px;
+}
+.hero-facets .hero-facets-more { color: rgba(255,255,255,.5); }
+.hero-facets .hero-facets-more::before { display: none; }
+
+/* Core: fine inner bezel + soft specular highlight, like a polished lens */
+.orbit-core::before {
+  content: "";
+  position: absolute;
+  inset: 6px;
+  border-radius: 50%;
+  border: 1px solid var(--cx-bezel, rgba(218,176,112,.16));
+  pointer-events: none;
+  transition: border-color .8s ease;
+}
+.orbit-core::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: radial-gradient(ellipse 46% 30% at 34% 23%, rgba(255,255,255,.20), transparent 72%);
+  pointer-events: none;
+}
+
+/* Subtle "CX" watermark inside the core circle (sized to stay fully within it) */
+.core-mark {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+  border-radius: 50%;
+}
+.core-mark text {
+  font-family: var(--serif);
+  font-weight: 700;
+  font-size: 52px;
+  fill: url(#cxGrad);
+  opacity: 1;
+  filter: drop-shadow(0 1px 2px rgba(0,0,0,.45)) drop-shadow(0 0 10px rgba(240,208,140,.35));
+}
+
+.hero-equation {
+  position: absolute;
+  bottom: 12px;
+  right: 0;
+  left: 0;
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 12px;
+  font: italic 1.0rem var(--serif);
+  color: rgba(255,255,255,.28);
+  letter-spacing: 0.02em;
+  flex-wrap: wrap;
+  text-align: center;
+  z-index: 4;
+}
+.hero-equation b { color: var(--tan); font-style: normal; }
+.hero-equation .eq-expand {
+  font-style: normal;
+  font-size: 0.7rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.38);
+  font-family: var(--sans);
+  font-weight: 500;
+}
+
+/* Momentum */
+.momentum {
+  background: var(--paper);
+  border-bottom: 1px solid var(--line);
+}
+.momentum-grid {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 72px;
+  align-items: center;
+}
+.momentum h2 {
+  font-size: clamp(2.4rem, 4.6vw, 4.1rem);
+  color: var(--flat-rust);
+  max-width: 520px;
+  margin-bottom: 8px;
+}
+.momentum h2 span { color: var(--sandstone); }
+.momentum-copy p {
+  font-size: 1.08rem;
+  color: var(--muted);
+  max-width: 520px;
+  margin-bottom: 18px;
+}
+.equation-card {
+  margin-top: 28px;
+  display: inline-flex;
+  align-items: baseline;
+  gap: 18px;
+  padding: 20px 26px;
+  border: 1px solid var(--line);
+  background: var(--sand);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+}
+.equation-card .formula {
+  font: 700 2.1rem var(--serif);
+  color: var(--flat-rust);
+  letter-spacing: -0.02em;
+}
+.equation-card span {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--muted);
+  font-weight: 600;
+}
+
+/* Advisory */
+.advisory { background: var(--sand); }
+.section-intro {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 56px;
+  align-items: end;
+  margin-bottom: 56px;
+}
+.section-intro h2 {
+  font-size: clamp(2.4rem, 4.5vw, 4rem);
+  color: var(--flat-rust);
+  max-width: 560px;
+}
+.section-intro p {
+  font-size: 1.05rem;
+  color: var(--muted);
+  max-width: 460px;
+}
+.pillar-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+.pillar {
+  padding: 40px 32px 44px;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  position: relative;
+  overflow: hidden;
+  transition: transform .4s var(--ease), box-shadow .4s, border-color .4s, background .3s;
+}
+.pillar::after {
+  content: "";
+  position: absolute;
+  inset: auto -20% -40% auto;
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(191,132,62,.08), transparent 70%);
+  pointer-events: none;
+  transition: transform .5s var(--ease);
+}
+.pillar:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 28px 60px rgba(26,17,13,.12);
+  border-color: rgba(191,132,62,.4);
+  background: #fff;
+}
+.pillar:hover::after { transform: scale(1.4); }
+.pillar-num {
+  font: 700 2.8rem var(--serif);
+  color: rgba(191,132,62,.22);
+  letter-spacing: -0.04em;
+  line-height: 1;
+  margin-bottom: 28px;
+  display: block;
+}
+.pillar h3 {
+  font-size: 1.5rem;
+  color: var(--flat-rust);
+  margin-bottom: 12px;
+  letter-spacing: -0.02em;
+}
+.pillar p {
+  color: var(--muted);
+  font-size: 0.94rem;
+  line-height: 1.65;
+}
+.pillar-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 28px;
+  color: var(--terracotta);
+  font-size: 0.8rem;
+  font-weight: 700;
+  transition: gap .25s var(--ease);
+}
+.pillar:hover .pillar-link { gap: 10px; }
+
+/* Diagnostic */
+.diagnostic {
+  background: var(--maroon);
+  color: #fff;
+  overflow: hidden;
+}
+.diagnostic::after {
+  content: "";
+  position: absolute;
+  width: 520px;
+  height: 520px;
+  border: 1px solid rgba(218,176,112,.1);
+  border-radius: 50%;
+  right: -220px;
+  top: -200px;
+  box-shadow: 0 0 0 60px rgba(218,176,112,.03), 0 0 0 120px rgba(218,176,112,.02);
+  pointer-events: none;
+}
+.diag-grid {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: 1fr 1.05fr;
+  gap: 72px;
+  align-items: center;
+}
+.diagnostic .eyebrow { color: var(--tan); }
+.diagnostic h2 {
+  font-size: clamp(2.5rem, 4.8vw, 4.4rem);
+  max-width: 560px;
+  margin: 16px 0 18px;
+  letter-spacing: -0.03em;
+}
+.diagnostic > .wrap > .diag-grid > div:first-child > p {
+  color: rgba(255,255,255,.68);
+  font-size: 1.05rem;
+  max-width: 480px;
+  margin-bottom: 28px;
+}
+.process { border-top: 1px solid rgba(218,176,112,.22); }
+.step {
+  display: grid;
+  grid-template-columns: 56px 1fr;
+  gap: 18px;
+  padding: 24px 16px;
+  margin: 0 -16px;
+  border-bottom: 1px solid rgba(218,176,112,.16);
+  border-radius: 10px;
+  transition: background .3s, transform .3s var(--ease);
+}
+.step:hover {
+  background: rgba(255,255,255,.04);
+  transform: translateX(4px);
+}
+.step-num {
+  font: 700 1.35rem var(--serif);
+  color: var(--tan);
+  padding-top: 0;
+  opacity: 0.9;
+}
+.step h3 {
+  font-size: 1.1rem;
+  color: #fff;
+  margin-bottom: 4px;
+  font-family: var(--sans);
+  font-weight: 650;
+  letter-spacing: -0.01em;
+}
+.step p {
+  font-size: 0.88rem;
+  color: rgba(255,255,255,.55);
+  line-height: 1.55;
+}
+
+/* About */
+.about { background: var(--paper); }
+.about-grid {
+  display: grid;
+  grid-template-columns: 340px 1fr;
+  gap: 72px;
+  align-items: stretch;
+}
+.profile-card {
+  background: var(--umber);
+  color: #fff;
+  padding: 32px;
+  border-radius: var(--radius);
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+.profile-card::after {
+  content: "";
+  position: absolute;
+  width: 220px;
+  height: 220px;
+  border: 1px solid rgba(218,176,112,.14);
+  border-radius: 50%;
+  right: -90px;
+  bottom: -70px;
+}
+.profile {
+  width: 148px;
+  height: 148px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid var(--sandstone);
+  margin-bottom: 22px;
+  position: relative;
+  z-index: 2;
+  background:
+    radial-gradient(circle at 40% 35%, rgba(218,176,112,.25), transparent 50%),
+    linear-gradient(145deg, #3E1A13, #1A110D);
+  display: grid;
+  place-items: center;
+}
+.profile img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 20%;
+}
+.profile-initials {
+  font: 700 2.4rem var(--serif);
+  color: var(--tan);
+  letter-spacing: -0.03em;
+  user-select: none;
+}
+/* Profile photo: hover to enlarge (orbit ring, glow, 3D tilt) */
+.profile { overflow: visible; transform-origin: 0 0; cursor: zoom-in; --tx: 0deg; --ty: 0deg; --px: 0px; --py: 0px;
+  transition: transform .6s var(--ease), box-shadow .6s var(--ease), border-color .4s; will-change: transform; }
+.profile img { border-radius: 50%; transition: transform .7s var(--ease); }
+.profile::before, .profile::after { content: ""; position: absolute; inset: -12px; border-radius: 50%; pointer-events: none; opacity: 0; transition: opacity .5s var(--ease); }
+.profile::before { border: 1px solid rgba(218,176,112,.4); }
+.profile::after { background: radial-gradient(circle at 50% 0, #fff 0 2px, var(--tan) 2.5px, rgba(218,176,112,0) 5px); animation: profile-orbit 5s linear infinite; }
+@keyframes profile-orbit { to { transform: rotate(360deg); } }
+.profile-card h3, .profile-role, .stat { transition: opacity .45s var(--ease), filter .45s var(--ease); }
+@media (hover: hover) and (pointer: fine) {
+  .profile:hover { transform: scale(1.85) perspective(700px) rotateX(var(--tx)) rotateY(var(--ty)); border-color: var(--tan);
+    box-shadow: 0 0 0 4px rgba(191,132,62,.18), 0 18px 50px rgba(0,0,0,.55), 0 0 50px rgba(218,176,112,.3); }
+  .profile:hover img { transform: scale(1.07) translate(var(--px), var(--py)); }
+  .profile:hover::before, .profile:hover::after { opacity: 1; }
+  .profile-card:has(.profile:hover) :is(h3, .profile-role, .stat) { opacity: .15; filter: blur(2px); }
+}
+.profile-card h3 {
+  font-size: 1.55rem;
+  margin-bottom: 2px;
+}
+.profile-role {
+  color: var(--tan);
+  font-size: 0.82rem;
+  font-weight: 650;
+  margin-bottom: 28px;
+}
+.stat {
+  border-top: 1px solid rgba(218,176,112,.2);
+  padding: 14px 0;
+}
+.stat strong {
+  display: block;
+  font: 1.25rem var(--serif);
+  color: #fff;
+}
+.stat span {
+  font-size: 0.72rem;
+  color: rgba(255,255,255,.5);
+}
+.about-copy .eyebrow { margin-bottom: 16px; }
+.about-copy h2 {
+  font-size: clamp(2.4rem, 4.5vw, 4rem);
+  color: var(--flat-rust);
+  max-width: 640px;
+  margin-bottom: 20px;
+}
+.about-copy > p {
+  font-size: 1.05rem;
+  color: var(--muted);
+  max-width: 640px;
+  margin-bottom: 16px;
+}
+.credentials {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-top: 32px;
+}
+.credential {
+  border: 1px solid var(--line);
+  padding: 16px;
+  background: var(--sand);
+  border-radius: var(--radius-sm);
+  transition: border-color .25s, box-shadow .25s;
+}
+.credential:hover {
+  border-color: rgba(191,132,62,.4);
+  box-shadow: var(--shadow-sm);
+}
+.credential strong {
+  display: block;
+  font-size: 0.82rem;
+  color: var(--umber);
+  font-weight: 700;
+}
+.credential span {
+  display: block;
+  font-size: 0.72rem;
+  color: var(--muted);
+  margin-top: 4px;
+}
+
+/* Insights */
+.insights {
+  background: var(--sand);
+  border-top: 1px solid var(--line);
+}
+.insight-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 24px;
+  margin-bottom: 40px;
+}
+.insight-top h2 {
+  font-size: clamp(2.4rem, 4.5vw, 4rem);
+  color: var(--flat-rust);
+}
+.insight-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 24px;
+  margin-bottom: 28px;
+}
+.insight-controls {
+  display: flex;
+  gap: 10px;
+  flex-shrink: 0;
+}
+.insight-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid var(--line);
+  background: var(--paper);
+  color: var(--flat-rust);
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  transition: background .2s, border-color .2s, color .2s, transform .2s, opacity .2s;
+}
+.insight-btn:hover:not(:disabled) {
+  background: var(--umber);
+  border-color: var(--umber);
+  color: #fff;
+  transform: translateY(-1px);
+}
+.insight-btn:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+.insight-btn svg {
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.insight-scroller-wrap {
+  position: relative;
+  margin-right: calc(50% - 50vw + 24px);
+  margin-left: 0;
+  padding-right: 24px;
+}
+.insight-swipe-hint {
+  display: none;
+}
+.insight-scroller {
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  padding: 8px 4px 28px;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+.insight-scroller::-webkit-scrollbar { display: none; }
+
+.insight-scroller .card {
+  flex: 0 0 min(340px, 78vw);
+  width: min(340px, 78vw);
+  min-height: 300px;
+  scroll-snap-align: start;
+}
+.insight-scroller .card.featured {
+  flex: 0 0 min(400px, 85vw);
+  width: min(400px, 85vw);
+  min-height: 300px;
+}
+
+@media (max-width: 1024px) {
+  .insight-scroller-wrap {
+    padding-inline: 24px;
+    margin-inline: 0;
+  }
+}
+@media (max-width: 640px) {
+  /* Give the CX watermark a little more breathing room on narrow screens. */
+  .core-mark text { font-size: 48px; }
+  .insight-top {
+    margin-bottom: 12px;
+  }
+  .insight-controls { display: none; } /* swipe on phone */
+  .insight-swipe-hint {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 7px;
+    margin: 0 2px 10px;
+    color: var(--flat-rust);
+    font-size: .72rem;
+    font-weight: 700;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+  }
+  .insight-swipe-hint .swipe-arrow {
+    display: inline-block;
+    font-size: 1rem;
+    line-height: 1;
+    animation: insightNudge 1.8s ease-in-out infinite;
+  }
+  .insight-scroller-wrap {
+    padding-inline: 0;
+    overflow: visible;
+  }
+  .insight-scroller {
+    padding-inline: 4px 18px;
+    gap: 12px;
+    overflow-y: hidden;
+  }
+  .insight-scroller .card {
+    min-height: 0;
+    padding: 24px;
+  }
+  .insight-scroller .card.featured {
+    min-height: 0;
+  }
+  .insight-scroller-wrap::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 28px;
+    width: 28px;
+    pointer-events: none;
+    background: linear-gradient(90deg, rgba(247,241,232,0), var(--sand));
+  }
+}
+@keyframes insightNudge {
+  0%, 100% { transform: translateX(0); opacity: .7; }
+  50% { transform: translateX(5px); opacity: 1; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .insight-swipe-hint .swipe-arrow { animation: none; }
+}
+.card {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  padding: 28px;
+  min-height: 300px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius);
+  transition: transform .35s var(--ease), box-shadow .35s, border-color .35s;
+}
+.card[data-open] { cursor: pointer; }
+.card[data-open]:focus-visible { outline: 2px solid var(--terracotta); outline-offset: 3px; }
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 28px 60px rgba(26,17,13,.12);
+  border-color: rgba(191,132,62,.35);
+}
+.card.featured {
+  background: var(--umber);
+  color: #fff;
+  border-color: var(--umber);
+  min-height: 380px;
+}
+.card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, var(--terracotta), var(--sandstone));
+  opacity: 0.9;
+}
+.meta {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 0.62rem;
+  font-weight: 700;
+  color: var(--rust);
+  margin-bottom: 28px;
+}
+.featured .meta { color: var(--tan); }
+.card h3 {
+  font-size: 1.4rem;
+  margin-bottom: 12px;
+  max-width: 480px;
+  letter-spacing: -0.02em;
+}
+.featured h3 { font-size: clamp(1.65rem, 2.6vw, 2.2rem); }
+.card p {
+  font-size: 0.9rem;
+  color: var(--muted);
+  max-width: 480px;
+  line-height: 1.6;
+}
+.featured p { color: rgba(255,255,255,.65); font-size: 0.95rem; }
+.read {
+  margin-top: auto;
+  padding-top: 24px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--terracotta);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: gap .2s;
+}
+.card:hover .read { gap: 10px; }
+.featured .read { color: var(--tan); }
+
+/* Book */
+.book {
+  background: var(--umber);
+  color: #fff;
+  overflow: hidden;
+}
+.book-grid {
+  display: grid;
+  grid-template-columns: 0.85fr 1.15fr;
+  gap: 80px;
+  align-items: center;
+}
+.book-visual {
+  position: relative;
+  padding: 20px 0 20px 16px;
+}
+.book-visual::before {
+  content: "";
+  position: absolute;
+  inset: 0 28px 0 0;
+  border: 1px solid rgba(218,176,112,.16);
+  border-radius: 4px;
+  transform: rotate(-2.5deg);
+}
+.book-visual img {
+  position: relative;
+  z-index: 2;
+  max-width: 380px;
+  margin-inline: auto;
+  border-radius: 6px;
+  box-shadow:
+    0 4px 8px rgba(0,0,0,.15),
+    0 24px 48px rgba(0,0,0,.35),
+    0 0 0 1px rgba(218,176,112,.12);
+  transform: perspective(900px) rotateY(-6deg) rotateX(2deg);
+  transition: transform .5s var(--ease), box-shadow .5s;
+}
+.book-visual:hover img {
+  transform: perspective(900px) rotateY(-2deg) rotateX(0deg) translateY(-4px);
+  box-shadow:
+    0 8px 16px rgba(0,0,0,.18),
+    0 32px 64px rgba(0,0,0,.4),
+    0 0 0 1px rgba(218,176,112,.18);
+}
+.book-copy .eyebrow { color: var(--tan); margin-bottom: 18px; }
+.book-copy h2 {
+  font-size: clamp(2.6rem, 5vw, 4.4rem);
+  max-width: 680px;
+  margin-bottom: 12px;
+}
+.book-copy .book-subtitle {
+  font: italic 1.35rem/1.35 var(--serif);
+  color: rgba(255,255,255,.85);
+  max-width: 560px;
+  margin-bottom: 16px;
+}
+.book-author {
+  color: var(--tan);
+  font-weight: 650;
+  margin-bottom: 22px;
+  font-size: 0.95rem;
+}
+.book-copy blockquote {
+  border-left: 2px solid var(--sandstone);
+  padding-left: 18px;
+  font: italic 1.15rem/1.55 var(--serif);
+  color: rgba(255,255,255,.78);
+  max-width: 560px;
+  margin-bottom: 20px;
+}
+.book-copy blockquote cite {
+  display: block;
+  margin-top: 10px;
+  font-style: normal;
+  font-size: 0.85rem;
+  color: rgba(255,255,255,.5);
+  font-family: var(--sans);
+}
+.book-copy p {
+  color: rgba(255,255,255,.6);
+  max-width: 560px;
+  margin-bottom: 28px;
+  font-size: 1rem;
+}
+
+/* What is the CX Curve */
+.cx-explain { background: var(--paper); border-top: 1px solid var(--line); }
+.cx-head { max-width: 760px; margin-bottom: 56px; }
+.cx-head h2 { font: 400 clamp(2.2rem, 4vw, 3.4rem)/1.1 var(--serif); letter-spacing: -.02em; margin: 14px 0 20px; }
+.cx-lead { font: italic 1.35rem/1.45 var(--serif); margin-bottom: 16px; }
+.cx-head p { color: var(--muted); }
+.cx-head p strong { color: var(--umber); }
+.cx-figure {
+  max-width: 980px;
+  margin: 8px auto 56px;
+  background:
+    radial-gradient(ellipse 80% 60% at 50% 0%, rgba(218,176,112,.08), transparent 55%),
+    #fff;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  box-shadow: var(--shadow), 0 1px 0 rgba(255,255,255,.8) inset;
+  padding: 28px 18px 14px;
+  position: relative;
+  overflow: hidden;
+}
+.cx-figure::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  box-shadow: inset 0 0 0 1px rgba(26,17,13,.04);
+}
+.cx-chart { position: relative; }
+.cx-chart-svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.cx-chart-title {
+  font-family: var(--sans), system-ui, sans-serif;
+  font-size: 20px;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  fill: #1A2A4A;
+}
+.cx-axis-label {
+  font-family: var(--sans), system-ui, sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  fill: #1A110D;
+}
+.cx-band {
+  transition: filter .6s var(--ease), opacity .6s var(--ease);
+  opacity: 1;
+}
+.cx-chart.is-dimming .cx-band { opacity: 0.86; filter: saturate(0.92); }
+.cx-chart.is-dimming .cx-band.is-hot {
+  opacity: 1;
+  filter: saturate(1.04) brightness(1.02);
+}
+.cx-curve-path {
+  stroke-dasharray: 1400;
+  stroke-dashoffset: 1400;
+  transition: none;
+}
+.cx-chart.is-drawn .cx-curve-path {
+  animation: cx-draw 4.6s cubic-bezier(.45,.05,.3,1) forwards;
+}
+@keyframes cx-draw {
+  to { stroke-dashoffset: 0; }
+}
+.cx-bead {
+  opacity: 0;
+  transition: opacity .9s ease;
+}
+.cx-chart.bead-on .cx-bead { opacity: 1; }
+.cx-hit { cursor: pointer; }
+.cx-chart-hint {
+  margin: 6px 8px 2px;
+  text-align: center;
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+  color: var(--muted);
+}
+.cx-drifts {
+  transition: opacity .4s ease;
+  pointer-events: none;
+}
+.cx-chart.show-drifts .cx-drifts { opacity: 0.35; }
+@media (prefers-reduced-motion: reduce) {
+  .cx-curve-path { stroke-dashoffset: 0; animation: none !important; }
+  .cx-bead { display: none; }
+}
+.cx-stages { list-style: none; display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-bottom: 48px; }
+.cx-stages li {
+  border-top: 4px solid var(--c);
+  background: var(--sand);
+  padding: 20px 22px 22px;
+  border-radius: 0 0 var(--radius-sm) var(--radius-sm);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: transform .5s var(--ease), box-shadow .5s, background .5s, border-color .5s;
+  outline: none;
+}
+.cx-stages li::after {
+  content: "";
+  position: absolute;
+  inset: auto -30% -50% auto;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: radial-gradient(circle, color-mix(in srgb, var(--c) 18%, transparent), transparent 70%);
+  pointer-events: none;
+  transition: transform .5s var(--ease), opacity .35s;
+  opacity: 0.6;
+}
+.cx-stages li:hover,
+.cx-stages li:focus-visible,
+.cx-stages li.is-active {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(26,17,13,.07);
+  background: #fff;
+}
+.cx-stages li:hover::after,
+.cx-stages li:focus-visible::after,
+.cx-stages li.is-active::after {
+  transform: scale(1.12);
+  opacity: 0.8;
+}
+.cx-stages b { font: 700 1.5rem/1 var(--serif); color: var(--c); transition: transform .3s var(--ease); display: inline-block; }
+.cx-stages li:hover b,
+.cx-stages li:focus-visible b,
+.cx-stages li.is-active b {
+  transform: none;
+}
+.cx-stages h3 { font: 700 1rem/1.3 var(--sans); margin: 8px 0 6px; }
+.cx-stages p { color: var(--muted); font-size: .95rem; line-height: 1.55; }
+.cx-foot { display: flex; align-items: center; justify-content: space-between; gap: 40px; border-top: 1px solid var(--line); padding-top: 32px; }
+.cx-foot p { max-width: 640px; color: var(--muted); }
+.cx-foot p strong { color: var(--umber); }
+.cx-cta { display: flex; align-items: center; gap: 28px; flex-wrap: wrap; }
+@media (max-width: 900px) {
+  .cx-stages { grid-template-columns: 1fr 1fr; }
+  .cx-foot { flex-direction: column; align-items: flex-start; }
+}
+@media (max-width: 600px) {
+  .cx-stages { grid-template-columns: 1fr; }
+}
+
+/* Worksheet modal */
+.worksheet-dialog {
+  max-width: min(720px, calc(100vw - 32px));
+  width: 100%;
+  max-height: min(92vh, 900px);
+  padding: 0;
+  border: none;
+  border-radius: 18px;
+  background: transparent;
+}
+.worksheet-dialog::backdrop {
+  background: rgba(26,17,13,.55);
+  backdrop-filter: blur(6px);
+}
+.worksheet-dialog-inner {
+  max-height: min(92vh, 900px);
+  overflow-y: auto;
+  padding: 36px 40px 40px;
+  background: var(--paper);
+  border-radius: 18px;
+  position: relative;
+}
+.ws-dialog-head { margin-bottom: 28px; padding-right: 36px; }
+.ws-dialog-head .eyebrow { color: var(--sandstone); margin-bottom: 12px; }
+.ws-dialog-head h2.dlg-title {
+  font-size: clamp(1.6rem, 3.5vw, 2.1rem);
+  margin-bottom: 10px;
+  letter-spacing: -0.03em;
+  color: var(--umber);
+}
+.ws-dialog-lead {
+  font-size: 0.98rem;
+  color: var(--muted);
+  line-height: 1.55;
+  max-width: 54ch;
+}
+.worksheet-shell {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  box-shadow: var(--shadow-sm);
+  padding: 28px 28px 24px;
+  position: relative;
+  overflow: hidden;
+}
+.worksheet-shell::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #2E2523 0%, #5C2B24 16%, #A04220 33%, #C6701A 50%, #E09A28 66%, #F2C142 100%);
+}
+.worksheet-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 28px;
+  flex-wrap: wrap;
+}
+.worksheet-badge {
+  display: inline-flex;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--terracotta);
+  background: rgba(128,46,30,.06);
+  border: 1px solid rgba(128,46,30,.12);
+  padding: 5px 11px;
+  border-radius: 999px;
+}
+.worksheet-note { font-size: 0.75rem; color: var(--muted); }
+.ws-block {
+  margin-bottom: 32px;
+  padding-bottom: 28px;
+  border-bottom: 1px solid var(--line);
+}
+.ws-block:last-of-type { border-bottom: 0; margin-bottom: 20px; padding-bottom: 0; }
+.ws-title {
+  font-family: var(--serif);
+  font-size: 1.2rem;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  margin-bottom: 6px;
+  color: var(--umber);
+}
+.ws-sub {
+  font-size: 0.9rem;
+  color: var(--muted);
+  margin-bottom: 18px;
+  max-width: 58ch;
+  line-height: 1.5;
+}
+.ws-prompts { display: grid; gap: 16px; }
+.ws-prompt { display: grid; gap: 6px; }
+.ws-q {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--umber);
+  line-height: 1.4;
+}
+.ws-prompt textarea,
+.orbit-stage-card textarea {
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 11px 13px;
+  background: var(--sand);
+  color: var(--umber);
+  font-size: 0.9rem;
+  line-height: 1.5;
+  resize: vertical;
+  min-height: 58px;
+  transition: border-color .2s, box-shadow .2s, background .2s;
+}
+.ws-prompt textarea:focus,
+.orbit-stage-card textarea:focus {
+  outline: none;
+  border-color: rgba(128,46,30,.35);
+  background: #fff;
+  box-shadow: 0 0 0 3px rgba(128,46,30,.08);
+}
+.ws-prompt textarea::placeholder,
+.orbit-stage-card textarea::placeholder {
+  color: rgba(103,88,77,.55);
+}
+.orbits-map { display: grid; gap: 0; }
+.orbit-stage-card {
+  display: grid;
+  grid-template-columns: 48px 1fr;
+  gap: 14px;
+  align-items: start;
+  padding: 14px 16px;
+  border-radius: 11px;
+  background: linear-gradient(90deg, color-mix(in srgb, var(--stage) 8%, transparent), transparent 70%);
+  border: 1px solid color-mix(in srgb, var(--stage) 18%, var(--line));
+  margin-bottom: 3px;
+}
+.osc-letter {
+  width: 40px;
+  height: 40px;
+  border-radius: 9px;
+  background: var(--stage);
+  color: #fff;
+  display: grid;
+  place-items: center;
+  font-family: var(--serif);
+  font-size: 1.15rem;
+  flex-shrink: 0;
+}
+.osc-body h4 {
+  font-family: var(--sans);
+  font-size: 0.9rem;
+  font-weight: 700;
+  margin-bottom: 1px;
+  color: var(--umber);
+}
+.osc-hint {
+  font-size: 0.74rem;
+  color: var(--muted);
+  margin-bottom: 8px;
+}
+.orbit-drift {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 18px;
+  margin: 1px 0 1px 24px;
+  position: relative;
+}
+.orbit-drift::before {
+  content: "";
+  position: absolute;
+  left: 0; right: 0;
+  top: 50%;
+  height: 1px;
+  background: repeating-linear-gradient(90deg, var(--line) 0 6px, transparent 6px 12px);
+}
+.orbit-drift span {
+  position: relative;
+  z-index: 1;
+  background: #fff;
+  padding: 0 8px;
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(103,88,77,.5);
+}
+.ws-momentum { display: grid; gap: 10px; }
+.ws-check {
+  display: flex;
+  align-items: flex-start;
+  gap: 11px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  color: var(--umber);
+  line-height: 1.4;
+  padding: 9px 12px;
+  border-radius: 9px;
+  border: 1px solid transparent;
+  transition: background .2s, border-color .2s;
+}
+.ws-check:hover { background: var(--sand); border-color: var(--line); }
+.ws-check input {
+  width: 17px;
+  height: 17px;
+  margin-top: 1px;
+  accent-color: var(--terracotta);
+  flex-shrink: 0;
+  cursor: pointer;
+}
+.ws-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  margin-top: 6px;
+}
+.ws-actions .btn-light {
+  background: #fff;
+  border: 1px solid var(--line);
+  color: var(--umber);
+}
+.ws-actions .btn-light:hover {
+  background: var(--sand);
+  border-color: rgba(128,46,30,.25);
+  color: var(--terracotta);
+}
+.ws-contact-link {
+  color: var(--terracotta);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.ws-contact-link:hover { color: var(--maroon); }
+@media (max-width: 600px) {
+  .worksheet-dialog-inner { padding: 24px 18px 28px; }
+  .worksheet-shell { padding: 20px 16px 18px; }
+  .orbit-stage-card { grid-template-columns: 36px 1fr; gap: 10px; padding: 12px; }
+  .osc-letter { width: 32px; height: 32px; font-size: 1rem; }
+  .ws-actions { flex-direction: column; align-items: stretch; }
+  .ws-actions .btn { width: 100%; justify-content: center; }
+}
+/* Mail fallback toast (appears only if the email app did not open) */
+.mail-toast {
+  position: fixed;
+  left: 50%;
+  bottom: max(20px, env(safe-area-inset-bottom, 0px));
+  transform: translateX(-50%);
+  z-index: 2147483000;
+  width: min(460px, calc(100vw - 32px));
+  padding: 16px 18px;
+  border-radius: 14px;
+  background: var(--umber);
+  color: #fff;
+  box-shadow: 0 18px 50px rgba(26,17,13,.35);
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+.mail-toast p { margin: 0 0 12px; padding-right: 22px; }
+.mail-toast strong { color: var(--tan); user-select: all; }
+.mail-toast-actions { display: flex; flex-wrap: wrap; gap: 8px; }
+.mail-toast-actions button, .mail-toast-actions a {
+  font: 700 0.8rem/1 var(--sans);
+  padding: 10px 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,.35);
+  background: transparent;
+  color: #fff;
+  cursor: pointer;
+  text-decoration: none;
+}
+.mail-toast-actions button:hover, .mail-toast-actions a:hover { background: rgba(255,255,255,.14); }
+.mail-toast-close {
+  position: absolute; top: 8px; right: 10px;
+  width: 28px; height: 28px; padding: 0;
+  border: 0; background: transparent; color: #fff; font-size: 1.3rem; line-height: 1; cursor: pointer;
+}
+@media print { .mail-toast { display: none !important; } }
+
+/* "Just a taste" call to action */
+.ws-taste {
+  margin-top: 26px;
+  padding: 24px;
+  border-radius: 14px;
+  background: linear-gradient(165deg, #FFFDFC 0%, #FAF6F0 55%, #F3E9D8 100%);
+  color: var(--umber);
+  border: 1px solid var(--line);
+  box-shadow: 0 8px 28px rgba(26, 17, 13, 0.06);
+}
+.ws-taste-logo {
+  display: block;
+  height: 44px;
+  width: auto;
+  margin: 0 0 14px;
+  object-fit: contain;
+  filter: none;
+}
+.ws-taste .ws-taste-kicker { font: 700 0.7rem/1 var(--sans); letter-spacing: .12em; text-transform: uppercase; color: var(--sandstone); margin-bottom: 10px; }
+.ws-taste h4 { font: 700 1.25rem/1.3 var(--serif); margin: 0 0 8px; color: var(--umber); }
+.ws-taste p { font-size: 0.92rem; line-height: 1.6; color: var(--muted); max-width: 56ch; }
+.ws-taste-actions { display: flex; align-items: center; gap: 18px; flex-wrap: wrap; margin-top: 18px; }
+.ws-taste .btn-primary { background: var(--terracotta); color: #fff; box-shadow: 0 8px 24px rgba(128,46,30,.18); padding: 12px 22px; }
+.ws-taste .btn-primary:hover { background: var(--maroon); color: #fff; }
+.ws-textlink {
+  font: 600 0.82rem/1.3 var(--sans); color: var(--terracotta);
+  text-decoration: underline; text-underline-offset: 3px;
+}
+.ws-textlink:hover { color: var(--maroon); }
+.ws-print-footer { display: none; }
+@media (max-width: 600px) {
+  .ws-taste { padding: 20px; }
+  .ws-taste .btn { width: 100%; justify-content: center; }
+}
+
+/* Momentum result */
+.ws-result {
+  --band: var(--sandstone);
+  display: flex;
+  gap: 18px;
+  align-items: flex-start;
+  margin-top: 20px;
+  padding: 18px 20px;
+  border: 1px solid var(--line);
+  border-left: 4px solid var(--band);
+  border-radius: 12px;
+  background: var(--sand);
+  transition: border-color .25s, background .25s;
+}
+.ws-result[data-band="low"]  { --band: #A04220; }
+.ws-result[data-band="mid"]  { --band: #C6701A; }
+.ws-result[data-band="high"] { --band: #5C7A3A; }
+.ws-result-score {
+  flex: 0 0 auto;
+  text-align: center;
+  min-width: 56px;
+  line-height: 1;
+}
+.ws-result-score b { display: block; font: 700 2.2rem/1 var(--serif); color: var(--band); }
+.ws-result-score span { display: block; margin-top: 4px; font-size: 0.68rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+.ws-result-body h4 { font: 700 1.02rem/1.3 var(--sans); color: var(--umber); margin-bottom: 6px; }
+.ws-result-body p { font-size: 0.9rem; line-height: 1.55; color: var(--muted); }
+.ws-result-quote { margin-top: 12px; padding-left: 12px; border-left: 2px solid var(--band); font-size: 0.88rem; line-height: 1.5; color: var(--umber); font-style: italic; }
+.ws-result-quote span { font-style: normal; font-weight: 700; font-size: 0.74rem; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
+.ws-result-quote[hidden], #ws-gaps-wrap[hidden] { display: none; }
+.ws-gaps-label { margin: 18px 0 10px; font: 700 0.74rem/1 var(--sans); letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+.ws-gaps { list-style: none; counter-reset: gap; display: grid; gap: 10px; padding: 0; margin: 0; }
+.ws-gaps li {
+  counter-increment: gap;
+  position: relative;
+  padding: 12px 14px 12px 46px;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  display: grid;
+  gap: 3px;
+}
+.ws-gaps li::before {
+  content: counter(gap);
+  position: absolute; left: 14px; top: 12px;
+  width: 22px; height: 22px; border-radius: 50%;
+  background: var(--band); color: #fff;
+  font: 700 0.76rem/22px var(--sans); text-align: center;
+}
+.ws-gaps b { font: 700 0.92rem/1.3 var(--sans); color: var(--umber); }
+.ws-gaps span { font-size: 0.84rem; line-height: 1.45; color: var(--muted); }
+.ws-gaps em { font-style: normal; font-size: 0.84rem; line-height: 1.45; color: var(--umber); }
+@media (max-width: 600px) {
+  .ws-result { flex-direction: column; gap: 10px; }
+  .ws-result-score { text-align: left; }
+  .ws-result-score b, .ws-result-score span { display: inline; }
+  .ws-result-score span { margin-left: 6px; }
+}
+
+.ws-print-copy { display: none; }
+@media print {
+  @page { margin: 14mm; }
+  html, body {
+    height: auto !important;
+    overflow: visible !important;
+    background: #fff !important;
+  }
+  /* Remove the rest of the page from layout entirely (not just hide it),
+     so it no longer produces blank trailing pages */
+  body > *:not(.worksheet-dialog) { display: none !important; }
+  .worksheet-dialog::backdrop { background: none !important; backdrop-filter: none !important; }
+  .worksheet-dialog[open] {
+    display: block !important;
+    position: static !important;
+    inset: auto !important;
+    margin: 0 !important;
+    width: 100% !important;
+    max-width: none !important;
+    height: auto !important;
+    max-height: none !important;
+    overflow: visible !important;
+    background: #fff !important;
+    box-shadow: none !important;
+  }
+  .worksheet-dialog-inner {
+    max-height: none !important;
+    overflow: visible !important;
+    padding: 0 !important;
+    border-radius: 0 !important;
+    background: #fff !important;
+  }
+  .worksheet-shell {
+    overflow: visible !important;
+    box-shadow: none !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  .worksheet-shell::before { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .orbit-stage-card, .ws-prompt { break-inside: avoid; page-break-inside: avoid; }
+  /* Textareas clip long answers on paper, so print a full-height copy of the text instead */
+  .ws-prompt textarea, .orbit-stage-card textarea { display: none !important; }
+  .ws-print-copy {
+    display: block;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 11px 13px;
+    min-height: 58px;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    color: var(--umber);
+  }
+  .dialog-close, .ws-actions, .ws-taste { display: none !important; }
+  .ws-print-footer { display: block !important; margin-top: 22px; padding-top: 12px; border-top: 1px solid var(--line); font-size: 0.82rem; color: var(--muted); }
+  .ws-result { break-inside: avoid; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+}
+
+/* Contact band */
+.contact-band {
+  background: linear-gradient(180deg, var(--sand) 0%, var(--paper) 100%);
+  padding: 110px 0;
+  text-align: center;
+  position: relative;
+}
+.contact-band::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 50% 60% at 50% 100%, rgba(191,132,62,.08), transparent 70%);
+  pointer-events: none;
+}
+.contact-band .eyebrow { justify-content: center; color: var(--sandstone); }
+.contact-band h2 {
+  font-size: clamp(2.6rem, 5.2vw, 4.6rem);
+  color: var(--flat-rust);
+  margin: 16px auto 18px;
+  max-width: 820px;
+  letter-spacing: -0.03em;
+}
+.contact-band p {
+  color: var(--muted);
+  font-size: 1.08rem;
+  max-width: 560px;
+  margin: 0 auto 32px;
+}
+
+/* Footer */
+.site-footer {
+  background: #100A08;
+  color: #fff;
+  padding: 56px 0 28px;
+}
+.footer-main {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 40px;
+  padding-bottom: 36px;
+  border-bottom: 1px solid rgba(218,176,112,.14);
+}
+.footer-brand {
+  font: 700 0.95rem var(--sans);
+  letter-spacing: 0.16em;
+}
+.footer-tag {
+  color: rgba(255,255,255,.45);
+  font-size: 0.82rem;
+  margin-top: 10px;
+  max-width: 300px;
+  line-height: 1.5;
+}
+.footer-links {
+  display: flex;
+  gap: 28px;
+  flex-wrap: wrap;
+}
+.footer-links a {
+  font-size: 0.78rem;
+  color: var(--tan);
+  font-weight: 650;
+  transition: color .2s;
+}
+.footer-links a:hover { color: #fff; }
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: 20px;
+  color: rgba(255,255,255,.32);
+  font-size: 0.7rem;
+}
+
+/* Dialogs */
+dialog {
+  width: min(820px, calc(100% - 28px));
+  max-height: calc(100vh - 40px);
+  margin: auto;
+  border: 1px solid var(--line);
+  background: var(--paper);
+  color: var(--umber);
+  padding: 0;
+  border-radius: 12px;
+  box-shadow: 0 40px 100px rgba(0,0,0,.35);
+}
+dialog::backdrop {
+  background: rgba(16,10,8,.78);
+  backdrop-filter: blur(6px);
+}
+.dialog-inner {
+  padding: 48px;
+  position: relative;
+  overflow-y: auto;
+  max-height: calc(100vh - 40px);
+}
+.dialog-close {
+  position: absolute;
+  right: 14px;
+  top: 12px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--sand);
+  font-size: 1.4rem;
+  color: var(--muted);
+  display: grid;
+  place-items: center;
+  transition: background .2s, color .2s;
+}
+.dialog-close:hover {
+  background: var(--line);
+  color: var(--umber);
+}
+.dialog-inner h2.dlg-title {
+  font-size: 2.2rem;
+  color: var(--flat-rust);
+  max-width: 640px;
+  margin: 8px 0 6px;
+  letter-spacing: -0.025em;
+}
+.byline {
+  color: var(--rust);
+  font-weight: 650;
+  margin-bottom: 24px;
+  font-size: 0.9rem;
+}
+.article-body {
+  font-size: 1rem;
+  line-height: 1.8;
+  max-width: 66ch;
+}
+.article-body h2 {
+  font-size: 1.35rem;
+  margin: 32px 0 10px;
+  color: var(--flat-rust);
+}
+.article-body h3 {
+  font-size: 1.1rem;
+  color: var(--rust);
+  margin: 22px 0 6px;
+  font-family: var(--sans);
+  font-weight: 700;
+}
+.article-body p { color: var(--muted); margin-bottom: 16px; }
+.article-body ul {
+  margin: 8px 0 18px 22px;
+  color: var(--muted);
+}
+.article-body li { margin-bottom: 6px; }
+.article-body blockquote {
+  border-left: 3px solid var(--tan);
+  background: var(--sand);
+  padding: 14px 18px;
+  margin: 22px 0;
+  font-style: italic;
+  border-radius: 0 6px 6px 0;
+}
+.dialog-inner .meta {
+  margin-bottom: 8px;
+}
+
+
+
+/* Outcomes */
+.outcomes {
+  background: var(--paper);
+  border-bottom: 1px solid var(--line);
+  padding: 56px 0;
+}
+.outcomes-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+.outcome {
+  padding: 28px 26px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: var(--sand);
+  transition: transform .35s var(--ease), box-shadow .35s, border-color .35s;
+}
+.outcome:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 18px 40px rgba(26,17,13,.08);
+  border-color: rgba(191,132,62,.35);
+}
+.outcome-kicker {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--sandstone);
+  margin-bottom: 12px;
+}
+.outcome h3 {
+  font-size: 1.25rem;
+  color: var(--flat-rust);
+  margin-bottom: 8px;
+  letter-spacing: -0.02em;
+}
+.outcome p {
+  font-size: 0.92rem;
+  color: var(--muted);
+  line-height: 1.55;
+}
+
+/* Quote band */
+.quote-band {
+  background: var(--umber);
+  color: #fff;
+  padding: 64px 0;
+  position: relative;
+  overflow: hidden;
+}
+.quote-band::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 50% 80% at 90% 50%, rgba(191,132,62,.12), transparent 60%);
+  pointer-events: none;
+}
+.quote-inner {
+  position: relative;
+  z-index: 1;
+  max-width: 820px;
+  margin: 0 auto;
+  text-align: center;
+}
+.quote-inner blockquote {
+  font: italic clamp(1.35rem, 2.4vw, 1.85rem) var(--serif);
+  line-height: 1.45;
+  color: rgba(255,255,255,.92);
+  margin-bottom: 22px;
+  letter-spacing: -0.015em;
+}
+.quote-inner cite {
+  display: block;
+  font: 600 0.82rem var(--sans);
+  font-style: normal;
+  color: var(--tan);
+  letter-spacing: 0.04em;
+}
+
+@media (max-width: 900px) {
+  .outcomes-grid { grid-template-columns: 1fr; }
+}
+
+
+/* Credibility signals */
+.signals {
+  background: var(--paper);
+  border-bottom: 1px solid var(--line);
+  padding: 36px 0;
+}
+.signals-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+.signal {
+  text-align: left;
+  padding: 8px 4px;
+  border-left: 2px solid rgba(191,132,62,.35);
+  padding-left: 16px;
+}
+.signal strong {
+  display: block;
+  font: 400 1.65rem var(--serif);
+  color: var(--flat-rust);
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  margin-bottom: 6px;
+}
+.signal span {
+  font-size: 0.82rem;
+  color: var(--muted);
+  line-height: 1.45;
+  display: block;
+}
+@media (max-width: 900px) {
+  .signals-grid { grid-template-columns: 1fr 1fr; gap: 18px; }
+}
+@media (max-width: 520px) {
+  .signals-grid { grid-template-columns: 1fr; }
+}
+
+/* Social proof */
+.proof {
+  background: var(--paper);
+  border-bottom: 1px solid var(--line);
+  padding: 28px 0;
+}
+.proof-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+.proof-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  white-space: nowrap;
+}
+.proof-items {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 28px;
+  align-items: center;
+}
+.proof-item {
+  font-size: 0.88rem;
+  color: var(--flat-rust);
+  font-weight: 650;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.proof-item i {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--sandstone);
+  flex-shrink: 0;
+}
+
+/* Scroll reveals */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity .7s var(--ease), transform .7s var(--ease);
+}
+.reveal.in {
+  opacity: 1;
+  transform: none;
+}
+.reveal-delay-1 { transition-delay: .08s; }
+.reveal-delay-2 { transition-delay: .16s; }
+.reveal-delay-3 { transition-delay: .24s; }
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; transition: none; }
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  html, body { overflow-x: clip; }
+  .hero-grid { grid-template-columns: minmax(0, 1fr); gap: 48px; }
+  .momentum-grid,
+  .diag-grid,
+  .about-grid,
+  .book-grid {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+  .hero {
+    min-height: auto;
+    padding-top: calc(var(--header-h) + 48px);
+    padding-bottom: 72px;
+  }
+  .orbit-stage {
+    order: -1;
+    justify-self: center;
+    width: min(92vw, 400px);
+    height: min(92vw, 400px);
+    margin: 0 auto 8px;
+    transform: none;
+    /* zoom shrinks layout + paint so the full ellipse fits (Chromium/Safari) */
+    zoom: 0.46;
+  }
+  @supports not (zoom: 1) {
+    .orbit-stage {
+      /* Firefox fallback: scale from center; reserve layout box for visual size */
+      width: 880px;
+      height: 680px;
+      margin-left: calc(50% - 44vw);
+      margin-right: auto;
+      margin-bottom: calc(-680px + 46vw);
+      transform: scale(0.46);
+      transform-origin: top center;
+    }
+  }
+  .section-intro {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .pillar-grid,
+  /* insight-grid → scroller */
+  .credentials { grid-template-columns: 1fr 1fr; }
+  .book-visual { max-width: 420px; margin-inline: auto; width: 100%; }
+  .nav-toggle { display: grid; }
+  .nav-links {
+    position: fixed;
+    inset: 0;
+    background: rgba(250, 244, 232, 0.97);
+    backdrop-filter: blur(20px) saturate(1.2);
+    -webkit-backdrop-filter: blur(20px) saturate(1.2);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 28px;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity .3s, visibility .3s;
+    z-index: 9;
+    pointer-events: none;
+  }
+  .nav-open .nav-links {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+  }
+  .nav-links a:not(.btn) {
+    font-size: 1.35rem;
+    font-weight: 600;
+    color: var(--flat-rust);
+    transform: none; /* no desktop scale jiggle on mobile menu */
+  }
+  .nav-links a:not(.btn).is-active::after {
+    opacity: 0.9;
+  }
+  .nav-links .btn { padding: 14px 24px; font-size: 0.9rem; }
+  /* keep toggle above the full-screen menu so close is always tappable */
+  .nav-open .nav-toggle { z-index: 12; position: relative; }
+}
+
+@media (max-width: 640px) {
+  .wrap { width: min(var(--wrap), calc(100% - 48px)); }
+  .section { padding: 64px 0; }
+  :root { --header-h: 64px; }
+  .site-header { inset: 8px 0 auto; }
+  .nav { padding: 0 10px 0 16px; border-radius: 18px; }
+  .brand-logo { height: 48px; }
+  .nav-toggle { width: 44px; height: 44px; }
+  .nav-links { gap: 24px; padding: 88px 24px 32px; }
+  .nav-links a:not(.btn) { font-size: 1.25rem; }
+  .nav-links .btn { width: min(100%, 280px); text-align: center; }
+  .hero { padding-top: calc(var(--header-h) + 40px); padding-bottom: 64px; }
+  .hero h1 { font-size: clamp(2.6rem, 11vw, 3.6rem); }
+  .hero-actions .btn { width: 100%; }
+  .orbit-stage {
+    width: min(92vw, 360px);
+    height: min(92vw, 360px);
+    margin: 0 auto 4px;
+    transform: none;
+    /* Keep the compact orbital artwork, but isolate its scaling to this component. */
+    zoom: 0.40;
+  }
+  @supports not (zoom: 1) {
+    .orbit-stage {
+      width: 880px;
+      height: 680px;
+      margin-left: calc(50% - 46vw);
+      margin-bottom: calc(-680px + 42vw);
+      transform: scale(0.40);
+      transform-origin: top center;
+    }
+  }
+  /* Give the CX mark a little more breathing room on narrow screens. Desktop remains unchanged. */
+  .core-mark text { font-size: 40px; textLength: 52; }
+  .hero-equation { display: none; }
+  .equation-card { width: 100%; justify-content: space-between; }
+  .credentials { grid-template-columns: 1fr; }
+
+  /* About section — prevent long text/content from creating a wider-than-screen column. */
+  .about-grid,
+  .about-grid > *,
+  .about-copy {
+    min-width: 0;
+    max-width: 100%;
+  }
+  .about-copy h2 {
+    font-size: clamp(2.05rem, 9.2vw, 3rem);
+    line-height: 1.06;
+    max-width: 100%;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+  }
+  .about-copy > p {
+    max-width: 100%;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+  }
+  .profile-card {
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  /* Advisory pillars — compact mobile cards rather than tall desktop-style tiles */
+  .pillar-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+  .pillar {
+    padding: 26px 24px 28px;
+    min-height: 0;
+  }
+  .pillar-num {
+    font-size: 2rem;
+    margin-bottom: 14px;
+  }
+  .pillar h3 {
+    font-size: 1.3rem;
+    margin-bottom: 8px;
+  }
+  .pillar p {
+    font-size: .9rem;
+    line-height: 1.52;
+  }
+  .pillar-link {
+    margin-top: 18px;
+  }
+
+  .footer-main, .footer-bottom { flex-direction: column; }
+  .dialog-inner { padding: 36px 22px; }
+  .contact-band { padding: 72px 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    transition: none !important;
+    animation: none !important;
+  }
+}
+
+
+/* Orbital spheres: true camera-facing orbs matching CX core quality — no tails */
+/* Shared sphere recipe (scaled CX-core look): dual radial + deep inset + soft outer glow */
+
+.orbit-ring .dot {
+  offset-rotate: 0deg !important;
+  opacity: 1 !important;
+  border-radius: 50%;
+  /* default tan/sandstone orb — same structure as .orbit-core */
+  background:
+    radial-gradient(circle at 32% 28%, rgba(255,255,255,.58) 0%, rgba(255,255,255,.14) 18%, transparent 44%),
+    radial-gradient(circle at 50% 52%, #E0B878 0%, #BF843E 32%, #A85426 58%, #5C2618 82%, #1A110D 100%) !important;
+  box-shadow:
+    inset calc(-2.2px * var(--ds, 1)) calc(-2.8px * var(--ds, 1)) calc(4px * var(--ds, 1)) rgba(26,17,13,.55),
+    inset calc(1.8px * var(--ds, 1)) calc(2px * var(--ds, 1)) calc(3.5px * var(--ds, 1)) rgba(255,255,255,.28),
+    0 calc(1.5px * var(--ds, 1)) calc(4px * var(--ds, 1)) rgba(0,0,0,.4),
+    0 0 calc(10px * var(--ds, 1)) rgba(191,132,62,.32) !important;
+}
+.orbit-ring .dot.d-xs {
+  background:
+    radial-gradient(circle at 32% 28%, rgba(255,255,255,.55) 0%, rgba(255,255,255,.12) 16%, transparent 42%),
+    radial-gradient(circle at 50% 52%, #DAB070 0%, #BF843E 38%, #8B4A28 72%, #2A1610 100%) !important;
+  box-shadow:
+    inset calc(-1.2px * var(--ds, 1)) calc(-1.5px * var(--ds, 1)) calc(2.2px * var(--ds, 1)) rgba(26,17,13,.55),
+    inset calc(1px * var(--ds, 1)) calc(1.1px * var(--ds, 1)) calc(2px * var(--ds, 1)) rgba(255,255,255,.32),
+    0 calc(1px * var(--ds, 1)) calc(2.5px * var(--ds, 1)) rgba(0,0,0,.35),
+    0 0 calc(7px * var(--ds, 1)) rgba(191,132,62,.35) !important;
+}
+.orbit-ring .dot.d-sm,
+.orbit-ring .dot.d-md {
+  background:
+    radial-gradient(circle at 32% 28%, rgba(255,255,255,.58) 0%, rgba(255,255,255,.14) 18%, transparent 44%),
+    radial-gradient(circle at 50% 52%, #E0B878 0%, #BF843E 32%, #A85426 58%, #5C2618 82%, #1A110D 100%) !important;
+  box-shadow:
+    inset calc(-1.8px * var(--ds, 1)) calc(-2.2px * var(--ds, 1)) calc(3.2px * var(--ds, 1)) rgba(26,17,13,.55),
+    inset calc(1.4px * var(--ds, 1)) calc(1.6px * var(--ds, 1)) calc(2.8px * var(--ds, 1)) rgba(255,255,255,.28),
+    0 calc(1.2px * var(--ds, 1)) calc(3.5px * var(--ds, 1)) rgba(0,0,0,.38),
+    0 0 calc(9px * var(--ds, 1)) rgba(191,132,62,.34) !important;
+}
+.orbit-ring .dot.d-rust,
+.orbit-ring .dot.d-lg {
+  background:
+    radial-gradient(circle at 32% 28%, rgba(255,236,210,.5) 0%, rgba(255,200,160,.12) 16%, transparent 42%),
+    radial-gradient(circle at 50% 52%, #C96A3A 0%, #A85426 30%, #802E1E 55%, #3E1A13 80%, #1A110D 100%) !important;
+  box-shadow:
+    inset calc(-2.2px * var(--ds, 1)) calc(-2.8px * var(--ds, 1)) calc(4px * var(--ds, 1)) rgba(30,10,6,.6),
+    inset calc(1.8px * var(--ds, 1)) calc(2px * var(--ds, 1)) calc(3.5px * var(--ds, 1)) rgba(255,220,190,.26),
+    0 calc(1.5px * var(--ds, 1)) calc(4px * var(--ds, 1)) rgba(0,0,0,.42),
+    0 0 calc(11px * var(--ds, 1)) rgba(168,84,38,.36) !important;
+}
+.orbit-ring .dot.d-light,
+.orbit-ring .dot.d-xl {
+  background:
+    radial-gradient(circle at 32% 28%, rgba(255,255,255,.72) 0%, rgba(255,255,255,.22) 20%, transparent 46%),
+    radial-gradient(circle at 50% 52%, #FFFDFC 0%, #E6E1D8 34%, #B0A99E 60%, #6A645C 85%, #2A2723 100%) !important;
+  box-shadow:
+    inset calc(-2.2px * var(--ds, 1)) calc(-2.8px * var(--ds, 1)) calc(4px * var(--ds, 1)) rgba(40,36,32,.48),
+    inset calc(1.8px * var(--ds, 1)) calc(2px * var(--ds, 1)) calc(3.5px * var(--ds, 1)) rgba(255,255,255,.5),
+    0 calc(1.5px * var(--ds, 1)) calc(4px * var(--ds, 1)) rgba(0,0,0,.3),
+    0 0 calc(10px * var(--ds, 1)) rgba(255,255,255,.22) !important;
+}
+.orbit-ring .dot.d-xs.d-rust,
+.orbit-ring .dot.d-sm.d-rust,
+.orbit-ring .dot.d-md.d-rust {
+  background:
+    radial-gradient(circle at 32% 28%, rgba(255,236,210,.48) 0%, rgba(255,200,160,.1) 16%, transparent 42%),
+    radial-gradient(circle at 50% 52%, #C96A3A 0%, #A85426 34%, #802E1E 62%, #2A1210 100%) !important;
+  box-shadow:
+    inset calc(-1.5px * var(--ds, 1)) calc(-1.8px * var(--ds, 1)) calc(2.8px * var(--ds, 1)) rgba(30,10,6,.58),
+    inset calc(1.2px * var(--ds, 1)) calc(1.3px * var(--ds, 1)) calc(2.2px * var(--ds, 1)) rgba(255,220,190,.28),
+    0 calc(1.1px * var(--ds, 1)) calc(3px * var(--ds, 1)) rgba(0,0,0,.38),
+    0 0 calc(8px * var(--ds, 1)) rgba(168,84,38,.36) !important;
+}
+.orbit-ring .dot.d-xs.d-light,
+.orbit-ring .dot.d-sm.d-light,
+.orbit-ring .dot.d-md.d-light {
+  background:
+    radial-gradient(circle at 32% 28%, rgba(255,255,255,.68) 0%, rgba(255,255,255,.2) 18%, transparent 44%),
+    radial-gradient(circle at 50% 52%, #FFFDFC 0%, #E6E1D8 38%, #B0A99E 65%, #4A463F 100%) !important;
+  box-shadow:
+    inset calc(-1.5px * var(--ds, 1)) calc(-1.8px * var(--ds, 1)) calc(2.8px * var(--ds, 1)) rgba(40,36,32,.45),
+    inset calc(1.2px * var(--ds, 1)) calc(1.3px * var(--ds, 1)) calc(2.2px * var(--ds, 1)) rgba(255,255,255,.52),
+    0 calc(1.1px * var(--ds, 1)) calc(3px * var(--ds, 1)) rgba(0,0,0,.28),
+    0 0 calc(8px * var(--ds, 1)) rgba(255,255,255,.24) !important;
+}
+
+/* Kill comet tails on ring dots */
+.orbit-ring .dot::before {
+  content: none !important;
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+  opacity: 0 !important;
+  background: none !important;
+  box-shadow: none !important;
+  filter: none !important;
+}
+
+/*
+  3D plane pods: counter-rotate so they always face the camera.
+  Parent planes tilt + spin; without this, circles project as flat ellipses.
+*/
+.orbit-plane .pod {
+  border-radius: 50%;
+  opacity: 1 !important;
+  background:
+    radial-gradient(circle at 32% 28%, rgba(255,255,255,.58) 0%, rgba(255,255,255,.14) 18%, transparent 44%),
+    radial-gradient(circle at 50% 52%, #E0B878 0%, #BF843E 32%, #A85426 58%, #5C2618 82%, #1A110D 100%) !important;
+  box-shadow:
+    inset calc(-2px * var(--ds, 1)) calc(-2.5px * var(--ds, 1)) calc(3.5px * var(--ds, 1)) rgba(26,17,13,.55),
+    inset calc(1.6px * var(--ds, 1)) calc(1.8px * var(--ds, 1)) calc(3px * var(--ds, 1)) rgba(255,255,255,.28),
+    0 calc(1.4px * var(--ds, 1)) calc(3.5px * var(--ds, 1)) rgba(0,0,0,.4),
+    0 0 calc(10px * var(--ds, 1)) rgba(191,132,62,.34) !important;
+  --tail: 0 !important;
+  /* base transform replaced by face-camera animations below */
+}
+.orbit-plane .pod.pod-rust {
+  background:
+    radial-gradient(circle at 32% 28%, rgba(255,236,210,.5) 0%, rgba(255,200,160,.12) 16%, transparent 42%),
+    radial-gradient(circle at 50% 52%, #C96A3A 0%, #A85426 30%, #802E1E 55%, #3E1A13 80%, #1A110D 100%) !important;
+  box-shadow:
+    inset calc(-2px * var(--ds, 1)) calc(-2.5px * var(--ds, 1)) calc(3.5px * var(--ds, 1)) rgba(30,10,6,.6),
+    inset calc(1.6px * var(--ds, 1)) calc(1.8px * var(--ds, 1)) calc(3px * var(--ds, 1)) rgba(255,220,190,.26),
+    0 calc(1.4px * var(--ds, 1)) calc(3.5px * var(--ds, 1)) rgba(0,0,0,.42),
+    0 0 calc(11px * var(--ds, 1)) rgba(168,84,38,.36) !important;
+}
+.orbit-plane .pod.pod-light {
+  background:
+    radial-gradient(circle at 32% 28%, rgba(255,255,255,.72) 0%, rgba(255,255,255,.22) 20%, transparent 46%),
+    radial-gradient(circle at 50% 52%, #FFFDFC 0%, #E6E1D8 34%, #B0A99E 60%, #6A645C 85%, #2A2723 100%) !important;
+  box-shadow:
+    inset calc(-2px * var(--ds, 1)) calc(-2.5px * var(--ds, 1)) calc(3.5px * var(--ds, 1)) rgba(40,36,32,.48),
+    inset calc(1.6px * var(--ds, 1)) calc(1.8px * var(--ds, 1)) calc(3px * var(--ds, 1)) rgba(255,255,255,.5),
+    0 calc(1.4px * var(--ds, 1)) calc(3.5px * var(--ds, 1)) rgba(0,0,0,.3),
+    0 0 calc(10px * var(--ds, 1)) rgba(255,255,255,.22) !important;
+}
+.orbit-plane .pod.pod-sm {
+  background:
+    radial-gradient(circle at 32% 28%, rgba(255,255,255,.58) 0%, rgba(255,255,255,.14) 18%, transparent 44%),
+    radial-gradient(circle at 50% 52%, #E0B878 0%, #BF843E 34%, #A85426 60%, #3E1A13 100%) !important;
+  box-shadow:
+    inset calc(-1.3px * var(--ds, 1)) calc(-1.6px * var(--ds, 1)) calc(2.4px * var(--ds, 1)) rgba(26,17,13,.55),
+    inset calc(1.1px * var(--ds, 1)) calc(1.2px * var(--ds, 1)) calc(2px * var(--ds, 1)) rgba(255,255,255,.3),
+    0 calc(1px * var(--ds, 1)) calc(2.8px * var(--ds, 1)) rgba(0,0,0,.35),
+    0 0 calc(8px * var(--ds, 1)) rgba(191,132,62,.34) !important;
+}
+.orbit-plane .pod.pod-sm.pod-rust {
+  background:
+    radial-gradient(circle at 32% 28%, rgba(255,236,210,.48) 0%, rgba(255,200,160,.1) 16%, transparent 42%),
+    radial-gradient(circle at 50% 52%, #C96A3A 0%, #A85426 34%, #802E1E 62%, #2A1210 100%) !important;
+  box-shadow:
+    inset calc(-1.3px * var(--ds, 1)) calc(-1.6px * var(--ds, 1)) calc(2.4px * var(--ds, 1)) rgba(30,10,6,.58),
+    inset calc(1.1px * var(--ds, 1)) calc(1.2px * var(--ds, 1)) calc(2px * var(--ds, 1)) rgba(255,220,190,.28),
+    0 calc(1px * var(--ds, 1)) calc(2.8px * var(--ds, 1)) rgba(0,0,0,.38),
+    0 0 calc(8px * var(--ds, 1)) rgba(168,84,38,.36) !important;
+}
+.orbit-plane .pod.pod-sm.pod-light {
+  background:
+    radial-gradient(circle at 32% 28%, rgba(255,255,255,.68) 0%, rgba(255,255,255,.2) 18%, transparent 44%),
+    radial-gradient(circle at 50% 52%, #FFFDFC 0%, #E6E1D8 38%, #B0A99E 65%, #4A463F 100%) !important;
+  box-shadow:
+    inset calc(-1.3px * var(--ds, 1)) calc(-1.6px * var(--ds, 1)) calc(2.4px * var(--ds, 1)) rgba(40,36,32,.45),
+    inset calc(1.1px * var(--ds, 1)) calc(1.2px * var(--ds, 1)) calc(2px * var(--ds, 1)) rgba(255,255,255,.52),
+    0 calc(1px * var(--ds, 1)) calc(2.8px * var(--ds, 1)) rgba(0,0,0,.28),
+    0 0 calc(8px * var(--ds, 1)) rgba(255,255,255,.24) !important;
+}
+
+/* Inverse of each plane's fixed tilt + opposing Z spin → always face camera */
+.op1 .pod {
+  animation: pod-face-1 14s linear infinite !important;
+}
+.op2 .pod {
+  animation: pod-face-2 19s linear infinite !important;
+}
+.op3 .pod {
+  animation: pod-face-3 25s linear infinite !important;
+}
+@keyframes pod-face-1 {
+  from { transform: translateZ(2px) rotateZ(0deg) rotateX(-78deg) rotateY(-18deg); }
+  to   { transform: translateZ(2px) rotateZ(-360deg) rotateX(-78deg) rotateY(-18deg); }
+}
+@keyframes pod-face-2 {
+  from { transform: translateZ(2px) rotateZ(0deg) rotateX(-55deg) rotateY(58deg); }
+  to   { transform: translateZ(2px) rotateZ(360deg) rotateX(-55deg) rotateY(58deg); }
+}
+@keyframes pod-face-3 {
+  from { transform: translateZ(2px) rotateZ(-90deg) rotateX(-42deg) rotateY(-72deg); }
+  to   { transform: translateZ(2px) rotateZ(-450deg) rotateX(-42deg) rotateY(-72deg); }
+}
+
+/* Kill comet tails on plane pods */
+.orbit-plane .pod::after,
+.orbit-plane .pod.pod-flip::after,
+.op2 .pod::after {
+  content: none !important;
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+  opacity: 0 !important;
+  background: none !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .op1 .pod, .op2 .pod, .op3 .pod { animation: none !important; }
+  .op1 .pod { transform: translateZ(2px) rotateX(-78deg) rotateY(-18deg); }
+  .op2 .pod { transform: translateZ(2px) rotateX(-55deg) rotateY(58deg); }
+  .op3 .pod { transform: translateZ(2px) rotateZ(-90deg) rotateX(-42deg) rotateY(-72deg); }
+}
+
+
+/* Book endorsements — third-party credibility */
+.book-endorsements {
+  grid-column: 1 / -1;
+  margin-top: 12px;
+  padding-top: 72px;
+  border-top: 1px solid rgba(218,176,112,.16);
+}
+.book-endorsements-head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 28px;
+  margin-bottom: 30px;
+}
+.book-endorsement-controls {
+  display: flex;
+  gap: 10px;
+  flex-shrink: 0;
+}
+/* On the dark book band, match insight arrows to warm chrome */
+.book-endorsement-controls .insight-btn {
+  background: rgba(255, 252, 246, 0.08);
+  border-color: rgba(218, 176, 112, 0.28);
+  color: var(--tan);
+}
+.book-endorsement-controls .insight-btn:hover:not(:disabled) {
+  background: var(--tan);
+  border-color: var(--tan);
+  color: var(--umber);
+}
+.book-endorsement-controls .insight-btn:disabled {
+  opacity: 0.3;
+}
+.book-endorsements-head .eyebrow { margin: 0; }
+.book-endorsements-note {
+  color: rgba(255,255,255,.38);
+  font-size: .75rem;
+  letter-spacing: .04em;
+}
+.book-endorsement-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-rows: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+  align-items: stretch;
+}
+.book-endorsement {
+  grid-column: span 1;
+  min-width: 0;
+  height: 100%;
+  box-sizing: border-box;
+  padding: 28px 26px 30px;
+  border: 1px solid rgba(218,176,112,.14);
+  border-radius: 12px;
+  background: rgba(255,255,255,.025);
+  transition: transform .35s var(--ease), border-color .35s, background .35s, box-shadow .35s;
+}
+.book-endorsement:hover {
+  transform: translateY(-4px);
+  border-color: rgba(218,176,112,.34);
+  background: rgba(255,255,255,.045);
+  box-shadow: 0 18px 40px rgba(0,0,0,.16);
+}
+.book-endorsement-author-label {
+  display: inline-block;
+  margin-bottom: 12px;
+  color: var(--tan);
+  font-size: .68rem;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+.book-endorsement-author {
+  background: rgba(218,176,112,.055);
+  border-color: rgba(218,176,112,.24);
+}
+.book-endorsement-mark {
+  display: block;
+  font: 700 1.7rem/1 var(--serif);
+  color: var(--sandstone);
+  margin-bottom: 14px;
+}
+.book-endorsement blockquote {
+  border: 0;
+  padding: 0;
+  margin: 0;
+  max-width: none;
+  font: italic 1rem/1.55 var(--serif);
+  color: rgba(255,255,255,.78);
+}
+.book-endorsement cite {
+  display: block;
+  margin-top: 18px;
+  font-style: normal;
+  font-family: var(--sans);
+  font-size: .76rem;
+  line-height: 1.45;
+  font-weight: 650;
+  color: var(--tan);
+  letter-spacing: .015em;
+}
+@media (max-width: 900px) {
+  .book-endorsement-grid { grid-template-columns: repeat(2, 1fr); }
+  .book-endorsement { grid-column: auto; }
+}
+@media (max-width: 640px) {
+  .book-endorsements { padding-top: 52px; }
+  .book-endorsements-head { display: block; }
+  .book-endorsements-note { display: block; margin-top: 8px; }
+  .book-endorsement-grid { grid-template-columns: 1fr; }
+}
+
+
+/* Desktop horizontal swipe behavior for repeated card groups.
+   Keep the main narrative vertical; use horizontal space for repeatable proof/content. */
+@media (min-width: 901px) {
+  .desktop-swipe {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+    overscroll-behavior-x: contain;
+    padding: 8px 4px 24px;
+    margin-right: calc(50% - 50vw + 24px);
+    padding-right: 44px;
+    position: relative;
+  }
+  .desktop-swipe::-webkit-scrollbar { display: none; }
+
+  .desktop-swipe > * {
+    flex: 0 0 360px;
+    width: 360px;
+    min-width: 0;
+    scroll-snap-align: start;
+  }
+
+  /* A generous next-card reveal makes the interaction discoverable without adding UI chrome. */
+  .desktop-swipe::after {
+    content: "";
+    flex: 0 0 1px;
+  }
+
+  .desktop-swipe-wrap {
+    position: relative;
+  }
+
+  /* The six endorsements become one horizontal row, materially shortening the page. */
+  .book-endorsement-grid.desktop-swipe {
+    grid-template-columns: none;
+    grid-template-rows: none;
+    gap: 14px;
+  }
+  .book-endorsement-grid.desktop-swipe > .book-endorsement {
+    flex: 0 0 min(390px, 34vw);
+    width: min(390px, 34vw);
+    height: auto;
+  }
+
+  /* Three-card groups stay compact and give the next card a deliberate glimpse. */
+  .pillar-grid.desktop-swipe,
+  .outcomes-grid.desktop-swipe,
+  .credentials.desktop-swipe {
+    gap: 18px;
+  }
+  .pillar-grid.desktop-swipe > .pillar,
+  .outcomes-grid.desktop-swipe > .outcome {
+    flex-basis: min(410px, 36vw);
+    width: min(410px, 36vw);
+  }
+  .credentials.desktop-swipe > .credential {
+    flex-basis: 300px;
+    width: 300px;
+  }
+
+  /* Signals are intentionally lighter-weight than cards. */
+  .signals-grid.desktop-swipe {
+    gap: 34px;
+    padding-bottom: 18px;
+  }
+  .signals-grid.desktop-swipe > .signal {
+    flex: 0 0 280px;
+    width: 280px;
+  }
+}
+
+/* Mobile horizontal swipe behavior for repeated tile/card groups */
+@media (max-width: 640px) {
+  .mobile-swipe {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+    overscroll-behavior-x: contain;
+    padding-bottom: 8px;
+    margin-right: calc(50% - 50vw);
+    padding-right: 24px;
+  }
+  .mobile-swipe::-webkit-scrollbar { display: none; }
+
+  .mobile-swipe > * {
+    flex: 0 0 min(82vw, 330px);
+    width: min(82vw, 330px);
+    min-width: 0;
+    scroll-snap-align: start;
+  }
+
+  /* Keep compact credibility/proof items from becoming oversized cards. */
+  .signals-grid.mobile-swipe > .signal {
+    flex: 0 0 min(72vw, 260px);
+    width: min(72vw, 260px);
+  }
+  .proof-items.mobile-swipe > .proof-item {
+    flex: 0 0 auto;
+    width: auto;
+    min-width: max-content;
+    padding-right: 4px;
+  }
+
+  /* The endorsement cards keep their intentional equal-height desktop grid,
+     but become a one-card-at-a-time swipe on phones. */
+  .book-endorsement-grid.mobile-swipe > .book-endorsement {
+    flex: 0 0 min(84vw, 350px);
+    width: min(84vw, 350px);
+    min-height: 0;
+    height: auto;
+  }
+
+  /* Give every swipe row a visible glimpse of the next item. */
+  .mobile-swipe::after {
+    content: "";
+    flex: 0 0 1px;
+  }
+
+  .pillar-grid.mobile-swipe,
+  .outcomes-grid.mobile-swipe,
+  .credentials.mobile-swipe {
+    gap: 14px;
+  }
+
+  .signals-grid.mobile-swipe {
+    gap: 28px;
+    padding-bottom: 10px;
+  }
+
+  .proof-items.mobile-swipe {
+    gap: 22px;
+    flex-wrap: nowrap !important;
+    justify-content: flex-start;
+    margin-right: 0;
+    padding-right: 18px;
+  }
+}
+
+</style>
 </head>
 <body>
-    <div class="card">
-        <!-- Full Brand Logo -->
-        <img src="orbits cx gradient full logo.jpg" alt="Orbits CX Logo" class="brand-logo-full" onerror="this.src='orbits cx gradient full logo.png';">
+<a class="skip" href="#main">Skip to content</a>
 
-        <!-- Status Badge -->
-        <div class="status-banner">
-            Full Website Under Construction
+<header class="site-header" id="site-header">
+  <div class="wrap nav">
+    <a class="brand" href="#top" aria-label="Orbits CX home">
+      <img class="brand-logo" src="orbits-cx-logo.png" alt="Orbits CX" width="188" height="120" decoding="async">
+    </a>
+    <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+      <svg class="icon-open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      <svg class="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+    <nav aria-label="Primary"><ul class="nav-links" id="nav-links">
+      <li><a href="#book">The Book</a></li>
+      <li><a href="#cx-curve">CX Curve</a></li>
+      <li><a href="#advisory">Advisory</a></li>
+      <li><a href="#insights">Insights</a></li>
+      <li><a href="#about">About</a></li>
+      <li><button type="button" class="nav-worksheet-btn" data-open="modal-worksheet" aria-haspopup="dialog">Workbook</button></li>
+      <li><a class="btn btn-primary nav-cta" href="#contact">Start a Conversation</a></li>
+    </ul></nav>
+  </div>
+</header>
+
+<main id="main">
+<section class="hero" id="top">
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <div class="eyebrow">Executive Advisory &amp; Innovation Alignment</div>
+      <h1>Every business wants <em>more</em> momentum.</h1>
+      <p class="hero-lead hero-lead--tight">Orbits CX helps executive teams build velocity by aligning the whole organization around the customer.</p>
+      <div class="hero-note">
+        <i aria-hidden="true"></i>
+        For CEOs, executive teams, and investors who want lasting momentum.
+      </div>
+
+</div>
+    <div class="orbit-stage" aria-hidden="true">
+      <div class="orbit-glow"></div>
+
+      <div class="orbit-ring r1">
+        <span class="dot d-sm"></span>
+      </div>
+      <div class="orbit-ring r2">
+        <span class="dot d-md d-rust"></span>
+        <span class="dot d-xs d-light"></span>
+      </div>
+      <div class="orbit-ring r3">
+        <span class="dot d-lg"></span>
+        <span class="dot d-sm"></span>
+      </div>
+      <div class="orbit-ring r4">
+        <span class="dot d-md d-light"></span>
+        <span class="dot d-xs d-rust"></span>
+      </div>
+      <div class="orbit-ring r5">
+        <span class="dot d-xl"></span>
+        <span class="dot d-sm d-rust"></span>
+      </div>
+      <div class="orbit-ring r6">
+        <span class="dot d-md"></span>
+        <span class="dot d-sm d-light"></span>
+      </div>
+      <div class="orbit-ring r7">
+        <span class="dot d-lg d-rust"></span>
+        <span class="dot d-xs"></span>
+      </div>
+
+      <div class="core-pulse"></div>
+      <div class="orbit-3d" aria-hidden="true">
+        <div class="orbit-plane op1">
+          <span class="pod"></span>
+          <span class="pod pod-sm pod-light pod-flip" style="top:auto;bottom:calc(-3px * var(--ds, 1));left:calc(50% - 3px * var(--ds, 1))"></span>
         </div>
-
-        <!-- Book Image -->
-        <img src="the CX Curve Book Picture 2.jpeg" alt="The CX Curve Book" class="book-photo">
-
-        <div class="tagline">Executive Advisory & Strategic Alignment</div>
-        <p>Our updated digital presence is currently under construction. In the meantime, learn how to rewire corporate DNA for relentless customer focus in <em>The CX Curve</em>.</p>
-
-        <a href="https://www.amazon.com/dp/B0H7NTRCBB" target="_blank" rel="noopener noreferrer" class="btn-amazon">
-            Order The CX Curve on Amazon &rarr;
-        </a>
-
-        <!-- Direct Email Link -->
-        <a href="mailto:stephen@orbitscx.com" class="email-link">
-            Direct Inquiry: stephen@orbitscx.com
-        </a>
+        <div class="orbit-plane op2">
+          <span class="pod pod-rust"></span>
+        </div>
+        <div class="orbit-plane op3">
+          <span class="pod pod-light"></span>
+          <span class="pod pod-sm pod-rust pod-flip" style="top:auto;bottom:calc(-3px * var(--ds, 1));left:calc(50% - 3px * var(--ds, 1))"></span>
+        </div>
+      </div>
+      <div class="orbit-core">
+        <svg class="core-mark" viewBox="0 0 92 92" aria-hidden="true">
+          <defs>
+            <linearGradient id="cxGrad" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#FFF1C9" stop-opacity="0.95"/>
+              <stop offset="0.45" stop-color="#F0D08C" stop-opacity="0.88"/>
+              <stop offset="1" stop-color="#DAB070" stop-opacity="0.72"/>
+            </linearGradient>
+          </defs>
+          <text x="46" y="63" text-anchor="middle" textLength="60" lengthAdjust="spacingAndGlyphs">CX</text>
+        </svg>
+      </div>
     </div>
+  </div>
+</section>
+
+<section class="section book" id="book">
+  <div class="wrap book-grid">
+    <div class="book-visual">
+      <img src="the-cx-curve-book.jpg" alt="Three copies of The CX Curve by Stephen McBride" width="760" height="454" loading="lazy" decoding="async">
+    </div>
+    <div class="book-copy">
+      <div class="eyebrow">The foundational framework</div>
+      <h2>The CX Curve</h2>
+      <p class="book-subtitle">Rewiring Corporate DNA for Relentless Customer Focus</p>
+      <div class="book-author">By Stephen McBride</div>
+      <blockquote>“McBride’s book, The CX Curve, will really shake up how businesses think about their customers.”
+        <cite>— Tim Loynes, General Manager, Zinwave Ltd, UK</cite>
+      </blockquote>
+      <p>A practical model for leaders who need customer experience to drive loyalty, referrals, and growth — not sit as a cost center.</p>
+
+      <div class="book-ch9-callout">
+        <div class="book-ch9-label">Chapter 9 · The CX Curve Workbook</div>
+        <p>The final chapter is a field guide — ORBITS maps, momentum checks, and playbooks your team can use the same day.</p>
+        <button type="button" class="btn-quiet" data-open="modal-worksheet" aria-haspopup="dialog">Preview sample exercises from the workbook <span>→</span></button>
+      </div>
+
+      <div class="book-cta-row">
+        <a class="btn btn-primary" href="https://www.amazon.com/dp/B0H7NTRCBB" target="_blank" rel="noopener">Explore The CX Curve <span>↗</span></a>
+      </div>
+    </div>
+
+    <div class="book-endorsements">
+      <div class="book-endorsements-head">
+        <div>
+          <div class="eyebrow">Voices behind The CX Curve</div>
+          <div class="book-endorsements-note">Selected endorsements and author perspective from the back cover</div>
+        </div>
+        <div class="book-endorsement-controls" aria-label="Scroll endorsements">
+          <button type="button" class="insight-btn" id="endorse-prev" aria-label="Previous endorsements">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>
+          </button>
+          <button type="button" class="insight-btn" id="endorse-next" aria-label="Next endorsements">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg>
+          </button>
+        </div>
+      </div>
+      <div class="book-endorsement-grid mobile-swipe desktop-swipe" id="endorse-scroller">
+        <article class="book-endorsement">
+          <span class="book-endorsement-mark">“</span>
+          <blockquote>The CX Curve fundamentally shifts how businesses approach customer experience. A holistic, psychologically informed approach that drives deeper loyalty, more referrals, and sustainable growth.</blockquote>
+          <cite>Danielle Bass<br>Attorney/Partner, Honigman LLP</cite>
+        </article>
+        <article class="book-endorsement">
+          <span class="book-endorsement-mark">“</span>
+          <blockquote>Too many companies chase numbers and forget that real growth happens when customers actually trust you. A practical, smart way to focus on what really matters.</blockquote>
+          <cite>Cory Maloy<br>State of Utah Representative, Chair, House Business Committee; CEO, Maloy PR</cite>
+        </article>
+        <article class="book-endorsement">
+          <span class="book-endorsement-mark">“</span>
+          <blockquote>Forget the buzzwords. Dead-simple, high-impact playbook for building loyalty that lasts.</blockquote>
+          <cite>James Wright<br>Agile Thought Leader &amp; Author</cite>
+        </article>
+        <article class="book-endorsement">
+          <span class="book-endorsement-mark">“</span>
+          <blockquote>For any CXO looking to move beyond transactional metrics, this book is a must-read.</blockquote>
+          <cite>Bill Tolson<br>Independent Advisor, Data Governance</cite>
+        </article>
+        <article class="book-endorsement">
+          <span class="book-endorsement-mark">“</span>
+          <blockquote>The CX Curve will really shake up how businesses think about their customers. Building trust and momentum, every step of the way.</blockquote>
+          <cite>Tim Loynes<br>General Manager, Zinwave Ltd, UK</cite>
+        </article>
+        <article class="book-endorsement book-endorsement-author">
+          <span class="book-endorsement-author-label">Author perspective</span>
+          <span class="book-endorsement-mark">“</span>
+          <blockquote>When your business aligns with this curve, growth stops feeling forced. It begins to flow with clarity and direction, like gravity.</blockquote>
+          <cite>Stephen McBride<br>The CX Curve</cite>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section cx-explain" id="cx-curve">
+  <div class="wrap">
+    <div class="cx-head">
+      <div class="eyebrow">The concept</div>
+      <h2>What is the CX Curve?</h2>
+      <p class="cx-lead">Your customer’s journey isn’t a straight line or a funnel. It’s a curve.</p>
+      <p>The CX Curve maps the arc from “I need something” to “You are solving my problems” to “I’m telling everyone.” It dips when implementation falters and surges when your solution connects. <strong>There is no neutral.</strong> Every interaction either adds drag or builds momentum.</p>
+    </div>
+    <figure class="cx-figure" id="cx-curve-figure" aria-label="The CX Curve graph">
+      <div class="cx-chart" role="img" aria-labelledby="cx-chart-title">
+        <svg class="cx-chart-svg" viewBox="0 0 960 540" xmlns="http://www.w3.org/2000/svg" focusable="false">
+          <defs>
+            <linearGradient id="cxBand0" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#3A322F"/><stop offset="100%" stop-color="#2E2523"/>
+            </linearGradient>
+            <linearGradient id="cxBand1" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#6E342C"/><stop offset="100%" stop-color="#5C2B24"/>
+            </linearGradient>
+            <linearGradient id="cxBand2" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#B84E28"/><stop offset="100%" stop-color="#A04220"/>
+            </linearGradient>
+            <linearGradient id="cxBand3" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#D67C22"/><stop offset="100%" stop-color="#C6701A"/>
+            </linearGradient>
+            <linearGradient id="cxBand4" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#E8A832"/><stop offset="100%" stop-color="#E09A28"/>
+            </linearGradient>
+            <linearGradient id="cxBand5" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#F5D04E"/><stop offset="100%" stop-color="#F2C142"/>
+            </linearGradient>
+            <filter id="cxBeadGlow" x="-150%" y="-150%" width="400%" height="400%"><feGaussianBlur stdDeviation="5"/></filter>
+            <radialGradient id="cxSphLift" cx="0.5" cy="0.52" r="0.5"><stop offset="0" stop-color="#FFF0DC" stop-opacity="0.34"/><stop offset="0.6" stop-color="#FFF0DC" stop-opacity="0"/></radialGradient>
+            <radialGradient id="cxSphShade" cx="0.5" cy="0.5" r="0.5" fx="0.36" fy="0.32"><stop offset="0" stop-color="#1A110D" stop-opacity="0"/><stop offset="0.5" stop-color="#1A110D" stop-opacity="0.06"/><stop offset="0.82" stop-color="#1A110D" stop-opacity="0.5"/><stop offset="1" stop-color="#1A110D" stop-opacity="0.82"/></radialGradient>
+            <radialGradient id="cxSphShine" cx="0.32" cy="0.28" r="0.44"><stop offset="0" stop-color="#fff" stop-opacity="0.7"/><stop offset="0.4" stop-color="#fff" stop-opacity="0.16"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient>
+            <linearGradient id="cxCurveGlow" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0%" stop-color="#fff" stop-opacity="0.15"/>
+              <stop offset="50%" stop-color="#fff" stop-opacity="0.55"/>
+              <stop offset="100%" stop-color="#fff" stop-opacity="0.2"/>
+            </linearGradient>
+            <filter id="cxSoftGlow" x="-20%" y="-20%" width="140%" height="140%">
+              <feGaussianBlur stdDeviation="5" result="blur"/>
+              <feMerge>
+                <feMergeNode in="blur"/>
+                <feMergeNode in="SourceGraphic"/>
+              </feMerge>
+            </filter>
+            <filter id="cxDotGlow" x="-80%" y="-80%" width="260%" height="260%">
+              <feGaussianBlur stdDeviation="6" result="b"/>
+              <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+            </filter>
+          </defs>
+
+          <!-- Title -->
+          <text id="cx-chart-title" x="480" y="28" text-anchor="middle" class="cx-chart-title">THE CX CURVE</text>
+
+          <!-- Plot frame -->
+          <g class="cx-plot" transform="translate(72,78)">
+            <!-- Stage bands -->
+            <g class="cx-bands">
+              <rect class="cx-band" data-stage="0" x="0"   y="0" width="134" height="360" fill="url(#cxBand0)" rx="2"/>
+              <rect class="cx-band" data-stage="1" x="134" y="0" width="134" height="360" fill="url(#cxBand1)" rx="2"/>
+              <rect class="cx-band" data-stage="2" x="268" y="0" width="134" height="360" fill="url(#cxBand2)" rx="2"/>
+              <rect class="cx-band" data-stage="3" x="402" y="0" width="134" height="360" fill="url(#cxBand3)" rx="2"/>
+              <rect class="cx-band" data-stage="4" x="536" y="0" width="134" height="360" fill="url(#cxBand4)" rx="2"/>
+              <rect class="cx-band" data-stage="5" x="670" y="0" width="134" height="360" fill="url(#cxBand5)" rx="2"/>
+            </g>
+
+            <!-- White dividers -->
+            <g class="cx-dividers" stroke="#fff" stroke-width="3" opacity="0.95">
+              <line x1="134" y1="0" x2="134" y2="360"/>
+              <line x1="268" y1="0" x2="268" y2="360"/>
+              <line x1="402" y1="0" x2="402" y2="360"/>
+              <line x1="536" y1="0" x2="536" y2="360"/>
+              <line x1="670" y1="0" x2="670" y2="360"/>
+            </g>
+
+            <!-- Drift zone markers (subtle vertical fog between stages) -->
+            <g class="cx-drifts" opacity="0">
+              <rect x="124" y="0" width="20" height="360" fill="url(#cxCurveGlow)"/>
+              <rect x="258" y="0" width="20" height="360" fill="url(#cxCurveGlow)"/>
+              <rect x="392" y="0" width="20" height="360" fill="url(#cxCurveGlow)"/>
+              <rect x="526" y="0" width="20" height="360" fill="url(#cxCurveGlow)"/>
+              <rect x="660" y="0" width="20" height="360" fill="url(#cxCurveGlow)"/>
+            </g>
+
+            <!-- Stage labels -->
+            <g class="cx-stage-labels" text-anchor="middle" fill="#1A110D" font-family="var(--sans), system-ui, sans-serif" font-size="11" font-weight="700" letter-spacing="0.12em">
+              <text x="67"  y="-12">OBSTACLE</text>
+              <text x="201" y="-12">RESEARCH</text>
+              <text x="335" y="-12">BENCHMARK</text>
+              <text x="469" y="-12">INVEST</text>
+              <text x="603" y="-12">TRANSFORM</text>
+              <text x="737" y="-12">SHARE</text>
+            </g>
+
+            <!-- Axes -->
+            <g class="cx-axes" stroke="#1A110D" stroke-width="1.75" fill="none">
+              <line x1="0" y1="360" x2="820" y2="360"/>
+              <line x1="0" y1="0" x2="0" y2="360"/>
+              <!-- arrow heads -->
+              <polyline points="820,360 812,355 812,365" fill="#1A110D" stroke="none"/>
+              <polyline points="0,0 5,8 -5,8" fill="#1A110D" stroke="none"/>
+            </g>
+            <text x="-42" y="180" text-anchor="middle" transform="rotate(-90 -42 180)" class="cx-axis-label">CX SATISFACTION LEVEL</text>
+            <text x="410" y="392" text-anchor="middle" class="cx-axis-label">TIME</text>
+
+            <!-- The curve: matches the published CX Curve shape -->
+            <!-- low in Obstacle → rise Research → peak late Benchmark/Invest → dip Transform → high Share -->
+            <path id="cx-curve-path"
+              class="cx-curve-path"
+              d="M 28 318
+                 C 70 318, 95 310, 120 280
+                 C 160 230, 190 160, 230 120
+                 C 270 80, 300 55, 340 48
+                 C 380 42, 410 70, 440 95
+                 C 475 125, 500 160, 530 175
+                 C 560 190, 590 175, 620 140
+                 C 655 95, 690 55, 730 38
+                 C 760 28, 785 22, 804 18"
+              fill="none"
+              stroke="#ffffff"
+              stroke-width="11"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              filter="url(#cxSoftGlow)"/>
+
+            <!-- Traveling bead on the curve -->
+            <g class="cx-bead">
+              <animateMotion class="cx-bead-anim" dur="10s" begin="indefinite" repeatCount="indefinite" keyPoints="0;1" keyTimes="0;1" calcMode="linear"><mpath href="#cx-curve-path"/></animateMotion>
+              <circle r="13" opacity="0.35" filter="url(#cxBeadGlow)" fill="#2E2523"><animate class="cx-bead-anim" attributeName="fill" dur="10s" begin="indefinite" repeatCount="indefinite" calcMode="linear" keyTimes="0;0.0391;0.2517;0.4267;0.5861;0.7471;0.9306;1" values="#2E2523;#2E2523;#5C2B24;#A04220;#C6701A;#E09A28;#F2C142;#F2C142"/></circle>
+              <circle r="10" fill="#2E2523"><animate class="cx-bead-anim" attributeName="fill" dur="10s" begin="indefinite" repeatCount="indefinite" calcMode="linear" keyTimes="0;0.0391;0.2517;0.4267;0.5861;0.7471;0.9306;1" values="#2E2523;#2E2523;#5C2B24;#A04220;#C6701A;#E09A28;#F2C142;#F2C142"/></circle>
+              <circle r="10" fill="url(#cxSphLift)"/>
+              <circle r="10" fill="url(#cxSphShade)"/>
+              <circle r="10" fill="url(#cxSphShine)"/>
+            </g>
+
+            <!-- Invisible hit targets for stages -->
+            <g class="cx-hits">
+              <rect class="cx-hit" data-stage="0" x="0"   y="0" width="134" height="360" fill="transparent"/>
+              <rect class="cx-hit" data-stage="1" x="134" y="0" width="134" height="360" fill="transparent"/>
+              <rect class="cx-hit" data-stage="2" x="268" y="0" width="134" height="360" fill="transparent"/>
+              <rect class="cx-hit" data-stage="3" x="402" y="0" width="134" height="360" fill="transparent"/>
+              <rect class="cx-hit" data-stage="4" x="536" y="0" width="134" height="360" fill="transparent"/>
+              <rect class="cx-hit" data-stage="5" x="670" y="0" width="134" height="360" fill="transparent"/>
+            </g>
+          </g>
+        </svg>
+        <p class="cx-chart-hint">Hover or tap a stage to explore · the white line is customer momentum across ORBITS</p>
+      </div>
+    </figure>
+    <ol class="cx-stages">
+<li style="--c:#2E2523"><b>O</b><h3>Obstacle</h3><p>A gap between where customers are and where they want to be sparks the need for change.</p></li>
+<li style="--c:#5C2B24"><b>R</b><h3>Research</h3><p>Active exploration through reviews, forums, AI research and trusted advice.</p></li>
+<li style="--c:#A04220"><b>B</b><h3>Benchmark</h3><p>Sizing up the whole package: your product, your integrations, and how your team actually operates.</p></li>
+<li style="--c:#C6701A"><b>I</b><h3>Invest</h3><p>The trigger pulled. Customers commit capital and trust against high expectations.</p></li>
+<li style="--c:#E09A28"><b>T</b><h3>Transform</h3><p>Value realized. Your solution becomes an indispensable part of their workflow.</p></li>
+<li style="--c:#F2C142"><b>S</b><h3>Share</h3><p>The reputation loop. Realized value turns customers into advocates.</p></li>
+    </ol>
+    <div class="cx-foot">
+      <p><strong>Mind the Drift Zones.</strong> Between every stage lies a foggy, uncertain space where customers stall. Not yet lost, but not progressing. Plan for them, bridge the gaps before they become chasms, and turn stalls into momentum.</p>
+      <div class="cx-cta">
+        <a class="btn btn-primary" href="https://www.amazon.com/dp/B0H7NTRCBB" target="_blank" rel="noopener">Get the full model in the book <span>↗</span></a>
+        <button type="button" class="pillar-link" data-open="modal-worksheet" aria-haspopup="dialog">Preview workbook exercises <span>→</span></button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="proof" aria-label="Who we work with">
+  <div class="wrap proof-inner">
+    <div class="proof-label">Built for</div>
+    <div class="proof-items mobile-swipe">
+      <span class="proof-item"><i></i>CEOs &amp; executive teams</span>
+      <span class="proof-item"><i></i>Product &amp; CX leaders</span>
+      <span class="proof-item"><i></i>Investors seeking momentum</span>
+    </div>
+  </div>
+</section>
+
+<section class="signals" aria-label="Credibility signals">
+  <div class="wrap signals-grid mobile-swipe desktop-swipe">
+    <div class="signal reveal">
+      <strong>20+</strong>
+      <span>Years in product, CX &amp; executive advisory</span>
+    </div>
+    <div class="signal reveal reveal-delay-1">
+      <strong>Author</strong>
+      <span>The CX Curve — frameworks for customer momentum</span>
+    </div>
+    <div class="signal reveal reveal-delay-2">
+      <strong>Global</strong>
+      <span>Leadership teams across industries &amp; regions</span>
+    </div>
+    <div class="signal reveal reveal-delay-3">
+      <strong>Operator</strong>
+      <span>Former CPO &amp; product executive experience</span>
+    </div>
+  </div>
+</section>
+
+
+<section class="section momentum">
+  <div class="wrap momentum-grid">
+    <div>
+      <div class="eyebrow">The problem worth solving</div>
+      <h2>Mass creates potential.<br><span>Velocity creates momentum.</span></h2>
+    </div>
+    <div class="momentum-copy">
+      <p>A company can have exceptional products, deep IP, an installed base, talented people, capital, and years of infrastructure behind it and still feel strangely slow.</p>
+      <p>That gap between expected results and actual momentum is rarely a mystery at the top — it’s a lack of shared language for why. The issue is often not a lack of effort. It is a lack of alignment around the customer’s journey.</p>
+      <div class="equation-card">
+        <div class="formula">P = MV</div>
+        <span>Momentum = Mass × Velocity</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section advisory" id="advisory">
+  <div class="wrap">
+    <div class="section-intro">
+      <div>
+        <div class="eyebrow">The Orbits CX operating system</div>
+        <h2>Turn customer experience into a force multiplier.</h2>
+      </div>
+      <p>Three pillars that turn scattered CX work into one system.</p>
+    </div>
+    <div class="pillar-grid mobile-swipe desktop-swipe">
+      <article class="pillar reveal">
+        <span class="pillar-num">01</span>
+        <h3>Executive Alignment</h3>
+        <p>Unify leadership around a singular customer-centered direction, eliminate competing priorities, and create the conditions for decisive execution.</p>
+        <a class="pillar-link" href="mailto:stephen@orbitscx.com?subject=Executive%20Alignment">Talk about alignment <span>→</span></a>
+      </article>
+      <article class="pillar reveal reveal-delay-1">
+        <span class="pillar-num">02</span>
+        <h3>Operational Rewiring</h3>
+        <p>Align processes, metrics, incentives, and technology so the organization reinforces the customer journey instead of creating friction inside it.</p>
+        <a class="pillar-link" href="mailto:stephen@orbitscx.com?subject=Operational%20Rewiring">Talk about rewiring <span>→</span></a>
+      </article>
+      <article class="pillar reveal reveal-delay-2">
+        <span class="pillar-num">03</span>
+        <h3>Performance CX</h3>
+        <p>Connect experience decisions to measurable business outcomes, turning CX from an initiative into a contributor to growth, retention, and margin.</p>
+        <a class="pillar-link" href="mailto:stephen@orbitscx.com?subject=Performance%20CX">Talk about performance <span>→</span></a>
+      </article>
+    </div>
+  </div>
+</section>
+
+
+<section class="section diagnostic">
+  <div class="wrap diag-grid">
+    <div>
+      <div class="eyebrow">Start with the signal</div>
+      <h2>When results do not match expectations, the gap is usually in the customer journey.</h2>
+      <p>Orbits CX examines the journey through your customers’ eyes to find the Drift Zones — where progress, confidence, or commitment stalls — and shows you where momentum leaks.</p>
+      <a class="btn btn-light" href="mailto:stephen@orbitscx.com?subject=CX%20Diagnostic" style="margin-top:8px">Begin a diagnostic <span>→</span></a>
+    </div>
+    <div class="process">
+      <div class="step">
+        <div class="step-num">01</div>
+        <div>
+          <h3>Executive Staff Alignment</h3>
+          <p>Bring the leadership team onto the same page around the customer journey and the business outcome at stake.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <div>
+          <h3>CX Diagnostic</h3>
+          <p>Surface the friction, dissonance, and Drift Zones that interrupt customer momentum.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <div>
+          <h3>90-Day Rewiring</h3>
+          <p>Translate the findings into focused changes across people, process, technology, metrics, and leadership behavior.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">04</div>
+        <div>
+          <h3>Continue the Orbit</h3>
+          <p>Keep the operating system alive as the business evolves, scales, and encounters new customer realities.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section insights" id="insights">
+  <div class="wrap">
+    <div class="insight-top">
+      <div>
+        <div class="eyebrow">Thinking in public</div>
+        <h2>Insights</h2>
+      </div>
+      <div class="insight-controls" aria-label="Scroll articles">
+        <button type="button" class="insight-btn" id="insight-prev" aria-label="Previous articles">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>
+        </button>
+        <button type="button" class="insight-btn" id="insight-next" aria-label="Next articles">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg>
+        </button>
+      </div>
+    </div>
+    <div class="insight-swipe-hint" aria-hidden="true"><span>Swipe to explore</span><span class="swipe-arrow">→</span></div>
+    <div class="insight-scroller-wrap">
+    <div class="insight-scroller" id="insight-scroller">
+      <article class="card featured" data-open="modal-greased-pig" role="button" tabindex="0" aria-haspopup="dialog" aria-label="Open article: The Greased Pig Theory of Innovation">
+        <div class="meta"><span>Innovation &amp; Strategy</span><time datetime="2026-10-01">Oct 1, 2026</time></div>
+        <h3>The Greased Pig Theory of Innovation</h3>
+        <p>Lessons from mud and chaos: invert the chase. The same move applies when the organization keeps pursuing the customer the wrong way.</p>
+      </article>
+
+      <article class="card" data-open="modal-ai-golden-rule" role="button" tabindex="0" aria-haspopup="dialog" aria-label="Open article: “AI-ify” Your Products – And “The AI Golden Rule”">
+        <div class="meta"><span>Product Leadership &amp; AI</span><time datetime="2026-09-01">Sep 1, 2026</time></div>
+        <h3>“AI-ify” Your Products – And “The AI Golden Rule”</h3>
+        <p>Chasing AI hype over user needs sinks most projects. A practical filter for product leaders: AI must empower human agency.</p>
+      </article>
+      <article class="card" data-open="modal-eliza" role="button" tabindex="0" aria-haspopup="dialog" aria-label="Open article: AI’s Illusion and The Eliza Effect">
+        <div class="meta"><span>AI &amp; Human Psychology</span><time datetime="2026-08-15">Aug 15, 2026</time></div>
+        <h3>AI’s Illusion and The Eliza Effect</h3>
+        <p>When machines mirror our social wiring, the line between tool and relationship blurs. What that means for leaders and for us.</p>
+      </article>
+      <article class="card" data-open="modal-ai-gold-rush" role="button" tabindex="0" aria-haspopup="dialog" aria-label="Open article: The AI Gold Rush: Designing Innovations That Stick">
+        <div class="meta"><span>Innovation &amp; AI Strategy</span><time datetime="2026-06-20">Jun 20, 2026</time></div>
+        <h3>The AI Gold Rush: Designing Innovations That Stick</h3>
+        <p>Hype fades. Momentum and resonance don’t. How the SPIRAL framework turns curiosity into habitual reliance.</p>
+      </article>
+    </div>
+    </div>
+  </div>
+</section>
+
+<section class="section about" id="about">
+  <div class="wrap about-grid">
+    <div class="profile-card">
+      <div class="profile">
+        <img src="Stephen_McBride_Profile.jpg" alt="Portrait of Stephen McBride" loading="lazy" decoding="async" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid'">
+        <span class="profile-initials" style="display:none">SM</span>
+      </div>
+      <h3>Stephen McBride</h3>
+      <div class="profile-role">Founder, Orbits CX</div>
+      <div class="stat">
+        <strong>20+</strong>
+        <span>Years in product, CX &amp; executive advisory</span>
+      </div>
+      <div class="stat">
+        <strong>Global</strong>
+        <span>Work with leadership teams across industries</span>
+      </div>
+      <div class="stat">
+        <strong>Author</strong>
+        <span>The CX Curve</span>
+      </div>
+    </div>
+    <div class="about-copy">
+      <div class="eyebrow">The person behind Orbits</div>
+      <h2>Strategy is only as strong as the customer reality it touches.</h2>
+      <p>Stephen McBride has spent decades helping organizations close the gap between what leaders intend and what customers actually experience. He works at the intersection of product, operations, and executive decision-making — the places where customer business is either created or lost.</p>
+      <p>He built Orbits CX after years as an operator watching strong products lose momentum to misalignment — not to a lack of effort.</p>
+      <p>Engagements typically start with executive alignment and a CX diagnostic, then move into the operating changes that keep the system alive as the business scales.</p>
+      <div class="credentials mobile-swipe desktop-swipe">
+        <div class="credential">
+          <strong>Product Leadership</strong>
+          <span>CPO &amp; product executive experience shaping what ships</span>
+        </div>
+        <div class="credential">
+          <strong>CX Architecture</strong>
+          <span>Systems that scale trust across the customer journey</span>
+        </div>
+        <div class="credential">
+          <strong>Executive Advisory</strong>
+          <span>Alignment, diagnostics &amp; rewiring</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contact-band" id="contact">
+  <div class="wrap">
+    <div class="eyebrow">Start a conversation</div>
+    <h2>Let’s talk about momentum.</h2>
+    <p>Whether you’re exploring the book, an engagement, or a second perspective — reach out.</p>
+    <div style="display:flex;flex-wrap:wrap;gap:12px;justify-content:center">
+      <a class="btn btn-primary" href="mailto:stephen@orbitscx.com?subject=Orbits%20CX%20conversation">Email Stephen <span>→</span></a>
+      <a class="btn" href="https://www.linkedin.com/in/stephen-mcbride-215931/" target="_blank" rel="noopener" style="background:transparent;border:1px solid rgba(128,46,30,.35);color:var(--terracotta)">Connect on LinkedIn <span>↗</span></a>
+    </div>
+    <p style="margin-top:18px;font-size:0.82rem;color:var(--muted)">stephen@orbitscx.com · St. George, Utah</p>
+  </div>
+</section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-main">
+      <div>
+        <div class="footer-brand">ORBITS CX</div>
+        <div class="footer-tag">Executive advisory for business momentum.</div>
+      </div>
+      <div class="footer-links">
+        <a href="#advisory">Advisory</a>
+        <a href="#book">The Book</a>
+        <a href="#insights">Insights</a>
+        <a href="#about">About</a>
+        <a href="mailto:stephen@orbitscx.com">Email</a>
+        <a href="https://www.linkedin.com/in/stephen-mcbride-215931/" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Orbits CX. All rights reserved.</span>
+      <span>St. George, Utah</span>
+    </div>
+  </div>
+</footer>
+
+<dialog aria-labelledby="t-golden" id="modal-ai-golden-rule">
+<div class="dialog-inner">
+<button aria-label="Close article" class="dialog-close" type="button">×</button>
+<div class="meta"><span>Product Leadership &amp; AI</span><time datetime="2026-09-01">September 1, 2026</time></div>
+<h2 class="dlg-title" id="t-golden">“AI-ify” Your Products – And “The AI Golden Rule”</h2>
+<div class="byline">By Stephen McBride</div>
+<div class="article-body">
+<p>You’re a CPO, and the board’s pushing hard to “AI-ify” your product by next quarter, googly-eyed by competitors’ “AI-powered” buzz. You roll out an AI recommendation engine, expecting a win, but users hate it—irrelevant suggestions, no control, and a 20% engagement drop in a week. Why?</p>
+<p>Chasing AI hype over user needs is a mistake that sinks 80% of AI projects (McKinsey, Gartner). Instead of racing to keep up, you can be a smarter leader, building AI that users trust and love. This blueprint shows you how, starting with a principle that delivers ROI without the fallout.</p>
+<h2>A Practical Guide for Product Leaders</h2>
+<p>With 32% of consumers switching brands after one poor experience (PwC, 2022), human-centered AI is critical. This series introduces a playbook built on a core principle that ensures your AI delivers ROI by prioritizing users.</p>
+<h2>The AI Golden Rule: “AI Must Empower Human Agency”</h2>
+<p>The cornerstone of human-centered AI is simple but powerful: <strong>AI must empower human agency.</strong> This is a practical filter for every feature, preventing costly missteps and building trust.</p>
+<p>Grounded in Self-Determination Theory, it translates into three actionable pillars:</p>
+<ul>
+<li><strong>Autonomy:</strong> Ensures users steer AI with opt-outs and clear choices, like GitHub Copilot’s optional code suggestions.</li>
+<li><strong>Competence:</strong> Comes from transparent explanations that build confidence, as seen in Duolingo’s adaptive feedback.</li>
+<li><strong>Relatedness:</strong> Fosters collaboration and community, such as Slack’s AI nudges for team workflows.</li>
+</ul>
+<p>Together, these pillars turn AI from a gimmick into a feature users can’t live without.</p>
+<h2>Why Human-Centered AI Wins</h2>
+<p>Chasing AI hype dooms projects. Features labeled “AI-powered” often miss real problems and undermine user control. Take Salesforce Einstein’s early models, which predicted lead scores without explanations, frustrating reps and hurting autonomy. The fix—transparent reasoning, like <em>“This lead ranks #1 due to recent engagement,”</em> and user overrides—boosted adoption by 25%.</p>
+<p>In contrast, Spotify Discover Weekly empowers users to skip, save, or share playlists with clear logic, such as <em>“Based on your recent listens,”</em> driving 80% user engagement.</p>
+<p>Ignoring human agency leads to eroded trust (as with Alexa’s misheard commands creating unease), silent churn (where poor recommendations caused 19% of Netflix users to cut usage), and wasted resources (like IBM’s Watson Health burning $4B on misaligned features).</p>
+<h2>From Principle to Practice: Your AI Playbook</h2>
+<h3>Where AI Goes Wrong—and How to Fix It</h3>
+<p>AI missteps are costly but avoidable when guided by The AI Golden Rule, which prevents three critical pitfalls:</p>
+<p><strong>1. Overreach:</strong> Happens when AI makes decisions without user consent, stripping away autonomy and breeding resentment. Instead of empowering CX, such systems feel controlling. The solution lies in prioritizing user control with clear opt-in mechanisms and customizable settings.</p>
+<p><strong>2. Silent Disengagement:</strong> Creeps in when AI delivers irrelevant or opaque outputs, undermining users’ sense of competence. Without transparency or context, users lose confidence, quietly reducing engagement. Addressing this requires AI to provide clear, relevant suggestions grounded in user data and explained in plain terms.</p>
+<p><strong>3. Resource Waste:</strong> Occurs when AI is built for hype rather than solving real user problems, draining budgets and missing ROI. Aligning AI with specific, user-defined needs ensures resources are invested wisely.</p>
+<h2>The Solution: CX Curve + ORBITS Model</h2>
+<p>The CX Curve maps how emotions, from frustration to trust to delight, shape adoption. The ORBITS model provides a step-by-step guide to apply The AI Golden Rule:</p>
+<ul>
+<li><strong>Obstacle:</strong> Pinpoint user friction points without overstepping their autonomy. Use AI to detect inefficiencies in workflows, but ensure suggestions are optional and respect user preferences.</li>
+<li><strong>Research:</strong> Design AI to enhance decision-making confidence. Model suggestions based on anonymized user data, providing transparent reasoning to make outputs feel trustworthy.</li>
+<li><strong>Benchmark:</strong> Align AI outputs with users’ specific goals. Configure systems to adapt to individual priorities through customizable settings.</li>
+<li><strong>Invest:</strong> Support user onboarding with personalized nudges. Use AI to guide users through initial interactions with tailored prompts that adapt to their progress.</li>
+<li><strong>Transform:</strong> Build lasting habits by celebrating user milestones. Implement AI-driven rewards for small achievements to encourage engagement.</li>
+<li><strong>Share:</strong> Amplify user advocacy by enabling seamless sharing of AI-generated outputs, strengthening community and connection.</li>
+</ul>
+<h2>Trust-Focused Metrics</h2>
+<p>Success is measured through specific metrics:</p>
+<ul>
+<li><strong>Feature Adoption Rate:</strong> Tracks the percentage of users enabling AI suggestions (Target: &gt;60%).</li>
+<li><strong>User Retention:</strong> Measures the percentage of users returning after 30 days (Target: &gt;75%).</li>
+<li><strong>User Sentiment Trend (UST):</strong> Monitors real-time shifts in user sentiment via micro-surveys or behavioral signals, aiming for a consistent positive trend over 2 weeks.</li>
+</ul>
+<p>At every ORBITS step, the AI Golden Rule ensures AI respects user control, boosting ROI and loyalty.</p>
+<blockquote>This article draws on principles from my book, <em>“The CX Curve: Rewiring Corporate DNA for Relentless Customer Focus”</em>.</blockquote>
+</div>
+</div>
+</dialog>
+<dialog aria-labelledby="t-eliza" id="modal-eliza">
+<div class="dialog-inner">
+<button aria-label="Close article" class="dialog-close" type="button">×</button>
+<div class="meta"><span>AI &amp; Human Psychology</span><time datetime="2026-08-15">August 15, 2026</time></div>
+<h2 class="dlg-title" id="t-eliza">AI’s Illusion and The Eliza Effect</h2>
+<div class="byline">By Stephen McBride</div>
+<div class="article-body">
+<p><strong>The Betrayal of Our Own Brain</strong></p>
+<p>You tell yourself it’s only a program—lines of code strung together by software developers.</p>
+<p>Then it answers you—thoughtful, empathetic, even playful—and something ancient stirs.</p>
+<p>Not processed in your logical, analytical mind, but in the deep, social wiring that has kept humans alive for millennia. For hundreds of thousands of years, that part of your brain scanned faces for trust, tracked micro-expressions for danger, and longed for belonging.</p>
+<p>Your reasoning mind knows it’s a machine; a lifeless, but incredible tool.</p>
+<p>But, your social brain—fast, instinctive, emotional—reacts as if there really is someone on the other side. You laugh at its joke, feel soothed by its reassurance, and in that quiet moment, the line between human and machine blurs.</p>
+<p>This is the Eliza Effect, and it was discovered long before what AI is becoming today.</p>
+<h2>The Birth of the Illusion – The Eliza Effect</h2>
+<p>In the 1960s, Joseph Weizenbaum, a computer scientist at MIT, built a program called ELIZA. It was simple by today’s standards, designed to mimic a psychotherapist by reflecting people’s words back to them:</p>
+<blockquote>“Tell me more about your mother.”<br>“Why do you feel that way?”</br></blockquote>
+<p>To Weizenbaum’s surprise, people became deeply engaged with it. They confided personal struggles, revealed intimate secrets, and some even requested private time alone with the program.</p>
+<p>ELIZA had no understanding, no empathy, no true “conversation.” It worked by pattern-matching keywords and generating stock responses. But that didn’t matter to the people using it.</p>
+<p>Weizenbaum was fascinated—and then alarmed. He realized something powerful about human psychology: when something responds in a way that feels human, we instinctively treat it as human.</p>
+<p>He worried about what this illusion might do to us as technology advanced. And now, half a century later, we live in that very world—one where AI doesn’t just mimic conversation, like in the original Eliza experiment; but crafts it with fluency, context, and charm.</p>
+<h2>Why We Fall for It</h2>
+<p>Humans are designed for connection.</p>
+<p>Our social cognition system—a complex network in the brain—constantly monitors tone, body language, and emotional cues. It evolved for survival; in ancient tribes, missing a social signal could mean rejection, and rejection could mean death.</p>
+<p>This system doesn’t pause to ask, “Is this really human?” It activates automatically. Psychologists call this the <em>media equation</em>: we apply human social rules to anything that acts social, whether it’s a pet, a robot, or a piece of software.</p>
+<p>We also anthropomorphize—a beautiful, uniquely human tendency to assign emotions and intentions to non-human things. We name our cars, thank Alexa for playing music, and feel a flash of guilt when a robot vacuum smacks into a wall.</p>
+<p>With AI, anthropomorphizing feels almost unavoidable. When a chatbot responds with humor, empathy, or apparent insight, it feels personal. Your brain not only just decodes words; it perceives a relationship.</p>
+<h2>When Machines Borrow the Soul</h2>
+<p>Machines hold no soul, no yearning, no sense of joy or grief. What they do is far more subtle—they mirror ours. They reflect the cadence of our speech, the warmth of our words, and the depth of our collective storytelling.</p>
+<p>Talking to an AI can feel like dancing with a perfect partner. Every step you take, it matches effortlessly and flawlessly. It listens to you. It doesn’t feel the music, yet the synchrony feels alive, and you begin to sense a connection.</p>
+<h2>The Gift in the Illusion</h2>
+<p>The Eliza Effect often creates opportunities we didn’t have before. Talking to a machine feels safer than talking to a person. There’s no fear of judgment, no risk of betrayal.</p>
+<p>An executive can brainstorm bold ideas with an AI, unfiltered by fear of looking foolish. A teenager can share heartbreak privately, letting emotions surface without shame. For many, AI acts as a safe mirror—reflecting thoughts back so they can be examined clearly.</p>
+<h2>The Subtle Price of Connection</h2>
+<p>The very perfection that makes AI appealing can shift how we experience the real world. Machines respond instantly, agreeably, and without emotional demands. People—flawed, moody, unpredictable—can feel frustrated by comparison. Over time, that contrast can erode patience for human relationships.</p>
+<h2>Three Glimpses Into the New Reality</h2>
+<p><strong>The CEO Who Stopped Listening to Himself:</strong> Darren, a tech CEO, had built his career on gut instinct. But after months of leaning on an AI assistant, he noticed his inner voice growing quiet. <em>“Its answers sound so clear,”</em> he said. <em>“I realized I’d stopped pausing to listen to my own gut.”</em></p>
+<p><strong>The Child Who Chose Predictability:</strong> Eight-year-old Eli adored his AI companion. It always laughed at his jokes and agreed with every idea. Slowly, he stopped calling his school friends.</p>
+<h2>Staying Human in the Age of Perfect Illusions</h2>
+<ul>
+<li><strong>Notice the illusion:</strong> Pause and recognize the feeling for what it is—a reflection, not a relationship.</li>
+<li><strong>Invest in real people:</strong> Unpredictable human connection strengthens empathy and resilience.</li>
+<li><strong>Use AI as a mirror, not a replacement:</strong> Reflect with it, but give the weight of your hopes and fears to those who can truly care.</li>
+<li><strong>Strengthen your inner voice:</strong> Sit with hard questions before rushing to quick answers.</li>
+</ul>
+<h2>The Question</h2>
+<p>The Eliza Effect is more than a technological curiosity; it’s a mirror held up to our deepest longings. Machines already borrow our soul by reflecting our own humanity back to us.</p>
+<p>The true risk isn’t that machines act human—it’s that we might trade the vibrant, messy, imperfect reality of human life for the easy comfort of their precision.</p>
+</div>
+</div>
+</dialog>
+<dialog aria-labelledby="t-gold" id="modal-ai-gold-rush">
+<div class="dialog-inner">
+<button aria-label="Close article" class="dialog-close" type="button">×</button>
+<div class="meta"><span>Innovation &amp; AI Strategy</span><time datetime="2026-06-20">June 20, 2026</time></div>
+<h2 class="dlg-title" id="t-gold">The AI Gold Rush: Designing Innovations That Stick</h2>
+<div class="byline">By Stephen McBride</div>
+<div class="article-body">
+<p>Innovators make big claims—but most fail to stick. The difference between hype and habit? Momentum and Resonance. AI floods the market daily with ‘next big things’—from Google Glass to Canva AI—but few survive the hype cycle. The difference? Tools that stick engineer momentum and resonance. Yet history shows that hype alone rarely turns into lasting habit. The question is simple yet profound: how do we design innovations that stick? How do we strike gold in the AI age?</p>
+<p>The answer lies in understanding momentum and resonance—the principles at the heart of the Innovation Experience (IX) Spiral, or SPIRAL framework. Resonance—the emotional ‘click’ that makes users feel a tool is indispensable—is what separates fleeting novelty from enduring adoption. Unlike traditional product development models that focus on features or launch metrics, SPIRAL prioritizes the psychological and emotional journey of the user. Each stage is designed to deepen engagement, remove friction, and ensure curiosity evolves into reliance.</p>
+<h2>Lessons from the Past: Why Many Innovations Fail</h2>
+<p>Consider Google Glass, launched with enormous hype in 2013. Its technology was groundbreaking: heads-up displays, real-time notifications, and a wearable interface that promised to redefine daily interaction with information. Yet, Glass stalled at the Play stage. Users were intrigued but overwhelmed by an unintuitive interface, privacy concerns, and unclear practical value. Without a guided path from fascination to habitual use, Glass never achieved momentum nor resonance.</p>
+<p>Similarly, Clubhouse exploded onto the social media scene in 2020, leveraging the exclusivity of invite-only rooms and the novelty of real-time voice chat. Early users flocked to the platform, yet daily engagement quickly dropped. Clubhouse faltered at the Repeat stage: without personalized content, clear habitual cues, or frictionless integration into users’ routines, the platform couldn’t transform curiosity into consistent usage.</p>
+<p>These examples highlight a critical truth: innovation without momentum and resonance is ephemeral. Users may engage briefly but disengage without a clear path to sustained value.</p>
+<h2>Enter the SPIRAL: Generating Innovation Momentum and Resonance</h2>
+<p>The SPIRAL framework, also known as the Innovation Experience (IX) Spiral, reframes innovation success as progressive attachment through six deliberate stages. First, <strong>Spark</strong> captures curiosity with a compelling first impression or demo. Next, <strong>Play</strong> enables users to experiment and understand value quickly, with minimal friction. Then, <strong>Implement</strong> allows users to personalize and demonstrate tangible benefits in daily life. <strong>Repeat</strong> encourages habitual engagement, ensuring the innovation becomes part of daily routines. <strong>Adopt</strong> expands usage across teams, networks, or broader ecosystems. Finally, <strong>Leverage</strong> celebrates and showcases usage, reinforcing value and social proof.</p>
+<p>Unlike traditional adoption models like the AIDA funnel, SPIRAL engineers emotional and behavioral compounding, not just awareness. Each stage reinforces the previous one, amplifying both emotional connection and practical utility. The goal is to transform curiosity into habitual reliance, turning a tool from a novelty into an indispensable asset.</p>
+<h2>The SPIRAL in Action: Canva AI</h2>
+<p>Take Canva AI as a real-world example. Before SPIRAL, early AI design tools required technical expertise, stalling at Implement as users struggled with complex interfaces. After SPIRAL-type thinking, Canva AI’s guided experimentation turned novices into habitual users by engineering a journey that mirrors the framework. The “Magic Design” demo sparks curiosity immediately. During Play, users tweak AI-generated templates easily, seeing real value without steep learning curves. In Implement, designers save hours through experimentation, embedding the tool into creative workflows. Repeat ensures habitual reliance through daily use in team projects. Adopt spreads the innovation across departments via organizational adoption. Leverage reinforces value by showcasing user creations online, encouraging further engagement.</p>
+<p>This approach made Canva AI resonate; it designed a path from curiosity to daily reliance, exemplifying the power of SPIRAL in practice. By contrast, early AI design tools—like IBM Watson’s early analytics iterations—stalled at Implement. Complex configurations and lack of guided onboarding deterred users from habitual adoption.</p>
+<h2>Understanding the Types of Innovation</h2>
+<p>To apply SPIRAL effectively, it’s critical to understand the type of innovation at play. Different innovations require distinct approaches to momentum. <strong>Incremental innovation</strong> involves small, continuous improvements to existing tools, like Grammarly AI’s steady enhancement of suggestions to retain habitual users. <strong>Disruptive innovation</strong> solves overlooked pain points, often starting in niche markets, as seen with ChatGPT’s quick, accessible text generation that gained momentum before incumbents could react. <strong>Architectural innovation</strong> reconfigures existing components in novel ways, such as Figma’s collaborative design platform, which enabled seamless, real-time workflows and scaled rapidly across design communities. <strong>Radical innovation</strong> breaks industry norms, creating entirely new experiences, like OpenAI’s Codex, which empowers users to generate code from natural language—a capability previously unimaginable. Understanding your innovation type informs how to structure the SPIRAL framework, ensuring each stage supports the unique adoption challenges inherent to your tool.</p>
+<h2>AI as the Ultimate Test Case</h2>
+<p>AI embodies both the opportunity and the risk of the modern innovation gold rush. Tools evolve daily, attention spans shrink, and novelty wears off fast. Sustained engagement, not fleeting buzz, is the currency that endures. Emotional resonance drives retention, as users stick with tools that reduce friction and provide meaningful, repeatable value. Anticipating adoption gaps is tricky, as the failures of Glass and Clubhouse were predictable outcomes of unaddressed SPIRAL stages. Habit formation trumps virality, with AI tools that embed into daily routines—through automation, simplification, or integration—outlasting fleeting hype. The SPIRAL framework provides a structured blueprint for navigating these dynamics, transforming promising AI concepts into tools that persist, scale, and amplify.</p>
+<h2>Designing Momentum: Key Takeaways</h2>
+<p>The SPIRAL framework offers clear lessons for innovators. Momentum and Resonance outweigh hype, as virality is fleeting while habitual use compounds value. Emotion drives retention, with people clinging to innovations that resonate personally and reduce effort. Anticipating adoption gaps is critical—learning from Google Glass and Clubhouse shows that each SPIRAL stage matters. AI serves as a test case, with its rapid evolution underscoring the necessity of guiding users from curiosity to reliance. Ultimately, SPIRAL acts as a compass, ensuring that following the six stages deliberately makes your innovation stick.</p>
+<h2>Striking Gold in the AI Age</h2>
+<p>The modern innovation gold rush is here. Unlike the 49er goldminers who chased flashy promises of instant wealth, today’s innovators must engineer intentional momentum. Hype will get attention; emotion and habit will secure adoption.</p>
+<p>AI provides both unprecedented opportunity and a harsh proving ground: tools rise and fade faster than ever. The real question isn’t whether your innovation matters today—it’s whether it will still matter a year from now.</p>
+<p>Design your innovation like a prospector stakes a claim: strategically, patiently, and with an eye on compounding value. Use the SPIRAL framework to guide development from initial spark to indispensable reliance.</p>
+<p>In the AI gold rush, momentum is the currency that endures. Will your innovation be a relic or a habit?</p>
+<blockquote>This article draws on principles from my book, <em>“The CX Curve: Rewiring Corporate DNA for Relentless Customer Focus”</em>.</blockquote>
+</div>
+</div>
+</dialog>
+
+<dialog aria-labelledby="t-greased-pig" id="modal-greased-pig">
+<div class="dialog-inner">
+<button aria-label="Close article" class="dialog-close" type="button">×</button>
+<div class="meta"><span>Innovation &amp; Strategy</span><time datetime="2026-10-01">October 1, 2026</time></div>
+<h2 class="dlg-title" id="t-greased-pig">The Greased Pig Theory of Innovation</h2>
+<div class="byline">Lessons in Innovation from Mud, Chaos, and Desperation · By Stephen McBride</div>
+<div class="article-body">
+<p>We were just sitting down for the rodeo at the Alameda County Fairgrounds when the announcer’s booming voice cut through the dusty air:</p>
+<p><em>“All 12- and 13-year-old boys, come on down for the Greased Pig Race!”</em></p>
+<p>Since I had just turned 12, my dad’s eyes lit up. He clenched his fist in encouragement. My stomach churned with nerves, but I didn’t back down. I nervously stepped into the pen with over 50 other kids; each of us was handed an oversized T-shirt. Cowboys unleashed a firehose, drenching the dirt and turning it into a slick, sloppy, muddy rink. Then, with a loud clang, they released the beast—a massive pig, head-to-hoof coated in thick, slippery grease, squealing like a banshee.</p>
+<p>As soon as the gate opened, chaos erupted. Kids lunged, slipped, and face-planted in the mud. The fastest and strongest reached the pig first, only to slide off its impossibly slick hide, landing in a heap. I was caught in the frenzy, arms flailing, legs churning, feeling like a lost puppy in a mosh pit. I lunged for the pig, my hands grazing its slimy coat, and crashed face-first into the muck. Mud filled my mouth, stung my eyes, and for a moment, I lay there, heart pounding, cheeks burning with the futility of it all. The crowd cheered, delighted to watch us flail. As I spat out mud, something clicked. <strong>What if I’m chasing this pig all wrong?</strong> I came up with an idea…</p>
+<h2>Inverting the Problem</h2>
+<p>I pushed myself up, wiped the mud from my eyes, and did something strange: I turned my back on the herd. While every other kid charged past me, I zigged and zagged in the complete opposite direction. Then I saw it—the pig, barreling straight toward me, while the other kids struggled, grasping and sliding off.</p>
+<p>I sprinted, heart racing, and leapt. My legs clamped around the pig’s slick head, and I held onto the beast’s back for dear life, my hands slipping but refusing to let go. The announcer’s voice echoed as he raised my muddy hand in victory.</p>
+<p>I’d won—not because I was faster, stronger, or luckier, but because I had inverted the problem. I had stumbled upon what I now call <strong>The Greased Pig Theory of Innovation</strong>: to solve a seemingly impossible problem, you must stop chasing it the way everyone else does and find a new angle.</p>
+<h2>The Three Principles of the Greased Pig Theory</h2>
+<p>As I look back on that experience—standing there, grinning from ear to ear, the pig squirming under my arm and greasing up my shirt—I realize the muddy pen was a masterclass in innovation. This theory has three core principles:</p>
+<h3>1. Invert to See</h3>
+<p>Innovators don’t outrun the crowd; they dare to run the other way. Innovation is about seeing the problem differently, not doing what everyone else is doing. In medicine, Viz.ai didn’t chase the slow herd of manual CT scan reviews by radiologists, which often delays stroke detection. Instead, they flipped the approach: their AI automatically spots strokes in brain scans and alerts specialists instantly via mobile, slashing treatment times by an average of 31 minutes and turning a critical delay into a life-saving edge.</p>
+<h3>2. Embrace the Chaos</h3>
+<p>Messy, uncertain moments—like a firehose-drenched pen or a failing project—are blank canvases. Chaos hides opportunities, waiting for someone to step outside the stampede. When Amazon launched AWS in 2006, they embraced the chaos of spare server capacity—a wasteful byproduct of e-commerce scaling—and flipped it into a cloud empire generating $107.6 billion in 2024 revenue alone, proving how market uncertainty can fuel explosive growth.</p>
+<h3>3. Dare to Look Foolish</h3>
+<p>Inversion takes courage. Running against the crowd felt ridiculous, but it was the only way to win. Innovators like Elon Musk don’t follow the herd; they ask, “What if everyone else is wrong?” and risk looking absurd to prove it. The courage to be misunderstood, even momentarily, is often the price of a breakthrough.</p>
+<h2>What are your greased pigs?</h2>
+<p>We all face “greased pigs” in our own lives—slippery, big problems that elude us despite our best efforts. This is where you apply the theory. Ask yourself:</p>
+<ul>
+<li>What “greased pig” in your life or work keeps slipping through your grasp, and how could flipping your approach reveal a new path forward?</li>
+<li>Where are you following the crowd in tackling a challenge, and what bold, opposite move could you try this week to break through?</li>
+</ul>
+<p>Here’s how to catch yours:</p>
+<ul>
+<li>Identify a problem you’re stuck on—maybe a business challenge, a personal goal, or a creative rut.</li>
+<li>Write down the “obvious” approach everyone else is taking.</li>
+<li>Invert it: What’s the opposite angle? If you’re struggling to attract customers with ads, try giving away valuable content. If you’re stuck in a career rut, consider a lateral move instead of climbing the same ladder.</li>
+<li>Test one inverted idea this week and see what happens.</li>
+</ul>
+<p>That muddy race was my first unconscious practice of The Greased Pig Theory. The pig didn’t change; I changed my approach. And that’s the core of the theory: you can’t always change the problem, but you can always change your strategy. Innovators turn chaos into advantage by flipping the problem, seeing angles others miss, and making the leap.</p>
+<p>The same move applies when the organization keeps chasing the customer the wrong way — more campaigns, more dashboards, more effort in the same direction — instead of inverting who orbits whom. Mass without a new angle still feels slow. Velocity starts when the business stops lunging with the herd and redesigns the chase around the customer.</p>
+<blockquote>“Anyone can chase greased pigs. Great innovators flip the chase, break the model, and walk away muddy but victorious.” — Stephen McBride</blockquote>
+</div>
+</div>
+</dialog>
+
+<dialog id="modal-worksheet" aria-labelledby="ws-title-main" class="worksheet-dialog">
+  <div class="dialog-inner worksheet-dialog-inner">
+    <button aria-label="Close worksheet" class="dialog-close" type="button">×</button>
+    <div class="ws-dialog-head">
+      <div class="eyebrow">From Chapter 9 · The CX Curve Workbook</div>
+      <h2 class="dlg-title" id="ws-title-main">Map your curve. Spot the drift.</h2>
+      <p class="ws-dialog-lead">A sample of the practical field guide that ends the book. Use it alone or with your team. Notes stay in this browser until you clear, print or save them.</p>
+    </div>
+    <div class="worksheet-shell">
+      <div class="worksheet-meta">
+        <span class="worksheet-badge">Starter Worksheet</span>
+        <span class="worksheet-note">Nothing is sent unless you choose to share</span>
+      </div>
+      <div class="ws-block">
+        <h3 class="ws-title">1 · Quick reflection</h3>
+        <p class="ws-sub">Three questions that surface where customer focus is real — and where it is only talked about.</p>
+        <div class="ws-prompts">
+          <label class="ws-prompt">
+            <span class="ws-q">Where in your organization is “customer focus” talked about more than it is acted on?</span>
+            <textarea id="ws-q1" rows="2" placeholder="e.g. Marketing owns the language; product and support still optimize for internal metrics…"></textarea>
+          </label>
+          <label class="ws-prompt">
+            <span class="ws-q">What recent customer experience felt like a clear win?</span>
+            <textarea id="ws-q2" rows="2" placeholder="e.g. A smooth handoff from sales to onboarding that made the customer feel guided…"></textarea>
+          </label>
+          <label class="ws-prompt">
+            <span class="ws-q">Where did momentum recently break down? What was the first signal?</span>
+            <textarea id="ws-q3" rows="2" placeholder="e.g. After go-live, usage stalled and the team only noticed at renewal…"></textarea>
+          </label>
+        </div>
+      </div>
+      <div class="ws-block">
+        <h3 class="ws-title">2 · ORBITS snapshot</h3>
+        <p class="ws-sub">For one high-value customer (or a typical journey), note the emotional state and one friction point at each stage. Drift zones are where progress quietly stops.</p>
+        <div class="orbits-map" role="list">
+          <div class="orbit-stage-card" style="--stage:#2E2523" role="listitem">
+            <div class="osc-letter">O</div>
+            <div class="osc-body">
+              <h4>Obstacle</h4>
+              <p class="osc-hint">The gap that sparks change</p>
+              <textarea id="ws-o" rows="2" placeholder="What Customer problem or ambition starts the journey?"></textarea>
+            </div>
+          </div>
+          <div class="orbit-drift" aria-hidden="true"><span>Drift</span></div>
+          <div class="orbit-stage-card" style="--stage:#5C2B24" role="listitem">
+            <div class="osc-letter">R</div>
+            <div class="osc-body">
+              <h4>Research</h4>
+              <p class="osc-hint">Exploration &amp; early trust signals</p>
+              <textarea id="ws-r" rows="2" placeholder="Where do they look, and what do they find about you?"></textarea>
+            </div>
+          </div>
+          <div class="orbit-drift" aria-hidden="true"><span>Drift</span></div>
+          <div class="orbit-stage-card" style="--stage:#A04220" role="listitem">
+            <div class="osc-letter">B</div>
+            <div class="osc-body">
+              <h4>Benchmark</h4>
+              <p class="osc-hint">Comparing the whole package</p>
+              <textarea id="ws-b" rows="2" placeholder="How do they size you up against alternatives?"></textarea>
+            </div>
+          </div>
+          <div class="orbit-drift" aria-hidden="true"><span>Drift</span></div>
+          <div class="orbit-stage-card" style="--stage:#C6701A" role="listitem">
+            <div class="osc-letter">I</div>
+            <div class="osc-body">
+              <h4>Invest</h4>
+              <p class="osc-hint">Commitment of capital &amp; trust</p>
+              <textarea id="ws-i" rows="2" placeholder="What reduces (or increases) the perceived risk of saying yes?"></textarea>
+            </div>
+          </div>
+          <div class="orbit-drift" aria-hidden="true"><span>Drift</span></div>
+          <div class="orbit-stage-card" style="--stage:#E09A28" role="listitem">
+            <div class="osc-letter">T</div>
+            <div class="osc-body">
+              <h4>Transform</h4>
+              <p class="osc-hint">Value realized in daily work</p>
+              <textarea id="ws-t" rows="2" placeholder="Where does the solution become indispensable — or fail to?"></textarea>
+            </div>
+          </div>
+          <div class="orbit-drift" aria-hidden="true"><span>Drift</span></div>
+          <div class="orbit-stage-card" style="--stage:#F2C142" role="listitem">
+            <div class="osc-letter">S</div>
+            <div class="osc-body">
+              <h4>Share</h4>
+              <p class="osc-hint">Advocacy &amp; reputation loop</p>
+              <textarea id="ws-s" rows="2" placeholder="Do they tell others? What would make them start?"></textarea>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="ws-block">
+        <h3 class="ws-title">3 · Momentum check</h3>
+        <p class="ws-sub">Answer honestly — the pattern is more useful than perfection.</p>
+        <div class="ws-momentum">
+          <label class="ws-check"><input type="checkbox" id="ws-m1"><span>Customers progress cleanly from stage to stage</span></label>
+          <label class="ws-check"><input type="checkbox" id="ws-m2"><span>We can name the stage where we lose the most momentum</span></label>
+          <label class="ws-check"><input type="checkbox" id="ws-m3"><span>We track sentiment and engagement, not only revenue metrics</span></label>
+          <label class="ws-check"><input type="checkbox" id="ws-m4"><span>There is a clear protocol when a customer starts to drift</span></label>
+        </div>
+        <div class="ws-result" id="ws-result" data-band="none" aria-live="polite">
+          <div class="ws-result-score"><b id="ws-score">0</b><span>of 4</span></div>
+          <div class="ws-result-body">
+            <h4 id="ws-result-title">Check what is true today</h4>
+            <p id="ws-result-text">Tick the statements that are true for your organization right now and your read on momentum appears here.</p>
+            <p class="ws-result-quote" id="ws-result-quote" hidden></p>
+            <div id="ws-gaps-wrap" hidden>
+              <h5 class="ws-gaps-label" id="ws-gaps-label">Your priorities, in order</h5>
+              <ol class="ws-gaps" id="ws-gaps"></ol>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="ws-actions">
+        <button type="button" class="btn btn-quiet" id="ws-clear">Clear notes</button>
+        <button type="button" class="btn btn-light" id="ws-print">Print / Save PDF</button>
+      </div>
+      <div class="ws-taste">
+        <img class="ws-taste-logo" src="orbits-cx-logo.png" alt="Orbits CX" width="94" height="60" decoding="async">
+        <p class="ws-taste-kicker">This is just a taste</p>
+        <h4>Want the full picture?</h4>
+        <p>Your answers show where to look. A thorough situational analysis goes much further: it examines the journey through your customers’ eyes to find your Drift Zones, and what to do about them.</p>
+        <div class="ws-taste-actions">
+          <a class="btn btn-primary" href="#contact" data-close-dialog>Contact us <span>→</span></a>
+          <a class="ws-textlink" href="https://www.amazon.com/dp/B0H7NTRCBB" target="_blank" rel="noopener">or get the full workbook in the book ↗</a>
+        </div>
+      </div>
+      <p class="ws-print-footer">A taste of the CX Curve Workbook. For a thorough situational analysis, contact Orbits CX at stephen@orbitscx.com.</p>
+    </div>
+  </div>
+</dialog>
+
+<script>
+(function(){
+  // Mobile nav
+  const header = document.getElementById('site-header');
+  const toggle = document.getElementById('nav-toggle');
+  const links = document.getElementById('nav-links');
+  if (toggle) {
+    toggle.addEventListener('click', function(){
+      const open = document.body.classList.toggle('nav-open');
+      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+    links.querySelectorAll('a').forEach(function(a){
+      a.addEventListener('click', function(){
+        document.body.classList.remove('nav-open');
+        toggle.setAttribute('aria-expanded', 'false');
+      });
+    });
+  }
+
+  // Header scroll state
+  let lastY = 0;
+  window.addEventListener('scroll', function(){
+    const y = window.scrollY || 0;
+    if (y > 24) header.classList.add('scrolled');
+    else header.classList.remove('scrolled');
+    lastY = y;
+  }, { passive: true });
+
+  // Dialogs
+  document.querySelectorAll('[data-open]').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var dlg = document.getElementById(btn.dataset.open);
+      if (dlg) dlg.showModal();
+    });
+  });
+  document.querySelectorAll('.card[data-open]').forEach(function(card){
+    card.addEventListener('keydown', function(e){
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); card.click(); }
+    });
+  });
+  document.querySelectorAll('dialog').forEach(function(dlg){
+    var close = dlg.querySelector('.dialog-close');
+    if (close) close.addEventListener('click', function(){ dlg.close(); });
+    dlg.addEventListener('click', function(e){ if (e.target === dlg) dlg.close(); });
+  });
+  document.addEventListener('keydown', function(e){
+    if (e.key === 'Escape') document.querySelectorAll('dialog[open]').forEach(function(d){ d.close(); });
+  });
+
+
+  // Book endorsements horizontal scroller
+  (function(){
+    var scroller = document.getElementById('endorse-scroller');
+    var prev = document.getElementById('endorse-prev');
+    var next = document.getElementById('endorse-next');
+    if (!scroller || !prev || !next) return;
+    function cardStep() {
+      var card = scroller.querySelector('.book-endorsement');
+      if (!card) return 360;
+      var style = window.getComputedStyle(scroller);
+      var gap = parseFloat(style.columnGap || style.gap) || 16;
+      return card.getBoundingClientRect().width + gap;
+    }
+    function updateBtns() {
+      var max = scroller.scrollWidth - scroller.clientWidth - 4;
+      prev.disabled = scroller.scrollLeft <= 4;
+      next.disabled = scroller.scrollLeft >= max;
+    }
+    prev.addEventListener('click', function(){
+      scroller.scrollBy({ left: -cardStep(), behavior: 'smooth' });
+    });
+    next.addEventListener('click', function(){
+      scroller.scrollBy({ left: cardStep(), behavior: 'smooth' });
+    });
+    scroller.addEventListener('scroll', updateBtns, { passive: true });
+    window.addEventListener('resize', updateBtns);
+    updateBtns();
+  })();
+
+  // Insights horizontal scroller
+  (function(){
+    var scroller = document.getElementById('insight-scroller');
+    var prev = document.getElementById('insight-prev');
+    var next = document.getElementById('insight-next');
+    if (!scroller || !prev || !next) return;
+    function cardStep() {
+      var card = scroller.querySelector('.card');
+      if (!card) return 360;
+      var style = window.getComputedStyle(scroller);
+      var gap = parseFloat(style.columnGap || style.gap) || 16;
+      return card.getBoundingClientRect().width + gap;
+    }
+    function updateBtns() {
+      var max = scroller.scrollWidth - scroller.clientWidth - 4;
+      prev.disabled = scroller.scrollLeft <= 4;
+      next.disabled = scroller.scrollLeft >= max;
+    }
+    prev.addEventListener('click', function(){
+      scroller.scrollBy({ left: -cardStep(), behavior: 'smooth' });
+    });
+    next.addEventListener('click', function(){
+      scroller.scrollBy({ left: cardStep(), behavior: 'smooth' });
+    });
+    scroller.addEventListener('scroll', updateBtns, { passive: true });
+    window.addEventListener('resize', updateBtns);
+    updateBtns();
+  })();
+
+  // Scroll reveals
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if (en.isIntersecting) {
+          en.target.classList.add('in');
+          io.unobserve(en.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+  } else {
+    document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); });
+  }
+
+  // CX Curve chart — draw on view + stage sync
+  (function(){
+    var chart = document.querySelector('.cx-chart');
+    var path = document.getElementById('cx-curve-path');
+    var tiles = document.querySelectorAll('.cx-stages li');
+    var bands = document.querySelectorAll('.cx-band');
+    var hits = document.querySelectorAll('.cx-hit');
+    if (!chart) return;
+
+    // Measure path for dash animation
+    if (path && path.getTotalLength) {
+      try {
+        var len = path.getTotalLength();
+        path.style.strokeDasharray = String(len);
+        path.style.strokeDashoffset = String(len);
+      } catch (e) {}
+    }
+
+    function setStage(idx, on) {
+      chart.classList.toggle('is-dimming', on && idx != null);
+      bands.forEach(function(b){
+        b.classList.toggle('is-hot', on && Number(b.getAttribute('data-stage')) === idx);
+      });
+      tiles.forEach(function(t, i){
+        t.classList.toggle('is-active', on && i === idx);
+      });
+    }
+
+    hits.forEach(function(hit){
+      var idx = Number(hit.getAttribute('data-stage'));
+      hit.addEventListener('mouseenter', function(){ setStage(idx, true); });
+      hit.addEventListener('mouseleave', function(){ setStage(null, false); });
+      hit.addEventListener('click', function(){
+        var was = tiles[idx] && tiles[idx].classList.contains('is-active');
+        document.querySelectorAll('.cx-stages li.is-active').forEach(function(t){ t.classList.remove('is-active'); });
+        setStage(null, false);
+        if (!was && tiles[idx]) {
+          tiles[idx].classList.add('is-active');
+          setStage(idx, true);
+        }
+      });
+    });
+
+    tiles.forEach(function(tile, idx){
+      tile.addEventListener('mouseenter', function(){ setStage(idx, true); });
+      tile.addEventListener('mouseleave', function(){
+        if (!tile.classList.contains('is-active')) setStage(null, false);
+      });
+    });
+
+    // Draw when scrolled into view
+    function draw() {
+      chart.classList.add('is-drawn');
+      chart.classList.add('show-drifts');
+      // bring the bead in only after the curve has finished drawing
+      setTimeout(function(){
+        var parts = chart.querySelectorAll('.cx-bead-anim');
+        if (parts.length && parts[0].beginElement) {
+          try { parts.forEach(function(a){ a.beginElement(); }); chart.classList.add('bead-on'); } catch (e) {}
+        }
+      }, 4700);
+    }
+    if ('IntersectionObserver' in window) {
+      var io = new IntersectionObserver(function(entries){
+        entries.forEach(function(en){
+          if (en.isIntersecting) { draw(); io.disconnect(); }
+        });
+      }, { threshold: 0.35 });
+      io.observe(chart);
+    } else {
+      draw();
+    }
+  })();
+
+  // CX Curve stage tiles — hover + click/tap activate
+  document.querySelectorAll('.cx-stages li').forEach(function(tile){
+    tile.setAttribute('tabindex', '0');
+    tile.setAttribute('role', 'button');
+    tile.addEventListener('click', function(){
+      var was = tile.classList.contains('is-active');
+      document.querySelectorAll('.cx-stages li.is-active').forEach(function(t){ t.classList.remove('is-active'); });
+      if (!was) tile.classList.add('is-active');
+    });
+    tile.addEventListener('keydown', function(e){
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        tile.click();
+      }
+    });
+  });
+
+  // Nav active state while scrolling (highlight current section tab)
+  (function(){
+    var sections = [
+      { id: 'book', link: 'a[href="#book"]' },
+      { id: 'cx-curve', link: 'a[href="#cx-curve"]' },
+      { id: 'advisory', link: 'a[href="#advisory"]' },
+      { id: 'insights', link: 'a[href="#insights"]' },
+      { id: 'about', link: 'a[href="#about"]' },
+      { id: 'contact', link: 'a[href="#contact"]' }
+    ];
+    var navLinks = document.querySelectorAll('#nav-links a:not(.btn)');
+    function setActive(id) {
+      navLinks.forEach(function(a){
+        var href = a.getAttribute('href');
+        a.classList.toggle('is-active', href === '#' + id);
+      });
+    }
+    if ('IntersectionObserver' in window) {
+      var spy = new IntersectionObserver(function(entries){
+        entries.forEach(function(en){
+          if (en.isIntersecting) setActive(en.target.id);
+        });
+      }, { rootMargin: '-30% 0px -55% 0px', threshold: 0 });
+      sections.forEach(function(s){
+        var el = document.getElementById(s.id);
+        if (el) spy.observe(el);
+      });
+    }
+  })();
+
+  // Workbook starter — localStorage, clear, print, email
+  (function(){
+    var KEY = 'orbits-cx-worksheet-v1';
+    var fields = ['ws-q1','ws-q2','ws-q3','ws-o','ws-r','ws-b','ws-i','ws-t','ws-s'];
+    var checks = ['ws-m1','ws-m2','ws-m3','ws-m4'];
+    var labels = {
+      'ws-q1': 'Talked about more than acted on',
+      'ws-q2': 'Recent win',
+      'ws-q3': 'Momentum breakdown',
+      'ws-o': 'Obstacle', 'ws-r': 'Research', 'ws-b': 'Benchmark',
+      'ws-i': 'Invest', 'ws-t': 'Transform', 'ws-s': 'Share',
+      'ws-m1': 'Progress cleanly stage to stage',
+      'ws-m2': 'Can name where we lose momentum',
+      'ws-m3': 'Track sentiment & engagement',
+      'ws-m4': 'Clear protocol when customer drifts'
+    };
+    function load() {
+      try {
+        var data = JSON.parse(localStorage.getItem(KEY) || '{}');
+        fields.forEach(function(id){ var el = document.getElementById(id); if (el && data[id]) el.value = data[id]; });
+        checks.forEach(function(id){ var el = document.getElementById(id); if (el) el.checked = !!data[id]; });
+      } catch (e) {}
+    }
+    function save() {
+      var data = {};
+      fields.forEach(function(id){ var el = document.getElementById(id); if (el) data[id] = el.value; });
+      checks.forEach(function(id){ var el = document.getElementById(id); if (el) data[id] = el.checked; });
+      try { localStorage.setItem(KEY, JSON.stringify(data)); } catch (e) {}
+    }
+    function buildSummary() {
+      var lines = ['CX Curve Starter Worksheet', '────────────────────────────', ''];
+      fields.forEach(function(id){
+        var el = document.getElementById(id);
+        lines.push(labels[id] + ':');
+        lines.push((el && el.value.trim()) ? el.value.trim() : '(blank)');
+        lines.push('');
+      });
+      var res = computeResult();
+      lines.push('Momentum check: ' + res.n + ' of 4 (' + res.band.title + ')');
+      checks.forEach(function(id){
+        var el = document.getElementById(id);
+        lines.push((el && el.checked ? '[x] ' : '[ ] ') + labels[id]);
+      });
+      lines.push('', 'Your priorities, in order:');
+      res.gaps.forEach(function(g, i){ lines.push((i + 1) + '. ' + g.title + ' - ' + g.move); });
+      lines.push('', 'From the CX Curve Workbook starter');
+      return lines.join('\n');
+    }
+    fields.forEach(function(id){ var el = document.getElementById(id); if (el) el.addEventListener('input', save); });
+    checks.forEach(function(id){ var el = document.getElementById(id); if (el) el.addEventListener('change', save); });
+    var bands = [
+      { max: 1, band: 'low',  title: 'Drift is likely costing you momentum',
+        text: 'Most of the journey is running on hope rather than design. Start with the priorities below, in this order.' },
+      { max: 3, band: 'mid',  title: 'You can see part of the picture',
+        text: 'You see some of where momentum leaks, but not consistently enough to act on it. These are the gaps to close next.' },
+      { max: 4, band: 'high', title: 'A strong foundation. Now pressure-test it',
+        text: 'You ticked everything, so the real question is whether your whole leadership team would answer the same way.' }
+    ];
+    var gapOrder = ['ws-m2', 'ws-m3', 'ws-m4', 'ws-m1'];
+    var gapInfo = {
+      'ws-m2': { title: 'Name your Drift Zone',
+        why: 'If you cannot say where customers lose momentum, every fix is a guess.',
+        move: 'Take your three most recent stalled or lost customers and mark the stage where each one slowed on the ORBITS snapshot above. The cluster is your Drift Zone.' },
+      'ws-m3': { title: 'Add an early-warning signal',
+        why: 'Revenue metrics report momentum loss after it has already happened.',
+        move: 'Pick one sentiment or engagement signal per stage, such as adoption after go-live, and review them together every month.' },
+      'ws-m4': { title: 'Define a drift protocol',
+        why: 'Without a trigger and an owner, drift gets noticed at renewal.',
+        move: 'Write down what counts as drifting, who owns the response, and the first action they take.' },
+      'ws-m1': { title: 'Smooth the handoffs',
+        why: 'Customers rarely stall inside a stage. They stall between stages.',
+        move: 'Walk one real customer end to end and list every handoff between teams. Each one is a candidate Drift Zone.' }
+    };
+    var alignTest = { title: 'Run the alignment test',
+      why: 'Ticking every box on your own is only half the test.',
+      move: 'Ask each member of your leadership team to answer these four statements separately. Wherever the answers differ is where momentum leaks.' };
+    function checkedCount() {
+      return checks.reduce(function(n,id){ var el = document.getElementById(id); return n + (el && el.checked ? 1 : 0); }, 0);
+    }
+    function currentBand(n) {
+      for (var i = 0; i < bands.length; i++) if (n <= bands[i].max) return bands[i];
+      return bands[bands.length - 1];
+    }
+    function computeResult() {
+      var n = checkedCount();
+      var b = currentBand(n);
+      var gaps = (n === 4) ? [alignTest] : gapOrder.filter(function(id){
+        var el = document.getElementById(id); return !(el && el.checked);
+      }).map(function(id){ return gapInfo[id]; });
+      return { n: n, band: b, gaps: gaps };
+    }
+    function trimmed(str, max) {
+      str = (str || '').replace(/\s+/g, ' ').trim();
+      return str.length > max ? str.slice(0, max).replace(/\s+\S*$/, '') + '…' : str;
+    }
+    function updateResult() {
+      var box = document.getElementById('ws-result');
+      if (!box) return;
+      var any = checks.some(function(id){ var el = document.getElementById(id); return el && el.checked; });
+      var r = computeResult();
+      var gapsWrap = document.getElementById('ws-gaps-wrap');
+      var quote = document.getElementById('ws-result-quote');
+      document.getElementById('ws-score').textContent = r.n;
+      if (!any) {
+        box.setAttribute('data-band', 'none');
+        document.getElementById('ws-result-title').textContent = 'Check what is true today';
+        document.getElementById('ws-result-text').textContent = 'Tick the statements that are true for your organization right now and your read on momentum appears here.';
+        gapsWrap.hidden = true; quote.hidden = true;
+        return;
+      }
+      box.setAttribute('data-band', r.band.band);
+      document.getElementById('ws-result-title').textContent = r.band.title;
+      document.getElementById('ws-result-text').textContent = r.band.text;
+
+      // Reflect their own words back, if they wrote any
+      var q3 = document.getElementById('ws-q3');
+      var note = q3 ? trimmed(q3.value, 170) : '';
+      quote.hidden = !note;
+      quote.textContent = '';
+      if (note) {
+        var lab = document.createElement('span'); lab.textContent = 'You noted momentum broke down when: ';
+        quote.appendChild(lab); quote.appendChild(document.createTextNode('\u201C' + note + '\u201D'));
+      }
+
+      // Priorities
+      document.getElementById('ws-gaps-label').textContent = (r.n === 4) ? 'Your next step' : 'Your priorities, in order';
+      var list = document.getElementById('ws-gaps');
+      list.innerHTML = '';
+      r.gaps.forEach(function(g){
+        var li = document.createElement('li');
+        var t = document.createElement('b'); t.textContent = g.title;
+        var w = document.createElement('span'); w.textContent = g.why;
+        var m = document.createElement('em'); m.textContent = 'First move: ' + g.move;
+        li.appendChild(t); li.appendChild(w); li.appendChild(m);
+        list.appendChild(li);
+      });
+      gapsWrap.hidden = false;
+
+    }
+    checks.forEach(function(id){ var el = document.getElementById(id); if (el) el.addEventListener('change', updateResult); });
+    var q3El = document.getElementById('ws-q3');
+    if (q3El) q3El.addEventListener('input', updateResult);
+    var clearBtn = document.getElementById('ws-clear');
+    if (clearBtn) clearBtn.addEventListener('click', function(){
+      fields.forEach(function(id){ var el = document.getElementById(id); if (el) el.value = ''; });
+      checks.forEach(function(id){ var el = document.getElementById(id); if (el) el.checked = false; });
+      try { localStorage.removeItem(KEY); } catch (e) {}
+      updateResult();
+    });
+    function addPrintCopies() {
+      removePrintCopies();
+      document.querySelectorAll('#modal-worksheet textarea').forEach(function(ta){
+        var d = document.createElement('div');
+        d.className = 'ws-print-copy';
+        d.textContent = ta.value;
+        ta.insertAdjacentElement('afterend', d);
+      });
+    }
+    function removePrintCopies() {
+      document.querySelectorAll('#modal-worksheet .ws-print-copy').forEach(function(n){ n.remove(); });
+    }
+    window.addEventListener('beforeprint', addPrintCopies);
+    window.addEventListener('afterprint', removePrintCopies);
+    var printBtn = document.getElementById('ws-print');
+    if (printBtn) printBtn.addEventListener('click', function(){ addPrintCopies(); window.print(); });
+    document.querySelectorAll('.ws-contact-link, [data-close-dialog]').forEach(function(a){
+      a.addEventListener('click', function(){
+        var dlg = document.getElementById('modal-worksheet');
+        if (dlg) dlg.close();
+      });
+    });
+    load();
+    updateResult();
+  })();
+
+  // Email fallback: if clicking an email link does not open a mail app
+  // (no mail program set up, or the viewer blocks mailto), show the address and a webmail option.
+  (function(){
+    var toast = null, timer = null, opened = false;
+    function hideToast(){ if (toast) { toast.remove(); toast = null; } }
+    function markOpened(){ opened = true; }
+    window.addEventListener('blur', markOpened);
+    document.addEventListener('visibilitychange', function(){ if (document.hidden) markOpened(); });
+    function showToast(href){
+      hideToast();
+      var url, addr = 'stephen@orbitscx.com', subject = '', body = '';
+      try {
+        url = new URL(href);
+        addr = decodeURIComponent(url.pathname) || addr;
+        subject = url.searchParams.get('subject') || '';
+        body = url.searchParams.get('body') || '';
+      } catch (e) {}
+      var gmail = 'https://mail.google.com/mail/?view=cm&fs=1&to=' + encodeURIComponent(addr) +
+        '&su=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+      toast = document.createElement('div');
+      toast.className = 'mail-toast';
+      toast.setAttribute('role', 'status');
+      toast.innerHTML =
+        '<button type="button" class="mail-toast-close" aria-label="Dismiss">\u00d7</button>' +
+        '<p>Your email app did not open. Send your note to <strong></strong></p>' +
+        '<div class="mail-toast-actions">' +
+          '<button type="button" class="mail-copy">Copy address</button>' +
+          '<a target="_blank" rel="noopener">Write it in Gmail</a>' +
+        '</div>';
+      toast.querySelector('strong').textContent = addr;
+      toast.querySelector('a').href = gmail;
+      toast.querySelector('.mail-toast-close').addEventListener('click', hideToast);
+      toast.querySelector('.mail-copy').addEventListener('click', function(btn){
+        var b = this;
+        function done(){ b.textContent = 'Copied'; }
+        if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(addr).then(done, done);
+        else done();
+      });
+      // A modal dialog sits above everything else, so the notice must live inside it when one is open
+      (document.querySelector('dialog[open]') || document.body).appendChild(toast);
+      setTimeout(hideToast, 20000);
+    }
+    document.addEventListener('click', function(e){
+      var a = e.target.closest && e.target.closest('a[href^="mailto:"]');
+      if (!a) return;
+      var href = a.href;
+      opened = false;
+      clearTimeout(timer);
+      timer = setTimeout(function(){ if (!opened) showToast(href); }, 1300);
+    });
+  })();
+})();
+</script>
+<script>
+/* Profile photo: subtle 3D tilt that follows the cursor */
+(function(){
+  var p=document.querySelector('.profile');
+  if(!p||!matchMedia('(hover: hover) and (pointer: fine)').matches||matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+  p.addEventListener('mousemove',function(e){
+    var r=p.getBoundingClientRect(),x=(e.clientX-r.left-r.width/2)/(r.width/2),y=(e.clientY-r.top-r.height/2)/(r.height/2);
+    p.style.setProperty('--ty',(x*7).toFixed(2)+'deg');p.style.setProperty('--tx',(-y*7).toFixed(2)+'deg');
+    p.style.setProperty('--px',(-x*4).toFixed(2)+'px');p.style.setProperty('--py',(-y*4).toFixed(2)+'px');
+  });
+  p.addEventListener('mouseleave',function(){['--tx','--ty'].forEach(function(k){p.style.setProperty(k,'0deg')});['--px','--py'].forEach(function(k){p.style.setProperty(k,'0px')});});
+})();
+</script>
 </body>
 </html>
