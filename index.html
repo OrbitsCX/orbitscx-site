@@ -1041,6 +1041,7 @@ h1, h2, h3, h4 {
   pointer-events: none;
   overflow: hidden;
   border-radius: 50%;
+  filter: drop-shadow(0 1px 2px rgba(0,0,0,.45)) drop-shadow(0 0 10px rgba(240,208,140,.35));
 }
 .core-mark text {
   font-family: var(--serif);
@@ -1048,7 +1049,6 @@ h1, h2, h3, h4 {
   font-size: 52px;
   fill: url(#cxGrad);
   opacity: 1;
-  filter: drop-shadow(0 1px 2px rgba(0,0,0,.45)) drop-shadow(0 0 10px rgba(240,208,140,.35));
 }
 
 .hero-equation {
@@ -2782,7 +2782,7 @@ dialog::backdrop {
     }
   }
   /* Give the CX mark a little more breathing room on narrow screens. Desktop remains unchanged. */
-  .core-mark text { font-size: 40px; textLength: 52; }
+  .core-mark text { font-size: 40px; }
   .hero-equation { display: none; }
   .equation-card { width: 100%; justify-content: space-between; }
   .credentials { grid-template-columns: 1fr; }
@@ -3407,13 +3407,13 @@ dialog::backdrop {
       <div class="orbit-core">
         <svg class="core-mark" viewBox="0 0 92 92" aria-hidden="true">
           <defs>
-            <linearGradient id="cxGrad" x1="0" y1="0" x2="0" y2="1">
+            <linearGradient id="cxGrad" gradientUnits="userSpaceOnUse" x1="0" y1="26" x2="0" y2="68">
               <stop offset="0" stop-color="#FFF1C9" stop-opacity="0.95"/>
               <stop offset="0.45" stop-color="#F0D08C" stop-opacity="0.88"/>
               <stop offset="1" stop-color="#DAB070" stop-opacity="0.72"/>
             </linearGradient>
           </defs>
-          <text x="46" y="63" text-anchor="middle" textLength="60" lengthAdjust="spacingAndGlyphs">CX</text>
+          <text x="46" y="63" text-anchor="middle">CX</text>
         </svg>
       </div>
     </div>
@@ -4713,6 +4713,21 @@ dialog::backdrop {
     p.style.setProperty('--px',(-x*4).toFixed(2)+'px');p.style.setProperty('--py',(-y*4).toFixed(2)+'px');
   });
   p.addEventListener('mouseleave',function(){['--tx','--ty'].forEach(function(k){p.style.setProperty(k,'0deg')});['--px','--py'].forEach(function(k){p.style.setProperty(k,'0px')});});
+})();
+</script>
+<script>
+/* Fit the CX letters on the orb to a fixed width (consistent in Safari, Chrome, Firefox) */
+(function(){
+  var t=document.querySelector('.core-mark text'); if(!t||!t.getComputedTextLength) return;
+  var mq=matchMedia('(max-width: 640px)');
+  function fit(){
+    t.style.fontSize='';
+    var base=parseFloat(getComputedStyle(t).fontSize)||48, len=t.getComputedTextLength(); if(!len) return;
+    t.style.fontSize=Math.max(30,Math.min(58,base*(mq.matches?50:60)/len)).toFixed(1)+'px';
+  }
+  fit(); if(document.fonts&&document.fonts.ready) document.fonts.ready.then(fit);
+  window.addEventListener('load',fit);
+  if(mq.addEventListener) mq.addEventListener('change',fit); else if(mq.addListener) mq.addListener(fit);
 })();
 </script>
 </body>
