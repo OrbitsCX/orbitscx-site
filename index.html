@@ -3095,6 +3095,18 @@ dialog::backdrop {
   opacity: 0.3;
 }
 .book-endorsements-head .eyebrow { margin: 0; }
+.book-endorsements-head .book-voices-title {
+  font-size: clamp(2.2rem, 4.2vw, 3.4rem);
+  line-height: 1.05;
+  color: #FFF6E6;
+  margin: 0 0 10px;
+}
+.book-endorsements-head .book-voices-title em { font-style: italic; color: var(--tan); }
+.book-endorsements-head .book-endorsements-note {
+  color: rgba(255,255,255,.66);
+  font-size: .95rem;
+  letter-spacing: .02em;
+}
 .book-endorsements-note {
   color: rgba(255,255,255,.38);
   font-size: .75rem;
@@ -3451,7 +3463,7 @@ dialog::backdrop {
     <div class="book-endorsements">
       <div class="book-endorsements-head">
         <div>
-          <div class="eyebrow">Voices behind The CX Curve</div>
+          <h2 class="book-voices-title">Voices behind <em>The CX Curve</em></h2>
           <div class="book-endorsements-note">Selected endorsements and author perspective from the back cover</div>
         </div>
         <div class="book-endorsement-controls" aria-label="Scroll endorsements">
