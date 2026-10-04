@@ -2843,6 +2843,63 @@ dialog::backdrop {
   .contact-band { padding: 72px 0; }
 }
 
+@media (max-width: 640px) {
+  /* Mobile overflow guard: keep text/content inside the viewport without changing desktop layout. */
+  .wrap > *,
+  .hero-grid > *,
+  .momentum-grid > *,
+  .section-intro > *,
+  .diag-grid > *,
+  .about-grid > *,
+  .footer-main > *,
+  .footer-bottom > * {
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  .hero h1,
+  .hero-lead,
+  .hero-facets,
+  .section-intro h2,
+  .section-intro p,
+  .momentum h2,
+  .momentum-copy,
+  .diagnostic h2,
+  .diagnostic p,
+  .about-copy,
+  .about-copy h2,
+  .about-copy p,
+  .pillar h3,
+  .pillar p,
+  .outcome h3,
+  .outcome p,
+  .signal span,
+  .proof-item,
+  .cx-head,
+  .cx-head h2,
+  .cx-head p,
+  .cx-foot p,
+  .book-voices-title,
+  .book-endorsement,
+  .book-endorsement p,
+  .quote,
+  .quote p,
+  .footer-main,
+  .footer-bottom {
+    overflow-wrap: anywhere;
+    word-break: normal;
+  }
+
+  .hero-facets span {
+    white-space: normal;
+  }
+
+  .proof-label {
+    white-space: normal;
+  }
+}
+
+
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after {
