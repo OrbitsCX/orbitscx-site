@@ -1150,44 +1150,47 @@ h1, h2, h3, h4 {
   position: relative;
   z-index: 2;
   display: grid;
-  grid-template-columns: 0.95fr 1.05fr;
-  gap: 72px;
+  grid-template-columns: 1.12fr 0.88fr;
+  gap: 64px;
   align-items: center;
 }
 .customer-center .eyebrow { color: var(--tan); }
 .customer-center h2 {
-  font-size: clamp(2.35rem, 4.4vw, 3.9rem);
-  line-height: 1.04;
+  font-size: clamp(2.2rem, 3.9vw, 3.5rem);
+  line-height: 1.06;
   letter-spacing: -0.035em;
   color: #fff;
-  max-width: 650px;
+  max-width: 700px;
   margin: 16px 0 0;
 }
-.customer-center h2 span { color: var(--tan); }
-.customer-center-copy { max-width: 600px; }
+.customer-center h2 span { color: var(--tan); display: block; text-wrap: balance; }
+.customer-center h2 { text-wrap: balance; }
+.customer-center-copy { max-width: 560px; }
+.customer-center-copy strong { color: #fff; font-weight: 600; }
 .customer-center-copy p {
   color: rgba(255,255,255,.72);
   font-size: 1.08rem;
   line-height: 1.72;
   margin-bottom: 20px;
+  text-wrap: pretty;
 }
 .momentum-chain {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  gap: 10px 14px;
-  margin-top: 30px;
-  padding-top: 24px;
-  border-top: 1px solid rgba(255,255,255,.14);
+  gap: 8px 11px;
+  margin-top: 34px;
+  padding-top: 28px;
+  border-top: 1px solid rgba(218,176,112,.28);
   color: var(--tan);
-  font-size: .68rem;
+  font-size: .76rem;
   font-weight: 700;
-  letter-spacing: .12em;
+  letter-spacing: .1em;
   text-transform: uppercase;
 }
 .momentum-chain b {
-  color: rgba(255,255,255,.34);
-  font-size: 1rem;
+  color: rgba(218,176,112,.6);
+  font-size: 1.05rem;
   font-weight: 400;
 }
 
@@ -3873,10 +3876,10 @@ dialog::backdrop {
       <h2 id="customer-center-title">Don’t organize the business around the numbers.<br><span>Organize it around the customer, and let the numbers follow.</span></h2>
     </div>
     <div class="customer-center-copy">
-      <p>Revenue, margin, EBITDA, retention, and growth tell you how the business is performing. They are the scoreboard. They are not what creates lasting momentum.</p>
-      <p>When the organization wraps itself around the customer, the work of every function becomes connected to the same source of value. The customer journey gets clearer, friction gets removed, and the business can move with greater velocity.</p>
-      <div class="momentum-chain" aria-label="Customer to business outcomes">
-        <span>Customer</span><b>→</b><span>Velocity</span><b>→</b><span>Momentum</span><b>→</b><span>Business outcomes</span>
+      <p>Every leader wants a customer-centered company. But there is a constant pull on the orbit toward the numbers. When things get uncertain, it grows stronger and the company bends toward EBITDA. Like gravity, it never rests.</p>
+      <p>The numbers matter. But under pressure a company falls back on how it is wired. Keeping the customer at the center takes relentless focus and a rewiring of the company’s DNA. Do that, and <strong>the numbers don’t suffer. They get stronger.</strong></p>
+      <div class="momentum-chain" aria-label="Customer to velocity to momentum to the numbers">
+        <span>Customer</span><b>→</b><span>Velocity</span><b>→</b><span>Momentum</span><b>→</b><span>The numbers</span>
       </div>
     </div>
   </div>
