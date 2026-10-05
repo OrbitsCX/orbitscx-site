@@ -1130,25 +1130,10 @@ h1, h2, h3, h4 {
 
 /* Customer-centered thesis */
 .customer-center {
-  background: var(--umber);
-  color: #fff;
-  overflow: hidden;
-}
-.customer-center::after {
-  content: "";
-  position: absolute;
-  width: 520px;
-  height: 520px;
-  border: 1px solid rgba(218,176,112,.1);
-  border-radius: 50%;
-  left: -220px;
-  bottom: -240px;
-  box-shadow: 0 0 0 60px rgba(218,176,112,.03), 0 0 0 120px rgba(218,176,112,.02);
-  pointer-events: none;
+  background: var(--ink);
+  color: var(--paper);
 }
 .customer-center-grid {
-  position: relative;
-  z-index: 2;
   display: grid;
   grid-template-columns: 0.95fr 1.05fr;
   gap: 72px;
@@ -1159,9 +1144,8 @@ h1, h2, h3, h4 {
   font-size: clamp(2.35rem, 4.4vw, 3.9rem);
   line-height: 1.04;
   letter-spacing: -0.035em;
-  color: #fff;
   max-width: 650px;
-  margin: 16px 0 0;
+  margin: 0;
 }
 .customer-center h2 span { color: var(--tan); }
 .customer-center-copy { max-width: 600px; }
