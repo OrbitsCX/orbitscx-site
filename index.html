@@ -1098,6 +1098,45 @@ h1, h2, h3, h4 {
   margin-bottom: 8px;
 }
 .momentum h2 span { color: var(--sandstone); }
+/* Momentum trap: coined-term definition band */
+.trap-intro {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+  align-items: center;
+  border-top: 2px solid var(--sandstone);
+  border-bottom: 1px solid var(--line);
+  margin-bottom: 84px;
+}
+.trap-term { padding: 46px 56px 46px 0; }
+.trap-name {
+  font: 400 clamp(2.9rem, 6.2vw, 5.4rem)/0.98 var(--serif);
+  letter-spacing: -0.04em;
+  color: var(--flat-rust);
+  margin: 0 0 18px;
+}
+.trap-pron {
+  font: italic 400 1.02rem var(--serif);
+  color: var(--rust);
+  margin: 0;
+}
+.trap-pron span { color: var(--muted); margin-left: 10px; }
+.trap-def {
+  padding: 46px 0 46px 56px;
+  border-left: 1px solid var(--line);
+}
+.trap-meaning {
+  font: 400 clamp(1.3rem, 2.2vw, 1.85rem)/1.38 var(--serif);
+  letter-spacing: -0.01em;
+  color: var(--umber);
+  margin: 0 0 16px;
+  text-wrap: balance;
+}
+.trap-why { font-size: 1.02rem; color: var(--muted); margin: 0; max-width: 460px; }
+@media (max-width: 900px) {
+  .trap-intro { grid-template-columns: minmax(0, 1fr); margin-bottom: 56px; }
+  .trap-term { padding: 34px 0 22px; }
+  .trap-def { padding: 0 0 34px; border-left: 0; }
+}
 .momentum-copy strong { color: var(--flat-rust); font-weight: 700; }
 .momentum-copy p {
   font-size: 1.08rem;
@@ -1117,6 +1156,7 @@ h1, h2, h3, h4 {
   box-shadow: var(--shadow-sm);
 }
 .equation-card .formula {
+  white-space: nowrap;
   font: 700 2.1rem var(--serif);
   color: var(--flat-rust);
   letter-spacing: -0.02em;
@@ -3854,14 +3894,25 @@ dialog::backdrop {
 
 
 <section class="section momentum">
+  <div class="wrap">
+    <div class="trap-intro" role="group" aria-label="Definition of the momentum trap">
+      <div class="trap-term">
+        <p class="trap-name">momentum trap</p>
+        <p class="trap-pron">mo·men·tum trap <span>noun</span></p>
+      </div>
+      <div class="trap-def">
+        <p class="trap-meaning">Thinking you have momentum when you don’t: building mass with no velocity.</p>
+        <p class="trap-why">Mass is visible and within your control, so it feels like progress.</p>
+      </div>
+    </div>
+  </div>
   <div class="wrap momentum-grid">
     <div>
-      <div class="eyebrow">The momentum trap</div>
       <h2>Mass creates potential.<br><span>Velocity creates momentum.</span></h2>
     </div>
     <div class="momentum-copy">
       <p>A company can have exceptional products, deep IP, an installed base, talented people, capital, and years of infrastructure behind it and still feel strangely slow.</p>
-      <p>That is the <strong>momentum trap</strong>: believing you have momentum because you keep building mass, while velocity stays flat. Mass is visible and within your control, so it feels like progress. But the gap between expected results and actual momentum is rarely a lack of effort. It is a lack of alignment around the customer’s journey.</p>
+      <p>The gap between expected results and actual momentum is rarely a lack of effort. It is a lack of alignment around the customer’s journey.</p>
       <div class="equation-card">
         <div class="formula">P = MV</div>
         <span>Momentum = Mass × Velocity</span>
