@@ -1128,6 +1128,53 @@ h1, h2, h3, h4 {
   font-weight: 600;
 }
 
+/* Customer-centered thesis */
+.customer-center {
+  background: var(--ink);
+  color: var(--paper);
+}
+.customer-center-grid {
+  display: grid;
+  grid-template-columns: 0.95fr 1.05fr;
+  gap: 72px;
+  align-items: center;
+}
+.customer-center .eyebrow { color: var(--tan); }
+.customer-center h2 {
+  font-size: clamp(2.35rem, 4.4vw, 3.9rem);
+  line-height: 1.04;
+  letter-spacing: -0.035em;
+  max-width: 650px;
+  margin: 0;
+}
+.customer-center h2 span { color: var(--tan); }
+.customer-center-copy { max-width: 600px; }
+.customer-center-copy p {
+  color: rgba(255,255,255,.72);
+  font-size: 1.08rem;
+  line-height: 1.72;
+  margin-bottom: 20px;
+}
+.momentum-chain {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px 14px;
+  margin-top: 30px;
+  padding-top: 24px;
+  border-top: 1px solid rgba(255,255,255,.14);
+  color: var(--tan);
+  font-size: .68rem;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+.momentum-chain b {
+  color: rgba(255,255,255,.34);
+  font-size: 1rem;
+  font-weight: 400;
+}
+
 /* Advisory */
 .advisory { background: var(--sand); }
 .section-intro {
@@ -2674,6 +2721,7 @@ dialog::backdrop {
   html, body { overflow-x: clip; }
   .hero-grid { grid-template-columns: minmax(0, 1fr); gap: 48px; }
   .momentum-grid,
+  .customer-center-grid,
   .diag-grid,
   .about-grid,
   .book-grid {
@@ -2864,6 +2912,8 @@ dialog::backdrop {
   .section-intro p,
   .momentum h2,
   .momentum-copy,
+  .customer-center h2,
+  .customer-center-copy,
   .diagnostic h2,
   .diagnostic p,
   .about-copy,
@@ -3795,6 +3845,22 @@ dialog::backdrop {
       <div class="equation-card">
         <div class="formula">P = MV</div>
         <span>Momentum = Mass × Velocity</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section customer-center" aria-labelledby="customer-center-title">
+  <div class="wrap customer-center-grid">
+    <div>
+      <div class="eyebrow">The source of momentum</div>
+      <h2 id="customer-center-title">Don’t organize the business around the numbers.<br><span>Organize it around the customer, and let the numbers follow.</span></h2>
+    </div>
+    <div class="customer-center-copy">
+      <p>Revenue, margin, EBITDA, retention, and growth tell you how the business is performing. They are the scoreboard. They are not what creates lasting momentum.</p>
+      <p>When the organization wraps itself around the customer, the work of every function becomes connected to the same source of value. The customer journey gets clearer, friction gets removed, and the business can move with greater velocity.</p>
+      <div class="momentum-chain" aria-label="Customer to business outcomes">
+        <span>Customer</span><b>→</b><span>Velocity</span><b>→</b><span>Momentum</span><b>→</b><span>Business outcomes</span>
       </div>
     </div>
   </div>
