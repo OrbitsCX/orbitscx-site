@@ -1246,38 +1246,114 @@ h1, h2, h3, h4 {
   font-weight: 400;
 }
 
-/* Advisory */
-.advisory { background: var(--sand); }
+/* Advisory — operating system */
+.advisory {
+  background:
+    linear-gradient(180deg, #F7F0E6 0%, var(--sand) 42%, var(--sand) 100%);
+  border-top: 1px solid rgba(191, 132, 62, 0.18);
+  border-bottom: 1px solid rgba(191, 132, 62, 0.12);
+  overflow: hidden;
+}
+.advisory::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: -120px;
+  width: 720px;
+  height: 720px;
+  margin-left: -360px;
+  border-radius: 50%;
+  border: 1px solid rgba(191, 132, 62, 0.07);
+  box-shadow:
+    0 0 0 80px rgba(191, 132, 62, 0.03),
+    0 0 0 160px rgba(191, 132, 62, 0.015);
+  pointer-events: none;
+}
 .section-intro {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 56px;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 48px;
   align-items: end;
-  margin-bottom: 56px;
+  margin-bottom: 48px;
 }
 .section-intro h2 {
   font-size: clamp(2.4rem, 4.5vw, 4rem);
   color: var(--flat-rust);
-  max-width: 560px;
+  max-width: 620px;
+  text-wrap: balance;
 }
-.section-intro p {
-  font-size: 1.05rem;
+.section-intro-aside {
+  max-width: 420px;
+  padding-bottom: 6px;
+}
+.section-intro-aside p {
+  font-size: 1.08rem;
   color: var(--muted);
-  max-width: 460px;
+  line-height: 1.65;
+  margin-bottom: 14px;
+}
+.os-equation {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 6px 8px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--sandstone);
+}
+.os-equation span {
+  color: rgba(103, 88, 77, 0.45);
+  font-weight: 500;
+  letter-spacing: 0.04em;
 }
 .pillar-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 18px;
+  gap: 20px;
+  position: relative;
+}
+/* System connector line across the three pillars */
+.pillar-grid::before {
+  content: "";
+  position: absolute;
+  top: 36px;
+  left: 12%;
+  right: 12%;
+  height: 1px;
+  background: linear-gradient(90deg,
+    transparent 0%,
+    rgba(191, 132, 62, 0.22) 12%,
+    rgba(191, 132, 62, 0.35) 50%,
+    rgba(191, 132, 62, 0.22) 88%,
+    transparent 100%);
+  pointer-events: none;
+  z-index: 0;
 }
 .pillar {
-  padding: 40px 32px 44px;
+  padding: 36px 30px 40px;
   background: var(--paper);
   border: 1px solid var(--line);
   border-radius: 14px;
   position: relative;
   overflow: hidden;
+  z-index: 1;
+  box-shadow: 0 8px 28px rgba(26, 17, 13, 0.04);
   transition: transform .4s var(--ease), box-shadow .4s, border-color .4s, background .3s;
+}
+/* Stage-colored left accent */
+.pillar::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 18px;
+  bottom: 18px;
+  width: 3px;
+  border-radius: 0 3px 3px 0;
+  background: var(--pillar-accent, var(--sandstone));
+  opacity: 0.85;
+  transition: opacity .3s, width .3s var(--ease);
 }
 .pillar::after {
   content: "";
@@ -1290,23 +1366,43 @@ h1, h2, h3, h4 {
   pointer-events: none;
   transition: transform .5s var(--ease);
 }
+.pillar:nth-child(1) { --pillar-accent: #5C2618; }
+.pillar:nth-child(2) { --pillar-accent: #A85426; }
+.pillar:nth-child(3) { --pillar-accent: #BF843E; }
 .pillar:hover {
   transform: translateY(-8px);
   box-shadow: 0 28px 60px rgba(26,17,13,.12);
-  border-color: rgba(191,132,62,.4);
+  border-color: rgba(191,132,62,.38);
   background: #fff;
+}
+.pillar:hover::before {
+  opacity: 1;
+  width: 4px;
 }
 .pillar:hover::after { transform: scale(1.4); }
 .pillar-num {
-  font: 700 2.8rem var(--serif);
-  color: rgba(191,132,62,.22);
+  font: 700 2.6rem var(--serif);
+  color: var(--pillar-accent, var(--sandstone));
+  opacity: 0.55;
   letter-spacing: -0.04em;
   line-height: 1;
-  margin-bottom: 28px;
+  margin-bottom: 22px;
   display: block;
+  transition: opacity .3s, color .3s;
+}
+.pillar:hover .pillar-num { opacity: 0.85; }
+.pillar-label {
+  display: block;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--pillar-accent, var(--sandstone));
+  opacity: 0.7;
+  margin: -14px 0 18px;
 }
 .pillar h3 {
-  font-size: 1.5rem;
+  font-size: 1.45rem;
   color: var(--flat-rust);
   margin-bottom: 12px;
   letter-spacing: -0.02em;
@@ -1320,13 +1416,29 @@ h1, h2, h3, h4 {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  margin-top: 28px;
+  margin-top: 26px;
+  padding: 8px 14px 8px 0;
   color: var(--terracotta);
   font-size: 0.8rem;
   font-weight: 700;
-  transition: gap .25s var(--ease);
+  border-radius: 999px;
+  transition: gap .25s var(--ease), background .25s, padding .25s, color .25s;
 }
-.pillar:hover .pillar-link { gap: 10px; }
+.pillar:hover .pillar-link {
+  gap: 10px;
+  background: rgba(128, 46, 30, 0.06);
+  padding: 8px 14px;
+  color: var(--maroon);
+}
+@media (max-width: 900px) {
+  .pillar-grid::before { display: none; }
+  .section-intro {
+    grid-template-columns: 1fr;
+    gap: 18px;
+    align-items: start;
+  }
+  .section-intro-aside { max-width: none; }
+}
 
 /* Diagnostic */
 .diagnostic {
@@ -3963,23 +4075,31 @@ dialog::backdrop {
         <div class="eyebrow">The Orbits CX operating system</div>
         <h2>Turn customer experience into a force multiplier.</h2>
       </div>
-      <p>Three pillars that turn scattered CX work into one system.</p>
+      <div class="section-intro-aside">
+        <p>Three interlocking pillars that turn scattered CX work into one system — so the organization reinforces the customer journey instead of fighting it.</p>
+        <div class="os-equation" aria-hidden="true">
+          Align <span>×</span> Rewire <span>×</span> Perform <span>→</span> Momentum
+        </div>
+      </div>
     </div>
     <div class="pillar-grid mobile-swipe desktop-swipe">
       <article class="pillar reveal">
         <span class="pillar-num">01</span>
+        <span class="pillar-label">Align</span>
         <h3>Executive Alignment</h3>
         <p>Unify leadership around a singular customer-centered direction, eliminate competing priorities, and create the conditions for decisive execution.</p>
         <a class="pillar-link" href="mailto:stephen@orbitscx.com?subject=Executive%20Alignment">Talk about alignment <span>→</span></a>
       </article>
       <article class="pillar reveal reveal-delay-1">
         <span class="pillar-num">02</span>
+        <span class="pillar-label">Rewire</span>
         <h3>Operational Rewiring</h3>
         <p>Align processes, metrics, incentives, and technology so the organization reinforces the customer journey instead of creating friction inside it.</p>
         <a class="pillar-link" href="mailto:stephen@orbitscx.com?subject=Operational%20Rewiring">Talk about rewiring <span>→</span></a>
       </article>
       <article class="pillar reveal reveal-delay-2">
         <span class="pillar-num">03</span>
+        <span class="pillar-label">Perform</span>
         <h3>Performance CX</h3>
         <p>Connect experience decisions to measurable business outcomes, turning CX from an initiative into a contributor to growth, retention, and margin.</p>
         <a class="pillar-link" href="mailto:stephen@orbitscx.com?subject=Performance%20CX">Talk about performance <span>→</span></a>
