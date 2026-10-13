@@ -3784,6 +3784,20 @@ main .wrap, .site-footer .wrap { position: relative; z-index: 2; }
   .nav-links a:not(.btn):focus-visible { transform: none; }
 }
 </style>
+
+<style>
+/* Close the empty band between the hero and "The foundational framework".
+   Hero bottom padding is deliberately untouched: the hero's own orbit dots roam out to that edge and would be clipped. */
+.hero { min-height: 0; }
+.section.book { padding-top: 24px; }
+</style>
+
+<style>
+/* Desktop: the hero is built already lifted, so the "Executive Advisory" line sits just under the header on load (no scrolling). */
+@media (min-width: 1025px) {
+  .hero { padding-top: calc(var(--header-h) + 72px - var(--lift, 0px)); }
+}
+</style>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -3882,6 +3896,26 @@ main .wrap, .site-footer .wrap { position: relative; z-index: 2; }
     </div>
   </div>
 </section>
+<script>
+/* Measure how far the eyebrow sits below its target spot and lift the hero by that much, before the first paint. */
+(function(){
+  var hero=document.querySelector('.hero'), eb=hero&&hero.querySelector('.eyebrow');
+  if(!hero||!eb) return;
+  var mq=matchMedia('(min-width: 1025px)'), TARGET=84+28; /* header bottom (12px inset + 72px bar) + breathing room */
+  function fit(){
+    hero.style.removeProperty('--lift');
+    if(!mq.matches) return;
+    var top=eb.getBoundingClientRect().top+(window.scrollY||0);
+    var lift=Math.max(0,Math.round(top-TARGET));
+    if(lift) hero.style.setProperty('--lift',lift+'px');
+  }
+  fit();
+  document.addEventListener('DOMContentLoaded',fit);
+  addEventListener('load',fit);
+  if(document.fonts&&document.fonts.ready) document.fonts.ready.then(fit);
+  var t=0; addEventListener('resize',function(){cancelAnimationFrame(t);t=requestAnimationFrame(fit);},{passive:true});
+})();
+</script>
 
 <section class="section book" id="book">
   <div class="wrap book-grid">
@@ -5332,38 +5366,6 @@ main .wrap, .site-footer .wrap { position: relative; z-index: 2; }
   }
   requestAnimationFrame(function(t){ last = t; frame(t); });
   requestAnimationFrame(function(){ document.documentElement.classList.add('fx-on'); });
-})();
-</script>
-<script>
-/* Intro nudge: shortly after the page opens, glide down so the "Executive Advisory" line sits just under the floating header.
-   Eased and frame-by-frame so it never jumps; any scroll, touch, click or key press cancels it instantly. */
-(function(){
-  if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  if (location.hash && location.hash !== '#top') return;
-  var done = false, raf = 0, timer = 0;
-  function cancel(){ done = true; cancelAnimationFrame(raf); clearTimeout(timer);
-    ['wheel','touchstart','keydown','mousedown'].forEach(function(t){ removeEventListener(t, cancel); }); }
-  ['wheel','touchstart','keydown','mousedown'].forEach(function(t){ addEventListener(t, cancel, {passive:true}); });
-  function start(){
-    if (done) return;
-    var eb = document.querySelector('.hero .eyebrow'); if (!eb) return;
-    var hdr = document.querySelector('.site-header');
-    var hb = hdr ? hdr.getBoundingClientRect().bottom : 84;
-    var target = Math.round(eb.getBoundingClientRect().top + scrollY - (hb + 28));
-    var from = scrollY, dist = target - from;
-    if (from > 4 || dist < 24) return;               // already scrolled, or already close enough
-    var dur = 1400, t0 = 0;
-    function step(now){
-      if (done) return;
-      if (!t0) t0 = now;
-      var p = Math.min(1, (now - t0) / dur), e = 1 - Math.pow(1 - p, 3);   // ease-out cubic
-      scrollTo({top: from + dist * e, behavior: 'instant'});                // 'instant' bypasses the CSS smooth-scroll so frames don't stack
-      if (p < 1) raf = requestAnimationFrame(step); else cancel();
-    }
-    raf = requestAnimationFrame(step);
-  }
-  function arm(){ timer = setTimeout(start, 900); }
-  if (document.readyState === 'complete') arm(); else addEventListener('load', arm);
 })();
 </script>
 </body>
