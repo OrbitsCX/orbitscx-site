@@ -2025,9 +2025,9 @@ h1, h2, h3, h4 {
 }
 .cx-axis-label {
   font-family: var(--sans), system-ui, sans-serif;
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.14em;
+  font-size: 17px;
+  font-weight: 800;
+  letter-spacing: 0.16em;
   fill: #1A110D;
 }
 .cx-band {
@@ -2115,7 +2115,7 @@ h1, h2, h3, h4 {
 .cx-stages li.is-active b {
   transform: none;
 }
-.cx-stages h3 { font: 700 1rem/1.3 var(--sans); margin: 8px 0 6px; }
+.cx-stages h3 { font: 700 1.05rem/1.3 var(--sans); margin: 0 0 8px; }
 .cx-stages p { color: var(--muted); font-size: .95rem; line-height: 1.55; }
 .cx-foot { display: flex; align-items: center; justify-content: space-between; gap: 40px; border-top: 1px solid var(--line); padding-top: 32px; }
 .cx-foot p { max-width: 640px; color: var(--muted); }
@@ -3798,6 +3798,57 @@ main .wrap, .site-footer .wrap { position: relative; z-index: 2; }
   .hero { padding-top: calc(var(--header-h) + 72px - var(--lift, 0px)); }
 }
 </style>
+
+<style>
+/* ORBITS letter chips + gold initials */
+.cx-head p.cx-orbits-line { margin-top: 14px; }
+.cx-head p.cx-orbits-line strong { color: var(--terracotta); letter-spacing: .14em; }
+.cx-orbits {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 8px;
+  max-width: 560px;
+  margin: 0 auto 20px;
+}
+.cx-chip {
+  display: flex; flex-direction: column; align-items: center; gap: 8px;
+  padding: 0; background: none; border: 0; cursor: pointer; font: inherit;
+  -webkit-tap-highlight-color: transparent;
+}
+.cx-chip span {
+  width: 46px; height: 46px; border-radius: 50%;
+  display: grid; place-items: center;
+  font: 700 1.3rem/1 var(--serif);
+  background: #fff;
+  color: color-mix(in srgb, var(--c) 55%, #fff);
+  border: 1.5px solid color-mix(in srgb, var(--c) 35%, #fff);
+  transition: background .5s var(--ease), color .5s var(--ease), border-color .5s var(--ease), transform .4s var(--ease), box-shadow .4s var(--ease);
+}
+.cx-chip small {
+  font: 600 .62rem/1 var(--sans); letter-spacing: .1em; text-transform: uppercase;
+  color: var(--muted); opacity: .55; transition: opacity .4s, color .4s;
+}
+.cx-chip.is-lit span { background: var(--c); color: var(--ink, #fff); border-color: var(--c); }
+.cx-chip.is-lit small { opacity: 1; color: var(--umber); }
+.cx-chip:hover span, .cx-chip:focus-visible span, .cx-chip.is-active span {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px color-mix(in srgb, var(--c) 32%, transparent);
+}
+.cx-chip:focus-visible { outline: none; }
+.cx-chip:focus-visible span { outline: 2px solid var(--terracotta); outline-offset: 3px; }
+.cx-chip.pop span { animation: cx-chip-pop .6s var(--ease); }
+@keyframes cx-chip-pop { 0% { transform: scale(.82); } 55% { transform: scale(1.18); } 100% { transform: scale(1); } }
+.cx-orbits.spelled .cx-chip.is-lit span { animation: cx-chip-wave .8s var(--ease) both; animation-delay: calc(var(--i) * 80ms); }
+@keyframes cx-chip-wave {
+  0%, 100% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--c) 0%, transparent); }
+  45% { box-shadow: 0 0 0 9px color-mix(in srgb, var(--c) 22%, transparent); transform: translateY(-3px); }
+}
+.cx-stages h3::first-letter { color: var(--sandstone); font-size: 1.22em; }
+@media (max-width: 520px) { .cx-chip small { display: none; } .cx-chip span { width: 40px; height: 40px; } }
+@media (prefers-reduced-motion: reduce) {
+  .cx-chip.pop span, .cx-orbits.spelled .cx-chip.is-lit span { animation: none; }
+}
+</style>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -4005,8 +4056,10 @@ main .wrap, .site-footer .wrap { position: relative; z-index: 2; }
       <h2>What is the CX Curve?</h2>
       <p class="cx-lead">Your customer’s journey isn’t a straight line or a funnel. It’s a curve.</p>
       <p>The CX Curve maps the arc from “I need something” to “You are solving my problems” to “I’m telling everyone.” It dips when implementation falters and surges when your solution connects. <strong>There is no neutral.</strong> Every interaction either adds drag or builds momentum.</p>
+      <p class="cx-orbits-line">That arc has six stops, and the first letters spell <strong>ORBITS</strong>. Customers don’t travel a funnel. They orbit, and every orbit has six stops.</p>
     </div>
     <figure class="cx-figure" id="cx-curve-figure" aria-label="The CX Curve graph">
+      <div class="cx-orbits" role="group" aria-label="The six ORBITS stages"><button type="button" class="cx-chip" data-stage="0" style="--c:#2E2523;--ink:#fff;--i:0" aria-label="O — Obstacle"><span>O</span><small>Obstacle</small></button><button type="button" class="cx-chip" data-stage="1" style="--c:#5C2B24;--ink:#fff;--i:1" aria-label="R — Research"><span>R</span><small>Research</small></button><button type="button" class="cx-chip" data-stage="2" style="--c:#A04220;--ink:#fff;--i:2" aria-label="B — Benchmark"><span>B</span><small>Benchmark</small></button><button type="button" class="cx-chip" data-stage="3" style="--c:#C6701A;--ink:#fff;--i:3" aria-label="I — Invest"><span>I</span><small>Invest</small></button><button type="button" class="cx-chip" data-stage="4" style="--c:#E09A28;--ink:#1A110D;--i:4" aria-label="T — Transform"><span>T</span><small>Transform</small></button><button type="button" class="cx-chip" data-stage="5" style="--c:#F2C142;--ink:#1A110D;--i:5" aria-label="S — Share"><span>S</span><small>Share</small></button></div>
       <div class="cx-chart" role="img" aria-labelledby="cx-chart-title">
         <svg class="cx-chart-svg" viewBox="0 0 960 540" xmlns="http://www.w3.org/2000/svg" focusable="false">
           <defs>
@@ -4100,8 +4153,8 @@ main .wrap, .site-footer .wrap { position: relative; z-index: 2; }
               <polyline points="820,372 812,367 812,377" fill="#1A110D" stroke="none"/>
               <polyline points="-12,-16 -7,-8 -17,-8" fill="#1A110D" stroke="none"/>
             </g>
-            <text x="-54" y="180" text-anchor="middle" transform="rotate(-90 -54 180)" class="cx-axis-label">CX SATISFACTION LEVEL</text>
-            <text x="410" y="404" text-anchor="middle" class="cx-axis-label">TIME</text>
+            <text x="-47" y="180" text-anchor="middle" transform="rotate(-90 -47 180)" class="cx-axis-label">CX SATISFACTION LEVEL</text>
+            <text x="410" y="410" text-anchor="middle" class="cx-axis-label">TIME</text>
 
             <!-- The curve: matches the published CX Curve shape -->
             <!-- low in Obstacle → rise Research → peak late Benchmark/Invest → dip Transform → high Share -->
@@ -4144,16 +4197,15 @@ main .wrap, .site-footer .wrap { position: relative; z-index: 2; }
             </g>
           </g>
         </svg>
-        <p class="cx-chart-hint">Hover or tap a stage to explore · the white line is customer momentum across ORBITS</p>
       </div>
     </figure>
     <ol class="cx-stages">
-<li style="--c:#2E2523"><b>O</b><h3>Obstacle</h3><p>A gap between where customers are and where they want to be sparks the need for change.</p></li>
-<li style="--c:#5C2B24"><b>R</b><h3>Research</h3><p>Active exploration through reviews, forums, AI research and trusted advice.</p></li>
-<li style="--c:#A04220"><b>B</b><h3>Benchmark</h3><p>Sizing up the whole package: your product, your integrations, and how your team actually operates.</p></li>
-<li style="--c:#C6701A"><b>I</b><h3>Invest</h3><p>The trigger pulled. Customers commit capital and trust against high expectations.</p></li>
-<li style="--c:#E09A28"><b>T</b><h3>Transform</h3><p>Value realized. Your solution becomes an indispensable part of their workflow.</p></li>
-<li style="--c:#F2C142"><b>S</b><h3>Share</h3><p>The reputation loop. Realized value turns customers into advocates.</p></li>
+<li style="--c:#2E2523"><h3>Obstacle</h3><p>A gap between where customers are and where they want to be sparks the need for change.</p></li>
+<li style="--c:#5C2B24"><h3>Research</h3><p>Active exploration through reviews, forums, AI research and trusted advice.</p></li>
+<li style="--c:#A04220"><h3>Benchmark</h3><p>Sizing up the whole package: your product, your integrations, and how your team actually operates.</p></li>
+<li style="--c:#C6701A"><h3>Invest</h3><p>The trigger pulled. Customers commit capital and trust against high expectations.</p></li>
+<li style="--c:#E09A28"><h3>Transform</h3><p>Value realized. Your solution becomes an indispensable part of their workflow.</p></li>
+<li style="--c:#F2C142"><h3>Share</h3><p>The reputation loop. Realized value turns customers into advocates.</p></li>
     </ol>
     <div class="cx-foot">
       <p><strong>Mind the Drift Zones.</strong> Between every stage lies a foggy, uncertain space where customers stall. Not yet lost, but not progressing. Plan for them, bridge the gaps before they become chasms, and turn stalls into momentum.</p>
@@ -4910,7 +4962,10 @@ main .wrap, .site-footer .wrap { position: relative; z-index: 2; }
       } catch (e) {}
     }
 
+    var chips = document.querySelectorAll('.cx-chip');
+    var chipBox = document.querySelector('.cx-orbits');
     function setStage(idx, on) {
+      chips.forEach(function(c, i){ c.classList.toggle('is-active', on && i === idx); });
       chart.classList.toggle('is-dimming', on && idx != null);
       bands.forEach(function(b){
         b.classList.toggle('is-hot', on && Number(b.getAttribute('data-stage')) === idx);
@@ -4935,6 +4990,47 @@ main .wrap, .site-footer .wrap { position: relative; z-index: 2; }
       });
     });
 
+    chips.forEach(function(chip, idx){
+      chip.addEventListener('mouseenter', function(){ setStage(idx, true); });
+      chip.addEventListener('focus', function(){ setStage(idx, true); });
+      chip.addEventListener('mouseleave', function(){ if (!tiles[idx].classList.contains('is-active')) setStage(null, false); });
+      chip.addEventListener('blur', function(){ if (!tiles[idx].classList.contains('is-active')) setStage(null, false); });
+      chip.addEventListener('click', function(){
+        var was = tiles[idx].classList.contains('is-active');
+        document.querySelectorAll('.cx-stages li.is-active').forEach(function(t){ t.classList.remove('is-active'); });
+        setStage(null, false);
+        if (!was) { tiles[idx].classList.add('is-active'); setStage(idx, true); }
+      });
+    });
+
+    // Light each letter at the moment the drawing curve reaches its stage, so ORBITS spells out as the line plays
+    function lightChips() {
+      if (!chips.length) return;
+      function lit(i){ chips[i].classList.add('is-lit', 'pop'); }
+      function spell(){ if (chipBox) chipBox.classList.add('spelled'); }
+      if (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        chips.forEach(function(c){ c.classList.add('is-lit'); }); return;
+      }
+      var DUR = 4600, times = [];
+      try {
+        var total = path.getTotalLength();
+        // cubic-bezier(.45,.05,.3,1): the CSS ease on the draw animation, inverted to turn "fraction drawn" into elapsed time
+        var X1 = .45, Y1 = .05, X2 = .3, Y2 = 1;
+        var bz = function(a, b, u){ return 3*(1-u)*(1-u)*u*a + 3*(1-u)*u*u*b + u*u*u; };
+        chips.forEach(function(c, i){
+          var target = i * 134 + 67, lo = 0, hi = total;                 // band centre in viewBox units
+          for (var k = 0; k < 24; k++){ var mid = (lo + hi) / 2; if (path.getPointAtLength(mid).x < target) lo = mid; else hi = mid; }
+          var f = Math.min(1, hi / total), a = 0, b = 1;
+          for (var j = 0; j < 24; j++){ var m = (a + b) / 2; if (bz(Y1, Y2, m) < f) a = m; else b = m; }
+          times.push(bz(X1, X2, (a + b) / 2) * DUR);
+        });
+      } catch (e) {
+        times = chips.length ? Array.prototype.map.call(chips, function(c, i){ return (i + 1) / chips.length * DUR * .95; }) : [];
+      }
+      times.forEach(function(t, i){ setTimeout(function(){ lit(i); }, t); });
+      setTimeout(spell, DUR + 250);
+    }
+
     tiles.forEach(function(tile, idx){
       tile.addEventListener('mouseenter', function(){ setStage(idx, true); });
       tile.addEventListener('mouseleave', function(){
@@ -4946,6 +5042,7 @@ main .wrap, .site-footer .wrap { position: relative; z-index: 2; }
     function draw() {
       chart.classList.add('is-drawn');
       chart.classList.add('show-drifts');
+      lightChips();
       // bring the bead in only after the curve has finished drawing
       setTimeout(function(){
         var parts = chart.querySelectorAll('.cx-bead-anim');
