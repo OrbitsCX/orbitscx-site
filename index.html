@@ -3897,16 +3897,19 @@ main .wrap, .site-footer .wrap { position: relative; z-index: 2; }
   </div>
 </section>
 <script>
-/* Measure how far the eyebrow sits below its target spot and lift the hero by that much, before the first paint. */
+/* Measure how far the eyebrow sits below its target spot and lift the hero by that much, before the first paint.
+   Uses layout offsets (not getBoundingClientRect) so a load-in animation/transform on the copy can't skew the measurement. */
 (function(){
   var hero=document.querySelector('.hero'), eb=hero&&hero.querySelector('.eyebrow');
   if(!hero||!eb) return;
-  var mq=matchMedia('(min-width: 1025px)'), TARGET=84+28; /* header bottom (12px inset + 72px bar) + breathing room */
+  var mq=matchMedia('(min-width: 1025px)'), TARGET=84+44; /* header bottom (12px inset + 72px bar) + comfortable breathing room */
+  function topOf(el){var y=0;while(el){y+=el.offsetTop;el=el.offsetParent;}return y;}
   function fit(){
     hero.style.removeProperty('--lift');
     if(!mq.matches) return;
-    var top=eb.getBoundingClientRect().top+(window.scrollY||0);
-    var lift=Math.max(0,Math.round(top-TARGET));
+    var pad=parseFloat(getComputedStyle(hero).paddingTop)||0;
+    var lift=Math.round(topOf(eb)-TARGET);
+    lift=Math.max(0,Math.min(lift,pad-24));
     if(lift) hero.style.setProperty('--lift',lift+'px');
   }
   fit();
