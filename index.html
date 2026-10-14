@@ -1429,6 +1429,7 @@ h1, h2, h3, h4 {
 }
 .section-intro h2 {
   font-size: clamp(2.4rem, 4.5vw, 4rem);
+  line-height: 1.14;
   color: var(--ink-brown);
   max-width: 620px;
   text-wrap: balance;
@@ -1531,17 +1532,6 @@ h1, h2, h3, h4 {
   width: 4px;
 }
 .pillar:hover::after { transform: scale(1.4); }
-.pillar-num {
-  font: 700 2.6rem var(--serif);
-  color: var(--pillar-accent, var(--sandstone));
-  opacity: 0.55;
-  letter-spacing: -0.04em;
-  line-height: 1;
-  margin-bottom: 22px;
-  display: block;
-  transition: opacity .3s, color .3s;
-}
-.pillar:hover .pillar-num { opacity: 0.85; }
 .pillar-label {
   display: block;
   font-size: 0.7rem;
@@ -1550,7 +1540,7 @@ h1, h2, h3, h4 {
   text-transform: uppercase;
   color: var(--pillar-accent, var(--sandstone));
   opacity: 0.7;
-  margin: -14px 0 18px;
+  margin: 0 0 14px;
 }
 .pillar h3 {
   font-size: 1.45rem;
@@ -3232,10 +3222,6 @@ dialog::backdrop {
     padding: 26px 24px 28px;
     min-height: 0;
   }
-  .pillar-num {
-    font-size: 2rem;
-    margin-bottom: 14px;
-  }
   .pillar h3 {
     font-size: 1.3rem;
     margin-bottom: 8px;
@@ -4612,21 +4598,18 @@ main .wrap, .site-footer .wrap { position: relative; z-index: 2; }
     </div>
     <div class="pillar-grid mobile-swipe desktop-swipe">
       <article class="pillar reveal">
-        <span class="pillar-num">01</span>
         <span class="pillar-label">Align</span>
         <h3>Executive Alignment</h3>
         <p>Build leadership alignment around a single customer-centric north star, retire competing internal priorities, and create the conditions for decisive execution. For example, leaders agreeing on the top customer problem to solve this year, and which projects wait.</p>
         <a class="pillar-link" href="mailto:stephen@orbitscx.com?subject=Executive%20Alignment">Talk about alignment <span>→</span></a>
       </article>
       <article class="pillar reveal reveal-delay-1">
-        <span class="pillar-num">02</span>
         <span class="pillar-label">Rewire</span>
         <h3>Operational Rewiring</h3>
         <p>Re-engineer processes, metric incentives, and technology stacks so internal operations actively accelerate the customer journey rather than slowing it with friction. For example, measuring support, sales, and product on shared customer outcomes instead of separate departmental targets.</p>
         <a class="pillar-link" href="mailto:stephen@orbitscx.com?subject=Operational%20Rewiring">Talk about rewiring <span>→</span></a>
       </article>
       <article class="pillar reveal reveal-delay-2">
-        <span class="pillar-num">03</span>
         <span class="pillar-label">Perform</span>
         <h3>Performance CX</h3>
         <p>Connect experience decisions directly to top-line growth, margin expansion, and net retention, turning CX from a soft initiative into a measurable financial engine. For example, showing how faster onboarding lifts retention and revenue.</p>
@@ -4754,7 +4737,7 @@ main .wrap, .site-footer .wrap { position: relative; z-index: 2; }
     </div>
     <div class="about-copy">
       <div class="eyebrow">The architect behind Orbits</div>
-      <h2>Strategy is worthless unless it holds up against customer reality.</h2>
+      <h2>When the customer becomes the center of gravity, everything changes.</h2>
       <p>For decades, we have operated at the intersection of product engineering, operational execution, and executive decision-making, the place where enterprise growth is either built or lost.</p>
       <p>Too many advisory firms operate by handing over a theoretical slide deck and walking away without sharing accountability for the results.</p>
       <p>Orbits CX was built to do it differently. We provide the Orbits CX OS, acting as operational catalysts, educators, and committed partners. We don’t have all the answers upfront. We build them with your team, side by side. Our mandate is simple: strip away corporate friction, install our OS to find and keep momentum, and stay until your team keeps the engine fueled on its own.</p>
