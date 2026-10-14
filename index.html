@@ -1429,7 +1429,6 @@ h1, h2, h3, h4 {
 }
 .section-intro h2 {
   font-size: clamp(2.4rem, 4.5vw, 4rem);
-  line-height: 1.14;
   color: var(--ink-brown);
   max-width: 620px;
   text-wrap: balance;
@@ -1532,6 +1531,17 @@ h1, h2, h3, h4 {
   width: 4px;
 }
 .pillar:hover::after { transform: scale(1.4); }
+.pillar-num {
+  font: 700 2.6rem var(--serif);
+  color: var(--pillar-accent, var(--sandstone));
+  opacity: 0.55;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  margin-bottom: 22px;
+  display: block;
+  transition: opacity .3s, color .3s;
+}
+.pillar:hover .pillar-num { opacity: 0.85; }
 .pillar-label {
   display: block;
   font-size: 0.7rem;
@@ -1540,7 +1550,7 @@ h1, h2, h3, h4 {
   text-transform: uppercase;
   color: var(--pillar-accent, var(--sandstone));
   opacity: 0.7;
-  margin: 0 0 14px;
+  margin: -14px 0 18px;
 }
 .pillar h3 {
   font-size: 1.45rem;
@@ -3222,6 +3232,10 @@ dialog::backdrop {
     padding: 26px 24px 28px;
     min-height: 0;
   }
+  .pillar-num {
+    font-size: 2rem;
+    margin-bottom: 14px;
+  }
   .pillar h3 {
     font-size: 1.3rem;
     margin-bottom: 8px;
@@ -4598,18 +4612,21 @@ main .wrap, .site-footer .wrap { position: relative; z-index: 2; }
     </div>
     <div class="pillar-grid mobile-swipe desktop-swipe">
       <article class="pillar reveal">
+        <span class="pillar-num">01</span>
         <span class="pillar-label">Align</span>
         <h3>Executive Alignment</h3>
         <p>Build leadership alignment around a single customer-centric north star, retire competing internal priorities, and create the conditions for decisive execution. For example, leaders agreeing on the top customer problem to solve this year, and which projects wait.</p>
         <a class="pillar-link" href="mailto:stephen@orbitscx.com?subject=Executive%20Alignment">Talk about alignment <span>→</span></a>
       </article>
       <article class="pillar reveal reveal-delay-1">
+        <span class="pillar-num">02</span>
         <span class="pillar-label">Rewire</span>
         <h3>Operational Rewiring</h3>
         <p>Re-engineer processes, metric incentives, and technology stacks so internal operations actively accelerate the customer journey rather than slowing it with friction. For example, measuring support, sales, and product on shared customer outcomes instead of separate departmental targets.</p>
         <a class="pillar-link" href="mailto:stephen@orbitscx.com?subject=Operational%20Rewiring">Talk about rewiring <span>→</span></a>
       </article>
       <article class="pillar reveal reveal-delay-2">
+        <span class="pillar-num">03</span>
         <span class="pillar-label">Perform</span>
         <h3>Performance CX</h3>
         <p>Connect experience decisions directly to top-line growth, margin expansion, and net retention, turning CX from a soft initiative into a measurable financial engine. For example, showing how faster onboarding lifts retention and revenue.</p>
@@ -4681,7 +4698,13 @@ main .wrap, .site-footer .wrap { position: relative; z-index: 2; }
     <div class="insight-swipe-hint" aria-hidden="true"><span>Swipe to explore</span><span class="swipe-arrow">→</span></div>
     <div class="insight-scroller-wrap">
     <div class="insight-scroller" id="insight-scroller">
-      <article class="card featured" data-open="modal-greased-pig" role="button" tabindex="0" aria-haspopup="dialog" aria-label="Open article: The Greased Pig Theory of Innovation">
+      <article class="card featured" data-open="modal-thriving-ai" role="button" tabindex="0" aria-haspopup="dialog" aria-label="Open article: Thriving in the AI Age">
+        <div class="meta"><span>Leadership &amp; AI</span><time datetime="2026-10-14">Oct 14, 2026</time></div>
+        <h3>Thriving in the AI Age</h3>
+        <p>AI can speed everything up, including the loss of the judgment that keeps customer reality in view. Critical thinking is still the real advantage.</p>
+      </article>
+
+      <article class="card" data-open="modal-greased-pig" role="button" tabindex="0" aria-haspopup="dialog" aria-label="Open article: The Greased Pig Theory of Innovation">
         <div class="meta"><span>Innovation &amp; Strategy</span><time datetime="2026-10-01">Oct 1, 2026</time></div>
         <h3>The Greased Pig Theory of Innovation</h3>
         <p>Lessons from mud and chaos: invert the chase. The same move applies when the organization keeps pursuing the customer the wrong way.</p>
@@ -4731,7 +4754,7 @@ main .wrap, .site-footer .wrap { position: relative; z-index: 2; }
     </div>
     <div class="about-copy">
       <div class="eyebrow">The architect behind Orbits</div>
-      <h2>When the customer becomes the center of gravity, everything changes.</h2>
+      <h2>Strategy is worthless unless it holds up against customer reality.</h2>
       <p>For decades, we have operated at the intersection of product engineering, operational execution, and executive decision-making, the place where enterprise growth is either built or lost.</p>
       <p>Too many advisory firms operate by handing over a theoretical slide deck and walking away without sharing accountability for the results.</p>
       <p>Orbits CX was built to do it differently. We provide the Orbits CX OS, acting as operational catalysts, educators, and committed partners. We don’t have all the answers upfront. We build them with your team, side by side. Our mandate is simple: strip away corporate friction, install our OS to find and keep momentum, and stay until your team keeps the engine fueled on its own.</p>
@@ -4932,6 +4955,49 @@ main .wrap, .site-footer .wrap { position: relative; z-index: 2; }
 <p>Design your innovation like a prospector stakes a claim: strategically, patiently, and with an eye on compounding value. Use the SPIRAL framework to guide development from initial spark to habitual reliance.</p>
 <p>In the AI gold rush, momentum is the currency that endures. Will your innovation be a relic or a habit?</p>
 <blockquote>This article draws on principles from my book, <em>“The CX Curve: Rewiring Corporate DNA for Relentless Customer Focus”</em>.</blockquote>
+</div>
+</div>
+</dialog>
+
+<dialog aria-labelledby="t-thriving-ai" id="modal-thriving-ai">
+<div class="dialog-inner">
+<button aria-label="Close article" class="dialog-close" type="button">×</button>
+<div class="meta"><span>Leadership &amp; AI</span><time datetime="2026-10-14">October 14, 2026</time></div>
+<h2 class="dlg-title" id="t-thriving-ai">Thriving in the AI Age</h2>
+<div class="byline">A Perspective by Stephen McBride</div>
+<div class="article-body">
+<p>AI is changing how we work, decide, and create. It writes, codes, analyzes, and designs faster than most teams can keep up with. Companies treat adoption as a survival requirement. Leaders are told to move faster or fall behind. Somewhere a slide deck already exists with the title “AI or Die.”</p>
+<p>That pressure has a cost. When teams turn to AI for every answer, they start skipping the slower work of judgment. Critical thinking, original ideas, and the ability to read real customer signals get used less. In operations and customer experience, the same pattern shows up as new friction. Decisions made for internal speed create Drift Zones. Momentum stalls. Customer reality stops being the reference point. The dashboard looks great. The customer does not.</p>
+<p>The job is to use the tools without handing over the judgment that makes the work matter.</p>
+
+<h2>The Push to Adapt</h2>
+<p>Amazon’s Andy Jassy has made AI investment a clear priority. Shopify’s Tobi Lütke has told teams to justify any work that skips AI. The signal across the industry is consistent: adopt or lose ground. Developers automate code. Marketers generate content. Product teams reshape roadmaps. The tools are strong and the incentives are stronger. Saying “we should think about this first” can feel like showing up to a fire drill with a clipboard.</p>
+<p>Problems appear when people stop questioning the output. A manager accepts an AI-generated workflow and misses early signs of team burnout. A designer ships AI visuals on schedule and loses the distinctive edge that once set the work apart. A leader follows the data-driven recommendation and overlooks the human details that decide whether customers stay, adopt, and recommend. The model is confident. Confidence is not the same as being right.</p>
+<p>Rana el Kaliouby has said it clearly: AI can simulate emotions, but human judgment decides how to act on them. Without that judgment, teams get efficient at the wrong things. Customer friction goes unnoticed because no one is looking for it. Everyone is too busy prompting.</p>
+
+<h2>What AI Does Well — and Where It Stops</h2>
+<p>AI processes data at scale, finds patterns, remembers everything, and runs without fatigue. Those strengths are real. What it cannot do is reflect, empathize, or understand context the way someone who has lived the problem can. It cannot walk a customer journey or sense the points where progress stalls. It has never sat through a bad renewal call.</p>
+<p>When time pressure is high, the easy move is to take the AI answer and keep going. That is often where Drift Zones form. The output looks clean. The underlying customer reality stays unexamined. Critical thinking is the corrective. It forces the questions that keep the work grounded: Does this match what we see in the field? What does the customer actually experience? Are we optimizing for speed or for clarity?</p>
+<p>Satya Nadella has described the better path as amplification rather than replacement. AI works best when it extends human judgment instead of standing in for it. That is also the only way to keep momentum tied to customer reality rather than internal convenience.</p>
+
+<h2>Critical Thinking as Daily Practice</h2>
+<p>Critical thinking here is practical. It means checking AI outputs for gaps and bias. It means trusting lived experience enough to challenge a clean-looking recommendation. It means weighing customer consequences beyond the metrics the model was trained on. And it means noticing when the tool is solving the wrong problem with great confidence.</p>
+<p>These habits matter for anyone responsible for the customer journey. Marketers need them so campaigns do not sound like they were written by a committee of very polite robots. Founders need them to pivot on real signals rather than model outputs alone. Operators need them to catch friction before it compounds. Leaders need them to keep new Drift Zones from being built into the system.</p>
+<p>Yuval Noah Harari has noted that in a world flooded with information, the scarce skill is the ability to make sense of it. That skill is still human. For now.</p>
+
+<h2>How to Keep the Muscle Strong</h2>
+<p>The habits are straightforward. Pause before accepting an AI answer and check it against customer reality and your own experience. Do not let the rush for speed become the default; speed is often the source of the next friction point. Draw on what you have seen in real interactions and team dynamics — context the model does not have. Test recommendations against the field and ask what happens if the prediction is wrong.</p>
+<p>Make some decisions without AI so the muscle stays strong. Protect time for original thinking that does not start with a prompt. Prefer direct conversation over sentiment dashboards when the stakes involve people. Look for the unconventional edges that pattern-matching tends to miss. Stay curious. Bring other perspectives into the room so blind spots surface. When you override an AI suggestion, write down why and what followed. That record becomes useful later, especially when someone asks why you did not just “let the model handle it.”</p>
+<p>These practices are the same ones that help leadership teams catch Drift Zones early. They keep the work oriented toward the customer instead of the dashboard.</p>
+
+<h2>What It Looks Like in Practice</h2>
+<p>A CEO uses AI for market analysis, still questions the data, notices resistance in the team, and builds an upskilling plan that accounts for real human constraints. Results improve because the plan was grounded. A designer uses AI for speed but still starts with manual exploration, and the final work carries a distinctive quality the model alone would not have produced. A leader takes AI insights seriously and still insists on walking the actual customer path before locking the decision, keeping new friction from being built into the process.</p>
+<p>Sherry Turkle has warned that we risk becoming diminished versions of ourselves when we hand choices to technology. The alternative is deliberate. Keep the tool. Keep the judgment. And maybe keep a little skepticism about any answer that arrives in under two seconds.</p>
+
+<h2>The Real Advantage</h2>
+<p>The pressure for instant answers is what creates Drift Zones in customer experience. Decisions optimized for internal speed drift away from external reality. Critical thinking is the corrective. It keeps leaders able to see the customer clearly, question the clean output, and protect the human signal that actually generates momentum.</p>
+<p>The question is simple: Are you using AI to move faster while still seeing the customer, or are you letting speed replace the judgment that makes the work matter?</p>
+<p>The advantage is still human. It is operational, and it is still available to anyone willing to keep it sharp. Even on days when the prompts are really good.</p>
 </div>
 </div>
 </dialog>
