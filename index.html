@@ -5,8 +5,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#E8D8BA">
-<title>Orbits CX | Operational Momentum &amp; Customer Experience OS for Leadership Teams</title>
-<meta name="description" content="Every business wants more momentum. Orbits CX OS is the operating system that works shoulder-to-shoulder with leadership teams to eliminate Drift Zones, measure friction, and lock in lasting momentum.">
+<title>Orbits CX | Operational Momentum &amp; CX OS for Leaders</title>
+<meta name="description" content="Every business wants more momentum. Orbits CX OS works with leadership teams to eliminate Drift Zones, measure friction, and sustain momentum.">
 <meta name="author" content="Stephen McBride">
 <meta name="copyright" content="© 2026 Orbits CX. All rights reserved.">
 <meta name="robots" content="index, follow, max-image-preview:large">
@@ -20,12 +20,12 @@
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="Orbits CX: operational momentum and customer experience OS for leadership teams">
 <meta property="og:title" content="Orbits CX | Operational Momentum &amp; Customer Experience OS for Leadership Teams">
-<meta property="og:description" content="Every business wants more momentum. The operating system that works shoulder-to-shoulder with leadership teams to eliminate Drift Zones and lock in lasting momentum.">
+<meta property="og:description" content="Every business wants more momentum. The operating system that works shoulder-to-shoulder with leadership teams to eliminate Drift Zones and sustain momentum.">
 <meta property="og:site_name" content="Orbits CX">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://orbitscx.com/og-image.png">
 <meta name="twitter:title" content="Orbits CX | Operational Momentum &amp; Customer Experience OS for Leadership Teams">
-<meta name="twitter:description" content="Every business wants more momentum. Orbits CX OS: eliminate Drift Zones, measure friction, lock in lasting momentum.">
+<meta name="twitter:description" content="Every business wants more momentum. Orbits CX OS: eliminate Drift Zones, measure friction, sustain momentum.">
 <link rel="icon" href="/favicon.ico?v=6" sizes="16x16 32x32 48x48">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png?v=6">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png?v=6">
@@ -35,7 +35,7 @@
 <script type="application/ld+json">
 {"@context":"https://schema.org","@graph":[
 {"@type":"WebSite","@id":"https://orbitscx.com/#website","url":"https://orbitscx.com/","name":"Orbits CX","copyrightYear":2026,"copyrightHolder":{"@id":"https://orbitscx.com/#org"},"publisher":{"@id":"https://orbitscx.com/#org"}},
-{"@type":"ProfessionalService","@id":"https://orbitscx.com/#org","name":"Orbits CX","url":"https://orbitscx.com/","description":"Orbits CX OS: the operating system that works shoulder-to-shoulder with leadership teams to eliminate Drift Zones, measure friction, and lock in lasting momentum.","email":"stephen@orbitscx.com","logo":"https://orbitscx.com/orbits-cx-logo.png","image":"https://orbitscx.com/og-image.png","founder":{"@id":"https://orbitscx.com/#stephen"},"address":{"@type":"PostalAddress","addressLocality":"St. George","addressRegion":"UT","addressCountry":"US"}},
+{"@type":"ProfessionalService","@id":"https://orbitscx.com/#org","name":"Orbits CX","url":"https://orbitscx.com/","description":"Orbits CX OS: the operating system that works shoulder-to-shoulder with leadership teams to eliminate Drift Zones, measure friction, and sustain momentum.","email":"stephen@orbitscx.com","logo":"https://orbitscx.com/orbits-cx-logo.png","image":"https://orbitscx.com/og-image.png","founder":{"@id":"https://orbitscx.com/#stephen"},"address":{"@type":"PostalAddress","addressLocality":"St. George","addressRegion":"UT","addressCountry":"US"}},
 {"@type":"Person","@id":"https://orbitscx.com/#stephen","name":"Stephen McBride","jobTitle":"Founder, Orbits CX","worksFor":{"@id":"https://orbitscx.com/#org"},"url":"https://orbitscx.com/#about","sameAs":["https://www.linkedin.com/in/stephen-mcbride-215931/"]},
 {"@type":"Book","name":"The CX Curve","alternativeHeadline":"Rewiring Corporate DNA for Relentless Customer Focus","author":{"@id":"https://orbitscx.com/#stephen"},"image":"https://orbitscx.com/the-cx-curve-book.jpg","url":"https://www.amazon.com/dp/B0H7NTRCBB"}
 ]}
@@ -396,37 +396,63 @@ h1, h2, h3, h4 {
   border-bottom: 1px solid var(--line);
 }
 
-/* Chapter 9 callout in Book section — muted secondary note */
+/* Chapter 9 callout in Book section: styled card (no added content) */
 .book-ch9-callout {
-  margin: 18px 0 6px;
-  padding: 14px 0 14px 16px;
-  background: transparent;
-  border: none;
-  border-left: 2px solid rgba(218, 176, 112, 0.45);
-  border-radius: 0;
-  max-width: 520px;
+  position: relative;
+  margin: 22px 0 8px;
+  padding: 24px 26px 20px 28px;
+  max-width: 540px;
+  border-radius: 14px;
+  border: 1px solid rgba(218, 176, 112, 0.22);
+  background:
+    radial-gradient(110% 100% at 100% 0%, rgba(191, 132, 62, 0.18), transparent 60%),
+    linear-gradient(160deg, rgba(62, 26, 19, 0.85), rgba(34, 17, 11, 0.9));
+  box-shadow: 0 22px 50px rgba(0, 0, 0, 0.32), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  overflow: hidden;
+}
+.book-ch9-callout::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: linear-gradient(180deg, var(--tan), var(--rust));
 }
 .book-ch9-label {
-  font-size: 0.65rem;
-  font-weight: 650;
-  letter-spacing: 0.1em;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
+  background: linear-gradient(90deg, #F2C142, var(--tan) 60%, var(--sandstone));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
   color: var(--tan);
-  margin-bottom: 6px;
+  margin-bottom: 10px;
 }
 .book-ch9-callout p {
-  font-size: 0.95rem !important;
-  line-height: 1.55 !important;
-  color: rgba(255, 255, 255, 0.82) !important;
-  margin-bottom: 10px !important;
+  font-size: 0.98rem !important;
+  line-height: 1.6 !important;
+  color: rgba(255, 255, 255, 0.86) !important;
+  margin-bottom: 16px !important;
   max-width: none !important;
 }
 .book-ch9-callout .btn-quiet {
-  font-size: 0.82rem;
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding-top: 14px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: 0.86rem;
+  font-weight: 600;
   color: var(--tan);
 }
-.book-ch9-callout .btn-quiet:hover {
-  color: #fff;
+.book-ch9-callout .btn-quiet span { display: inline-block; transition: transform .3s var(--ease); }
+.book-ch9-callout .btn-quiet:hover { color: #fff; }
+.book-ch9-callout .btn-quiet:hover span { transform: translateX(4px); }
+@media (max-width: 520px) {
+  .book-ch9-callout { padding: 20px 18px 16px 22px; }
 }
 .book-cta-row {
   display: flex;
@@ -1089,7 +1115,7 @@ h1, h2, h3, h4 {
   display: grid;
   grid-template-columns: 0.9fr 1.1fr;
   gap: 72px;
-  align-items: center;
+  align-items: start;
 }
 .momentum h2 {
   font-size: clamp(2.4rem, 4.6vw, 4.1rem);
@@ -1098,6 +1124,56 @@ h1, h2, h3, h4 {
   margin-bottom: 8px;
 }
 .momentum h2 span { color: var(--sandstone); }
+.momentum-quote {
+  position: relative;
+  margin: 44px 0 0;
+  max-width: 460px;
+  padding: 30px 28px 26px 32px;
+  border-radius: 14px;
+  border: 1px solid rgba(191, 132, 62, 0.24);
+  background:
+    radial-gradient(110% 100% at 100% 0%, rgba(191, 132, 62, 0.14), transparent 60%),
+    linear-gradient(160deg, #FFFFFF, var(--sand));
+  box-shadow: 0 16px 40px rgba(26, 17, 13, 0.07), inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  overflow: hidden;
+}
+.momentum-quote::before {
+  content: "";
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 3px;
+  background: linear-gradient(180deg, var(--tan), var(--rust));
+}
+.momentum-quote::after {
+  content: "\201C";
+  position: absolute;
+  right: 18px;
+  top: -14px;
+  font: 700 7rem/1 var(--serif);
+  color: rgba(191, 132, 62, 0.16);
+  pointer-events: none;
+}
+.momentum-quote p {
+  position: relative;
+  margin: 0;
+  font: italic 1.3rem/1.45 var(--serif);
+  letter-spacing: -0.01em;
+  color: var(--ink-brown);
+  text-wrap: balance;
+}
+.momentum-quote cite {
+  position: relative;
+  display: block;
+  margin-top: 16px;
+  font: 700 0.72rem/1.4 var(--sans);
+  font-style: normal;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--terracotta);
+}
+@media (max-width: 1024px) {
+  .momentum-quote { margin-top: 32px; max-width: none; }
+}
 /* Momentum trap: coined-term definition band (secondary tier, shares the principle's column grid) */
 .trap-wrap { margin-top: 88px; }
 .trap-intro {
@@ -1156,6 +1232,7 @@ h1, h2, h3, h4 {
 .equation-card {
   margin-top: 28px;
   display: inline-flex;
+  flex-wrap: wrap;
   align-items: baseline;
   gap: 18px;
   padding: 20px 26px;
@@ -1176,6 +1253,28 @@ h1, h2, h3, h4 {
   letter-spacing: 0.12em;
   color: var(--muted);
   font-weight: 600;
+}
+
+/* Business-terms definitions under the equation */
+.mv-defs { margin: 26px 0 0; padding: 0; max-width: 560px; }
+.mv-defs > div {
+  display: grid;
+  grid-template-columns: 112px minmax(0, 1fr);
+  gap: 18px;
+  padding: 14px 0;
+  border-top: 1px solid var(--line);
+}
+.mv-defs > div:last-child { border-bottom: 1px solid var(--line); }
+.mv-defs dt {
+  font: 700 0.72rem/1.5 var(--sans);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--terracotta);
+  padding-top: 3px;
+}
+.mv-defs dd { margin: 0; font-size: 0.95rem; line-height: 1.6; color: var(--muted); }
+@media (max-width: 520px) {
+  .mv-defs > div { grid-template-columns: 1fr; gap: 4px; }
 }
 
 /* Customer-centered thesis */
@@ -1224,24 +1323,78 @@ h1, h2, h3, h4 {
   margin-bottom: 20px;
   text-wrap: pretty;
 }
+.customer-center-grid { align-items: start; }
 .momentum-chain {
+  position: relative;
   display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 8px 11px;
-  margin-top: 34px;
-  padding-top: 28px;
-  border-top: 1px solid rgba(218,176,112,.28);
+  flex-direction: column;
+  align-items: flex-start;
+  margin-top: 44px;
+  padding: 4px 0 4px 34px;
   color: var(--tan);
-  font-size: .76rem;
+  font-size: .8rem;
   font-weight: 700;
-  letter-spacing: .1em;
+  letter-spacing: .12em;
   text-transform: uppercase;
 }
-.momentum-chain b {
-  color: rgba(218,176,112,.6);
-  font-size: 1.05rem;
-  font-weight: 400;
+.momentum-chain::before {
+  content: "";
+  position: absolute;
+  left: 5px;
+  top: 22px;
+  bottom: 22px;
+  width: 2px;
+  border-radius: 2px;
+  background: linear-gradient(180deg, rgba(218,176,112,.25), var(--tan) 60%, #F2C142);
+}
+.momentum-chain span {
+  position: relative;
+  padding: 14px 0;
+}
+.momentum-chain span::before {
+  content: "";
+  position: absolute;
+  left: -34px;
+  top: 50%;
+  width: 12px;
+  height: 12px;
+  margin-top: -6px;
+  border-radius: 50%;
+  background: var(--umber);
+  border: 2px solid var(--tan);
+  box-sizing: border-box;
+}
+.momentum-chain span:last-of-type { color: #F2C142; }
+.momentum-chain span:last-of-type::before {
+  background: #F2C142;
+  border-color: #F2C142;
+  box-shadow: 0 0 0 5px rgba(242,193,66,.18), 0 0 18px rgba(242,193,66,.5);
+}
+.momentum-chain b { display: none; }
+
+/* Key statement pulled out as a card (same family as the Chapter 9 card) */
+.customer-center-copy p.cc-rewire {
+  position: relative;
+  padding: 22px 24px 22px 28px;
+  margin: 28px 0;
+  border-radius: 14px;
+  border: 1px solid rgba(218,176,112,.22);
+  background:
+    radial-gradient(110% 100% at 100% 0%, rgba(191,132,62,.18), transparent 60%),
+    linear-gradient(160deg, rgba(62,26,19,.85), rgba(34,17,11,.9));
+  box-shadow: 0 22px 50px rgba(0,0,0,.28), inset 0 1px 0 rgba(255,255,255,.06);
+  color: rgba(255,255,255,.9);
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 1.12rem;
+  overflow: hidden;
+}
+.customer-center-copy p.cc-rewire::before {
+  content: "";
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 3px;
+  background: linear-gradient(180deg, var(--tan), var(--rust));
 }
 
 /* Advisory — operating system */
@@ -1331,13 +1484,15 @@ h1, h2, h3, h4 {
 }
 .pillar {
   padding: 36px 30px 40px;
-  background: var(--paper);
-  border: 1px solid var(--line);
+  background:
+    radial-gradient(110% 100% at 100% 0%, rgba(191, 132, 62, 0.12), transparent 60%),
+    linear-gradient(160deg, #FFFFFF, var(--sand));
+  border: 1px solid rgba(191, 132, 62, 0.24);
   border-radius: 14px;
   position: relative;
   overflow: hidden;
   z-index: 1;
-  box-shadow: 0 8px 28px rgba(26, 17, 13, 0.04);
+  box-shadow: 0 16px 40px rgba(26, 17, 13, 0.07), inset 0 1px 0 rgba(255, 255, 255, 0.9);
   transition: transform .4s var(--ease), box-shadow .4s, border-color .4s, background .3s;
 }
 /* Stage-colored left accent */
@@ -1345,12 +1500,11 @@ h1, h2, h3, h4 {
   content: "";
   position: absolute;
   left: 0;
-  top: 18px;
-  bottom: 18px;
+  top: 0;
+  bottom: 0;
   width: 3px;
-  border-radius: 0 3px 3px 0;
-  background: var(--pillar-accent, var(--sandstone));
-  opacity: 0.85;
+  background: linear-gradient(180deg, var(--tan), var(--pillar-accent, var(--rust)));
+  opacity: 0.95;
   transition: opacity .3s, width .3s var(--ease);
 }
 .pillar::after {
@@ -1370,8 +1524,7 @@ h1, h2, h3, h4 {
 .pillar:hover {
   transform: translateY(-8px);
   box-shadow: 0 28px 60px rgba(26,17,13,.12);
-  border-color: rgba(191,132,62,.38);
-  background: #fff;
+  border-color: rgba(191,132,62,.5);
 }
 .pillar:hover::before {
   opacity: 1;
@@ -1391,7 +1544,7 @@ h1, h2, h3, h4 {
 .pillar:hover .pillar-num { opacity: 0.85; }
 .pillar-label {
   display: block;
-  font-size: 0.65rem;
+  font-size: 0.7rem;
   font-weight: 700;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -1823,9 +1976,12 @@ h1, h2, h3, h4 {
   .insight-swipe-hint .swipe-arrow { animation: none; }
 }
 .card {
-  background: var(--paper);
-  border: 1px solid var(--line);
-  padding: 28px;
+  background:
+    radial-gradient(110% 100% at 100% 0%, rgba(191, 132, 62, 0.12), transparent 60%),
+    linear-gradient(160deg, #FFFFFF, var(--sand));
+  border: 1px solid rgba(191, 132, 62, 0.24);
+  box-shadow: 0 16px 40px rgba(26, 17, 13, 0.07), inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  padding: 28px 28px 28px 32px;
   min-height: 300px;
   display: flex;
   flex-direction: column;
@@ -1839,12 +1995,15 @@ h1, h2, h3, h4 {
 .card:hover {
   transform: translateY(-8px);
   box-shadow: 0 28px 60px rgba(26,17,13,.12);
-  border-color: rgba(191,132,62,.35);
+  border-color: rgba(191,132,62,.5);
 }
 .card.featured {
-  background: var(--umber);
+  background:
+    radial-gradient(110% 100% at 100% 0%, rgba(191, 132, 62, 0.18), transparent 60%),
+    linear-gradient(160deg, rgba(62, 26, 19, 0.98), rgba(34, 17, 11, 1));
   color: #fff;
-  border-color: var(--umber);
+  border-color: rgba(218, 176, 112, 0.22);
+  box-shadow: 0 22px 50px rgba(0, 0, 0, 0.32), inset 0 1px 0 rgba(255, 255, 255, 0.06);
   min-height: 380px;
 }
 .card::before {
@@ -1852,10 +2011,9 @@ h1, h2, h3, h4 {
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 3px;
-  background: linear-gradient(90deg, var(--terracotta), var(--sandstone));
-  opacity: 0.9;
+  bottom: 0;
+  width: 3px;
+  background: linear-gradient(180deg, var(--tan), var(--rust));
 }
 .meta {
   display: flex;
@@ -1863,7 +2021,7 @@ h1, h2, h3, h4 {
   gap: 10px;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  font-size: 0.62rem;
+  font-size: 0.7rem;
   font-weight: 700;
   color: var(--rust);
   margin-bottom: 28px;
@@ -2313,7 +2471,7 @@ h1, h2, h3, h4 {
   z-index: 1;
   background: #fff;
   padding: 0 8px;
-  font-size: 0.6rem;
+  font-size: 0.7rem;
   font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -3445,34 +3603,53 @@ dialog::backdrop {
   align-items: stretch;
 }
 .book-endorsement {
+  position: relative;
   grid-column: span 1;
   min-width: 0;
   height: 100%;
   box-sizing: border-box;
-  padding: 28px 26px 30px;
-  border: 1px solid rgba(218,176,112,.14);
-  border-radius: 12px;
-  background: rgba(255,255,255,.025);
-  transition: transform .35s var(--ease), border-color .35s, background .35s, box-shadow .35s;
+  padding: 28px 26px 28px 30px;
+  border: 1px solid rgba(218,176,112,.22);
+  border-radius: 14px;
+  background:
+    radial-gradient(110% 100% at 100% 0%, rgba(191,132,62,.18), transparent 60%),
+    linear-gradient(160deg, rgba(62,26,19,.85), rgba(34,17,11,.9));
+  box-shadow: 0 22px 50px rgba(0,0,0,.32), inset 0 1px 0 rgba(255,255,255,.06);
+  overflow: hidden;
+  transition: transform .35s var(--ease), border-color .35s, box-shadow .35s;
+}
+.book-endorsement::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: linear-gradient(180deg, var(--tan), var(--rust));
 }
 .book-endorsement:hover {
   transform: translateY(-4px);
-  border-color: rgba(218,176,112,.34);
-  background: rgba(255,255,255,.045);
-  box-shadow: 0 18px 40px rgba(0,0,0,.16);
+  border-color: rgba(218,176,112,.45);
+  box-shadow: 0 28px 60px rgba(0,0,0,.4), inset 0 1px 0 rgba(255,255,255,.08);
 }
 .book-endorsement-author-label {
   display: inline-block;
   margin-bottom: 12px;
-  color: var(--tan);
-  font-size: .68rem;
+  font-size: .7rem;
   font-weight: 700;
-  letter-spacing: .12em;
+  letter-spacing: .14em;
   text-transform: uppercase;
+  background: linear-gradient(90deg, #F2C142, var(--tan) 60%, var(--sandstone));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: var(--tan);
 }
 .book-endorsement-author {
-  background: rgba(218,176,112,.055);
-  border-color: rgba(218,176,112,.24);
+  border-color: rgba(242,193,66,.34);
+  background:
+    radial-gradient(110% 100% at 100% 0%, rgba(242,193,66,.26), transparent 60%),
+    linear-gradient(160deg, rgba(62,26,19,.85), rgba(34,17,11,.9));
 }
 .book-endorsement-mark {
   display: block;
@@ -3485,8 +3662,8 @@ dialog::backdrop {
   padding: 0;
   margin: 0;
   max-width: none;
-  font: italic 1rem/1.55 var(--serif);
-  color: rgba(255,255,255,.78);
+  font: italic 1rem/1.6 var(--serif);
+  color: rgba(255,255,255,.86);
 }
 .book-endorsement cite {
   display: block;
@@ -3497,6 +3674,10 @@ dialog::backdrop {
   line-height: 1.45;
   font-weight: 650;
   color: var(--tan);
+  background: linear-gradient(90deg, #F2C142, var(--tan) 60%, var(--sandstone));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
   letter-spacing: .015em;
 }
 @media (max-width: 900px) {
@@ -3825,8 +4006,8 @@ main .wrap, .site-footer .wrap { position: relative; z-index: 2; }
   transition: background .5s var(--ease), color .5s var(--ease), border-color .5s var(--ease), transform .4s var(--ease), box-shadow .4s var(--ease);
 }
 .cx-chip small {
-  font: 600 .62rem/1 var(--sans); letter-spacing: .1em; text-transform: uppercase;
-  color: var(--muted); opacity: .55; transition: opacity .4s, color .4s;
+  font: 600 .7rem/1 var(--sans); letter-spacing: .1em; text-transform: uppercase;
+  color: var(--muted); opacity: .85; transition: opacity .4s, color .4s;
 }
 .cx-chip.is-lit span { background: var(--c); color: var(--ink, #fff); border-color: var(--c); }
 .cx-chip.is-lit small { opacity: 1; color: var(--umber); }
@@ -3864,12 +4045,72 @@ main .wrap, .site-footer .wrap { position: relative; z-index: 2; }
 .how-i-work .hiw-head { margin-bottom: 22px; }
 .how-i-work .hiw-head .eyebrow { margin-bottom: 8px; }
 .how-i-work h3 { margin: 0; font-family: var(--serif); font-size: clamp(1.4rem, 2.4vw, 1.9rem); line-height: 1.15; color: var(--ink-brown); }
-.hiw-list { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; }
-.hiw-list li { padding-top: 14px; border-top: 2px solid var(--sandstone); }
+.hiw-list { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; counter-reset: hiw; }
+.hiw-list li {
+  counter-increment: hiw;
+  position: relative;
+  padding: 22px 20px 24px 26px;
+  border: 1px solid rgba(191, 132, 62, 0.24);
+  border-radius: 14px;
+  background:
+    radial-gradient(110% 100% at 100% 0%, rgba(191, 132, 62, 0.12), transparent 60%),
+    linear-gradient(160deg, #FFFFFF, var(--sand));
+  box-shadow: 0 16px 40px rgba(26, 17, 13, 0.07), inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  overflow: hidden;
+  transition: transform .35s var(--ease), box-shadow .35s, border-color .35s;
+}
+.hiw-list li:nth-child(1) { --c: #5C2B24; --ink: #fff; }
+.hiw-list li:nth-child(2) { --c: #A04220; --ink: #fff; }
+.hiw-list li:nth-child(3) { --c: #C6701A; --ink: #fff; }
+.hiw-list li:nth-child(4) { --c: #E09A28; --ink: #1A110D; }
+.hiw-list li::before {
+  content: counter(hiw, decimal-leading-zero);
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  margin-bottom: 16px;
+  border-radius: 50%;
+  background: var(--c);
+  color: var(--ink);
+  font: 700 .9rem/1 var(--serif);
+  letter-spacing: .02em;
+  box-shadow: 0 6px 16px color-mix(in srgb, var(--c) 35%, transparent);
+}
+.hiw-list li::after {
+  content: "";
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 3px;
+  background: linear-gradient(180deg, var(--tan), var(--c));
+}
+.hiw-list li:hover { transform: translateY(-4px); border-color: rgba(191, 132, 62, 0.5); box-shadow: 0 24px 54px rgba(26, 17, 13, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.9); }
 .hiw-list b { display: block; margin-bottom: 6px; font: 700 .78rem/1.2 var(--sans); letter-spacing: .14em; text-transform: uppercase; color: var(--terracotta); }
 .hiw-list span { font-size: .95rem; line-height: 1.55; color: var(--muted); }
-.hiw-promise { margin: 26px 0 0; padding: 4px 0 4px 18px; border-left: 3px solid var(--terracotta); font-size: 1rem; line-height: 1.6; color: var(--umber); max-width: 860px; }
-.hiw-promise strong { color: var(--ink-brown); }
+.hiw-promise {
+  position: relative;
+  margin: 18px 0 0;
+  padding: 24px 28px 24px 32px;
+  border-radius: 14px;
+  border: 1px solid rgba(218, 176, 112, 0.22);
+  background:
+    radial-gradient(110% 100% at 100% 0%, rgba(191, 132, 62, 0.18), transparent 60%),
+    linear-gradient(160deg, rgba(62, 26, 19, 0.98), rgba(34, 17, 11, 1));
+  box-shadow: 0 22px 50px rgba(0, 0, 0, 0.22), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  font-size: 1.05rem;
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.88);
+  max-width: none;
+  overflow: hidden;
+}
+.hiw-promise::before {
+  content: "";
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 3px;
+  background: linear-gradient(180deg, var(--tan), var(--rust));
+}
+.hiw-promise strong { color: #F2C142; }
 .how-i-work .hiw-intro { margin: 12px 0 0; max-width: 820px; font-size: 1rem; line-height: 1.6; color: var(--muted); }
 @media (max-width: 900px) { .hiw-list { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (max-width: 560px) { .how-i-work { padding: 26px 22px 24px; } .hiw-list { grid-template-columns: 1fr; gap: 18px; } }
@@ -3884,6 +4125,7 @@ main .wrap, .site-footer .wrap { position: relative; z-index: 2; }
 .about-photo figcaption em { font-style: italic; text-transform: none; letter-spacing: .02em; font-family: var(--serif); font-size: .95rem; }
 @media (prefers-reduced-motion: reduce) { .about-photo img { transition: none; } .about-photo:hover img { transform: none; } }
 </style>
+<noscript><style>.reveal{opacity:1!important;transform:none!important}</style></noscript>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -3893,7 +4135,7 @@ main .wrap, .site-footer .wrap { position: relative; z-index: 2; }
     <a class="brand" href="#top" aria-label="Orbits CX home">
       <img class="brand-logo" src="orbits-cx-logo.png" alt="Orbits CX" width="188" height="120" decoding="async">
     </a>
-    <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+    <button type="button" class="nav-toggle" id="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
       <svg class="icon-open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
       <svg class="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
     </button>
@@ -4019,7 +4261,7 @@ main .wrap, .site-footer .wrap { position: relative; z-index: 2; }
       <blockquote>“McBride’s book, The CX Curve, will really shake up how businesses think about their customers.”
         <cite>— Tim Loynes, General Manager, Zinwave Ltd, UK</cite>
       </blockquote>
-
+      <p>A practical operational playbook for leaders who want CX to be a strategic priority rather than an overlooked cost center, turning loyalty and retention into predictable growth engines through the Orbits CX OS.</p>
 
       <div class="book-ch9-callout">
         <div class="book-ch9-label">Chapter 9 · The CX Curve Field Guide</div>
@@ -4289,15 +4531,24 @@ main .wrap, .site-footer .wrap { position: relative; z-index: 2; }
   <div class="wrap momentum-grid">
     <div>
       <div class="eyebrow">The diagnostic reality</div>
-      <h2>Mass creates potential.<br><span>Velocity creates momentum.</span></h2>
+      <h2>Mass is potential.<br><span>CX turns it into momentum.</span></h2>
+      <blockquote class="momentum-quote">
+        <p>CX is a cycle. Lose focus and momentum breaks and your company drifts away from the customer.</p>
+        <cite>Stephen McBride, The CX Curve</cite>
+      </blockquote>
     </div>
     <div class="momentum-copy">
-      <p>A company can boast exceptional products, elite intellectual property, massive capital reserves, talented people, and years of market tenure, and still feel strangely gridlocked.</p>
-      <p>Velocity is a vital subcomponent of momentum, but when expected results and actual enterprise velocity collide, the root cause is almost never a lack of team effort. It is a structural misalignment around the customer’s actual journey.</p>
+      <p>A company can boast exceptional products, elite intellectual property, massive capital reserves, talented people, a trusted brand, and years of market tenure, and still feel strangely gridlocked.</p>
+      <p>Velocity is the factor most companies rarely measure, but when expected results and actual enterprise velocity collide, the root cause is almost never a lack of team effort. It is a structural misalignment around the customer’s actual journey.</p>
       <div class="equation-card">
         <div class="formula">P = MV</div>
-        <span>Momentum = Mass × Velocity</span>
+        <span>Momentum = Mass × Velocity (CX)</span>
       </div>
+      <dl class="mv-defs">
+        <div><dt>Mass</dt><dd>Everything you’ve built: capital, talent, IP, brand, and tenure. Mass is potential.</dd></div>
+        <div><dt>Velocity (CX)</dt><dd>How fast customers are won, kept, and grown. That is customer experience (CX), and it is not a department. It is an intertwined variable shaped by every facet of the company, from pricing and product to supply chain and operations, and it rises or falls with how fully the entire organization keeps the customer in mind.</dd></div>
+        <div><dt>Momentum</dt><dd>The state where everything gets easier: customers glide and thrive, word of mouth builds on itself, and each new innovation compounds on the last. It is the mark of a great business, and it is fleeting. Take your foot off the CX gas and momentum vanishes like smoke in the wind.</dd></div>
+      </dl>
     </div>
   </div>
   <div class="wrap trap-wrap">
@@ -4307,8 +4558,8 @@ main .wrap, .site-footer .wrap { position: relative; z-index: 2; }
         <p class="trap-pron">mo·men·tum trap <span>noun</span></p>
       </div>
       <div class="trap-def">
-        <p class="trap-meaning">Mistaking activity for momentum.</p>
-        <p class="trap-why">A company can get bigger without getting faster. It looks like progress on a slide deck, but the business isn’t actually moving.</p>
+        <p class="trap-meaning">Mistaking size for momentum.</p>
+        <p class="trap-why">Mass is visible: capital, talent, brand, tenure. Velocity, which is CX, is not, so companies credit the mass and keep adding more. But mass times zero is zero. The trap hides the one thing that actually moves the business.</p>
       </div>
     </div>
   </div>
@@ -4319,13 +4570,14 @@ main .wrap, .site-footer .wrap { position: relative; z-index: 2; }
     <div>
       <div class="eyebrow">The physics of growth</div>
       <h2 id="customer-center-title">Stop chasing the numbers.<br><span>Rally around the customer, and the numbers follow.</span></h2>
+      <div class="momentum-chain" aria-label="Customer reality to customer velocity to enterprise momentum to surging numbers">
+        <span>Customer Reality</span><b>→</b><span>Customer Velocity</span><b>→</b><span>Enterprise Momentum</span><b>→</b><span>Surging Numbers</span>
+      </div>
     </div>
     <div class="customer-center-copy">
       <p>Every leadership team claims they are customer-centric. Then quarterly pressure hits, urgency takes over, and attention snaps instantly back to internal metrics and cost controls. That gravitational pull undermines execution.</p>
+      <p class="cc-rewire">Rewiring the company means every meeting, every plan, every design review, every QBR, every line of code, and every capex decision revolves around the customer. CX can’t be an afterthought or a side task. It has to drive every decision and action.</p>
       <p>Obsess over lagging financial numbers and you blind yourself to the human behaviors that actually generate them. Customers drive the math. Aligning your core operations around their journey takes discipline, but when you do it right, the friction eases and growth accelerates naturally.</p>
-      <div class="momentum-chain" aria-label="Customer reality to operational velocity to enterprise momentum to surging numbers">
-        <span>Customer Reality</span><b>→</b><span>Operational Velocity</span><b>→</b><span>Enterprise Momentum</span><b>→</b><span>Surging Numbers</span>
-      </div>
     </div>
   </div>
 </section>
@@ -4335,10 +4587,10 @@ main .wrap, .site-footer .wrap { position: relative; z-index: 2; }
     <div class="section-intro">
       <div>
         <div class="eyebrow">The Orbits CX OS</div>
-        <h2>Make customer experience your main driver of growth.</h2>
+        <h2>Make CX your main driver of growth.</h2>
       </div>
       <div class="section-intro-aside">
-        <p>Three interlocking pillars powered by the Orbits CX OS that unify fragmented departments into one revenue engine. We install the operating discipline and track metrics like Journey Friction Index (JFI) and Time to Value (TTV) so your organization stops working against its own customer journey.</p>
+        <p>Three interlocking pillars powered by the Orbits CX OS that unify fragmented departments into one revenue engine. We install the operating discipline and track metrics like Journey Friction Index (JFI), Momentum Score, and Time to Value (TTV) so your organization stops working against its own customer journey.</p>
         <div class="os-equation" aria-hidden="true">
           Align <span>×</span> Rewire <span>×</span> Perform <span>→</span> Momentum
         </div>
@@ -4348,7 +4600,7 @@ main .wrap, .site-footer .wrap { position: relative; z-index: 2; }
       <div class="hiw-head">
         <div class="eyebrow">How we operate</div>
         <h3>Answers are built alongside your team, through a proven OS.</h3>
-        <p class="hiw-intro">Traditional advisory models rely on outsiders who drop off a binder of generic recommendations and vanish before reality hits. We operate with shared accountability using a disciplined OS designed to find momentum and keep it.</p>
+        <p class="hiw-intro">Traditional advisory models rely on outsiders who drop off a binder of generic recommendations and vanish before reality hits. We operate with shared accountability using a disciplined OS designed to find momentum and keep it fueled.</p>
       </div>
       <ul class="hiw-list">
         <li><b>Listen</b><span>We dig into your customer data, interview your front-line people, and audit what has already failed, without preconceived biases.</span></li>
@@ -4356,7 +4608,7 @@ main .wrap, .site-footer .wrap { position: relative; z-index: 2; }
         <li><b>Work alongside</b><span>We work inside your operations alongside your team, going as deep as necessary to find the clearest picture of what’s really happening.</span></li>
         <li><b>Leave you stronger</b><span>We do not build dependency. Our ultimate metric of success is an autonomous organization executing with confidence without needing us anymore.</span></li>
       </ul>
-      <p class="hiw-promise">Your internal team owns the ultimate decisions and execution. We provide the structural rigor, operational clarity, and steady accountability required to succeed, staying until the mission is locked in and the engine runs itself.</p>
+      <p class="hiw-promise">Your internal team owns the ultimate decisions and execution. We provide the structural rigor, operational clarity, and steady accountability required to succeed, staying until the discipline is embedded and your team keeps the engine fueled on its own.</p>
     </div>
     <div class="pillar-grid mobile-swipe desktop-swipe">
       <article class="pillar reveal">
@@ -4499,7 +4751,7 @@ main .wrap, .site-footer .wrap { position: relative; z-index: 2; }
       <h2>Strategy is worthless unless it holds up against customer reality.</h2>
       <p>For decades, we have operated at the intersection of product engineering, operational execution, and executive decision-making, the place where enterprise growth is either built or lost.</p>
       <p>Too many advisory firms operate by handing over a theoretical slide deck and walking away without sharing accountability for the results.</p>
-      <p>Orbits CX was built to do it differently. We provide the Orbits CX OS, acting as operational catalysts, educators, and committed partners. We don’t have all the answers upfront. We build them with your team, side by side. Our mandate is simple: strip away corporate friction, install our OS to find and keep momentum, and stay until the engine runs itself.</p>
+      <p>Orbits CX was built to do it differently. We provide the Orbits CX OS, acting as operational catalysts, educators, and committed partners. We don’t have all the answers upfront. We build them with your team, side by side. Our mandate is simple: strip away corporate friction, install our OS to find and keep momentum, and stay until your team keeps the engine fueled on its own.</p>
       <figure class="about-photo reveal">
         <img src="stephen-with-the-cx-curve.jpg" alt="Stephen McBride smiling and holding a copy of his book, The CX Curve, outdoors under a blue sky" width="1600" height="1200" loading="lazy" decoding="async">
         <figcaption>With <em>The CX Curve</em></figcaption>
@@ -4528,8 +4780,8 @@ main .wrap, .site-footer .wrap { position: relative; z-index: 2; }
 <section class="contact-band" id="contact">
   <div class="wrap">
     <div class="eyebrow">Initiate momentum</div>
-    <h2>Ready to turn your customer’s journey into momentum?</h2>
-    <p>Let’s talk about real velocity. If you’re ready to put an OS in place that locks in lasting momentum, we’d love to hear from you.</p>
+    <h2>Let’s build momentum.</h2>
+    <p>Let’s talk about real velocity. If you’re ready to put an OS in place that sustains momentum, we’d love to hear from you.</p>
     <div style="display:flex;flex-wrap:wrap;gap:12px;justify-content:center">
       <a class="btn btn-primary" href="mailto:stephen@orbitscx.com?subject=Orbits%20CX%20conversation">Email Us <span>→</span></a>
       <a class="btn" href="https://www.linkedin.com/in/stephen-mcbride-215931/" target="_blank" rel="noopener" aria-label="Connect on LinkedIn" style="background:transparent;border:1px solid rgba(128,46,30,.35);color:var(--terracotta)">Connect on <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" style="width:1.2em;height:1.2em;vertical-align:-0.25em;margin-left:.4em;fill:currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
@@ -4861,7 +5113,7 @@ main .wrap, .site-footer .wrap { position: relative; z-index: 2; }
         <button type="button" class="btn btn-light" id="ws-print">Print / Save PDF</button>
       </div>
       <div class="ws-taste">
-        <img class="ws-taste-logo" src="orbits-cx-logo.png" alt="Orbits CX" width="94" height="60" decoding="async">
+        <img class="ws-taste-logo" src="orbits-cx-logo.png" alt="Orbits CX" width="94" height="60" loading="lazy" decoding="async">
         <p class="ws-taste-kicker">This is just the baseline instrumentation</p>
         <h4>Ready to fix the engine?</h4>
         <p>Contact us to deploy the full framework.</p>
