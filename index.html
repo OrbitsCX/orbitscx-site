@@ -1281,7 +1281,7 @@ h1, h2, h3, h4 {
 .customer-center {
   background: var(--umber);
   color: #fff;
-  overflow: hidden;
+  overflow: clip; /* clip (not hidden) so the right column can stay sticky */
 }
 .customer-center::after {
   content: "";
@@ -1315,6 +1315,13 @@ h1, h2, h3, h4 {
 .customer-center h2 span { color: var(--tan); display: block; text-wrap: balance; }
 .customer-center h2 { text-wrap: balance; }
 .customer-center-copy { max-width: 560px; }
+@media (min-width: 1025px) {
+  .customer-center-copy {
+    position: sticky;
+    top: calc(var(--header-h) + 32px);
+    align-self: start;
+  }
+}
 .customer-center-copy strong { color: #fff; font-weight: 600; }
 .customer-center-copy p {
   color: rgba(255,255,255,.72);
@@ -1326,51 +1333,141 @@ h1, h2, h3, h4 {
 .customer-center-grid { align-items: start; }
 .momentum-chain {
   position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
   margin-top: 44px;
-  padding: 4px 0 4px 34px;
+  max-width: 620px;
+}
+.mc-kicker {
+  margin: 0 0 16px;
   color: var(--tan);
-  font-size: .8rem;
+  font-size: .74rem;
   font-weight: 700;
-  letter-spacing: .12em;
+  letter-spacing: .16em;
   text-transform: uppercase;
 }
-.momentum-chain::before {
-  content: "";
-  position: absolute;
-  left: 5px;
-  top: 22px;
-  bottom: 22px;
-  width: 2px;
-  border-radius: 2px;
-  background: linear-gradient(180deg, rgba(218,176,112,.25), var(--tan) 60%, #F2C142);
+.mc-steps {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
-.momentum-chain span {
+.mc-step {
   position: relative;
-  padding: 14px 0;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 18px 20px;
+  min-height: 78px;
+  border-radius: 12px;
+  border: 1px solid rgba(218,176,112,.16);
+  background: rgba(255,255,255,.025);
+  overflow: hidden;
+  isolation: isolate;
 }
-.momentum-chain span::before {
+/* Growing fill: each link carries more weight than the last */
+.mc-step::before {
   content: "";
   position: absolute;
-  left: -34px;
-  top: 50%;
-  width: 12px;
-  height: 12px;
-  margin-top: -6px;
-  border-radius: 50%;
-  background: var(--umber);
-  border: 2px solid var(--tan);
-  box-sizing: border-box;
+  left: 0;
+  bottom: 0;
+  height: 5px;
+  width: var(--w, 100%);
+  border-radius: 0 5px 5px 0;
+  background: linear-gradient(90deg, rgba(191,132,62,.55), rgba(218,176,112,.95));
+  transform-origin: left center;
+  transform: scaleX(0);
+  transition: transform 1s var(--ease);
 }
-.momentum-chain span:last-of-type { color: #F2C142; }
-.momentum-chain span:last-of-type::before {
+.momentum-chain.in .mc-step::before { transform: scaleX(1); }
+.momentum-chain.in .mc-step:nth-child(2)::before { transition-delay: .15s; }
+.momentum-chain.in .mc-step:nth-child(3)::before { transition-delay: .3s; }
+.momentum-chain.in .mc-step:nth-child(4)::before { transition-delay: .45s; }
+.mc-body { flex: 1; min-width: 0; }
+.mc-body b {
+  display: block;
+  color: #fff;
+  font-size: .86rem;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+.mc-body span {
+  display: block;
+  margin-top: 4px;
+  color: rgba(255,255,255,.66);
+  font-size: .92rem;
+  line-height: 1.45;
+  text-wrap: pretty;
+}
+.mc-stage {
+  display: block;
+  margin-bottom: 5px;
+  color: var(--tan);
+  font-size: .68rem;
+  font-weight: 700;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  opacity: .9;
+}
+/* Final link: the payoff, in gold */
+.mc-end {
+  border-color: rgba(242,193,66,.55);
+  box-shadow: 0 0 34px rgba(242,193,66,.14);
+}
+.mc-end::before {
+  background: linear-gradient(90deg, rgba(242,193,66,.6), #F2C142);
+}
+.mc-end .mc-stage, .mc-end .mc-body b { color: #F2C142; }
+.mc-start { border-color: rgba(218,176,112,.4); }
+/* Hover: light up the chain from stage 1 to the hovered stage */
+.mc-step {
+  transition: transform .45s var(--ease), border-color .35s ease, opacity .35s ease, box-shadow .45s ease, background-color .35s ease;
+}
+.mc-step::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 5px;
+  width: var(--w, 100%);
+  border-radius: 0 5px 5px 0;
   background: #F2C142;
-  border-color: #F2C142;
-  box-shadow: 0 0 0 5px rgba(242,193,66,.18), 0 0 18px rgba(242,193,66,.5);
+  box-shadow: 0 0 14px rgba(242,193,66,.7);
+  opacity: 0;
+  transition: opacity .4s ease;
 }
-.momentum-chain b { display: none; }
+@keyframes mcSweep {
+  from { background-position: 160% 0; }
+  to   { background-position: -60% 0; }
+}
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .mc-steps:hover .mc-step { opacity: .5; }
+  .mc-steps:hover .mc-step:hover { transform: translateX(8px); opacity: 1; border-color: rgba(242,193,66,.7); box-shadow: 0 14px 36px rgba(0,0,0,.35), 0 0 28px rgba(242,193,66,.16); background-image: linear-gradient(100deg, transparent 35%, rgba(255,255,255,.14) 50%, transparent 65%); background-size: 250% 100%; animation: mcSweep 1s var(--ease) 1; }
+  .mc-steps:hover .mc-step:hover::after { opacity: 1; }
+  .mc-steps:hover .mc-step:hover .mc-body b { color: #F2C142; }
+  /* earlier stages (the causes) stay lit */
+  .mc-steps:has(.mc-step:nth-child(2):hover) .mc-step:nth-child(-n+1),
+  .mc-steps:has(.mc-step:nth-child(3):hover) .mc-step:nth-child(-n+2),
+  .mc-steps:has(.mc-step:nth-child(4):hover) .mc-step:nth-child(-n+3) { opacity: 1; border-color: rgba(218,176,112,.55); }
+  .mc-steps:has(.mc-step:nth-child(2):hover) .mc-step:nth-child(-n+1)::after,
+  .mc-steps:has(.mc-step:nth-child(3):hover) .mc-step:nth-child(-n+2)::after,
+  .mc-steps:has(.mc-step:nth-child(4):hover) .mc-step:nth-child(-n+3)::after { opacity: .7; }
+}
+.mc-foot {
+  margin: 18px 0 0;
+  color: rgba(255,255,255,.7);
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 1.05rem;
+}
+.mc-foot strong { color: var(--tan); font-weight: 600; }
+@media (max-width: 520px) {
+  .mc-step { padding: 14px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .mc-step::before { transform: none; transition: none; }
+}
 
 /* Key statement pulled out as a card (same family as the Chapter 9 card) */
 .customer-center-copy p.cc-rewire {
@@ -4591,8 +4688,39 @@ main .wrap, .site-footer .wrap { position: relative; z-index: 2; }
     <div>
       <div class="eyebrow">The physics of growth</div>
       <h2 id="customer-center-title">Stop chasing the numbers.<br><span>Rally around the customer, and the numbers follow.</span></h2>
-      <div class="momentum-chain" aria-label="Customer reality to customer velocity to enterprise momentum to surging numbers">
-        <span>Customer Reality</span><b>→</b><span>Customer Velocity</span><b>→</b><span>Enterprise Momentum</span><b>→</b><span>Surging Numbers</span>
+      <div class="momentum-chain reveal" role="group" aria-label="How growth flows: customer reality, to customer velocity, to enterprise momentum, to surging numbers">
+        <p class="mc-kicker">How growth actually flows</p>
+        <ol class="mc-steps">
+          <li class="mc-step mc-start" style="--w:36%">
+            <div class="mc-body">
+              <small class="mc-stage">Stage 1 · Start here</small>
+              <b>Customer Reality</b>
+              <span>What customers actually experience, not what the dashboard says.</span>
+            </div>
+          </li>
+          <li class="mc-step" style="--w:58%">
+            <div class="mc-body">
+              <small class="mc-stage">Stage 2</small>
+              <b>Customer Velocity</b>
+              <span>How fast customers reach value. Friction out, time to value down.</span>
+            </div>
+          </li>
+          <li class="mc-step" style="--w:80%">
+            <div class="mc-body">
+              <small class="mc-stage">Stage 3</small>
+              <b>Enterprise Momentum</b>
+              <span>Every team, plan and dollar pushing in the same direction.</span>
+            </div>
+          </li>
+          <li class="mc-step mc-end" style="--w:100%">
+            <div class="mc-body">
+              <small class="mc-stage">Stage 4 · The payoff</small>
+              <b>Surging Numbers</b>
+              <span>Revenue, retention and margin. The result, not the lever.</span>
+            </div>
+          </li>
+        </ol>
+        <p class="mc-foot"><strong>Optimize the first three.</strong> The fourth follows.</p>
       </div>
     </div>
     <div class="customer-center-copy">
