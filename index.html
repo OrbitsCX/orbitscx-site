@@ -1661,7 +1661,7 @@ h1, h2, h3, h4 {
   display: grid;
   grid-template-columns: 340px 1fr;
   gap: 72px;
-  align-items: stretch;
+  align-items: start;
 }
 .profile-card {
   background: var(--umber);
@@ -1669,8 +1669,43 @@ h1, h2, h3, h4 {
   padding: 32px;
   border-radius: var(--radius);
   position: relative;
-  overflow: hidden;
+  overflow: visible;
   box-shadow: var(--shadow);
+}
+@media (min-width: 901px) {
+  .profile-card {
+    position: sticky;
+    top: calc(var(--header-h) + 28px);
+  }
+}
+.profile-card-cta {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 22px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(218,176,112,.2);
+}
+.profile-card-cta a {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.82rem;
+  font-weight: 650;
+  color: var(--tan);
+  transition: color .25s var(--ease), gap .25s var(--ease);
+}
+.profile-card-cta a:hover,
+.profile-card-cta a:focus-visible {
+  color: #fff;
+  gap: 11px;
+}
+.profile-card-cta a svg {
+  width: 1.05em;
+  height: 1.05em;
+  flex-shrink: 0;
+  fill: currentColor;
+  opacity: 0.85;
 }
 .profile-card::after {
   content: "";
@@ -1723,7 +1758,7 @@ h1, h2, h3, h4 {
     box-shadow: 0 0 0 4px rgba(191,132,62,.18), 0 18px 50px rgba(0,0,0,.55), 0 0 50px rgba(218,176,112,.3); }
   .profile:hover img { transform: scale(1.07) translate(var(--px), var(--py)); }
   .profile:hover::before, .profile:hover::after { opacity: 1; }
-  .profile-card:has(.profile:hover) :is(h3, .profile-role, .stat) { opacity: .15; filter: blur(2px); }
+  .profile-card:has(.profile:hover) :is(h3, .profile-role, .stat, .profile-card-cta) { opacity: .15; filter: blur(2px); }
 }
 .profile-card h3 {
   font-size: 1.55rem;
@@ -4733,6 +4768,16 @@ main .wrap, .site-footer .wrap { position: relative; z-index: 2; }
       <div class="stat">
         <strong>Author</strong>
         <span>The CX Curve</span>
+      </div>
+      <div class="profile-card-cta">
+        <a href="https://www.linkedin.com/in/stephen-mcbride-215931/" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          Connect on LinkedIn
+        </a>
+        <a href="mailto:stephen@orbitscx.com?subject=Orbits%20CX%20conversation">
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+          Email Stephen
+        </a>
       </div>
     </div>
     <div class="about-copy">
