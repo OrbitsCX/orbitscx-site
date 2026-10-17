@@ -1526,6 +1526,27 @@ h1, h2, h3, h4 {
   background: linear-gradient(180deg, var(--tan), var(--rust));
 }
 
+/* Thesis statement: opens the right-hand column, sets up everything beneath it */
+.customer-center p.cc-statement {
+  margin: 0 0 32px;
+  padding-top: 22px;
+  border-top: 1px solid rgba(218,176,112,.32);
+  font-family: var(--serif);
+  font-size: clamp(1.7rem, 2.6vw, 2.25rem);
+  line-height: 1.18;
+  letter-spacing: -0.025em;
+  color: #fff;
+  text-wrap: balance;
+}
+.customer-center p.cc-statement span { display: block; text-wrap: balance; }
+.customer-center p.cc-statement .cc-b { margin-top: .15em; color: var(--tan); }
+/* Phones/tablets: the columns stack, so the statement moves up under the headline instead of trailing the chain */
+.customer-center p.cc-statement.cc-statement--m { display: none; }
+@media (max-width: 1024px) {
+  .customer-center p.cc-statement.cc-statement--m { display: block; margin: 28px 0 0; max-width: 560px; }
+  .customer-center-copy p.cc-statement { display: none; }
+}
+
 /* Advisory — operating system */
 .advisory {
   background:
@@ -4451,7 +4472,7 @@ main .wrap, .site-footer .wrap { position: relative; z-index: 2; }
       <blockquote>“McBride’s book, The CX Curve, will really shake up how businesses think about their customers.”
         <cite>— Tim Loynes, General Manager, Zinwave Ltd, UK</cite>
       </blockquote>
-      <p>A practical operational playbook for leaders who want CX to be a strategic priority rather than an overlooked cost center, turning loyalty and retention into predictable growth engines through the Orbits CX OS.</p>
+      <p>A practical operational playbook for leaders who want CX to be the center of how the company runs, not an overlooked cost center, turning loyalty and retention into predictable growth engines through the Orbits CX OS.</p>
 
       <div class="book-ch9-callout">
         <div class="book-ch9-label">Chapter 9 · The CX Curve Field Guide</div>
@@ -4748,6 +4769,7 @@ main .wrap, .site-footer .wrap { position: relative; z-index: 2; }
     <div>
       <div class="eyebrow">The physics of growth</div>
       <h2 id="customer-center-title">Stop chasing the numbers.<br><span>Rally around the customer, and the numbers follow.</span></h2>
+      <p class="cc-statement cc-statement--m"><span class="cc-a">CX isn’t another corporate&nbsp;priority.</span> <span class="cc-b">It’s the center of everything&nbsp;you&nbsp;do.</span></p>
       <div class="momentum-chain reveal" role="group" aria-label="How growth flows: customer reality, to customer velocity, to enterprise momentum, to surging numbers">
         <p class="mc-kicker">How growth actually flows</p>
         <ol class="mc-steps">
@@ -4784,8 +4806,9 @@ main .wrap, .site-footer .wrap { position: relative; z-index: 2; }
       </div>
     </div>
     <div class="customer-center-copy">
+      <p class="cc-statement"><span class="cc-a">CX isn’t another corporate&nbsp;priority.</span> <span class="cc-b">It’s the center of everything&nbsp;you&nbsp;do.</span></p>
       <p>Every leadership team claims they are customer-centric. Then quarterly pressure hits, urgency takes over, and attention snaps instantly back to internal metrics and cost controls. That gravitational pull undermines execution.</p>
-      <p class="cc-rewire">Rewiring the company means every meeting, every plan, every design review, every QBR, every line of code, and every capex decision revolves around the customer. CX can’t be an afterthought or a side task. It has to drive every decision and action.</p>
+      <p class="cc-rewire">Rewiring the company means every meeting, every plan, every design review, every QBR, every line of code, and every capex decision revolves around the customer.</p>
       <p>Obsess over lagging financial numbers and you blind yourself to the human behaviors that actually generate them. Customers drive the math. Aligning your core operations around their journey takes discipline, but when you do it right, the friction eases and growth accelerates naturally.</p>
     </div>
   </div>
