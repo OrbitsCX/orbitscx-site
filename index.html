@@ -4351,6 +4351,14 @@ main .wrap, .site-footer .wrap { position: relative; z-index: 2; }
   transform: translateY(0) scale(0.98);
   background: rgba(255,255,255,.12);
 }
+
+/* Customer motivation: compact editorial inset, responsive without changing the page architecture. */
+.cx-mindsets { margin: 28px 0 24px; padding: 24px 28px; background: #FFFDFC; border: 1px solid var(--line); border-left: 3px solid var(--sandstone); border-radius: 0 12px 12px 0; box-shadow: var(--shadow-sm); }
+.cx-mindsets-label { font: 700 .69rem/1.5 var(--sans); text-transform: uppercase; letter-spacing: .13em; color: var(--terracotta); margin-bottom: 9px; }
+.cx-mindsets h3 { font-size: clamp(1.35rem, 2.4vw, 1.85rem); line-height: 1.2; margin-bottom: 12px; color: var(--ink-brown); }
+.cx-mindsets p { font-size: .98rem; line-height: 1.7; margin: 0 0 10px; }
+.cx-mindsets p:last-child { margin-bottom: 0; }
+@media (max-width: 600px) { .cx-mindsets { padding: 20px 18px; margin: 24px 0; } .cx-mindsets h3 { font-size: 1.45rem; } .cx-mindsets p { font-size: .95rem; } }
 </style>
 
 <style>
@@ -4994,6 +5002,12 @@ main .wrap, .site-footer .wrap { position: relative; z-index: 2; }
 <li style="--c:#E09A28"><h3>Transform</h3><p>Value realized. Your solution becomes a core part of how they operate, not just software or a service.</p></li>
 <li style="--c:#F2C142"><h3>Share</h3><p>The compounding loop. Customers who get real value start recommending you.</p></li>
     </ol>
+    <div class="cx-mindsets" aria-label="The psychological dimensions of the customer journey">
+      <div class="cx-mindsets-label">A deeper layer of the CX Curve</div>
+      <h3>Same stage. Different motivations. Different momentum.</h3>
+      <p>The curve shows where customers are in their journey. But knowing the stage does not always tell you what a customer needs. Two customers can stand at the same point on The CX Curve and be driven by very different motivations. One is <strong>reactive</strong>, looking for relief from a pressing problem. Another is <strong>proactive</strong>, pursuing an opportunity before it passes.</p>
+      <p>Their fears, expectations, and reasons to move forward can differ. Understanding <strong>why customers move, hesitate, or drift</strong> helps teams see friction a stage map alone can miss and respond to the person behind the decision.</p>
+    </div>
     <div class="cx-foot">
       <p><strong>Watch for the Drift Zones.</strong> Between every stage is a gap where customer confidence stalls. Drift Zones are transition failures, not stage failures. The Orbits CX OS maps these gaps and removes the drag so customers keep moving.</p>
       <div class="cx-cta">
