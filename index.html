@@ -4588,6 +4588,42 @@ main .wrap, .site-footer .wrap { position: relative; z-index: 2; }
 .about-photo figcaption em { font-style: italic; text-transform: none; letter-spacing: .02em; font-family: var(--serif); font-size: .95rem; }
 @media (prefers-reduced-motion: reduce) { .about-photo img { transition: none; } .about-photo:hover img { transform: none; } }
 </style>
+<style>
+
+/* FINAL MOBILE POLISH — phone/tablet only; desktop styles remain unchanged. */
+@media (max-width: 1024px) {
+  body.nav-open { overflow: hidden; }
+  .nav-links {
+    height: 100dvh;
+    min-height: 100vh;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
+    justify-content: safe center;
+    padding: calc(env(safe-area-inset-top, 0px) + 92px) 24px calc(env(safe-area-inset-bottom, 0px) + 28px);
+  }
+  .nav-links > li { flex-shrink: 0; }
+  .nav-links a, .nav-links button { touch-action: manipulation; }
+}
+@media (max-width: 640px) {
+  .site-header { padding-top: env(safe-area-inset-top, 0px); }
+  .hero-copy, .hero-copy > *, .book-grid > *, .customer-center-grid > * { min-width: 0; }
+  .hero h1 { overflow-wrap: break-word; }
+  .hero-note { align-items: flex-start; }
+  .hero-note i { margin-top: .55em; }
+  .hero-actions .btn { white-space: normal; min-height: 46px; text-align: center; }
+  .mobile-swipe { touch-action: pan-x pan-y; scroll-padding-inline: 0 24px; }
+  .mobile-swipe > * { scroll-snap-stop: normal; }
+  input, select, textarea { max-width: 100%; }
+}
+@media (max-width: 380px) {
+  .wrap { width: calc(100% - 36px); }
+  .hero h1 { font-size: clamp(2.2rem, 10.5vw, 2.6rem); }
+  .nav-links { gap: 17px; }
+  .nav-links a:not(.btn) { font-size: 1.12rem; }
+  .nav-links .btn { padding: 11px 16px; }
+}
+</style>
 <noscript><style>.reveal{opacity:1!important;transform:none!important}</style></noscript>
 </head>
 <body>
@@ -4599,7 +4635,7 @@ main .wrap, .site-footer .wrap { position: relative; z-index: 2; }
     <a class="brand" href="#top" aria-label="Orbits CX home">
       <img class="brand-logo" src="orbits-cx-logo.png" alt="Orbits CX" width="188" height="120" decoding="async">
     </a>
-    <button type="button" class="nav-toggle" id="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+    <button type="button" class="nav-toggle" id="nav-toggle" aria-label="Open menu" aria-expanded="false">
       <svg class="icon-open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
       <svg class="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
     </button>
@@ -5699,12 +5735,37 @@ main .wrap, .site-footer .wrap { position: relative; z-index: 2; }
     toggle.addEventListener('click', function(){
       const open = document.body.classList.toggle('nav-open');
       toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
     });
     links.querySelectorAll('a').forEach(function(a){
       a.addEventListener('click', function(){
         document.body.classList.remove('nav-open');
         toggle.setAttribute('aria-expanded', 'false');
+        toggle.setAttribute('aria-label', 'Open menu');
       });
+    });
+    // The workbook opens a dialog; close the mobile menu first.
+    links.querySelectorAll('button[data-open]').forEach(function(button){
+      button.addEventListener('click', function(){
+        document.body.classList.remove('nav-open');
+        toggle.setAttribute('aria-expanded', 'false');
+        toggle.setAttribute('aria-label', 'Open menu');
+      });
+    });
+    document.addEventListener('keydown', function(event){
+      if (event.key === 'Escape' && document.body.classList.contains('nav-open')) {
+        document.body.classList.remove('nav-open');
+        toggle.setAttribute('aria-expanded', 'false');
+        toggle.setAttribute('aria-label', 'Open menu');
+        toggle.focus();
+      }
+    });
+    window.addEventListener('resize', function(){
+      if (window.innerWidth > 1024 && document.body.classList.contains('nav-open')) {
+        document.body.classList.remove('nav-open');
+        toggle.setAttribute('aria-expanded', 'false');
+        toggle.setAttribute('aria-label', 'Open menu');
+      }
     });
   }
 
