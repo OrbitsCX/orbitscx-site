@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#E8D8BA">
 <title>Orbits CX | Operational Momentum &amp; CX OS for Leaders</title>
-<meta name="description" content="Every business wants more momentum. Orbits CX OS works with leadership teams to eliminate Drift Zones, measure friction, and sustain momentum.">
+<meta name="description" content="Every business wants more momentum. Orbits CX OS works with leadership teams to find and remove Drift Zones, measure friction, and sustain momentum.">
 <meta name="author" content="Stephen McBride">
 <meta name="copyright" content="© 2026 Orbits CX. All rights reserved.">
 <meta name="robots" content="index, follow, max-image-preview:large">
@@ -20,12 +20,12 @@
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="Orbits CX: operational momentum and customer experience OS for leadership teams">
 <meta property="og:title" content="Orbits CX | Operational Momentum &amp; Customer Experience OS for Leadership Teams">
-<meta property="og:description" content="Every business wants more momentum. The operating system that works shoulder-to-shoulder with leadership teams to eliminate Drift Zones and sustain momentum.">
+<meta property="og:description" content="Every business wants more momentum. The operating system that works alongside leadership teams to find and remove Drift Zones and sustain momentum.">
 <meta property="og:site_name" content="Orbits CX">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://orbitscx.com/og-image.png">
 <meta name="twitter:title" content="Orbits CX | Operational Momentum &amp; Customer Experience OS for Leadership Teams">
-<meta name="twitter:description" content="Every business wants more momentum. Orbits CX OS: eliminate Drift Zones, measure friction, sustain momentum.">
+<meta name="twitter:description" content="Every business wants more momentum. Orbits CX OS: find and remove Drift Zones, measure friction, sustain momentum.">
 <link rel="icon" href="/favicon.ico?v=6" sizes="16x16 32x32 48x48">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png?v=6">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png?v=6">
@@ -35,7 +35,7 @@
 <script type="application/ld+json">
 {"@context":"https://schema.org","@graph":[
 {"@type":"WebSite","@id":"https://orbitscx.com/#website","url":"https://orbitscx.com/","name":"Orbits CX","copyrightYear":2026,"copyrightHolder":{"@id":"https://orbitscx.com/#org"},"publisher":{"@id":"https://orbitscx.com/#org"}},
-{"@type":"ProfessionalService","@id":"https://orbitscx.com/#org","name":"Orbits CX","url":"https://orbitscx.com/","description":"Orbits CX OS: the operating system that works shoulder-to-shoulder with leadership teams to eliminate Drift Zones, measure friction, and sustain momentum.","email":"stephen@orbitscx.com","logo":"https://orbitscx.com/orbits-cx-logo.png","image":"https://orbitscx.com/og-image.png","founder":{"@id":"https://orbitscx.com/#stephen"},"address":{"@type":"PostalAddress","addressLocality":"St. George","addressRegion":"UT","addressCountry":"US"}},
+{"@type":"ProfessionalService","@id":"https://orbitscx.com/#org","name":"Orbits CX","url":"https://orbitscx.com/","description":"Orbits CX OS: the operating system that works alongside leadership teams to find and remove Drift Zones, measure friction, and sustain momentum.","email":"stephen@orbitscx.com","logo":"https://orbitscx.com/orbits-cx-logo.png","image":"https://orbitscx.com/og-image.png","founder":{"@id":"https://orbitscx.com/#stephen"},"address":{"@type":"PostalAddress","addressLocality":"St. George","addressRegion":"UT","addressCountry":"US"}},
 {"@type":"Person","@id":"https://orbitscx.com/#stephen","name":"Stephen McBride","jobTitle":"Founder, Orbits CX","worksFor":{"@id":"https://orbitscx.com/#org"},"url":"https://orbitscx.com/#about","sameAs":["https://www.linkedin.com/in/stephen-mcbride-215931/"]},
 {"@type":"Book","name":"The CX Curve","alternativeHeadline":"Rewiring Corporate DNA for Relentless Customer Focus","author":{"@id":"https://orbitscx.com/#stephen"},"image":"https://orbitscx.com/the-cx-curve-book.jpg","url":"https://www.amazon.com/dp/B0H7NTRCBB"}
 ]}
@@ -2642,6 +2642,60 @@ h1, h2, h3, h4 {
   .cx-stages { grid-template-columns: 1fr; }
 }
 
+
+/* Stage one-pager dialog */
+.cx-stages li { display: flex; flex-direction: column; }
+.cx-stages li::before { content: ""; position: absolute; top: -4px; left: -45%; width: 45%; height: 4px; background: linear-gradient(90deg, transparent, rgba(255,255,255,.95), transparent); opacity: 0; pointer-events: none; z-index: 2; }
+.cx-stages li.hint::before { animation: cx-sweep 1.3s var(--ease-soft) var(--hd, 0s) 1 both; }
+@keyframes cx-sweep { 0% { left: -45%; opacity: 0; } 15% { opacity: 1; } 100% { left: 105%; opacity: 0; } }
+.cx-hook { margin-top: auto; padding-top: 16px; position: relative; z-index: 1; }
+.cx-chip-tag { display: inline-block; font: 700 .64rem/1 var(--sans); letter-spacing: .12em; text-transform: uppercase; color: color-mix(in srgb, var(--c) 55%, var(--maroon)); border: 1px solid color-mix(in srgb, var(--c) 45%, transparent); border-radius: 999px; padding: 5px 9px; margin-bottom: 10px; }
+.cx-q { font: italic 500 1.08rem/1.35 var(--serif); color: var(--ink-brown); margin: 0 0 12px; }
+.cx-go { display: flex; align-items: center; gap: 10px; font: 700 .84rem/1 var(--sans); color: color-mix(in srgb, var(--c) 55%, var(--maroon)); }
+.cx-go i { font-style: normal; width: 28px; height: 28px; border-radius: 50%; display: grid; place-items: center; border: 1.5px solid var(--c); color: var(--umber); transition: background .3s var(--ease), transform .3s var(--ease), color .3s; }
+.cx-stages li:hover .cx-go i, .cx-stages li:focus-visible .cx-go i { background: var(--c); color: #fff; transform: translateX(4px); }
+.cx-stages li:nth-child(6):hover .cx-go i { color: var(--umber); }
+.cx-stages li:hover .cx-q, .cx-stages li:focus-visible .cx-q { color: var(--umber); }
+@media (prefers-reduced-motion: reduce) { .cx-stages li.hint::before { animation: none; } }
+#modal-stage { width: min(880px, calc(100% - 28px)); overflow: hidden; border-top: 6px solid var(--sc, var(--rust)); }
+#modal-stage .dialog-inner { padding: 30px 44px 22px; }
+.sp-head { display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap; margin-bottom: 4px; }
+.sp-kicker { font: 700 .72rem/1 var(--sans); letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
+#modal-stage h2.dlg-title { margin: 6px 0 4px; font-size: 2.3rem; }
+#modal-stage h2.dlg-title::first-letter { color: var(--sandstone); }
+.sp-tag { color: var(--rust); font-weight: 650; margin-bottom: 18px; }
+.sp-feel { font-size: 1.05rem; line-height: 1.6; color: var(--ink-brown); max-width: 62ch; margin-bottom: 16px; }
+.sp-label { font: 700 .72rem/1 var(--sans); letter-spacing: .12em; text-transform: uppercase; color: var(--muted); margin: 0 0 10px; }
+.sp-voices { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 18px; }
+.sp-voice { background: var(--sand); border-left: 3px solid var(--sc); padding: 12px 16px; border-radius: 0 6px 6px 0; }
+.sp-voice small { display: block; font: 700 .68rem/1 var(--sans); letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin-bottom: 6px; }
+.sp-voice p { font-family: var(--serif); font-style: italic; font-size: 1.05rem; line-height: 1.4; color: var(--ink-brown); margin: 0; }
+.sp-intro { font-size: .9rem; line-height: 1.5; color: var(--muted); margin: -2px 0 12px; }
+.sp-intro b { color: var(--ink-brown); font-weight: 650; }
+.sp-voice small span { text-transform: none; letter-spacing: 0; font-weight: 600; color: var(--rust); font-size: .74rem; }
+.sp-psych { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 12px; margin-bottom: 22px; }
+.sp-theory { border: 1px solid var(--line); border-radius: 8px; padding: 14px 16px; background: #fff; }
+.sp-theory b { display: block; font: 700 .98rem/1.25 var(--sans); color: var(--ink-brown); }
+.sp-theory em { display: block; font-style: normal; font-size: .76rem; color: var(--rust); font-weight: 650; margin: 2px 0 8px; }
+.sp-theory p { font-size: .88rem; line-height: 1.5; color: var(--muted); margin: 0; }
+.sp-cols { display: grid; grid-template-columns: 1fr 1.25fr; gap: 20px; margin-bottom: 22px; }
+.sp-break { background: color-mix(in srgb, var(--sc) 12%, var(--sand)); border-radius: 8px; padding: 16px 18px; }
+.sp-break p { font-size: .94rem; line-height: 1.55; color: var(--ink-brown); margin: 0; }
+.sp-moves ol { list-style: none; counter-reset: m; margin: 0; padding: 0; }
+.sp-moves li { counter-increment: m; position: relative; padding-left: 30px; font-size: .92rem; line-height: 1.5; color: var(--muted); margin-bottom: 9px; }
+.sp-moves li::before { content: counter(m); position: absolute; left: 0; top: 1px; width: 20px; height: 20px; border-radius: 50%; background: var(--sc); color: #fff; font: 700 .72rem/20px var(--sans); text-align: center; }
+.sp-foot { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; border-top: 1px solid var(--line); padding-top: 16px; }
+.sp-nav { display: flex; gap: 8px; }
+.sp-nav button, .sp-book { font: 650 .86rem/1 var(--sans); padding: 10px 14px; border-radius: 999px; border: 1px solid var(--line); background: var(--sand); color: var(--umber); cursor: pointer; transition: background .2s; }
+.sp-nav button:hover, .sp-book:hover { background: var(--line); }
+.sp-book { text-decoration: none; background: var(--umber); color: #fff; border-color: var(--umber); }
+.sp-book:hover { background: var(--maroon); }
+@media (max-width: 700px) {
+  #modal-stage .dialog-inner { padding: 28px 20px 20px; }
+  .sp-voices, .sp-cols { grid-template-columns: 1fr; }
+  #modal-stage h2.dlg-title { font-size: 1.9rem; }
+}
+
 /* Worksheet modal */
 .worksheet-dialog {
   max-width: min(720px, calc(100vw - 32px));
@@ -4427,6 +4481,13 @@ main .wrap, .site-footer .wrap { position: relative; z-index: 2; }
   45% { box-shadow: 0 0 0 9px color-mix(in srgb, var(--c) 22%, transparent); transform: translateY(-3px); }
 }
 .cx-stages h3::first-letter { color: var(--sandstone); font-size: 1.22em; }
+/* Stage name treatment, matches the one-pager popups */
+.cx-stages .cx-kicker { font: 700 .68rem/1 var(--sans); letter-spacing: .14em; text-transform: uppercase; color: var(--muted); margin: 0 0 10px; }
+.cx-stages h3 { font: 400 2rem/1.1 var(--serif); letter-spacing: -0.025em; color: var(--flat-rust); margin: 0 0 12px; }
+.cx-stages h3::first-letter { color: var(--sandstone); font-size: 1em; }
+.orbit-stage-card h4 { font-family: var(--serif); font-weight: 400; font-size: 1.35rem; letter-spacing: -0.02em; color: var(--flat-rust); }
+.orbit-stage-card h4::first-letter { color: var(--sandstone); }
+
 @media (max-width: 520px) { .cx-chip small { display: none; } .cx-chip span { width: 40px; height: 40px; } }
 @media (prefers-reduced-motion: reduce) {
   .cx-chip.pop span, .cx-orbits.spelled .cx-chip.is-lit span { animation: none; }
@@ -4664,11 +4725,11 @@ main .wrap, .site-footer .wrap { position: relative; z-index: 2; }
       <blockquote>“McBride’s book, The CX Curve, will really shake up how businesses think about their customers.”
         <cite>— Tim Loynes, General Manager, Zinwave Ltd, UK</cite>
       </blockquote>
-      <p>A practical operational playbook for leaders who want CX to be a strategic priority rather than an overlooked cost center, turning loyalty and retention into predictable growth engines through the Orbits CX OS.</p>
+      <p>A practical playbook for leaders who want CX treated as a strategic priority instead of a cost center. It shows how loyalty and retention become predictable growth through the Orbits CX OS.</p>
 
       <div class="book-ch9-callout">
         <div class="book-ch9-label">Chapter 9 · The CX Curve Field Guide</div>
-        <p>Start executing. Chapter 9 is a practical operational field guide loaded with ORBITS diagnostic maps, momentum stress-tests, and playbooks your team can deploy the same day.</p>
+        <p>Chapter 9 is a field guide with ORBITS diagnostic maps, momentum stress-tests, and playbooks your team can use the same day.</p>
         <button type="button" class="btn-quiet" data-open="modal-worksheet" aria-haspopup="dialog">Preview sample exercises from the workbook <span>→</span></button>
       </div>
 
@@ -4681,7 +4742,7 @@ main .wrap, .site-footer .wrap { position: relative; z-index: 2; }
       <div class="book-endorsements-head">
         <div>
           <h2 class="book-voices-title">Voices behind <em>The CX Curve</em></h2>
-          <div class="book-endorsements-note">Selected endorsements and perspective from operators who expect results</div>
+          <div class="book-endorsements-note">What readers and operators say about the book</div>
         </div>
         <div class="book-endorsement-controls" aria-label="Scroll endorsements">
           <button type="button" class="insight-btn" id="endorse-prev" aria-label="Previous endorsements">
@@ -4734,9 +4795,9 @@ main .wrap, .site-footer .wrap { position: relative; z-index: 2; }
     <div class="cx-head">
       <div class="eyebrow">The architecture</div>
       <h2>What is the CX Curve?</h2>
-      <p class="cx-lead">Your customer’s journey isn’t a neat linear funnel. It’s a living experience with highs, lows, and distinct phases, and when you plot it, it’s a curve.</p>
-      <p>The CX Curve maps how customers experience a journey with your company, from initial need to complete problem resolution to enthusiastic advocacy. It dips when implementation falters and surges when your solution locks into their workflow. And no two customers trace it the same way: some soar, some drift, some crash, and some recover. Behind every purchase is a human decision-maker risking their reputation and peace of mind. Every organizational touchpoint either creates deadening drag or builds compounding momentum.</p>
-      <p class="cx-orbits-line">That arc operates across six distinct phases. The acronym spells <strong>ORBITS</strong>. Customers orbit your solution, and every orbit demands structural alignment.</p>
+      <p class="cx-lead">Your customer’s journey isn’t a neat linear funnel. It’s a living experience with highs, lows, and clear phases, and when you plot it, it’s a curve.</p>
+      <p>The CX Curve maps how customers experience a journey with your company, from initial need to complete problem resolution to enthusiastic advocacy. It dips when implementation falters and surges when your solution locks into their workflow. And no two customers trace it the same way: some soar, some drift, some crash, and some recover. Behind every purchase is a human decision-maker risking their reputation and peace of mind. Every touchpoint either adds drag or builds momentum.</p>
+      <p class="cx-orbits-line">That arc has six phases. The acronym spells <strong>ORBITS</strong>. Customers orbit your solution, and each phase needs your organization lined up behind it.</p>
     </div>
     <figure class="cx-figure" id="cx-curve-figure" aria-label="The CX Curve graph">
       <div class="cx-orbits" role="group" aria-label="The six ORBITS stages"><button type="button" class="cx-chip" data-stage="0" style="--c:#2E2523;--ink:#fff;--i:0" aria-label="O: Obstacle"><span>O</span><small>Obstacle</small></button><button type="button" class="cx-chip" data-stage="1" style="--c:#5C2B24;--ink:#fff;--i:1" aria-label="R: Research"><span>R</span><small>Research</small></button><button type="button" class="cx-chip" data-stage="2" style="--c:#A04220;--ink:#fff;--i:2" aria-label="B: Benchmark"><span>B</span><small>Benchmark</small></button><button type="button" class="cx-chip" data-stage="3" style="--c:#C6701A;--ink:#fff;--i:3" aria-label="I: Invest"><span>I</span><small>Invest</small></button><button type="button" class="cx-chip" data-stage="4" style="--c:#E09A28;--ink:#1A110D;--i:4" aria-label="T: Transform"><span>T</span><small>Transform</small></button><button type="button" class="cx-chip" data-stage="5" style="--c:#F2C142;--ink:#1A110D;--i:5" aria-label="S: Share"><span>S</span><small>Share</small></button></div>
@@ -4891,14 +4952,14 @@ main .wrap, .site-footer .wrap { position: relative; z-index: 2; }
     </figure>
     <ol class="cx-stages">
 <li style="--c:#2E2523"><h3>Obstacle</h3><p>The initial friction. A sharp gap between where customers are and where they are desperate to be.</p></li>
-<li style="--c:#5C2B24"><h3>Research</h3><p>Active, rigorous evaluation through peer networks, reviews, data, and careful vetting.</p></li>
+<li style="--c:#5C2B24"><h3>Research</h3><p>Customers check with peers, read reviews, dig into data, and vet you carefully.</p></li>
 <li style="--c:#A04220"><h3>Benchmark</h3><p>Stress-testing the whole picture: your product architecture, your integrations, and how your people actually execute.</p></li>
 <li style="--c:#C6701A"><h3>Invest</h3><p>The tipping point. Capital and trust are committed against clear, high expectations.</p></li>
-<li style="--c:#E09A28"><h3>Transform</h3><p>Value realized. Your solution stops being software or service. It becomes a core part of how they operate.</p></li>
-<li style="--c:#F2C142"><h3>Share</h3><p>The compounding loop. True, realized value turns customers into active market advocates.</p></li>
+<li style="--c:#E09A28"><h3>Transform</h3><p>Value realized. Your solution becomes a core part of how they operate, not just software or a service.</p></li>
+<li style="--c:#F2C142"><h3>Share</h3><p>The compounding loop. Customers who get real value start recommending you.</p></li>
     </ol>
     <div class="cx-foot">
-      <p><strong>Watch for the Drift Zones.</strong> Between every stage lies a foggy, uncertain transition gap where customer confidence stalls. Drift Zones are transition failures, not stage failures. The Orbits CX OS maps these gaps, removes the drag, and converts stalls into forward force.</p>
+      <p><strong>Watch for the Drift Zones.</strong> Between every stage is a gap where customer confidence stalls. Drift Zones are transition failures, not stage failures. The Orbits CX OS maps these gaps and removes the drag so customers keep moving.</p>
       <div class="cx-cta">
         <a class="btn btn-primary" href="https://www.amazon.com/dp/B0H7NTRCBB" target="_blank" rel="noopener">Master the model in the book <span>↗</span></a>
         <button type="button" class="pillar-link" data-open="modal-worksheet" aria-haspopup="dialog">Preview workbook exercises <span>→</span></button>
@@ -4918,7 +4979,7 @@ main .wrap, .site-footer .wrap { position: relative; z-index: 2; }
       </blockquote>
     </div>
     <div class="momentum-copy">
-      <p>A company can boast exceptional products, elite intellectual property, massive capital reserves, talented people, a trusted brand, and years of market tenure, and still feel strangely gridlocked.</p>
+      <p>A company can have great products, strong IP, plenty of capital, talented people, a trusted brand, and years in the market, and still feel stuck.</p>
       <p>Velocity is the factor most companies rarely measure, but when expected results and actual enterprise velocity collide, the root cause is almost never a lack of team effort. It is a structural misalignment around the customer’s actual journey.</p>
       <div class="equation-card">
         <div class="formula">P = MV</div>
@@ -4926,8 +4987,8 @@ main .wrap, .site-footer .wrap { position: relative; z-index: 2; }
       </div>
       <dl class="mv-defs">
         <div><dt>Mass</dt><dd>Everything you’ve built: capital, talent, IP, brand, and tenure. Mass is potential.</dd></div>
-        <div><dt>Velocity (CX)</dt><dd>How fast customers are won, kept, and grown. That is customer experience (CX), and it is not a department. It is an intertwined variable shaped by every facet of the company, from pricing and product to supply chain and operations, and it rises or falls with how fully the entire organization keeps the customer in mind.</dd></div>
-        <div><dt>Momentum</dt><dd>The state where everything gets easier: customers glide and thrive, word of mouth builds on itself, and each new innovation compounds on the last. It is the mark of a great business, and it is fleeting. Take your foot off the CX gas and momentum vanishes like smoke in the wind.</dd></div>
+        <div><dt>Velocity (CX)</dt><dd>How fast customers are won, kept, and grown. That is customer experience (CX), and it is not a department. Pricing, product, supply chain, and operations all shape it, and it rises or falls with how fully the whole organization keeps the customer in mind.</dd></div>
+        <div><dt>Momentum</dt><dd>The state where everything gets easier: customers glide and thrive, word of mouth builds on itself, and each new innovation compounds on the last. It is the mark of a great business, and it does not last on its own. Take your foot off the CX gas and momentum disappears.</dd></div>
       </dl>
     </div>
   </div>
@@ -4938,7 +4999,7 @@ main .wrap, .site-footer .wrap { position: relative; z-index: 2; }
       <p>Things start clicking. Customers respond. Teams come alive. Wins build on wins. What once required enormous effort begins to feel almost effortless.</p>
       <p>Great talent wants to join you. Partners want to work with you. Opportunities appear that you never saw coming. There’s an energy throughout the company that everyone can feel.</p>
       <p class="feeling-highlight">You’re winning. People are having fun. Success starts feeding on itself.</p>
-      <p>And something remarkable happens. Instead of constantly pushing the business forward, you begin to feel the momentum pulling you forward.</p>
+      <p>Instead of constantly pushing the business forward, you begin to feel the momentum pulling you forward.</p>
       <p class="feeling-close">Once you’ve experienced it, you never want to lose it. And if you haven’t, imagine what it could mean for your business.</p>
     </div>
   </div>
@@ -5012,7 +5073,7 @@ main .wrap, .site-footer .wrap { position: relative; z-index: 2; }
         <h2>Make CX your main driver of growth.</h2>
       </div>
       <div class="section-intro-aside">
-        <p>Three interlocking pillars powered by the Orbits CX OS that unify fragmented departments into one revenue engine. We install the operating discipline and track metrics like Journey Friction Index (JFI), Momentum Score, and Time to Value (TTV) so your organization stops working against its own customer journey.</p>
+        <p>Three pillars, run through the Orbits CX OS, that get separate departments working toward the same customer outcomes. We install the operating habits and track metrics like Journey Friction Index (JFI), Momentum Score, and Time to Value (TTV) so your organization stops working against its own customer journey.</p>
         <div class="os-equation" aria-hidden="true">
           Align <span>×</span> Rewire <span>×</span> Perform <span>→</span> Momentum
         </div>
@@ -5022,33 +5083,33 @@ main .wrap, .site-footer .wrap { position: relative; z-index: 2; }
       <div class="hiw-head">
         <div class="eyebrow">How we operate</div>
         <h3>Answers are built alongside your team, through a proven OS.</h3>
-        <p class="hiw-intro">Traditional advisory models rely on outsiders who drop off a binder of generic recommendations and vanish before reality hits. We operate with shared accountability using a disciplined OS designed to find momentum and keep it fueled.</p>
+        <p class="hiw-intro">Traditional advisors drop off a binder of generic recommendations and leave before reality hits. We share accountability for results and use the OS to find momentum and keep it going.</p>
       </div>
       <ul class="hiw-list">
-        <li><b>Listen</b><span>We dig into your customer data, interview your front-line people, and audit what has already failed, without preconceived biases.</span></li>
-        <li><b>Teach</b><span>We install new mental models, diagnostic frameworks, and operational clarity so your leadership team confidently masters the mechanics.</span></li>
-        <li><b>Work alongside</b><span>We work inside your operations alongside your team, going as deep as necessary to find the clearest picture of what’s really happening.</span></li>
-        <li><b>Leave you stronger</b><span>We do not build dependency. Our ultimate metric of success is an autonomous organization executing with confidence without needing us anymore.</span></li>
+        <li><b>Listen</b><span>We dig into your customer data, interview your front-line people, and audit what has already failed, without assuming the answer going in.</span></li>
+        <li><b>Teach</b><span>We teach new mental models and diagnostic frameworks so your leadership team understands how it works.</span></li>
+        <li><b>Work alongside</b><span>We work inside your operations alongside your team, going as deep as it takes to see what’s really happening.</span></li>
+        <li><b>Leave you stronger</b><span>We do not build dependency. We measure success by whether your organization can run on its own without us.</span></li>
       </ul>
-      <p class="hiw-promise">Your internal team owns the ultimate decisions and execution. We bring structure, clarity, and steady follow-through, and we stay until your team can run it without us.</p>
+      <p class="hiw-promise">Your team makes the final decisions and does the execution. We bring structure and follow-through, and we stay until your team can run it without us.</p>
     </div>
     <div class="pillar-grid mobile-swipe desktop-swipe">
       <article class="pillar reveal">
         <span class="pillar-label">Align</span>
         <h3>Executive Alignment</h3>
-        <p>Build leadership alignment around a single customer-centric north star, retire competing internal priorities, and create the conditions for decisive execution. For example, leaders agreeing on the top customer problem to solve this year, and which projects wait.</p>
+        <p>Get leadership aligned on one customer goal, retire competing priorities, and make it possible to act decisively. For example, leaders agreeing on the top customer problem to solve this year, and which projects wait.</p>
         <a class="pillar-link" href="mailto:stephen@orbitscx.com?subject=Executive%20Alignment">Talk about alignment <span>→</span></a>
       </article>
       <article class="pillar reveal reveal-delay-1">
         <span class="pillar-label">Rewire</span>
         <h3>Operational Rewiring</h3>
-        <p>Re-engineer processes, metric incentives, and technology stacks so internal operations actively accelerate the customer journey rather than slowing it with friction. For example, measuring support, sales, and product on shared customer outcomes instead of separate departmental targets.</p>
+        <p>Change processes, incentives, and technology so internal operations speed up the customer journey instead of slowing it down. For example, measuring support, sales, and product on shared customer outcomes instead of separate departmental targets.</p>
         <a class="pillar-link" href="mailto:stephen@orbitscx.com?subject=Operational%20Rewiring">Talk about rewiring <span>→</span></a>
       </article>
       <article class="pillar reveal reveal-delay-2">
         <span class="pillar-label">Perform</span>
         <h3>Performance CX</h3>
-        <p>Connect experience decisions directly to top-line growth, margin expansion, and net retention, turning CX from a soft initiative into a measurable financial engine. For example, showing how faster onboarding lifts retention and revenue.</p>
+        <p>Tie experience decisions directly to revenue growth, margin, and net retention, so CX is measured in financial results instead of treated as a soft initiative. For example, showing how faster onboarding lifts retention and revenue.</p>
         <a class="pillar-link" href="mailto:stephen@orbitscx.com?subject=Performance%20CX">Talk about performance <span>→</span></a>
       </article>
     </div>
@@ -5061,7 +5122,7 @@ main .wrap, .site-footer .wrap { position: relative; z-index: 2; }
     <div>
       <div class="eyebrow">Start with the signal</div>
       <h2>The answer is usually in the customer journey.</h2>
-      <p>We walk the exact path of your customer to isolate hidden Drift Zones, the transition gaps where confidence, adoption, and revenue slip away. No academic theories; just rigorous, reality-based diagnostics powered by the Orbits CX OS.</p>
+      <p>We walk the same path your customers walk to find the Drift Zones, the gaps where confidence, adoption, and revenue slip away. No academic theory, just diagnostics grounded in what customers actually experience, run through the Orbits CX OS.</p>
       <a class="btn btn-light" href="mailto:stephen@orbitscx.com?subject=Executive%20Assessment" style="margin-top:8px">Request an Executive Assessment <span>→</span></a>
     </div>
     <div class="process">
@@ -5069,28 +5130,28 @@ main .wrap, .site-footer .wrap { position: relative; z-index: 2; }
         <div class="step-num">01</div>
         <div>
           <h3>Executive Alignment Sessions</h3>
-          <p>Bring the leadership team to a shared view of the customer, working through departmental differences to align on customer reality and business stakes.</p>
+          <p>Get the leadership team to a shared view of the customer, working through departmental differences.</p>
         </div>
       </div>
       <div class="step">
         <div class="step-num">02</div>
         <div>
           <h3>CX Diagnostic Audit</h3>
-          <p>Uncover systemic friction, internal dissonance, and hidden Drift Zones stalling your pipeline using the Journey Friction Index (JFI), working directly alongside your core team.</p>
+          <p>Find the friction, internal misalignment, and hidden Drift Zones stalling your pipeline, using the Journey Friction Index (JFI) and working alongside your core team.</p>
         </div>
       </div>
       <div class="step">
         <div class="step-num">03</div>
         <div>
           <h3>90-Day Operational Rewiring</h3>
-          <p>Translate diagnostic insights into concrete structural changes across workflows, metrics, and leadership behavior while executing side-by-side.</p>
+          <p>Turn what the diagnostic finds into changes to workflows, metrics, and leadership behavior, working side by side with your team.</p>
         </div>
       </div>
       <div class="step">
         <div class="step-num">04</div>
         <div>
           <h3>System Handover</h3>
-          <p>Embed the operating rhythm permanently into your culture. We teach your people to run the engine so completely that our presence becomes obsolete.</p>
+          <p>Make the operating rhythm part of your culture. We teach your people to run it themselves, so you no longer need us.</p>
         </div>
       </div>
     </div>
@@ -5142,7 +5203,7 @@ main .wrap, .site-footer .wrap { position: relative; z-index: 2; }
       <article class="card" data-open="modal-ai-gold-rush" role="button" tabindex="0" aria-haspopup="dialog" aria-label="Open article: The AI Gold Rush: Designing Innovations That Stick">
         <div class="meta"><span>Innovation &amp; AI Strategy</span><time datetime="2026-06-20">Jun 20, 2026</time></div>
         <h3>The AI Gold Rush: Designing Innovations That Stick</h3>
-        <p>Hype fades. Momentum and resonance don’t. How the SPIRAL framework turns curiosity into habitual reliance.</p>
+        <p>Hype fades, but momentum and resonance last. How the SPIRAL framework turns curiosity into daily habit.</p>
       </article>
     </div>
     </div>
@@ -5184,7 +5245,7 @@ main .wrap, .site-footer .wrap { position: relative; z-index: 2; }
     <div class="about-copy">
       <div class="eyebrow">The architect behind Orbits CX</div>
       <h2>When the customer becomes the center of gravity, everything changes.</h2>
-      <p>For decades, we have operated at the intersection of product engineering, operational execution, and executive decision-making, the place where enterprise growth is either built or lost.</p>
+      <p>For decades, we have worked in product engineering, operations, and executive decision-making, where enterprise growth is built or lost.</p>
       <p>Too many advisory firms operate by handing over a theoretical slide deck and walking away without sharing accountability for the results.</p>
       <p>Orbits CX was built to do it differently. We work beside your team as partners and teachers. We don’t have all the answers upfront, so we find them together, remove what’s slowing your customers down, and stay until your team can keep the momentum going on its own.</p>
       <figure class="about-photo reveal">
@@ -5197,15 +5258,15 @@ main .wrap, .site-footer .wrap { position: relative; z-index: 2; }
       <div class="credentials mobile-swipe desktop-swipe">
         <div class="credential">
           <strong>Product Leadership</strong>
-          <span>CPO &amp; executive pedigree shaping category-defining products</span>
+          <span>CPO and executive experience building products</span>
         </div>
         <div class="credential">
           <strong>CX Architecture</strong>
-          <span>Scalable systems designed to institutionalize customer trust</span>
+          <span>Scalable systems that build customer trust into how the company runs</span>
         </div>
         <div class="credential">
-          <strong>Operational Catalyst</strong>
-          <span>Dedicated execution support working shoulder-to-shoulder with leadership</span>
+          <strong>Execution Partner</strong>
+          <span>Hands-on execution support, working alongside leadership</span>
         </div>
       </div>
     </div>
@@ -5214,7 +5275,7 @@ main .wrap, .site-footer .wrap { position: relative; z-index: 2; }
 
 <section class="contact-band" id="contact">
   <div class="wrap">
-    <div class="eyebrow">Initiate momentum</div>
+    <div class="eyebrow">Get started</div>
     <h2>Let’s build momentum.</h2>
     <p>If you’d like to see where your business is losing momentum, let’s talk. A conversation is the easiest place to start.</p>
     <div style="display:flex;flex-wrap:wrap;gap:12px;justify-content:center">
@@ -5251,6 +5312,28 @@ main .wrap, .site-footer .wrap { position: relative; z-index: 2; }
   </div>
 </footer>
 
+<dialog id="modal-stage" aria-labelledby="sp-title">
+<div class="dialog-inner">
+<button aria-label="Close stage summary" class="dialog-close" type="button">×</button>
+<div class="sp-head"><span class="sp-kicker" id="sp-kicker"></span></div>
+<h2 class="dlg-title" id="sp-title"></h2>
+<div class="sp-tag" id="sp-tag"></div>
+<p class="sp-feel" id="sp-feel"></p>
+<div class="sp-label">Inside their head</div>
+<p class="sp-intro" id="sp-intro"></p>
+<div class="sp-voices" id="sp-voices"></div>
+<div class="sp-label">The psychology</div>
+<div class="sp-psych" id="sp-psych"></div>
+<div class="sp-cols">
+  <div class="sp-break"><div class="sp-label">Where it goes wrong</div><p id="sp-break"></p></div>
+  <div class="sp-moves"><div class="sp-label">What to do</div><ol id="sp-moves"></ol></div>
+</div>
+<div class="sp-foot">
+  <div class="sp-nav"><button type="button" id="sp-prev">← Previous</button><button type="button" id="sp-next">Next stage →</button></div>
+  <a class="sp-book" href="https://www.amazon.com/dp/B0H7NTRCBB" target="_blank" rel="noopener">Read the full stage in the book ↗</a>
+</div>
+</div>
+</dialog>
 <dialog aria-labelledby="t-golden" id="modal-ai-golden-rule">
 <div class="dialog-inner">
 <button aria-label="Close article" class="dialog-close" type="button">×</button>
@@ -5481,7 +5564,7 @@ main .wrap, .site-footer .wrap { position: relative; z-index: 2; }
     <div class="ws-dialog-head">
       <div class="eyebrow">From Chapter 9 · The CX Curve Workbook</div>
       <h2 class="dlg-title" id="ws-title-main">Map your curve. Spot the drift.</h2>
-      <p class="ws-dialog-lead">A practical operational field guide designed to stress-test your customer journey immediately. Use it independently or facilitate it with your leadership team. Notes stay in this browser until you clear, print or save them.</p>
+      <p class="ws-dialog-lead">A practical field guide for stress-testing your customer journey. Use it on your own or with your leadership team. Notes stay in this browser until you clear, print or save them.</p>
     </div>
     <div class="worksheet-shell">
       <div class="worksheet-meta">
@@ -5490,7 +5573,7 @@ main .wrap, .site-footer .wrap { position: relative; z-index: 2; }
       </div>
       <div class="ws-block">
         <h3 class="ws-title">1 · Executive Reflection</h3>
-        <p class="ws-sub">Three high-stakes probes into customer focus, historical blind spots, and momentum fractures.</p>
+        <p class="ws-sub">Three questions about customer focus, blind spots, and where momentum broke.</p>
         <div class="ws-prompts">
           <label class="ws-prompt">
             <span class="ws-q">Where in your organization is “customer focus” talked about more than it is acted on?</span>
@@ -5514,7 +5597,7 @@ main .wrap, .site-footer .wrap { position: relative; z-index: 2; }
             <div class="osc-letter">O</div>
             <div class="osc-body">
               <h4>Obstacle</h4>
-              <p class="osc-hint">The gap that sparks change</p>
+              <p class="osc-hint">The gap that starts the change</p>
               <textarea id="ws-o" rows="2" placeholder="What Customer problem or ambition starts the journey?"></textarea>
             </div>
           </div>
@@ -5567,7 +5650,7 @@ main .wrap, .site-footer .wrap { position: relative; z-index: 2; }
       </div>
       <div class="ws-block">
         <h3 class="ws-title">3 · Momentum Stress-Test</h3>
-        <p class="ws-sub">A rigorous checklist to audit stage progression, unmask Drift Zones, and install corrective protocols. Answer honestly. The pattern is more useful than perfection.</p>
+        <p class="ws-sub">A checklist to audit how customers move between stages, spot Drift Zones, and set up fixes. Answer honestly. The pattern is more useful than perfection.</p>
         <div class="ws-momentum">
           <label class="ws-check"><input type="checkbox" id="ws-m1"><span>Customers progress cleanly from stage to stage</span></label>
           <label class="ws-check"><input type="checkbox" id="ws-m2"><span>We can name the stage where we lose the most momentum</span></label>
@@ -5593,9 +5676,9 @@ main .wrap, .site-footer .wrap { position: relative; z-index: 2; }
       </div>
       <div class="ws-taste">
         <img class="ws-taste-logo" src="orbits-cx-logo.png" alt="Orbits CX" width="94" height="60" loading="lazy" decoding="async">
-        <p class="ws-taste-kicker">This is just the baseline instrumentation</p>
+        <p class="ws-taste-kicker">This is only the baseline</p>
         <h4>Ready to fix the engine?</h4>
-        <p>Contact us to deploy the full framework.</p>
+        <p>Contact us to put the full framework to work.</p>
         <div class="ws-taste-actions">
           <a class="btn btn-primary" href="#contact" data-close-dialog>Contact us <span>→</span></a>
           <a class="ws-textlink" href="https://www.amazon.com/dp/B0H7NTRCBB" target="_blank" rel="noopener">or get the full workbook in the book ↗</a>
@@ -6009,22 +6092,80 @@ main .wrap, .site-footer .wrap { position: relative; z-index: 2; }
     }
   })();
 
-  // CX Curve stage tiles — hover + click/tap activate
-  document.querySelectorAll('.cx-stages li').forEach(function(tile){
-    tile.setAttribute('tabindex', '0');
-    tile.setAttribute('role', 'button');
-    tile.addEventListener('click', function(){
-      var was = tile.classList.contains('is-active');
-      document.querySelectorAll('.cx-stages li.is-active').forEach(function(t){ t.classList.remove('is-active'); });
-      if (!was) tile.classList.add('is-active');
+
+  // CX Curve stage tiles: hover highlight + click opens the one-pager
+  (function(){
+    var STAGES = [{"n": "Obstacle", "c": "#2E2523", "tag": "The spark of opportunity", "feel": "They have a problem or a goal, and they don’t know you yet. They’re wary of being sold to.", "voices": [["Reactive", "“I’m out of my depth.”"], ["Proactive", "“How can I seize this opportunity?”"]], "psych": [["Self-efficacy", "Bandura", "When people doubt they can fix their own problem, they freeze or panic. Pride gets in the way too: “This isn’t my fault” or “I’ll fix it later.”"], ["Self-determination", "Deci & Ryan", "Buyers going after a goal want control over the choice, confidence they can pull it off, and a vendor who understands their plan."]], "breaks": "They don’t know you, and pride keeps them from asking for help. If nobody they trust is around, the problem just sits there.", "moves": ["Listen first. Speak to what the person is actually feeling, not to a persona.", "Specialize in a vertical so you recognize the problem before they describe it.", "Publish stories from similar customers. Seeing that others fixed it tells them they can too."]}, {"n": "Research", "c": "#5C2B24", "tag": "Searching, and doubting what they find", "feel": "They are reading and comparing, but they expect to be let down. They picture how this could fail and how it could make them look.", "voices": [["Reactive", "“Most solutions won’t work for me.”"], ["Proactive", "“This might not fit my vision.”"]], "psych": [["Confirmation bias", "Festinger", "A bad experience with a past vendor becomes a filter. Buyers look for proof it will happen again."], ["Self-determination", "Deci & Ryan", "Buyers want to make the choice themselves. Pressure backfires. Clear information helps."]], "breaks": "Doubts nobody answers, or too many options at once. Buyers stop looking and drop out.", "moves": ["Answer doubt with evidence, not bigger claims.", "Offer demos with no sign-up wall that show setup is simple.", "Follow up on what they read: “You viewed our onboarding guide. Here’s how peers did it.”"]}, {"n": "Benchmark", "c": "#A04220", "tag": "Comparing options with confidence", "feel": "The decision is real now. They are weighing trade-offs, and the fear of choosing wrong is stronger than the hope of choosing right.", "voices": [["Reactive", "“What if this fails again?”"], ["Proactive", "“Will this scale with us?”"]], "psych": [["Anticipated regret", "Zeelenberg", "People work harder to avoid a wrong choice than to find a right one. Too many options leads to decision fatigue and stalled deals."], ["Social identity", "Tajfel & Turner", "“What would someone like me choose?” Buyers want a choice that fits how they see themselves professionally."]], "breaks": "Regret and tough trade-offs leave buyers stuck. The deal doesn’t get rejected. It just never closes.", "moves": ["Compare yourself openly against the alternatives.", "Pair ROI tools with results from companies like theirs.", "Follow up with an offer to talk it through. Don’t push to close."]}, {"n": "Invest", "c": "#C6701A", "tag": "Committing with conviction", "feel": "They are tired of comparing and want to stop worrying. They are also putting their reputation behind your product.", "voices": [["Fear", "“What if the vendor disappears after we sign?”"], ["Identity", "“What if this fails and it’s my fault?”"]], "psych": [["Prospect theory", "Kahneman & Tversky", "Losses feel about twice as painful as gains feel good. Right before signing, that fear is at its highest."], ["Self-consistency", "Korman", "A good decision confirms “I’m smart and strategic.” A bad one threatens that image."], ["Cognitive dissonance", "Festinger", "Right after deciding, the brain looks for reasons it was the right call. Buyers need reassurance to get there."]], "breaks": "The gap after signing. They have committed but haven’t started, and doubt creeps in: “Did we make the right call?”", "moves": ["Welcome them within 24 hours.", "Introduce the same success team you named before the sale.", "Share the implementation plan you promised, and show the work already under way."]}, {"n": "Transform", "c": "#E09A28", "tag": "Building trust through wins", "feel": "They are setting up the product and watching for proof it works. They need early wins, and they fear being left on their own after the sale.", "voices": [["Reactive", "“Can I make this work?”"], ["Proactive", "“Is this driving my growth?”"]], "psych": [["Expectancy-value", "Wigfield & Eccles", "Motivation is “Can I do this?” times “Is it worth it?” If either answer is no, effort stops."], ["Self-determination", "Deci & Ryan", "People need early wins, freedom to use the product on their own, and ongoing support."], ["Self-efficacy", "Bandura", "Rebuilding their belief that they can fix the problem."]], "breaks": "Adoption problems nobody addresses, and a vendor who stops showing up. Buyers read silence as abandonment.", "moves": ["Plan early wins and point them out.", "Send progress updates that include how similar customers are doing.", "Check in personally, and raise problems before they do."]}, {"n": "Share", "c": "#F2C142", "tag": "Turning success into advocacy", "feel": "They are proud of the result and want others to see it. They are wondering whether you will back their story.", "voices": [["Reactive", "“I want others to see my solution worked.”"], ["Proactive", "“I want to inspire with my success.”"]], "psych": [["Social identity", "Tajfel & Turner", "Sharing a win says something about who they are and which community they belong to."], ["Cognitive dissonance", "Festinger", "“This worked, but will they support my story?” While that doubt stays, they stay silent. Reassurance gets them talking."]], "breaks": "The vendor goes silent after the win. Stories go untold and advocacy dries up.", "moves": ["Write the success story with them, so it feels like theirs and not a generic case study.", "Give them a stage: a panel, a webinar, a customer series.", "Have your CSMs call out customer wins and stay in touch."]}];
+    var HOOKS = [
+      { chip: "Self-efficacy · Ego", q: "Why does a customer in pain freeze?", cta: "Hear what they think" },
+      { chip: "Confirmation bias", q: "Why do buyers seek reasons to say no?", cta: "See how bias works" },
+      { chip: "Anticipated regret", q: "Why does fear of regret beat hope?", cta: "Understand the pause" },
+      { chip: "Prospect theory", q: "What happens right after they sign?", cta: "See what they feel" },
+      { chip: "Expectancy × Value", q: "Why does silence feel like abandonment?", cta: "Plan the early win" },
+      { chip: "Social identity", q: "Why would a happy customer say nothing?", cta: "Earn their advocacy" }
+    ];
+    var dlg = document.getElementById('modal-stage');
+    var tiles = document.querySelectorAll('.cx-stages li');
+    var cur = 0;
+    function esc(t){ return String(t).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+    function render(i){
+      cur = (i + STAGES.length) % STAGES.length;
+      var s = STAGES[cur];
+      dlg.style.setProperty('--sc', s.c);
+      document.getElementById('sp-kicker').textContent = 'ORBITS \u00b7 Stage ' + (cur + 1) + ' of 6';
+      document.getElementById('sp-title').textContent = s.n;
+      document.getElementById('sp-tag').textContent = s.tag;
+      document.getElementById('sp-feel').textContent = s.feel;
+      var SUB = { Reactive: 'responding to a problem', Proactive: 'going after an opportunity', Fear: 'fear of loss', Identity: 'fear of blame' };
+      document.getElementById('sp-intro').innerHTML = cur === 3
+        ? 'Right before signing, two fears come up: <b>losing the vendor\u2019s support</b> and <b>losing face</b>.'
+        : 'Two buyer mindsets show up at every stage. <b>Reactive</b> buyers are responding to a problem too big to ignore. <b>Proactive</b> buyers are going after an opportunity before the market moves.';
+      document.getElementById('sp-voices').innerHTML = s.voices.map(function(v){ return '<div class="sp-voice"><small>' + esc(v[0]) + ' <span>\u00b7 ' + esc(SUB[v[0]] || '') + '</span></small><p>' + esc(v[1]) + '</p></div>'; }).join('');
+      document.getElementById('sp-psych').innerHTML = s.psych.map(function(p){ return '<div class="sp-theory"><b>' + esc(p[0]) + '</b><em>' + esc(p[1]) + '</em><p>' + esc(p[2]) + '</p></div>'; }).join('');
+      document.getElementById('sp-break').textContent = s.breaks;
+      document.getElementById('sp-moves').innerHTML = s.moves.map(function(m){ return '<li>' + esc(m) + '</li>'; }).join('');
+      document.getElementById('sp-prev').style.display = cur === 0 ? 'none' : '';
+      document.getElementById('sp-next').style.display = cur === STAGES.length - 1 ? 'none' : '';
+      var inner = dlg.querySelector('.dialog-inner'); if (inner) inner.scrollTop = 0;
+    }
+    tiles.forEach(function(tile, i){
+      tile.setAttribute('tabindex', '0');
+      tile.setAttribute('role', 'button');
+      tile.setAttribute('aria-haspopup', 'dialog');
+      var kick = document.createElement('div');
+      kick.className = 'cx-kicker';
+      kick.textContent = 'Stage ' + (i + 1) + ' of 6';
+      tile.insertBefore(kick, tile.firstChild);
+      var h = HOOKS[i];
+      var hook = document.createElement('div');
+      hook.className = 'cx-hook';
+      hook.innerHTML = '<span class="cx-chip-tag">' + h.chip + '</span><p class="cx-q">' + h.q + '</p><div class="cx-go"><i>\u2192</i><span>' + h.cta + '</span></div>';
+      tile.appendChild(hook);
+      tile.setAttribute('aria-label', STAGES[i].n + ': ' + h.q + ' ' + h.cta);
+      tile.addEventListener('click', function(){
+        document.querySelectorAll('.cx-stages li.is-active').forEach(function(t){ t.classList.remove('is-active'); });
+        if (dlg && dlg.showModal) { render(i); dlg.showModal(); }
+      });
+      tile.addEventListener('keydown', function(e){
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); tile.click(); }
+      });
     });
-    tile.addEventListener('keydown', function(e){
-      if (e.key === 'Enter' || e.key === ' ') {
-        e.preventDefault();
-        tile.click();
-      }
-    });
-  });
+    if ('IntersectionObserver' in window && tiles.length) {
+      var wrap = tiles[0].parentNode;
+      var io = new IntersectionObserver(function(es){
+        es.forEach(function(e){
+          if (!e.isIntersecting) return;
+          tiles.forEach(function(t, k){ t.style.setProperty('--hd', (k * 0.14) + 's'); t.classList.add('hint'); });
+          io.disconnect();
+        });
+      }, { threshold: 0.35 });
+      io.observe(wrap);
+    }
+    if (dlg) {
+      document.getElementById('sp-prev').addEventListener('click', function(){ render(cur - 1); });
+      document.getElementById('sp-next').addEventListener('click', function(){ render(cur + 1); });
+    }
+  })();
 
   // Nav active state while scrolling (highlight current section tab)
   (function(){
