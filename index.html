@@ -2941,7 +2941,7 @@ h1, h2, h3, h4 {
   .ws-actions { flex-direction: column; align-items: stretch; }
   .ws-actions .btn { width: 100%; justify-content: center; }
 }
-/* Mail fallback toast (appears only if the email app did not open) */
+/* Email notice (appears when an email link is clicked) */
 .mail-toast {
   position: fixed;
   left: 50%;
@@ -6447,14 +6447,11 @@ main .wrap, .site-footer .wrap { position: relative; z-index: 2; }
     updateResult();
   })();
 
-  // Email fallback: if clicking an email link does not open a mail app
-  // (no mail program set up, or the viewer blocks mailto), show the address and a webmail option.
+  // Email links: show the address right away with one-click options (Gmail, copy, or the
+  // visitor's own email app), rather than relying on a mail program being set up.
   (function(){
-    var toast = null, timer = null, opened = false;
+    var toast = null;
     function hideToast(){ if (toast) { toast.remove(); toast = null; } }
-    function markOpened(){ opened = true; }
-    window.addEventListener('blur', markOpened);
-    document.addEventListener('visibilitychange', function(){ if (document.hidden) markOpened(); });
     function showToast(href){
       hideToast();
       var url, addr = 'stephen@orbitscx.com', subject = '', body = '';
@@ -6471,13 +6468,15 @@ main .wrap, .site-footer .wrap { position: relative; z-index: 2; }
       toast.setAttribute('role', 'status');
       toast.innerHTML =
         '<button type="button" class="mail-toast-close" aria-label="Dismiss">\u00d7</button>' +
-        '<p>Your email app did not open. Send your note to <strong></strong></p>' +
+        '<p>Send your note to <strong></strong></p>' +
         '<div class="mail-toast-actions">' +
           '<button type="button" class="mail-copy">Copy address</button>' +
-          '<a target="_blank" rel="noopener">Write it in Gmail</a>' +
+          '<a class="mail-gmail" target="_blank" rel="noopener">Write it in Gmail</a>' +
+          '<a class="mail-app">Open email app</a>' +
         '</div>';
       toast.querySelector('strong').textContent = addr;
-      toast.querySelector('a').href = gmail;
+      toast.querySelector('.mail-gmail').href = gmail;
+      toast.querySelector('.mail-app').href = href;
       toast.querySelector('.mail-toast-close').addEventListener('click', hideToast);
       toast.querySelector('.mail-copy').addEventListener('click', function(btn){
         var b = this;
@@ -6487,15 +6486,13 @@ main .wrap, .site-footer .wrap { position: relative; z-index: 2; }
       });
       // A modal dialog sits above everything else, so the notice must live inside it when one is open
       (document.querySelector('dialog[open]') || document.body).appendChild(toast);
-      setTimeout(hideToast, 20000);
+      setTimeout(hideToast, 30000);
     }
     document.addEventListener('click', function(e){
       var a = e.target.closest && e.target.closest('a[href^="mailto:"]');
-      if (!a) return;
-      var href = a.href;
-      opened = false;
-      clearTimeout(timer);
-      timer = setTimeout(function(){ if (!opened) showToast(href); }, 1300);
+      if (!a || a.closest('.mail-toast')) return;
+      e.preventDefault();
+      showToast(a.href);
     });
   })();
 })();
