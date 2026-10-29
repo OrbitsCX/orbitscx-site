@@ -70,7 +70,7 @@
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; scroll-padding-top: calc(var(--header-h) + 16px); }
+html { scroll-behavior: auto; scroll-padding-top: calc(var(--header-h) + 16px); }
 body {
   font-family: var(--sans);
   color: var(--umber);
@@ -4632,6 +4632,65 @@ main .wrap, .site-footer .wrap { position: relative; z-index: 2; }
   .nav-links .btn { padding: 11px 16px; }
 }
 </style>
+
+<style>
+/* ===== Nav dropdowns ===== */
+.nav-item { position: relative; display: flex; align-items: center; gap: 2px; }
+.nav-caret {
+  display: inline-grid; place-items: center; width: 22px; height: 22px; margin-bottom: 6px;
+  border-radius: 6px; color: rgba(92,38,24,.55); cursor: pointer;
+  transition: color .2s, transform .2s;
+}
+.nav-caret svg { width: 11px; height: 11px; transition: transform .2s; }
+.nav-caret:hover, .nav-caret:focus-visible { color: var(--terracotta); }
+.nav-item.is-open > .nav-caret svg { transform: rotate(180deg); }
+.nav-sub { list-style: none; }
+.nav-links .nav-sub a:not(.btn),
+.nav-links .nav-sub .nav-sub-btn {
+  display: block; width: 100%; text-align: left; padding: 9px 14px; margin: 0;
+  font: 550 .88rem/1.35 var(--sans); letter-spacing: .01em; color: var(--ink-brown);
+  border-radius: 8px; transform: none; background: none; border: 0; cursor: pointer;
+  white-space: nowrap; transition: background .15s, color .15s;
+}
+.nav-links .nav-sub a:not(.btn)::after { content: none; }
+.nav-links .nav-sub a:not(.btn):hover,
+.nav-links .nav-sub a:not(.btn):focus-visible,
+.nav-links .nav-sub .nav-sub-btn:hover,
+.nav-links .nav-sub .nav-sub-btn:focus-visible {
+  background: rgba(128,46,30,.09); color: var(--terracotta); transform: none; font-weight: 650;
+}
+
+@media (min-width: 1025px) {
+  .nav-sub {
+    position: absolute; top: 100%; left: -14px; min-width: 230px; padding: 8px;
+    margin-top: 4px;
+    background: linear-gradient(180deg, rgba(255,252,246,.99), rgba(250,240,222,.98));
+    border: 1px solid rgba(231,220,200,.9); border-radius: 14px;
+    box-shadow: 0 22px 54px rgba(26,17,13,.20), 0 2px 8px rgba(26,17,13,.08);
+    opacity: 0; visibility: hidden; transform: translateY(-4px);
+    transition: opacity .15s ease, transform .15s ease, visibility .15s;
+    z-index: 20;
+  }
+  /* invisible bridge so the menu doesn't close while the pointer crosses the gap */
+  .nav-sub::before { content: ""; position: absolute; left: 0; right: 0; top: -12px; height: 12px; }
+  .nav-item:hover > .nav-sub,
+  .nav-item:focus-within > .nav-sub,
+  .nav-item.is-open > .nav-sub { opacity: 1; visibility: visible; transform: none; }
+  .nav-item.is-closed > .nav-sub { opacity: 0; visibility: hidden; transform: translateY(-4px); }
+  .nav-item:hover > .nav-caret svg { transform: rotate(180deg); }
+}
+
+@media (max-width: 1024px) {
+  .nav-item { flex-wrap: wrap; justify-content: center; width: 100%; gap: 6px; }
+  .nav-caret { width: 34px; height: 34px; margin: 0; color: var(--flat-rust); }
+  .nav-caret svg { width: 14px; height: 14px; }
+  .nav-sub { display: none; flex-basis: 100%; width: 100%; max-width: 340px; margin: 6px auto 4px; padding: 6px; border-radius: 14px; background: rgba(255,255,255,.55); border: 1px solid var(--line); }
+  .nav-item.is-open > .nav-sub { display: block; }
+  .nav-links .nav-sub a:not(.btn),
+  .nav-links .nav-sub .nav-sub-btn { text-align: center; white-space: normal; font-size: 1rem; padding: 11px 12px; color: var(--flat-rust); }
+}
+@media (prefers-reduced-motion: reduce) { .nav-sub, .nav-caret svg { transition: none !important; } }
+</style>
 <noscript><style>.reveal{opacity:1!important;transform:none!important}</style></noscript>
 </head>
 <body>
@@ -4648,11 +4707,29 @@ main .wrap, .site-footer .wrap { position: relative; z-index: 2; }
       <svg class="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
     </button>
     <nav aria-label="Primary"><ul class="nav-links" id="nav-links">
-      <li><a href="#book">The Book</a></li>
-      <li><a href="#cx-curve">CX Curve</a></li>
-      <li><a href="#partner">How We Work</a></li>
-      <li><a href="#insights">Insights</a></li>
-      <li><a href="#about">About</a></li>
+      <li class="nav-item has-sub"><a class="nav-top" href="#book">The Book</a><button type="button" class="nav-caret" aria-expanded="false" aria-label="Show The Book submenu"><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 4.5 6 8l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <ul class="nav-sub">
+          <li><a href="#book">Overview</a></li>
+          <li><a href="#book-voices">Reviews</a></li>
+        </ul>
+      </li>
+      <li class="nav-item has-sub"><a class="nav-top" href="#cx-curve">CX Curve</a><button type="button" class="nav-caret" aria-expanded="false" aria-label="Show CX Curve submenu"><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 4.5 6 8l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <ul class="nav-sub">
+          <li><a href="#cx-curve">What Is the CX Curve?</a></li>
+          <li><a href="#momentum">Mass vs. Momentum</a></li>
+          <li><a href="#momentum-feeling">When Momentum Takes Hold</a></li>
+          <li><a href="#customer-center">Customer at the Center</a></li>
+        </ul>
+      </li>
+      <li class="nav-item has-sub"><a class="nav-top" href="#partner">How We Work</a><button type="button" class="nav-caret" aria-expanded="false" aria-label="Show How We Work submenu"><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 4.5 6 8l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <ul class="nav-sub">
+          <li><a href="#partner">The Orbits CX OS</a></li>
+          <li><a href="#how-we-operate">How We Operate</a></li>
+          <li><a href="#diagnostic">Our Process</a></li>
+        </ul>
+      </li>
+      <li><a class="nav-top" href="#insights">Articles</a></li>
+      <li><a class="nav-top" href="#about">About</a></li>
       <li><button type="button" class="nav-worksheet-btn" data-open="modal-worksheet" aria-haspopup="dialog">Workbook</button></li>
       <li><a class="btn btn-primary nav-cta" href="#contact">Start a Conversation</a></li>
     </ul></nav>
@@ -4771,9 +4848,9 @@ main .wrap, .site-footer .wrap { position: relative; z-index: 2; }
       </blockquote>
       <p>A practical playbook for leaders who want CX treated as a strategic priority instead of a cost center. It shows how loyalty and retention become predictable growth through the Orbits CX OS.</p>
 
-      <div class="book-ch9-callout">
-        <div class="book-ch9-label">Chapter 9 · The CX Curve Field Guide</div>
-        <p>Chapter 9 is a field guide with ORBITS diagnostic maps, momentum stress-tests, and playbooks your team can use the same day.</p>
+      <div class="book-ch9-callout" id="book-field-guide">
+        <div class="book-ch9-label">The CX Curve · Sample Workbook</div>
+        <p>The sample workbook gives you a taste of the ORBITS diagnostic maps, momentum stress-tests, and playbooks your team can use the same day.</p>
         <button type="button" class="btn-quiet" data-open="modal-worksheet" aria-haspopup="dialog">Preview sample exercises from the workbook <span>→</span></button>
       </div>
 
@@ -4782,7 +4859,7 @@ main .wrap, .site-footer .wrap { position: relative; z-index: 2; }
       </div>
     </div>
 
-    <div class="book-endorsements">
+    <div class="book-endorsements" id="book-voices">
       <div class="book-endorsements-head">
         <div>
           <h2 class="book-voices-title">Voices behind <em>The CX Curve</em></h2>
@@ -4994,7 +5071,7 @@ main .wrap, .site-footer .wrap { position: relative; z-index: 2; }
         <p class="cx-real-caption" id="cx-real-caption" aria-live="polite"><strong>The ideal journey.</strong> Satisfaction rises through Benchmark, then dips as the customer works up to the decision, because anticipated regret is real. After they buy, post-decision dissonance is completely normal and expected. Once onboarding succeeds in Transform, CX climbs again and keeps climbing through Share.</p>
       </div>
     </figure>
-    <ol class="cx-stages">
+    <ol class="cx-stages" id="cx-stages">
 <li style="--c:#2E2523"><h3>Obstacle</h3><p>The initial friction. A sharp gap between where customers are and where they are desperate to be.</p></li>
 <li style="--c:#5C2B24"><h3>Research</h3><p>Customers check with peers, read reviews, dig into data, and vet you carefully.</p></li>
 <li style="--c:#A04220"><h3>Benchmark</h3><p>Stress-testing the whole picture: your product architecture, your integrations, and how your people actually execute.</p></li>
@@ -5002,13 +5079,13 @@ main .wrap, .site-footer .wrap { position: relative; z-index: 2; }
 <li style="--c:#E09A28"><h3>Transform</h3><p>Value realized. Your solution becomes a core part of how they operate, not just software or a service.</p></li>
 <li style="--c:#F2C142"><h3>Share</h3><p>The compounding loop. Customers who get real value start recommending you.</p></li>
     </ol>
-    <div class="cx-mindsets" aria-label="The psychological dimensions of the customer journey">
+    <div class="cx-mindsets" id="cx-mindsets" aria-label="The psychological dimensions of the customer journey">
       <div class="cx-mindsets-label">A deeper layer of the CX Curve</div>
       <h3>Same stage. Different motivations. Different momentum.</h3>
       <p>The curve shows where customers are in their journey. But knowing the stage does not always tell you what a customer needs. Two customers can stand at the same point on The CX Curve and be driven by very different motivations. One is <strong>reactive</strong>, looking for relief from a pressing problem. Another is <strong>proactive</strong>, pursuing an opportunity before it passes.</p>
       <p>Their fears, expectations, and reasons to move forward can differ. Understanding <strong>why customers move, hesitate, or drift</strong> helps teams see friction a stage map alone can miss and respond to the person behind the decision.</p>
     </div>
-    <div class="cx-foot">
+    <div class="cx-foot" id="cx-drift">
       <p><strong>Watch for the Drift Zones.</strong> Between every stage is a gap where customer confidence stalls. Drift Zones are transition failures, not stage failures. The Orbits CX OS maps these gaps and removes the drag so customers keep moving.</p>
       <div class="cx-cta">
         <a class="btn btn-primary" href="https://www.amazon.com/dp/B0H7NTRCBB" target="_blank" rel="noopener">Master the model in the book <span>↗</span></a>
@@ -5018,7 +5095,7 @@ main .wrap, .site-footer .wrap { position: relative; z-index: 2; }
   </div>
 </section>
 
-<section class="section momentum">
+<section class="section momentum" id="momentum">
   <div class="wrap momentum-grid">
     <div>
       <div class="eyebrow">The diagnostic reality</div>
@@ -5043,7 +5120,7 @@ main .wrap, .site-footer .wrap { position: relative; z-index: 2; }
     </div>
   </div>
   <div class="wrap">
-    <div class="momentum-feeling reveal" aria-labelledby="momentum-feeling-title">
+    <div class="momentum-feeling reveal" id="momentum-feeling" aria-labelledby="momentum-feeling-title">
       <div class="eyebrow">The feeling of momentum</div>
       <h3 id="momentum-feeling-title">When momentum takes hold, everything changes.</h3>
       <p>Things start clicking. Customers respond. Teams come alive. Wins build on wins. What once required enormous effort begins to feel almost effortless.</p>
@@ -5053,7 +5130,7 @@ main .wrap, .site-footer .wrap { position: relative; z-index: 2; }
       <p class="feeling-close">Once you’ve experienced it, you never want to lose it. And if you haven’t, imagine what it could mean for your business.</p>
     </div>
   </div>
-  <div class="wrap trap-wrap">
+  <div class="wrap trap-wrap" id="momentum-trap">
     <div class="trap-intro" role="group" aria-label="Definition of the momentum trap">
       <div class="trap-term">
         <p class="trap-name">momentum trap</p>
@@ -5067,7 +5144,7 @@ main .wrap, .site-footer .wrap { position: relative; z-index: 2; }
   </div>
 </section>
 
-<section class="section customer-center" aria-labelledby="customer-center-title">
+<section class="section customer-center" id="customer-center" aria-labelledby="customer-center-title">
   <div class="wrap customer-center-grid">
     <div>
       <div class="eyebrow">The physics of growth</div>
@@ -5129,7 +5206,7 @@ main .wrap, .site-footer .wrap { position: relative; z-index: 2; }
         </div>
       </div>
     </div>
-    <div class="how-i-work reveal">
+    <div class="how-i-work reveal" id="how-we-operate">
       <div class="hiw-head">
         <div class="eyebrow">How we operate</div>
         <h3>Answers are built alongside your team, through a proven OS.</h3>
@@ -5143,7 +5220,7 @@ main .wrap, .site-footer .wrap { position: relative; z-index: 2; }
       </ul>
       <p class="hiw-promise">Your team makes the final decisions and does the execution. We bring structure and follow-through, and we stay until your team can run it without us.</p>
     </div>
-    <div class="pillar-grid mobile-swipe desktop-swipe">
+    <div class="pillar-grid mobile-swipe desktop-swipe" id="pillars">
       <article class="pillar reveal">
         <span class="pillar-label">Align</span>
         <h3>Executive Alignment</h3>
@@ -5167,7 +5244,7 @@ main .wrap, .site-footer .wrap { position: relative; z-index: 2; }
 </section>
 
 
-<section class="section diagnostic">
+<section class="section diagnostic" id="diagnostic">
   <div class="wrap diag-grid">
     <div>
       <div class="eyebrow">Start with the signal</div>
@@ -5293,7 +5370,7 @@ main .wrap, .site-footer .wrap { position: relative; z-index: 2; }
       </div>
     </div>
     <div class="about-copy">
-      <div class="eyebrow">The architect behind Orbits CX</div>
+      <div class="eyebrow" id="about-approach">The architect behind Orbits CX</div>
       <h2>When the customer becomes the center of gravity, everything changes.</h2>
       <p>For decades, we have worked in product engineering, operations, and executive decision-making, where enterprise growth is built or lost.</p>
       <p>Too many advisory firms operate by handing over a theoretical slide deck and walking away without sharing accountability for the results.</p>
@@ -5305,7 +5382,7 @@ main .wrap, .site-footer .wrap { position: relative; z-index: 2; }
       <blockquote class="about-quote">“Watch the scoreboard and you lose the game. Focus on CX and the numbers soar.”
         <cite>— Stephen McBride</cite>
       </blockquote>
-      <div class="credentials mobile-swipe desktop-swipe">
+      <div class="credentials mobile-swipe desktop-swipe" id="about-credentials">
         <div class="credential">
           <strong>Product Leadership</strong>
           <span>CPO and executive experience building products</span>
@@ -5612,7 +5689,7 @@ main .wrap, .site-footer .wrap { position: relative; z-index: 2; }
   <div class="dialog-inner worksheet-dialog-inner">
     <button aria-label="Close worksheet" class="dialog-close" type="button">×</button>
     <div class="ws-dialog-head">
-      <div class="eyebrow">From Chapter 9 · The CX Curve Workbook</div>
+      <div class="eyebrow">The CX Curve · Sample Workbook</div>
       <h2 class="dlg-title" id="ws-title-main">Map your curve. Spot the drift.</h2>
       <p class="ws-dialog-lead">A practical field guide for stress-testing your customer journey. Use it on your own or with your leadership team. Notes stay in this browser until you clear, print or save them.</p>
     </div>
@@ -6242,27 +6319,78 @@ main .wrap, .site-footer .wrap { position: relative; z-index: 2; }
     }
   })();
 
+  // Nav dropdowns (hover/focus on desktop, tap the arrow on touch & mobile)
+  (function(){
+    var items = document.querySelectorAll('#nav-links .nav-item');
+    function closeAll(except){
+      items.forEach(function(li){
+        if (li === except) return;
+        li.classList.remove('is-open');
+        var c = li.querySelector('.nav-caret'); if (c) c.setAttribute('aria-expanded', 'false');
+      });
+    }
+    items.forEach(function(li){
+      var caret = li.querySelector('.nav-caret');
+      caret.addEventListener('click', function(e){
+        e.stopPropagation();
+        var open = !li.classList.contains('is-open');
+        closeAll(li);
+        li.classList.remove('is-closed');
+        li.classList.toggle('is-open', open);
+        caret.setAttribute('aria-expanded', open ? 'true' : 'false');
+      });
+      li.addEventListener('mouseleave', function(){ li.classList.remove('is-closed'); });
+      // after choosing a destination, tuck the menu away until the pointer leaves
+      li.querySelectorAll('.nav-sub a, .nav-sub button').forEach(function(el){
+        el.addEventListener('click', function(){
+          li.classList.add('is-closed'); li.classList.remove('is-open');
+          caret.setAttribute('aria-expanded', 'false');
+          if (document.activeElement && document.activeElement.blur) document.activeElement.blur();
+        });
+      });
+    });
+    document.addEventListener('click', function(e){ if (!e.target.closest('.nav-item')) closeAll(); });
+    document.addEventListener('keydown', function(e){
+      if (e.key === 'Escape') { closeAll(); items.forEach(function(li){ li.classList.add('is-closed'); }); }
+    });
+  })();
+
+  // Jump straight to a section: no animated scroll, the page simply appears there
+  document.addEventListener('click', function(e){
+    var a = e.target.closest && e.target.closest('a[href^="#"]');
+    if (!a || a.getAttribute('href') === '#') return;
+    var t = document.getElementById(decodeURIComponent(a.getAttribute('href').slice(1)));
+    if (!t) return;
+    e.preventDefault();
+    var y = t.getBoundingClientRect().top + window.pageYOffset - (parseFloat(getComputedStyle(document.documentElement).scrollPaddingTop) || 0);
+    window.scrollTo({ top: Math.max(0, y), left: 0, behavior: 'instant' });
+    if (history.pushState) history.pushState(null, '', a.getAttribute('href')); else location.hash = a.getAttribute('href');
+  });
+
   // Nav active state while scrolling (highlight current section tab)
   (function(){
     var sections = [
-      { id: 'book', link: 'a[href="#book"]' },
-      { id: 'cx-curve', link: 'a[href="#cx-curve"]' },
-      { id: 'partner', link: 'a[href="#partner"]' },
-      { id: 'insights', link: 'a[href="#insights"]' },
-      { id: 'about', link: 'a[href="#about"]' },
-      { id: 'contact', link: 'a[href="#contact"]' }
+      { id: 'book', tab: 'book' },
+      { id: 'cx-curve', tab: 'cx-curve' },
+      { id: 'momentum', tab: 'cx-curve' },
+      { id: 'customer-center', tab: 'cx-curve' },
+      { id: 'partner', tab: 'partner' },
+      { id: 'diagnostic', tab: 'partner' },
+      { id: 'insights', tab: 'insights' },
+      { id: 'about', tab: 'about' },
+      { id: 'contact', tab: 'contact' }
     ];
-    var navLinks = document.querySelectorAll('#nav-links a:not(.btn)');
-    function setActive(id) {
+    var navLinks = document.querySelectorAll('#nav-links a.nav-top');
+    function setActive(tab) {
       navLinks.forEach(function(a){
-        var href = a.getAttribute('href');
-        a.classList.toggle('is-active', href === '#' + id);
+        a.classList.toggle('is-active', a.getAttribute('href') === '#' + tab);
       });
     }
     if ('IntersectionObserver' in window) {
       var spy = new IntersectionObserver(function(entries){
         entries.forEach(function(en){
-          if (en.isIntersecting) setActive(en.target.id);
+          if (!en.isIntersecting) return;
+          for (var i = 0; i < sections.length; i++) if (sections[i].id === en.target.id) setActive(sections[i].tab);
         });
       }, { rootMargin: '-30% 0px -55% 0px', threshold: 0 });
       sections.forEach(function(s){
