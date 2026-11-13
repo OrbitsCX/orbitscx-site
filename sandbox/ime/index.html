@@ -914,7 +914,7 @@ nav a.active{color:var(--blue-d)}
 .yt-channel::before{content:"";position:absolute;inset:0;z-index:-1;background:radial-gradient(560px circle at 0% 50%,rgba(169,112,90,.28),transparent 70%),radial-gradient(620px circle at 100% 0%,rgba(71,106,149,.3),transparent 65%)}
 .yt-channel::after{content:"";position:absolute;right:-70px;top:50%;width:300px;height:300px;margin-top:-150px;z-index:-1;opacity:.07;background:#fff;clip-path:polygon(18% 6%,18% 94%,92% 50%);pointer-events:none}
 .yt-channel:hover{border-color:rgba(217,171,150,.45);border-left-color:#d9ab96;box-shadow:0 28px 70px rgba(0,0,0,.5)}
-.yt-avatar{position:relative;width:100%;border-radius:10px;background:#f3f1ee;padding:clamp(14px,2vw,22px);box-shadow:0 0 0 3px #0e1419,0 0 0 5px #d9ab96,0 14px 34px rgba(0,0,0,.45)}
+.yt-avatar{position:relative;width:100%;border-radius:10px;background:#f3f1ee;padding:clamp(14px,2vw,22px);box-shadow:0 0 0 3px #0e1419,0 0 0 5px #d9ab96,0 14px 34px rgba(0,0,0,.45);min-height:120px}.yt-avatar svg{display:block;width:100%;height:auto;aspect-ratio:1530/625}
 .yt-avatar svg{display:block;width:100%;height:auto}
 .yt-body{min-width:0}
 .yt-brand{display:inline-flex;align-items:center;gap:8px;margin:0 0 12px;font:700 15px/1 Archivo,sans-serif;letter-spacing:.01em;color:#fff}
@@ -5880,7 +5880,7 @@ header nav.ime-nav .nv-phone:focus-visible{
 <ol class="wreel" id="wReel"></ol>
 </div>
 <div class="yt-channel" id="ytChannel">
-<div class="yt-avatar"><svg id="ytLogoSvg" viewBox="60 125 1530 625" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="IME Automation animated logo"><use href="#lga-svg" x="60" y="125" width="1530" height="625"/></svg></div>
+<div class="yt-avatar"><svg id="ytLogoSvg" viewBox="60 125 1530 625" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="IME Automation animated logo"></svg></div>
 <div class="yt-body">
 <span class="yt-brand"><svg viewBox="0 0 28 20" aria-hidden="true"><rect width="28" height="20" rx="5.5" fill="#e62117"/><path d="M11 5.5v9l8-4.5z" fill="#fff"/></svg>YouTube</span>
 <h3 class="yt-name">IME Automation <span class="yt-handle">@imeautomation</span></h3>
@@ -6873,6 +6873,22 @@ figs.map(function(f,ix){return {f:f,r:rank[f.getAttribute('data-hol')],ix:ix}}).
 </div>
 </footer>
 <script>(function(){const $=i=>document.getElementById(i),D=Math.PI/180,NS='http://www.w3.org/2000/svg',BLUE='#476a96';
+/* Mobile-safe: clone footer logo SVG into the YouTube tile (use href is unreliable on iOS/Android). */
+(function(){
+  var src=$('lga-svg'), dest=$('ytLogoSvg');
+  if(src&&dest&&!dest.childElementCount){
+    for(var c=src.firstChild;c;c=c.nextSibling){ dest.appendChild(c.cloneNode(true)); }
+  }
+})();
+const logoRoots=[document.getElementById('lga-svg'),document.getElementById('ytLogoSvg')].filter(Boolean);
+function eachLogo(id,fn){
+  for(var r=0;r<logoRoots.length;r++){
+    var el=logoRoots[r].querySelector('#'+id);
+    if(el) try{fn(el)}catch(e){}
+  }
+}
+function setLogo(id,attr,val){ eachLogo(id,function(el){el.setAttribute(attr,val)}) }
+
 // ---- robot geometry (logo coordinates) ----
 const P1=[1229,524],P2=[1327,349],P3=[1227,223],P4=[1104,272];
 const dist=(a,b)=>Math.hypot(a[0]-b[0],a[1]-b[1]),ang=(a,b)=>Math.atan2(b[1]-a[1],b[0]-a[0]);
@@ -6925,17 +6941,17 @@ const mul=(A,B)=>[A[0]*B[0]+A[2]*B[1],A[1]*B[0]+A[3]*B[1],A[0]*B[2]+A[2]*B[3],A[
 const rotM=(deg,c)=>{const a=deg*D,co=Math.cos(a),si=Math.sin(a);return[co,si,-si,co,c[0]-co*c[0]+si*c[1],c[1]-si*c[0]-co*c[1]]};
 const trM=(x,y)=>[1,0,0,1,x,y];
 const R=(a,c)=>`rotate(${a} ${c[0]} ${c[1]})`,mat=m=>`matrix(${m.map(v=>v.toFixed(4)).join(' ')})`;
-const fx=$('lga-fx');
-function mk(n,at){const e=document.createElementNS(NS,n);for(const k in at)e.setAttribute(k,at[k]);fx.appendChild(e);return e}
+function clearFx(){logoRoots.forEach(function(r){var f=r.querySelector('#lga-fx');if(f)f.innerHTML=''})}
+function mkAll(n,at){logoRoots.forEach(function(r){var f=r.querySelector('#lga-fx');if(!f)return;var e=document.createElementNS(NS,n);for(const k in at)e.setAttribute(k,at[k]);f.appendChild(e)})}
 // bar timeline
 const BIN=[0.3,2.0],GRAB=5.4,PLACE=9.1;
 const SET=[.7,-.55,.5,-.4],settle=(t,t0)=>t<t0?0:Math.exp(-(t-t0)*5.5)*Math.sin((t-t0)*17);
 function render(t,cyc){if(cyc===undefined)cyc=1;
- var _bp=$('lga-belt'),_bd=$('lga-belt-dots');if(_bp&&_bd){var _len=_bp.getTotalLength?_bp.getTotalLength():0;if(_len){var _dots=_bd.querySelectorAll('circle'),_n=_dots.length,_spd=95;for(var _i=0;_i<_n;_i++){var _u=((_spd*t)+(_i*_len/_n))%_len;var _pt=_bp.getPointAtLength(_u);_dots[_i].setAttribute('cx',_pt.x.toFixed(2));_dots[_i].setAttribute('cy',_pt.y.toFixed(2));}}}
- const ra=(360*3/T)*t;$('lga-rl').setAttribute('transform',`rotate(${ra} 142.5 642.5)`);$('lga-rr').setAttribute('transform',`rotate(${ra} 1072 642.5)`);
+ logoRoots.forEach(function(root){var _bp=root.querySelector('#lga-belt'),_bd=root.querySelector('#lga-belt-dots');if(_bp&&_bd){var _len=_bp.getTotalLength?_bp.getTotalLength():0;if(_len){var _dots=_bd.querySelectorAll('circle'),_n=_dots.length,_spd=95;for(var _i=0;_i<_n;_i++){var _u=((_spd*t)+(_i*_len/_n))%_len;var _pt=_bp.getPointAtLength(_u);_dots[_i].setAttribute('cx',_pt.x.toFixed(2));_dots[_i].setAttribute('cy',_pt.y.toFixed(2));}}}});
+ const ra=(360*3/T)*t;setLogo('lga-rl','transform',`rotate(${ra} 142.5 642.5)`);setLogo('lga-rr','transform',`rotate(${ra} 1072 642.5)`);
  const a=jc.map((f,j)=>f(t)+SET[j]*(settle(t,4.5)+1.2*settle(t,9.1))),jw=cl(jawc(t),0,1);
- $('lga-a1').setAttribute('transform',R(a[0],P1));$('lga-a2').setAttribute('transform',R(a[1],P2));$('lga-a3').setAttribute('transform',R(a[2],P3));$('lga-a4').setAttribute('transform',R(a[3],P4));
- const op=14;$('lga-jt').setAttribute('transform',R(op*jw,[1046,240]));$('lga-jb').setAttribute('transform',R(-op*jw,[1056,330]));
+ setLogo('lga-a1','transform',R(a[0],P1));setLogo('lga-a2','transform',R(a[1],P2));setLogo('lga-a3','transform',R(a[2],P3));setLogo('lga-a4','transform',R(a[3],P4));
+ const op=14;setLogo('lga-jt','transform',R(op*jw,[1046,240]));setLogo('lga-jb','transform',R(-op*jw,[1056,330]));
  // bar world matrix
  let M,vis=1;
  const chain=mul(mul(mul(rotM(a[0],P1),rotM(a[1],P2)),rotM(a[2],P3)),rotM(a[3],P4));
@@ -6944,15 +6960,15 @@ function render(t,cyc){if(cyc===undefined)cyc=1;
  if(t<GRAB){const u=eo(cl((t-BIN[0])/(BIN[1]-BIN[0]),0,1));const tau=Math.max(0,t-BIN[1]);M=mul(trM((1-u)*300-8*Math.exp(-tau*7)*Math.sin(tau*13),0),free)}
  else if(t<PLACE)M=chain;else M=[1,0,0,1,0,0];
  const k=ez(cl((t-5.0)/1.0,0,1)),LT=[219,228,238],BC=[71,106,150];
- $('lga-bar').setAttribute('fill',BLUE);
- $('lga-old').setAttribute('fill',`rgb(${BC.map((c,i)=>Math.round(c+(LT[i]-c)*k)).join()})`);
- $('lga-old').setAttribute('opacity',cyc>0&&t<PLACE?1:0);
- $('lga-barm').setAttribute('transform',mat(M));$('lga-barg').setAttribute('opacity',vis);
+ setLogo('lga-bar','fill',BLUE);
+ setLogo('lga-old','fill',`rgb(${BC.map((c,i)=>Math.round(c+(LT[i]-c)*k)).join()})`);
+ setLogo('lga-old','opacity',cyc>0&&t<PLACE?1:0);
+ setLogo('lga-barm','transform',mat(M));setLogo('lga-barg','opacity',vis);
  // effects
- fx.innerHTML='';
+ clearFx();
  if(t>=PLACE&&t<PLACE+1.0){const e=t-PLACE;for(let k=0;k<2;k++){const q=cl(e*1.5-k*.25,0,1),g=q*40;
-  mk('polygon',{points:`${785.4-g},${275.2-g} ${1034+g},${254.2-g} ${1039.2+g},${316.4+g} ${790.6-g},${337.5+g}`,fill:'none',stroke:BLUE,'stroke-width':4*(1-q),opacity:(1-q)*.8,'stroke-linejoin':'round'})}}
- if(t>=GRAB-.5&&t<GRAB+.1){const q=(t-(GRAB-.5))/.6;mk('circle',{cx:BAR_X,cy:BAR_Y+8,r:14+q*40,fill:'none',stroke:BLUE,'stroke-width':3*(1-q),opacity:1-q})}
+  mkAll('polygon',{points:`${785.4-g},${275.2-g} ${1034+g},${254.2-g} ${1039.2+g},${316.4+g} ${790.6-g},${337.5+g}`,fill:'none',stroke:BLUE,'stroke-width':4*(1-q),opacity:(1-q)*.8,'stroke-linejoin':'round'})}}
+ if(t>=GRAB-.5&&t<GRAB+.1){const q=(t-(GRAB-.5))/.6;mkAll('circle',{cx:BAR_X,cy:BAR_Y+8,r:14+q*40,fill:'none',stroke:BLUE,'stroke-width':3*(1-q),opacity:1-q})}
 }
 var host=document.getElementById('lga-host');
 render(0,1);
@@ -6961,7 +6977,10 @@ var el=0,last=null,run=false,seen=false,timer=0;
 function frame(ms){if(!run)return;if(last!==null)el+=Math.min((ms-last)/1000,.1);last=ms;render(el%T,1+Math.floor(el/T));requestAnimationFrame(frame)}
 function stop(){clearTimeout(timer);run=false;el=0;last=null;render(0,1)}
 function start(){stop();timer=setTimeout(function(){run=true;requestAnimationFrame(frame)},700)}
-var vH=false,vT=false,io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.target===host)vH=e.isIntersecting;else vT=e.isIntersecting});var n=vH||vT;if(n&&!seen){seen=true;start()}else if(!n&&seen){seen=false;stop()}},{threshold:.6});io.observe(host);var tl=document.getElementById('ytLogoSvg');if(tl)io.observe(tl);
+var vH=false,vT=false,io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.target===host)vH=e.isIntersecting;else vT=e.isIntersecting});var n=vH||vT;if(n&&!seen){seen=true;start()}else if(!n&&seen){seen=false;stop()}},{threshold:0.15,rootMargin:'40px 0px'});
+if(host)io.observe(host);
+var tl=document.getElementById('ytLogoSvg');if(tl)io.observe(tl);
+var yt=document.getElementById('ytChannel');if(yt)io.observe(yt);
 document.addEventListener('visibilitychange',function(){document.hidden?stop():seen&&start()});
 })();</script>
 <script>
