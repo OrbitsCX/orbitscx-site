@@ -7799,23 +7799,74 @@ io.observe(el);})();
   var v=document.querySelector('.hero-video'); if(!v) return;
   var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches; if(reduce) return;
   var conn=navigator.connection||{}; if(conn.saveData) return;
-  /* v530: the 12s clip's opening is the empty arm; the blue containers are grabbed and swept toward the camera at about 3.5-4.5s.
-     Originally the video ran behind the splash and happened to be at that moment when the splash opened. Now it is prepared quietly
-     during the splash (decoded in small slices so the splash never stutters), parked at START, and played the instant the splash opens. */
+  /* v530 + mobile fix: prepare during splash, park near START, play as doors open.
+     Mobile browsers often reject or ignore the first play()/seek; we retry after canplay,
+     after splash handoff, and on the first user gesture so the hero loop still engages. */
   var START=3.1;
-  var held=false,go=false,frameReady=false,prepared=false,spl=document.getElementById('ime-splash');
+  var held=false,go=false,frameReady=false,prepared=false,seeking=false,srcSet=false;
+  var spl=document.getElementById('ime-splash');
   if(spl&&!document.documentElement.classList.contains('sp-off'))held=true;
   go=!held;
-  function heroPlay(){var q=v.play();if(q&&q.catch)q.catch(function(){})}
+  try{v.muted=true;v.defaultMuted=true;v.setAttribute('muted','');v.setAttribute('playsinline','');v.playsInline=true;}catch(e){}
+  function heroPlay(){
+    if(document.hidden)return;
+    try{v.muted=true;}catch(e){}
+    var q=v.play();
+    if(q&&q.catch)q.catch(function(){/* autoplay blocked — retries below */});
+  }
   function tryPlay(){if(go&&frameReady&&!document.hidden)heroPlay()}
-  function release(){if(go)return;go=true;prepare();tryPlay()}
+  function markReady(){if(frameReady)return;frameReady=true;tryPlay()}
+  function parkAtStart(){
+    if(seeking)return;
+    seeking=true;
+    var done=false;
+    function finish(){if(done)return;done=true;seeking=false;markReady()}
+    try{
+      if(v.readyState>=1){
+        if(Math.abs((v.currentTime||0)-START)>0.15){
+          v.currentTime=START;
+          v.addEventListener('seeked',finish,{once:true});
+          setTimeout(finish,700);
+        }else finish();
+      }else finish();
+    }catch(e){finish()}
+  }
+  function onMediaReady(){
+    if(!srcSet)return;
+    parkAtStart();
+  }
+  function release(){
+    if(go)return;
+    go=true;
+    prepare();
+    tryPlay();
+    /* mobile often needs a few more kicks after the splash doors open */
+    setTimeout(tryPlay,120);
+    setTimeout(tryPlay,400);
+    setTimeout(function(){if(!frameReady)markReady();tryPlay()},900);
+    setTimeout(tryPlay,1600);
+  }
   function prepare(){
     if(prepared)return;prepared=true;
     v.preload='auto';
-    v.addEventListener('loadedmetadata',function(){try{v.currentTime=START}catch(e){}},{once:true});
-    v.addEventListener('seeked',function(){frameReady=true;tryPlay()},{once:true});
+    v.addEventListener('loadedmetadata',onMediaReady);
+    v.addEventListener('loadeddata',onMediaReady);
+    v.addEventListener('canplay',onMediaReady);
     var d=document.getElementById('heroVideoData'),b64=d?d.textContent.replace(/\s+/g,''):'';
-    if(!b64){v.src=v.getAttribute('data-src');return}
+    function setSrc(url){
+      srcSet=true;
+      v.src=url;
+      try{v.load()}catch(e){}
+      /* if events already fired or are slow on mobile, force readiness */
+      setTimeout(onMediaReady,400);
+      setTimeout(function(){if(!frameReady)markReady()},2500);
+    }
+    if(!b64){
+      var ds=v.getAttribute('data-src');
+      if(ds)setSrc(ds);
+      else markReady();
+      return;
+    }
     d.textContent='';
     var n=b64.length,pad=(b64.charAt(n-1)==='='?1:0)+(b64.charAt(n-2)==='='?1:0),out=new Uint8Array(n/4*3-pad),pos=0,i=0,CH=262144,gap=held?8:0;
     function step(){
@@ -7823,16 +7874,19 @@ io.observe(el);})();
         var end=Math.min(n,i+CH),bin=atob(b64.slice(i,end)),L=bin.length,k;
         for(k=0;k<L;k++)out[pos++]=bin.charCodeAt(k);
         i=end;
-      }catch(e){v.src=v.getAttribute('data-src');return}
+      }catch(e){
+        var ds=v.getAttribute('data-src');
+        if(ds)setSrc(ds); else markReady();
+        return;
+      }
       if(i<n)setTimeout(step,gap);
-      else v.src=URL.createObjectURL(new Blob([out],{type:'video/mp4'}));
+      else setSrc(URL.createObjectURL(new Blob([out],{type:'video/mp4'})));
     }
     step();
   }
   v.addEventListener('playing',function(){v.classList.add('is-playing')});
   v.addEventListener('error',function(){v.classList.remove('is-playing')});
   if(held){
-    /* get it ready while the splash plays, then start it when the splash begins to open */
     setTimeout(prepare,900);
     var hiv=setInterval(function(){
       if(!document.getElementById('ime-splash')||document.documentElement.classList.contains('from-splash')){clearInterval(hiv);release()}
@@ -7840,9 +7894,18 @@ io.observe(el);})();
     setTimeout(function(){clearInterval(hiv);release()},12000);
   }else prepare();
   if('IntersectionObserver' in window){
-    new IntersectionObserver(function(en){en.forEach(function(e){ if(e.isIntersecting){tryPlay()} else v.pause() })},{threshold:.05}).observe(v);
+    new IntersectionObserver(function(en){en.forEach(function(e){ if(e.isIntersecting)tryPlay(); else v.pause(); })},{threshold:.01}).observe(v);
   }
   document.addEventListener('visibilitychange',function(){ if(document.hidden)v.pause(); else tryPlay(); });
+  /* First touch/click after splash unlocks autoplay on stricter mobile browsers */
+  function gestureUnlock(){
+    go=true;
+    if(!frameReady)markReady();
+    tryPlay();
+  }
+  ['touchstart','pointerdown','click'].forEach(function(ev){
+    document.addEventListener(ev,gestureUnlock,{once:true,passive:true});
+  });
 })();
 </script>
 
