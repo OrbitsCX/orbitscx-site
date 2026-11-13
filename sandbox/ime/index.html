@@ -5952,7 +5952,7 @@ header nav.ime-nav .nv-phone:focus-visible{
 <path class="flap-front" d="M82 108L96 126H144L158 108Z"/>
 </g>
 <path d="M197 35L181 49 169 67"/><circle cx="197" cy="35" r="5"/><circle cx="181" cy="49" r="4"/><path d="M169 67l-7 7m7-7 7 7"/>
-</svg><span class="tn"><b>Sparky</b><em class="pill">Patented · USPTO #11911993</em></span><span class="ts">Robotic carton erector</span><span class="tf"><span><i>2.3 sec</i> per carton</span><span aria-hidden="true" class="plus"></span></span><span class="tv">View details</span></button>
+</svg><span class="tn"><b>Sparky</b><em class="pill">Patented · USPTO #11911993</em></span><span class="ts">Robotic carton erector</span><span class="tf"><span>As fast as <i>2.3 sec</i> per carton</span><span aria-hidden="true" class="plus"></span></span><span class="tv">View details</span></button>
 <button aria-haspopup="dialog" class="tile" data-open="spiffy" type="button"><svg aria-hidden="true" viewBox="0 0 240 140"><path d="M20 119H220"/><path d="M34 94h84v13H34zM42 80h76v13H42zM30 66h88v13H30zM46 52h72v13H46z"/><path d="M126 106h72M126 96h72M126 86h72"/><circle cx="143" cy="116" r="4"/><circle cx="181" cy="116" r="4"/><path d="M146 48h48v28h-48zM154 48V37h32v11M170 37V26"/><path d="M170 26h16"/></svg><span class="tn"><b>Spiffy</b></span><span class="ts">Book feeder</span><span class="tf"><span><i>~375</i> books per load</span><span aria-hidden="true" class="plus"></span></span><span class="tv">View details</span></button>
 <dialog aria-label="Skippy palletizer" class="pdlg" id="d-skippy-palletizer">
 <div class="dnav"><b>Skippy palletizer</b><button data-go="prev" type="button">Previous</button><button data-go="next" type="button">Next</button><button class="dclose" data-close="" type="button">Close</button></div>
@@ -9712,10 +9712,11 @@ function titleBlock(){return '<path class="f" d="M1 1H359V73H1Z"/><path class="f
 
 <style id="v461-product-tile-art">
 /* v461: Replace busy product doodles with restrained, consistent technical line art. */
-#products .tile svg{display:block;width:100%;max-width:220px;height:112px;align-self:flex-start;object-fit:contain;opacity:.62;stroke:#c39a86;stroke-width:1.25;stroke-linecap:round;stroke-linejoin:round;margin:0 0 14px;transform:none!important;transition:opacity .25s ease!important}
-#products .tile:hover svg,#products .tile:focus-visible svg{opacity:.82;transform:none!important;stroke:#d9ab96}
+#products .tile svg{display:block;width:100%;max-width:200px;height:100px;align-self:flex-start;object-fit:contain;opacity:.85;stroke:#d2aa97;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;margin:0 0 14px;transform:none!important;transition:opacity .25s ease!important}
+#products .tile:hover svg,#products .tile:focus-visible svg{opacity:1;transform:none!important;stroke:#d9ab96}
 #products .tile.rv svg *{stroke-dasharray:none!important;stroke-dashoffset:0!important;transition:none!important}
-@media(max-width:600px){#products .tile svg{max-width:190px;height:96px;margin-bottom:12px}}
+html body #products .tile .pill{background:transparent;color:#ecc9b7;border:1px solid rgba(217,171,150,.55);border-radius:3px;padding:4px 10px;font-size:13px;letter-spacing:.02em}
+@media(max-width:600px){#products .tile svg{max-width:170px;height:86px;margin-bottom:12px}}
 @media(prefers-reduced-motion:reduce){#products .tile svg{transition:none!important}}
 
 
@@ -9729,14 +9730,8 @@ function titleBlock(){return '<path class="f" d="M1 1H359V73H1Z"/><path class="f
 <!-- v464: Sparky product-tile illustration simplified to a compact carton + robot-arm line drawing; removed magazine, machine frame, nest, conveyor, and extra mechanical detail. -->
 <!-- v465: Reworked Sparky as a cleaner carton-and-folding-arm icon; removed the stray upper extension and kept every graphic stroke within the illustration. -->
 
-<style id="v466-product-tile-art-size">
-/* v466: Reduce all product-tile illustrations uniformly while preserving their aspect ratio and spacing. */
-#products .tile svg{max-width:160px;height:82px;margin-bottom:10px}
-@media(max-width:600px){#products .tile svg{max-width:140px;height:72px;margin-bottom:9px}}
-
-
-</style>
 <!-- v466: Reduced all four product-tile illustrations uniformly; retained the existing line style, proportions, copy, and tile behavior. -->
+<!-- v541: Product tiles — illustrations slightly larger and brighter (size now set once in v461 block, v466 override removed), quieter outlined patent pills with readable contrast, Sparky tile speed keeps its "as fast as" qualifier. -->
 
 <!-- v468: Reverted broad product motion; retained smaller tile artwork, added restrained carton-flap closure and cart-wheel motion, removed RFID signal motif from Skippy docking illustration. -->
 
