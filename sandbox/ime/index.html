@@ -5617,175 +5617,7 @@ ul.trust{display:none!important}
 </style>
 
 
-<style id="ime-v490-roi-two-step-ui">
-/* Two-step ROI guidance: parallel inputs first, modeled impact second. */
-.roi-start.roi-two-step{
-  display:grid;
-  grid-template-columns:1fr;
-  gap:14px;
-  margin:28px 0 8px;
-  padding:0;
-  border:0;
-  background:transparent;
-}
-.roi-two-step .roi-phase{
-  min-width:0;
-  padding:22px 24px;
-  border:1px solid var(--line);
-  border-radius:12px;
-  background:#fff;
-  box-shadow:0 8px 24px rgba(18,35,55,.045);
-}
-.roi-two-step .roi-phase-head,
-.roi-two-step .roi-parallel-grid{
-  position:static;
-  padding:0;
-  border:0;
-  border-right:0;
-  background:transparent;
-}
-.roi-two-step .roi-phase-head::before,
-.roi-two-step .roi-parallel-grid::before{display:none}
-.roi-two-step .roi-phase-head{
-  display:grid;
-  grid-template-columns:76px minmax(0,1fr);
-  gap:14px;
-  align-items:start;
-  margin:0 0 18px;
-}
-.roi-two-step .roi-step-num{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  min-height:30px;
-  width:72px;
-  margin:2px 0 0;
-  padding:0 9px;
-  border-radius:5px;
-  background:var(--blue-d);
-  color:#fff;
-  font:800 10px/1 Archivo,sans-serif;
-  letter-spacing:.13em;
-}
-.roi-two-step .roi-phase-head h3{
-  margin:0 0 5px;
-  color:var(--ink);
-  font:800 clamp(19px,2vw,23px)/1.15 Archivo,sans-serif;
-  letter-spacing:-.025em;
-}
-.roi-two-step .roi-phase-head p{
-  max-width:62em;
-  margin:0;
-  color:var(--mut);
-  font-size:14px;
-  line-height:1.5;
-}
-.roi-two-step .roi-parallel-grid{
-  display:grid;
-  grid-template-columns:repeat(2,minmax(0,1fr));
-  gap:12px;
-}
-.roi-two-step .roi-parallel-card{
-  position:relative;
-  display:flex;
-  flex-direction:column;
-  min-height:158px;
-  padding:18px 20px 15px;
-  border:1px solid var(--line);
-  border-radius:9px;
-  background:linear-gradient(145deg,#fff 0%,#f8f8f5 100%);
-  transition:border-color .2s ease,transform .2s ease,box-shadow .2s ease;
-}
-.roi-two-step .roi-parallel-card::before{
-  content:"";
-  position:absolute;
-  inset:0 auto 0 0;
-  width:3px;
-  border-radius:9px 0 0 9px;
-  background:var(--blue);
-}
-.roi-two-step .roi-operations-card::before{background:var(--sand)}
-@media(hover:hover){
-  .roi-two-step .roi-parallel-card:hover{
-    transform:translateY(-2px);
-    border-color:rgba(35,75,112,.3);
-    box-shadow:0 10px 24px rgba(18,35,55,.07);
-  }
-}
-.roi-two-step .roi-card-kicker{
-  display:flex;
-  align-items:center;
-  gap:8px;
-  margin:0 0 11px;
-  color:var(--mut);
-  font:700 10px/1.2 Archivo,sans-serif;
-  letter-spacing:.13em;
-}
-.roi-two-step .roi-card-dot{
-  width:7px;height:7px;border-radius:50%;background:var(--blue);flex:none;
-}
-.roi-two-step .roi-operations-card .roi-card-dot{background:var(--sand)}
-.roi-two-step .roi-parallel-card h4{
-  margin:0 0 6px;
-  color:var(--ink);
-  font:800 19px/1.2 Archivo,sans-serif;
-  letter-spacing:-.02em;
-}
-.roi-two-step .roi-parallel-card p{
-  max-width:38em;
-  margin:0 0 14px;
-  color:var(--mut);
-  font-size:14px;
-  line-height:1.45;
-}
-.roi-two-step .roi-card-foot{
-  margin-top:auto;
-  padding-top:10px;
-  border-top:1px solid rgba(30,48,67,.09);
-  color:var(--blue-d);
-  font-size:12px;
-  font-weight:700;
-}
-.roi-two-step .roi-phase-impact{
-  display:grid;
-  grid-template-columns:minmax(0,1fr) auto;
-  gap:18px 28px;
-  align-items:center;
-  border-color:rgba(25,54,83,.18);
-  background:linear-gradient(112deg,#f4f5f2 0%,#fff 72%);
-}
-.roi-two-step .roi-phase-impact .roi-phase-head{margin:0}
-.roi-two-step .roi-phase-impact .roi-step-num{background:var(--sand);color:#fff}
-.roi-two-step .roi-impact-list{
-  display:flex;
-  flex-wrap:wrap;
-  justify-content:flex-end;
-  gap:7px;
-  max-width:430px;
-}
-.roi-two-step .roi-impact-list span{
-  display:inline-flex;
-  align-items:center;
-  min-height:29px;
-  padding:5px 10px;
-  border:1px solid rgba(30,48,67,.12);
-  border-radius:99px;
-  background:#fff;
-  color:var(--ink);
-  font-size:11px;
-  font-weight:650;
-  white-space:nowrap;
-}
-@media(max-width:760px){
-  .roi-two-step .roi-phase{padding:18px 16px}
-  .roi-two-step .roi-phase-head{grid-template-columns:1fr;gap:8px;margin-bottom:14px}
-  .roi-two-step .roi-parallel-grid{grid-template-columns:1fr}
-  .roi-two-step .roi-parallel-card{min-height:0}
-  .roi-two-step .roi-phase-impact{grid-template-columns:1fr;gap:14px}
-  .roi-two-step .roi-impact-list{justify-content:flex-start;max-width:none}
-}
-@media(prefers-reduced-motion:reduce){.roi-two-step .roi-parallel-card{transition:none}}
-</style>
+
 
 </head>
 <body>
@@ -6461,52 +6293,52 @@ header nav.ime-nav .nv-phone:focus-visible{
 <h2>Build the business case for automation</h2>
 <p>Use the interactive business case builder to model an automation project with your operation’s own numbers. Enter your investment, labor assumptions, operating costs and expected production gains, and the full financial picture updates as you type. Payback, net present value, internal rate of return, annual benefits and cumulative cash flow all move together, so you can stress-test every assumption and see exactly how it changes the return.</p>
 <p>When the numbers hold up, one click generates a branded ROI Planning Report with year-by-year cash flows, a downside sensitivity check, the cost of delay, and your project context. Save it as a PDF for leadership and finance — a clear working model you can refine together during scoping.</p>
+</div>
 <div class="roi-start roi-two-step" aria-label="Two steps to build your automation business case">
-<section class="roi-phase roi-phase-start" aria-labelledby="roi-step-one-title">
-  <div class="roi-phase-head">
-    <span class="roi-step-num">STEP 01</span>
-    <div>
-      <h3 id="roi-step-one-title">Build your starting picture</h3>
-      <p>Bring together two sets of information. Work on them in parallel and add each input as it becomes available.</p>
+  <section class="roi-step roi-step-one" aria-labelledby="roi-step-one-title">
+    <div class="roi-step-meta">
+      <span class="roi-step-number"><small>STEP</small>01</span>
+      <div>
+        <h3 id="roi-step-one-title">Build your starting picture</h3>
+        <p>Develop your IME quote and current operating information in parallel. Add each input as it becomes available.</p>
+      </div>
     </div>
-  </div>
-  <div class="roi-parallel-grid">
-    <article class="roi-parallel-card roi-investment-card">
-      <span class="roi-card-kicker"><span class="roi-card-dot"></span> INVESTMENT</span>
-      <h4>Your IME Quote</h4>
-      <p>The quoted cost to design, build, and install your automation system.</p>
-      <span class="roi-card-foot">System investment</span>
-    </article>
-    <article class="roi-parallel-card roi-operations-card">
-      <span class="roi-card-kicker"><span class="roi-card-dot"></span> CURRENT OPERATION</span>
-      <h4>Your Operating Inputs</h4>
-      <p>Production, staffing, shifts, labor rates, quality, and operating costs.</p>
-      <span class="roi-card-foot">Operating baseline</span>
-    </article>
-  </div>
-</section>
-<section class="roi-phase roi-phase-impact" aria-labelledby="roi-step-two-title">
-  <div class="roi-phase-head">
-    <span class="roi-step-num">STEP 02</span>
-    <div>
-      <h3 id="roi-step-two-title">Model the business impact</h3>
-      <p>Add the improvements you expect automation to deliver, then see how they change the financial picture.</p>
+    <div class="roi-parallel-inputs" aria-label="Parallel starting inputs">
+      <article class="roi-input-item">
+        <span class="roi-input-label">INVESTMENT</span>
+        <h4>Your IME Quote</h4>
+        <p>The quoted cost to design, build, and install your automation system.</p>
+      </article>
+      <article class="roi-input-item">
+        <span class="roi-input-label">CURRENT OPERATION</span>
+        <h4>Your Operating Inputs</h4>
+        <p>Production, staffing, shifts, labor rates, quality, and operating costs.</p>
+      </article>
     </div>
-  </div>
-  <div class="roi-impact-list" aria-label="Business impact inputs">
-    <span>Throughput &amp; capacity</span>
-    <span>Labor &amp; overtime</span>
-    <span>Scrap &amp; quality</span>
-    <span>Operating savings</span>
-  </div>
-</section>
+  </section>
+  <section class="roi-step roi-step-two" aria-labelledby="roi-step-two-title">
+    <div class="roi-step-meta">
+      <span class="roi-step-number"><small>STEP</small>02</span>
+      <div>
+        <h3 id="roi-step-two-title">Model the business impact</h3>
+        <p>Add the improvements you expect automation to deliver, then see how they change the financial picture.</p>
+      </div>
+    </div>
+    <div class="roi-impact-list" aria-label="Business impact inputs">
+      <span>Throughput &amp; capacity</span>
+      <span>Labor &amp; overtime</span>
+      <span>Scrap &amp; quality</span>
+      <span>Operating savings</span>
+    </div>
+  </section>
 </div>
 </div>
 <div class="roi">
 <div class="roi-in">
 
-<fieldset><legend>Investment</legend><p class="fine" style="margin:-4px 0 12px">Defaults reflect a typical single cell. Replace them with your numbers — especially cell cost and the labor block below.</p>
-<label>Cell and installation cost<span class="u"><i>$</i><input id="capex" min="0" step="50000" type="number" value="850000"/></span></label>
+<div class="roi-phase-heading roi-phase-one"><span>STEP 01</span><div><h3>Build your starting picture</h3><p>Start with your IME quote, then describe the operation as it runs today.</p></div></div>
+<fieldset><legend>Your IME quote</legend>
+<label>Your IME quote — cell and installation cost<span class="u"><i>$</i><input id="capex" min="0" step="50000" type="number" value="850000"/></span></label>
 <details class="roi-more roi-section-more">
 <summary><span><strong>Other costs</strong><small>Tooling, training, maintenance, support</small></span><span aria-hidden="true" class="roi-chevron">+</span></summary>
 <div class="roi-more-content">
@@ -6524,7 +6356,7 @@ header nav.ime-nav .nv-phone:focus-visible{
 </div>
 </details>
 </fieldset>
-<fieldset><legend>Labor displaced</legend>
+<fieldset><legend>Your current operation — labor</legend>
 <p class="roi-tip">Count the jobs this cell actually removes or avoids — not the whole department. Cross-check with supervisors who run the area.</p>
 <div class="two">
 <label>Operators affected per shift<input id="ops" min="0" step="0.5" type="number" value="3"/></label>
@@ -6548,8 +6380,9 @@ header nav.ime-nav .nv-phone:focus-visible{
 </div>
 </details>
 </fieldset>
+<div class="roi-phase-heading roi-phase-two"><span>STEP 02</span><div><h3>Model the business impact</h3><p>Estimate the measurable improvements the automation is expected to deliver.</p></div></div>
 <details class="roi-section-more">
-<summary><span><strong>Throughput gains</strong><small>Quality, uptime, overtime, capacity</small></span><span aria-hidden="true" class="roi-chevron">+</span></summary>
+<summary><span><strong>Business impact</strong><small>Throughput, labor, scrap, quality and operating savings</small></span><span aria-hidden="true" class="roi-chevron">+</span></summary>
 <fieldset><legend>Efficiency and throughput gains</legend>
 <div class="two">
 <label>System uptime<span class="u"><input id="uptime" max="100" min="50" step="1" type="number" value="95"/><i>%</i></span></label>
@@ -7872,7 +7705,7 @@ show(0,false);
 <script id="roi-field-help-script">
 (function(){
   var help={
-    capex:{title:'Cell and installation cost',what:'Enter the estimated price of the automation system as it will be delivered and installed at your facility.',how:'Use the best current estimate or vendor proposal. Include the robot, equipment, controls, guarding, engineering, installation and commissioning here if they are part of the quoted cell price. Put any additional one-time items in the separate fields below so you do not count them twice.',example:'If the quoted cell is $850,000 and includes guarding and commissioning, enter $850,000 here. Do not add those same items again under tooling or integration.',tip:'Use a quote or a documented estimate — not a target budget. Confirm what is included and excluded.'},
+    capex:{title:'Your IME quote — cell and installation cost',what:'Enter the total cell and installation price from your IME quote.',how:'Use the quoted amount for the automation system as IME has scoped it for your facility. This may include the robot, equipment, controls, guarding, engineering, installation and commissioning when those items are included in the IME quote. Put additional one-time items in the separate fields below only when they are outside the quoted price.',example:'If your IME quote lists the cell and installation at $850,000, enter $850,000 here. Do not add items already included in that quote again under tooling or integration.',tip:'Use the total from your IME quote. If the quote separates optional items or excludes scope, follow the quote breakdown and avoid double counting.'},
     supp:{title:'Annual support cost after year one',what:'This estimates ongoing IME or supplier support as a percentage of the cell cost, beginning in year two.',how:'Enter the expected annual support agreement or service allowance as a percentage. This model calculates it from the cell cost, not from every one-time cost.',example:'If the cell cost is $850,000 and support is estimated at 3%, the model deducts about $25,500 per year starting in year two.',tip:'If support is already covered in your maintenance figure or quote, avoid counting the same cost twice.'},
     setup:{title:'One-time tooling, fixtures and integration',what:'Captures one-time costs needed to make the automation work with your actual product and process that are not already included in the cell price.',how:'Include special grippers, fixtures, tooling, line interfaces, custom integration, or ancillary equipment. Enter zero if these costs are already included in the cell cost.',example:'A $12,000 custom fixture and $8,000 line interface not included in the quote would mean $20,000 here.',tip:'Check the scope of supply before adding this amount.'},
     training:{title:'Training and changeover',what:'Estimates one-time costs to train employees and transition the process to the new system.',how:'Consider employee training time, backfill or overtime during training, procedure development, and the cost of switching from the old process. Do not include the same lost production here and in disruption.',example:'If training and backfill are expected to cost $6,000, enter $6,000.',tip:'Include internal labor only if it creates a real incremental cost or meaningful opportunity cost for your business case.'},
@@ -10684,3 +10517,182 @@ html body #work .work article:hover .tag::before{width:76px!important}
 </style>
 </body>
 </html>
+
+<style id="ime-v491-roi-guidance">
+/* v491 — ROI guidance restyled to follow IME's established editorial, architectural design language. */
+#roi .roi-start.roi-two-step{
+  position:relative;
+  display:block;
+  margin:30px 0 10px;
+  padding:0;
+  overflow:hidden;
+  border:1px solid var(--line);
+  border-top:0;
+  background:#fff;
+}
+#roi .roi-start.roi-two-step::before{
+  content:"";
+  position:absolute;
+  z-index:1;
+  top:0;left:0;right:0;
+  height:3px;
+  background:linear-gradient(90deg,var(--blue) 0%,#7892ad 52%,var(--sand) 100%);
+}
+#roi .roi-two-step .roi-step{
+  display:grid;
+  grid-template-columns:minmax(230px,.82fr) minmax(0,1.8fr);
+  gap:34px;
+  align-items:center;
+  min-width:0;
+  padding:27px 30px;
+  border:0;
+  border-bottom:1px solid var(--line);
+  background:#fff;
+}
+#roi .roi-two-step .roi-step:last-child{
+  border-bottom:0;
+  background:linear-gradient(100deg,#f5f3f0 0%,#fbfaf8 100%);
+}
+#roi .roi-two-step .roi-step-meta,
+#roi .roi-two-step .roi-step-meta>div{
+  padding:0;
+  border:0;
+  background:transparent;
+}
+#roi .roi-two-step .roi-step-meta::before,
+#roi .roi-two-step .roi-parallel-inputs::before,
+#roi .roi-two-step .roi-impact-list::before{content:none;display:none}
+#roi .roi-two-step .roi-step-meta{
+  display:grid;
+  padding:0;
+  border:0;
+  background:transparent;
+  grid-template-columns:44px minmax(0,1fr);
+  gap:15px;
+  align-items:start;
+  min-width:0;
+}
+#roi .roi-two-step .roi-step-number{
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+  gap:2px;
+  padding-top:1px;
+  color:var(--blue);
+  font:800 32px/.95 Archivo,sans-serif;
+  letter-spacing:-.055em;
+  font-variant-numeric:tabular-nums;
+}
+#roi .roi-two-step .roi-step-number small{
+  color:var(--sand);
+  font:800 9px/1 Archivo,sans-serif;
+  letter-spacing:.15em;
+}
+#roi .roi-two-step .roi-step-meta h3{
+  margin:0 0 7px;
+  color:var(--ink);
+  font:800 clamp(18px,1.65vw,21px)/1.12 Archivo,sans-serif;
+  letter-spacing:-.025em;
+}
+#roi .roi-two-step .roi-step-meta p{
+  max-width:31em;
+  margin:0;
+  color:var(--mut);
+  font-size:14px;
+  line-height:1.48;
+}
+#roi .roi-two-step .roi-parallel-inputs{
+  display:grid;
+  padding:0;
+  border-right:0;
+  background:transparent;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  min-width:0;
+  border-top:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+}
+#roi .roi-two-step .roi-input-item{
+  min-width:0;
+  padding:15px 22px 16px;
+}
+#roi .roi-two-step .roi-input-item:first-child{padding-left:0}
+#roi .roi-two-step .roi-input-item+ .roi-input-item{border-left:1px solid var(--line)}
+#roi .roi-two-step .roi-input-label{
+  display:block;
+  margin:0 0 7px;
+  color:var(--blue);
+  font:800 10px/1.2 Archivo,sans-serif;
+  letter-spacing:.14em;
+}
+#roi .roi-two-step .roi-input-item:last-child .roi-input-label{color:var(--sand)}
+#roi .roi-two-step .roi-input-item h4{
+  margin:0 0 5px;
+  color:var(--ink);
+  font:800 18px/1.15 Archivo,sans-serif;
+  letter-spacing:-.02em;
+}
+#roi .roi-two-step .roi-input-item p{
+  max-width:32em;
+  margin:0;
+  color:var(--mut);
+  font-size:14px;
+  line-height:1.45;
+}
+#roi .roi-two-step .roi-impact-list{
+  display:grid;
+  padding:0;
+  border-right:0;
+  background:transparent;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  min-width:0;
+  border-top:1px solid rgba(35,31,32,.13);
+  border-bottom:1px solid rgba(35,31,32,.13);
+}
+#roi .roi-two-step .roi-impact-list span{
+  display:flex;
+  align-items:center;
+  min-width:0;
+  min-height:58px;
+  padding:10px 14px;
+  color:var(--ink);
+  font:700 13px/1.3 "Source Sans 3",sans-serif;
+}
+#roi .roi-two-step .roi-impact-list span:first-child{padding-left:0}
+#roi .roi-two-step .roi-impact-list span+span{border-left:1px solid rgba(35,31,32,.13)}
+@media(max-width:900px){
+  #roi .roi-two-step .roi-step{grid-template-columns:1fr;gap:17px;padding:24px 24px}
+  #roi .roi-two-step .roi-step-meta p{max-width:54em}
+}
+@media(max-width:600px){
+  #roi .roi-two-step .roi-step{padding:21px 18px;gap:15px}
+  #roi .roi-two-step .roi-step-meta{grid-template-columns:38px minmax(0,1fr);gap:12px}
+  #roi .roi-two-step .roi-step-number{font-size:28px}
+  #roi .roi-two-step .roi-parallel-inputs{grid-template-columns:1fr}
+  #roi .roi-two-step .roi-input-item{padding:13px 0}
+  #roi .roi-two-step .roi-input-item+ .roi-input-item{border-left:0;border-top:1px solid var(--line)}
+  #roi .roi-two-step .roi-impact-list{grid-template-columns:repeat(2,minmax(0,1fr))}
+  #roi .roi-two-step .roi-impact-list span{min-height:48px;padding:9px 10px}
+  #roi .roi-two-step .roi-impact-list span:nth-child(odd){padding-left:0}
+  #roi .roi-two-step .roi-impact-list span:nth-child(even){border-left:1px solid rgba(35,31,32,.13)}
+  #roi .roi-two-step .roi-impact-list span:nth-child(n+3){border-top:1px solid rgba(35,31,32,.13)}
+}
+@media(prefers-reduced-motion:reduce){#roi .roi-two-step *{scroll-behavior:auto}}
+</style>
+<style id="ime-v492-roi-calculator-steps">
+/* v492: align the calculator inputs with the two-step business-case flow. */
+#roi .roi-phase-heading{
+  display:grid;grid-template-columns:74px minmax(0,1fr);gap:18px;align-items:start;
+  padding:23px 24px 19px;margin:0;background:#f7f4f0;border-bottom:1px solid var(--line);
+}
+#roi .roi-phase-heading>span{font:700 11px/1.3 Archivo,sans-serif;letter-spacing:.13em;color:var(--sand);padding-top:5px}
+#roi .roi-phase-heading h3{margin:0 0 5px;font:700 21px/1.2 Archivo,sans-serif;letter-spacing:-.025em;color:var(--ink)}
+#roi .roi-phase-heading p{margin:0;color:var(--mut);font-size:14px;line-height:1.5;max-width:62ch}
+#roi .roi-phase-two{margin-top:18px;border-top:2px solid var(--blue);background:#f1eee9}
+#roi .roi-in>fieldset:first-of-type{border-top:0}
+#roi .roi-in>fieldset legend{font-weight:700}
+#roi .roi-in>fieldset>label:first-of-type{margin-top:2px}
+@media(max-width:600px){
+  #roi .roi-phase-heading{grid-template-columns:54px minmax(0,1fr);gap:12px;padding:19px 17px 16px}
+  #roi .roi-phase-heading h3{font-size:19px}
+}
+</style>
