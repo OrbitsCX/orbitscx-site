@@ -5623,6 +5623,22 @@ ul.trust{display:none!important}
 
 
 
+<style id="ime-v500-roi-typography-polish">
+#roi .roi-in p.roi-tip,
+#roi .roi-in p.fine {
+  font-size:13px !important;
+  line-height:1.5 !important;
+  color:var(--mut);
+}
+#roi .roi-in p.roi-tip { margin:2px 0 12px !important; }
+#roi .roi-in p.fine { margin-top:2px; margin-bottom:10px; }
+#roi .roi-in label { line-height:1.34; }
+#roi .roi-in .roi-input-intro { margin-bottom:10px; }
+@media (max-width:700px) {
+  #roi .roi-in p.roi-tip,
+  #roi .roi-in p.fine { font-size:12.5px !important; line-height:1.48 !important; }
+}
+</style>
 </head>
 <body>
 <a class="skip-link" href="#top">Skip to content</a>
@@ -6339,7 +6355,7 @@ header nav.ime-nav .nv-phone:focus-visible{
 </div>
 <div class="roi">
 <div class="roi-in">
-<div class="roi-reset-row"><button class="roi-reset" id="roiReset" type="button" aria-label="Reset all ROI calculator fields to their original planning values">Clear all fields</button></div>
+<div class="roi-reset-row"><button class="roi-reset" id="roiRestore" type="button" aria-label="Restore the original ROI planning values">Restore defaults</button><button class="roi-reset" id="roiReset" type="button" aria-label="Clear all ROI calculator fields">Clear all fields</button></div>
 <div class="roi-phase-heading roi-phase-one"><span>STEP 01</span><div><h3>Build your starting picture</h3><p>Start with the investment in your IME proposal, then describe the process as it runs today. You can use estimates and come back to refine them.</p></div></div>
 <p class="roi-starting-values">The calculator opens with editable planning values. Replace them with your own figures as you go; estimates are fine to start.</p>
 <fieldset><legend>Your IME quote</legend>
@@ -7369,12 +7385,29 @@ ids.forEach(function(i){
   el.addEventListener("input",update);
   el.addEventListener("change",update);
 });
+function restoreRoiDefaults(){
+  var fields=document.querySelectorAll("#roi .roi-in input:not([type=button]):not([type=submit]):not([type=reset]), #roi .roi-in select, #roi .roi-in textarea");
+  fields.forEach(function(el){
+    if(el.type==="checkbox"||el.type==="radio") el.checked=el.defaultChecked;
+    else if(el.tagName==="SELECT"){
+      Array.prototype.forEach.call(el.options,function(opt){opt.selected=opt.defaultSelected;});
+    }else el.value=el.defaultValue;
+  });
+}
+var restoreBtn=$("roiRestore");
+if(restoreBtn){
+  restoreBtn.addEventListener("click",function(){
+    restoreRoiDefaults();
+    update();
+    restoreBtn.focus();
+  });
+}
 var resetBtn=$("roiReset");
 if(resetBtn){
   resetBtn.setAttribute("aria-label","Clear all ROI calculator variables and notes");
   resetBtn.addEventListener("click",function(){
     if(!window.confirm("Clear all calculator variables, selections, and project notes? This cannot be undone.")) return;
-    var fields=document.querySelectorAll("#roi input:not([type=button]):not([type=submit]):not([type=reset]), #roi select, #roi textarea");
+    var fields=document.querySelectorAll("#roi .roi-in input:not([type=button]):not([type=submit]):not([type=reset]), #roi .roi-in select, #roi .roi-in textarea");
     fields.forEach(function(el){
       if(el.type==="checkbox"||el.type==="radio") el.checked=false;
       else if(el.tagName==="SELECT") el.selectedIndex=0;
@@ -7384,6 +7417,9 @@ if(resetBtn){
     resetBtn.focus();
   });
 }
+/* Reapply the authored planning defaults on every fresh page load.
+   This protects the opening calculator state from stale or browser-restored field values. */
+restoreRoiDefaults();
 var printBtn=$("roiPrint");
 function escHTML(v){
   return String(v==null?"":v).replace(/[&<>"']/g,function(c){
