@@ -89,6 +89,10 @@ section{padding:80px 0}
 .anchor .outcome b{display:block;font:800 17px Archivo,sans-serif;margin-bottom:4px}
 .roi{display:grid;grid-template-columns:5fr 7fr;gap:28px;align-items:start}
 .roi-in,.roi-out{background:#fff;border:1px solid var(--line);padding:28px}
+.roi-reset-row{display:flex;justify-content:flex-end;margin:-8px 0 14px}
+.roi-reset{appearance:none;border:0;background:transparent;color:var(--mut);font:600 13px Archivo,sans-serif;padding:7px 0 7px 12px;cursor:pointer;text-decoration:underline;text-decoration-color:#c9c2bb;text-underline-offset:4px}
+.roi-reset:hover{color:var(--blue-d);text-decoration-color:currentColor}
+.roi-reset:focus-visible{outline:2px solid var(--blue);outline-offset:4px}
 .roi-in fieldset{border:0;padding:0;margin:0 0 22px;display:grid;gap:14px}
 /* Progressive disclosure for the ROI kit */
 .roi-in .roi-more,
@@ -6335,7 +6339,7 @@ header nav.ime-nav .nv-phone:focus-visible{
 </div>
 <div class="roi">
 <div class="roi-in">
-
+<div class="roi-reset-row"><button class="roi-reset" id="roiReset" type="button" aria-label="Reset all ROI calculator fields to their original planning values">Clear all fields</button></div>
 <div class="roi-phase-heading roi-phase-one"><span>STEP 01</span><div><h3>Build your starting picture</h3><p>Start with the investment in your IME proposal, then describe the process as it runs today. You can use estimates and come back to refine them.</p></div></div>
 <p class="roi-starting-values">The calculator opens with editable planning values. Replace them with your own figures as you go; estimates are fine to start.</p>
 <fieldset><legend>Your IME quote</legend>
@@ -7365,6 +7369,21 @@ ids.forEach(function(i){
   el.addEventListener("input",update);
   el.addEventListener("change",update);
 });
+var resetBtn=$("roiReset");
+if(resetBtn){
+  resetBtn.setAttribute("aria-label","Clear all ROI calculator variables and notes");
+  resetBtn.addEventListener("click",function(){
+    if(!window.confirm("Clear all calculator variables, selections, and project notes? This cannot be undone.")) return;
+    var fields=document.querySelectorAll("#roi input:not([type=button]):not([type=submit]):not([type=reset]), #roi select, #roi textarea");
+    fields.forEach(function(el){
+      if(el.type==="checkbox"||el.type==="radio") el.checked=false;
+      else if(el.tagName==="SELECT") el.selectedIndex=0;
+      else el.value="";
+    });
+    update();
+    resetBtn.focus();
+  });
+}
 var printBtn=$("roiPrint");
 function escHTML(v){
   return String(v==null?"":v).replace(/[&<>"']/g,function(c){
