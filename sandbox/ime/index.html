@@ -6856,6 +6856,7 @@ figs.map(function(f,ix){return {f:f,r:rank[f.getAttribute('data-hol')],ix:ix}}).
 <g id="lga-barg" opacity="1"><g id="lga-barm"><polygon id="lga-bar" points="785.4,275.2 1034.0,254.2 1039.2,316.4 790.6,337.5" fill="#476a96"/></g></g>
 <g id="lga-fx"></g>
 </svg></span>
+<p class="ft-tag">IME stands for <b>I</b>mproving <b>M</b>anufacturing <b>E</b>fficiency.</p>
 <div class="ft-meta">
   <div class="ft-reach">
     <p class="ft-kicker">Talk to the team</p>
@@ -10160,6 +10161,20 @@ footer .ft-logo svg [stroke="#fff"],
 footer .ft-logo svg [stroke="#FFF"],
 footer .ft-logo svg [stroke="white"]{stroke:#231f20}
 
+/* IME name line under the footer logo */
+footer .ft-tag{
+  grid-column:1;
+  grid-row:2;
+  margin:-26px 0 0;
+  font:600 15px/1.4 "Source Sans 3",system-ui,sans-serif;
+  letter-spacing:.01em;
+  color:#5b5754;
+}
+footer .ft-tag b{
+  font:800 1.25em/1 Archivo,"Arial Narrow",sans-serif;
+  color:var(--sand,#a9705a);
+}
+
 /* Right column: contact + side links */
 footer .ft-meta{
   grid-column:2;
@@ -10288,6 +10303,11 @@ footer img{
     grid-column:1;
     grid-row:auto;
     width:clamp(280px,82vw,420px);
+  }
+  footer .ft-tag{
+    grid-column:1;
+    grid-row:auto;
+    margin:0;
   }
   footer .ft-meta{
     grid-column:1;
