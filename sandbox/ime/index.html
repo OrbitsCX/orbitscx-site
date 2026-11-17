@@ -2737,10 +2737,10 @@ html.hero-ready .hero-stage .hero-type h1 span.hl{
 }
 html.from-splash .hero-stage,
 html.from-splash .hero-below{
-  animation:from-splash-rise .9s cubic-bezier(.22,1,.36,1) .05s both;
+  animation:from-splash-rise .9s cubic-bezier(.22,1,.36,1) both;
 }
 html.from-splash header .bar{
-  animation:from-splash-rise .75s cubic-bezier(.22,1,.36,1) .12s both;
+  animation:from-splash-rise .75s cubic-bezier(.22,1,.36,1) .06s both;
 }
 @media (prefers-reduced-motion:reduce){
   html.from-splash .hero-stage,
@@ -3352,6 +3352,7 @@ header nav a{
 #ime-splash{--sp-bg:#0e1419;--sp-cy:#476a95;--sp-cu:#d9ab96;position:fixed;inset:0;z-index:2147483000;visibility:visible;color:#fff;font-family:Archivo,"Arial Narrow",sans-serif;overflow:hidden;display:grid;place-items:center}
 html.sp-off #ime-splash,.no-js #ime-splash{display:none}
 html.sp-lock,html.sp-lock body{overflow:hidden}
+html.sp-lock{scrollbar-gutter:stable}
 #ime-splash .sp-door{position:absolute;top:0;bottom:0;width:50.2%;background:var(--sp-bg);transition:transform .85s cubic-bezier(.65,0,.15,1);will-change:transform}
 #ime-splash .sp-door.l{left:0}#ime-splash .sp-door.r{right:0}
 #ime-splash .sp-door::before{content:"";position:absolute;inset:0;background:
@@ -3407,11 +3408,7 @@ html.sp-lock,html.sp-lock body{overflow:hidden}
 #ime-splash.in .sp-streak{animation:spSwoop .75s cubic-bezier(.55,0,.25,1) both}
 #ime-splash.in .sp-streak.s2{animation-delay:.07s}
 #ime-splash.in .sp-streak.s3{animation-delay:.14s}
-#ime-splash.in.out .sp-streak{animation:spSwoopR .6s cubic-bezier(.55,0,.25,1) both}
-#ime-splash.in.out .sp-streak.s2{animation-delay:.06s}
-#ime-splash.in.out .sp-streak.s3{animation-delay:.12s}
 @keyframes spSwoop{0%{opacity:1;transform:translateX(0) skewX(-22deg)}100%{opacity:1;transform:translateX(200vw) skewX(-22deg)}}
-@keyframes spSwoopR{0%{opacity:1;transform:translateX(200vw) skewX(-22deg)}100%{opacity:1;transform:translateX(-20vw) skewX(-22deg)}}
 #ime-splash .sp-side b{font-weight:800;font-size:clamp(34px,4.6vw,64px);line-height:1;color:var(--sp-cy);letter-spacing:-.02em}
 #ime-splash .sp-side span{font:600 15px/1.45 "Source Sans 3",system-ui,sans-serif;color:rgba(255,255,255,.78);max-width:230px}
 #ime-splash .sp-side i{display:block;width:56px;height:2px;background:var(--sp-cu)}
@@ -5592,26 +5589,27 @@ ul.trust{display:none!important}
 
 
 <style id="v516-splash-hero-handoff">
-/* v516: Let the final robot movement resolve into a cinematic crossfade to the hero */
+/* v516/v543: The final robot movement dissolves while the doors open and the hero rises beneath, one continuous move with no empty beat */
 #ime-splash.out .sp-frame{
   opacity:0;
-  transform:scale(1.045);
-  transition:opacity 1.02s cubic-bezier(.22,1,.36,1),
-             transform 1.08s cubic-bezier(.22,1,.36,1);
+  transform:scale(1.03);
+  transition:opacity .55s ease,
+             transform .85s cubic-bezier(.22,1,.36,1);
 }
 #ime-splash.out .sp-frame video{
   opacity:0!important;
-  transform:scale(1.025);
-  transition:opacity .92s ease,transform 1.08s cubic-bezier(.22,1,.36,1)!important;
+  transform:scale(1.02);
+  transition:opacity .5s ease,transform .85s cubic-bezier(.22,1,.36,1)!important;
 }
 #ime-splash.out .sp-door{
-  transition:transform .9s cubic-bezier(.76,0,.24,1);
+  transition:transform .85s cubic-bezier(.4,0,.1,1);
 }
 #ime-splash.out .sp-ui{
   opacity:0;
-  transform:scale(1.025) translateY(-1vh);
-  transition:opacity .48s ease,transform .85s cubic-bezier(.22,1,.36,1);
+  transform:scale(1.02) translateY(-1vh);
+  transition:opacity .35s ease,transform .85s cubic-bezier(.22,1,.36,1);
 }
+#ime-splash.out .sp-streak{animation:none;opacity:0}
 @media(prefers-reduced-motion:reduce){
   #ime-splash.out .sp-frame,
   #ime-splash.out .sp-frame video,
@@ -5683,7 +5681,7 @@ function end(){
   s.remove();
   root.classList.remove("sp-lock");
   try{if(prev&&prev.focus)prev.focus()}catch(e){}
- },1080);
+ },900);
 }
 function dur(){return(v.duration&&isFinite(v.duration)&&v.duration>0)?v.duration:7.4}
 /* UI + first line appear once the fonts are ready; pacing and exit are tied to when the video actually starts */
@@ -10169,6 +10167,7 @@ html body #products .tile .pill{background:transparent;color:#ecc9b7;border:1px 
 #ime-splash .sp-frame{transition:opacity .45s cubic-bezier(.22,1,.36,1),transform .7s cubic-bezier(.22,1,.36,1)}
 </style>
 <!-- v542: Fixed the intro video jumping sideways right after it appears. The splash grid is sized by the headline text, and the web font (Archivo) arrived a moment after the reveal, widening the text and shoving the video across. The intro now reveals only once the fonts are loaded (1s cap), playback waits for the reveal, and the frame entrance is a soft rise with no tilt. -->
+<!-- v543: Removed the hesitation between the intro video and the home page. The exit used to dim the video, sweep a light streak across an empty dark screen, and only then slowly open the doors. Now the video dissolves while the doors open right away and the hero rises beneath them, the streak is gone, the intro is cleared sooner, and a reserved scrollbar gutter stops the page nudging sideways when the intro unlocks scrolling. -->
 <!-- v519: Tightened the opening splash hesitation: video begins 0.6s into the clip, with timeline/progress/line timings offset to match, and shorter fade-ins. -->
 <!-- v520: Fixed the visible jump at the start of the splash video. Instead of seeking past the first 0.6s (which skipped frames), the opening plays at up to 3x and eases to normal speed by 1.3s, so every frame shows and the robot flows straight into the motion. -->
 <!-- v521: Splash stall fix. The video was re-encoded: 1080x1920@60 became 720x1280@30 (about half the size, far easier to decode), and the fast-opening ramp is now baked into the clip itself instead of changing playback speed live, which made the decoder stall and skip. Normal-speed playback, same crossfade handoff. -->
