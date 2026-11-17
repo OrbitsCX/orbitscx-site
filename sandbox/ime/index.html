@@ -5676,12 +5676,13 @@ function end(){
  done=true;timers.forEach(clearTimeout);
  handoff();
  s.classList.add("out");
+ /* v539: pause the splash clip once its UI has faded (frees the decoder for the hero loop), and only remove the splash after the slower doors have fully cleared */
+ setTimeout(function(){try{v.pause()}catch(e){}},520);
  setTimeout(function(){
-  try{v.pause()}catch(e){}
   s.remove();
   root.classList.remove("sp-lock");
   try{if(prev&&prev.focus)prev.focus()}catch(e){}
- },900);
+ },1450);
 }
 function dur(){return(v.duration&&isFinite(v.duration)&&v.duration>0)?v.duration:7.4}
 /* UI + first line appear once the fonts are ready; pacing and exit are tied to when the video actually starts */
@@ -10581,6 +10582,48 @@ html body #work .work article:hover .tag::before{width:76px!important}
 @media(prefers-reduced-motion:reduce){html body #work .work article .tag::before{transition:none}}
 /* reserve two lines only at the in-between widths where the longest tag can wrap, so every rule line stays aligned across a row */
 @media(min-width:750px) and (max-width:800px),(min-width:1000px) and (max-width:1160px){html body #work .work article .tag{min-height:52px!important}}
+</style>
+<style id="v539-splash-silk">
+/* v539: silk-smooth splash -> home handoff.
+   Before: the page background turned white the instant the doors moved, while the hero (and the hero image inside it)
+   were still fading in from zero, so the doors parted onto a bare page; the doors were also cut off at 900ms,
+   and an infinite filter animation was repainting them while they travelled.
+   Now: the finished page is already in place behind the doors, the doors glide open slowly,
+   and the hero settles, then the header, then the headline lines arrive in order as each area is uncovered. */
+
+/* doors: longer, softer in-out glide; clear the UI first, then part */
+#ime-splash .sp-door{transition:transform 1.1s cubic-bezier(.77,0,.18,1)}
+#ime-splash.out .sp-ui{transition:opacity .5s ease .05s,transform 1.1s cubic-bezier(.4,0,.2,1)}
+#ime-splash.out .sp-seam{transition:opacity .35s ease}
+/* stop the per-frame repaint work while the doors travel (paused, not removed, so no brightness pop) */
+#ime-splash.out .sp-door::before,#ime-splash.out .sp-scan,#ime-splash.out .sp-rec::before{animation-play-state:paused!important}
+
+/* the hero is fully formed behind the doors: no fade-from-nothing, no double fade */
+html.hero-ready.from-splash .hero-bg{opacity:1;transition:none}
+html.from-splash .hero-stage{animation:none}
+@keyframes ime-settle{from{scale:1.06}to{scale:1}}
+html.hero-ready.from-splash .hero-bg,
+html.hero-ready.from-splash .hero-video{
+  animation:heroPush 24s ease-in-out infinite alternate,ime-settle 2s cubic-bezier(.22,1,.36,1) both}
+
+/* header glides down once the doors are about a third open */
+@keyframes ime-glide-down{from{opacity:0;transform:translate3d(0,-10px,0)}to{opacity:1;transform:none}}
+html.from-splash header .bar{animation:ime-glide-down .9s cubic-bezier(.22,1,.36,1) .35s both}
+
+/* content under the hero rises in as the doors clear */
+@keyframes ime-rise-soft{from{opacity:0;transform:translate3d(0,18px,0)}to{opacity:1;transform:none}}
+html.from-splash .hero-below{animation:ime-rise-soft 1s cubic-bezier(.22,1,.36,1) .55s both}
+
+/* headline: begin as the left edge is uncovered instead of while it is still behind the door */
+html.hero-ready.from-splash .hero-stage .hero-type h1::before{animation:heroOnPhotoRule .9s cubic-bezier(.65,0,.2,1) .45s both!important}
+html.hero-ready.from-splash .hero-stage .hero-type h1 span:nth-child(1){animation:heroOnPhotoLine .95s cubic-bezier(.16,1,.3,1) .6s both!important}
+html.hero-ready.from-splash .hero-stage .hero-type h1 span:nth-child(2){animation:heroOnPhotoLine .95s cubic-bezier(.16,1,.3,1) .82s both!important}
+html.hero-ready.from-splash .hero-stage .hero-type h1 span:nth-child(3){animation:heroOnPhotoLine .95s cubic-bezier(.16,1,.3,1) 1.04s both,heroOnPhotoShimmer 7s linear 2.7s infinite!important}
+
+@media (prefers-reduced-motion:reduce){
+  html.hero-ready.from-splash .hero-bg,html.hero-ready.from-splash .hero-video{animation:none!important}
+  html.from-splash header .bar,html.from-splash .hero-below{animation:none!important}
+}
 </style>
 </body>
 </html>
