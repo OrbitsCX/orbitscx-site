@@ -11094,34 +11094,123 @@ sliders.forEach(function(p){p[1].value=p[0].value});paint();window.roiLeadUpdate
 <!-- v498: Result-side ROI help for NPV, IRR, annual benefits at full run rate, and net gain — reuses ROI guide dialog. Built from v497. -->
 
 <!-- v499: moved live v494 parallel-input CSS inside document; removed orphaned post-</html> styles (v491–v493). -->
-<style id="ime-v494-roi-parallel-inputs">
-/* v494 — align the paired quick-payback inputs without changing calculator behavior. */
+<style id="v500-roi-parallel-stable">
+/* v500 — Keep Q02/Q03 input controls on one shared baseline.
+   Before: done-state checkmark and uneven help wrapping shifted the two fields.
+   Now: paired cards share row tracks (subgrid when available); controls pin to the bottom;
+   checkmark space is reserved so .done does not reflow the pair. */
+
+/* Reserve checkmark space so marking a question done never changes meta width/wrap */
+#roi .roi-qnum{
+  display:inline-flex;
+  align-items:center;
+  gap:5px;
+  min-width:2.55em;
+  box-sizing:border-box;
+}
+#roi .roi-core.done .roi-qnum::after{
+  content:"✓";
+  display:inline-block;
+  width:0.85em;
+  margin-left:0;
+  font-size:11px;
+  font-weight:800;
+  color:#2f7d57;
+  vertical-align:0;
+  line-height:1;
+}
+/* Invisible placeholder width when not done — keeps 02/03 meta stable */
+#roi .roi-core:not(.done) .roi-qnum::after{
+  content:"";
+  display:inline-block;
+  width:0.85em;
+  margin-left:0;
+}
+
+/* Paired questions: equal-height cards, control on the bottom edge */
 #roi .roi-quick > .two{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:16px;
   align-items:stretch;
 }
 #roi .roi-quick > .two > .roi-core{
-  display:grid;
-  grid-template-rows:minmax(3.75em,auto) minmax(4.35em,auto) auto;
-  align-content:start;
+  display:flex;
+  flex-direction:column;
+  align-items:stretch;
   min-width:0;
+  height:100%;
+  box-sizing:border-box;
 }
 #roi .roi-quick > .two > .roi-core .roi-q-meta{
-  min-height:3.75em;
-  align-items:flex-start;
+  flex:0 0 auto;
+  min-height:3.5em;
 }
 #roi .roi-quick > .two > .roi-core .roi-qhelp{
-  min-height:4.35em;
+  flex:0 0 auto;
+  min-height:4.5em;
 }
-@media(max-width:900px){
+/* Pin number/select to the shared bottom of the pair */
+#roi .roi-quick > .two > .roi-core > input,
+#roi .roi-quick > .two > .roi-core > select,
+#roi .roi-quick > .two > .roi-core > .u{
+  margin-top:auto;
+  width:100%;
+  max-width:100%;
+  box-sizing:border-box;
+}
+
+/* Modern browsers: true shared rows across both questions */
+@supports (grid-template-rows:subgrid){
+  #roi .roi-quick > .two{
+    grid-template-rows:auto auto auto;
+  }
   #roi .roi-quick > .two > .roi-core{
-    grid-template-rows:none;
+    display:grid;
+    grid-template-rows:subgrid;
+    grid-row:span 3;
+    height:auto;
   }
   #roi .roi-quick > .two > .roi-core .roi-q-meta,
   #roi .roi-quick > .two > .roi-core .roi-qhelp{
     min-height:0;
   }
+  #roi .roi-quick > .two > .roi-core > input,
+  #roi .roi-quick > .two > .roi-core > select,
+  #roi .roi-quick > .two > .roi-core > .u{
+    margin-top:0;
+    align-self:end;
+  }
+}
+
+@media(max-width:900px){
+  #roi .roi-quick > .two{
+    grid-template-columns:1fr;
+    grid-template-rows:none;
+  }
+  #roi .roi-quick > .two > .roi-core{
+    display:flex;
+    flex-direction:column;
+    grid-row:auto;
+    height:auto;
+  }
+  #roi .roi-quick > .two > .roi-core .roi-q-meta,
+  #roi .roi-quick > .two > .roi-core .roi-qhelp{
+    min-height:0;
+  }
+  #roi .roi-quick > .two > .roi-core > input,
+  #roi .roi-quick > .two > .roi-core > select,
+  #roi .roi-quick > .two > .roi-core > .u{
+    margin-top:8px;
+  }
+}
+
+@media(prefers-reduced-motion:reduce){
+  #roi .roi-core{transition:none}
 }
 </style>
+<!-- v500: Q02/Q03 stay parallel after input — shared baseline, reserved checkmark space, subgrid when supported. Built from v499. -->
+
 <!-- v499: Hygiene — post-</html> CSS removed (v494 parallel kept inside body), nested roi-report unwrapped, tel: links normalized to +1. Built from v498. -->
 </body>
 </html>
