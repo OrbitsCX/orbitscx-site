@@ -4374,7 +4374,7 @@ footer a[href^="tel"],footer a[href^="mailto"]{display:inline-block;padding:12px
 .roi label:has(>.roi-help-trigger)>.roi-help-trigger{margin:0;grid-column:2;grid-row:1}
 .roi label:has(>.roi-help-trigger)>.u,.roi label:has(>.roi-help-trigger)>input,.roi label:has(>.roi-help-trigger)>select,.roi label:has(>.roi-help-trigger)>textarea{grid-column:1/-1;grid-row:2}
 @media(max-width:760px){footer a{margin-left:0;margin-right:18px}}
-.roi .two{align-items:end}
+.roi .two{align-items:stretch}
 @media(max-width:400px){.prod{grid-template-columns:minmax(0,1fr)}.pmain,.pspec,.prod>*{min-width:0}.pname{flex-wrap:wrap;row-gap:8px}.facts b{font-size:clamp(18px,6vw,24px);overflow-wrap:anywhere}.pmain,.pspec{padding-left:18px;padding-right:18px}}
 
 
@@ -6383,26 +6383,31 @@ header nav.ime-nav .nv-phone:focus-visible{
 <div class="roi-reset-row"><button class="roi-reset" id="roiRestore" type="button" aria-label="Restore the original ROI planning values">Restore defaults</button><button class="roi-reset" id="roiReset" type="button" aria-label="Clear all ROI calculator fields">Clear all fields</button></div>
 <div class="roi-banner" id="roiBanner" data-state="example"><span id="roiBannerText"><strong>Showing example numbers.</strong> Answer the four questions below to make them yours.</span></div>
 <fieldset class="roi-quick"><legend>Four answers → live payback</legend>
-<p class="roi-quick-lead">These four answers provide a useful first estimate. For a more thorough, approval-ready ROI analysis, work through the detailed assumptions and cost sections below.</p>
+
 <label class="roi-core" data-q="1"><span class="roi-q-meta"><span class="roi-qnum" aria-hidden="true">01</span><span class="roi-qtitle">What is the project cost?</span></span><span class="roi-qhelp">Enter your IME quote total, or a planning figure if you don’t have a quote yet.</span><span class="u"><i>$</i><input id="capex" type="text" inputmode="numeric" autocomplete="off" data-money value="850,000"/></span></label>
 <div class="two">
-<label class="roi-core" data-q="2"><span class="roi-q-meta"><span class="roi-qnum" aria-hidden="true">02</span><span class="roi-qtitle">How many people do this work on one shift?</span></span><input id="ops" min="0" step="0.5" type="number" value="3"/></label>
-<label class="roi-core" data-q="3"><span class="roi-q-meta"><span class="roi-qnum" aria-hidden="true">03</span><span class="roi-qtitle">How many shifts run per day?</span></span><select id="shifts"><option value="1">1 shift</option><option selected="" value="2">2 shifts</option><option value="3">3 shifts</option></select></label>
+<label class="roi-core" data-q="2"><span class="roi-q-meta"><span class="roi-qnum" aria-hidden="true">02</span><span class="roi-qtitle">How many people are assigned to this work on one shift?</span></span><span class="roi-qhelp">Count only the time dedicated to this process. Use fractions for shared roles, such as 0.5 for half a shift.</span><input id="ops" min="0" step="0.5" type="number" value="3"/></label>
+<label class="roi-core" data-q="3"><span class="roi-q-meta"><span class="roi-qnum" aria-hidden="true">03</span><span class="roi-qtitle">How many shifts run per day?</span></span><span class="roi-qhelp">Assuming an 8-hour shift. If you need to adjust shift hours, open <strong>Fine-tune the schedule and assumptions</strong> below.</span><select id="shifts"><option value="1">1 shift</option><option selected="" value="2">2 shifts</option><option value="3">3 shifts</option></select></label>
 </div>
 <label class="roi-core" data-q="4"><span class="roi-q-meta"><span class="roi-qnum" aria-hidden="true">04</span><span class="roi-qtitle">What is the fully burdened hourly cost per worker?</span></span><span class="roi-qhelp">Wages plus benefits and typical employer burden.</span><span class="u"><i>$/hr</i><input id="rate" min="0" step="1" type="number" value="42"/></span></label>
 <p class="roi-labor-echo" id="laborEcho" aria-live="polite">Enter the details above to see your labor picture.</p>
+<div class="roi-bridge" role="note" aria-label="Build an approval-ready ROI analysis">
+<p class="roi-bridge-kicker">Next step</p>
+<h3 class="roi-bridge-title">Build the approval-ready business case</h3>
+<p class="roi-bridge-body"><strong>The estimate above is a starting point, not an approval case.</strong> Before an automation investment is ready for approval, go deeper. Expand the sections below to refine production assumptions, operating costs, additional benefits and financial criteria. The stronger the inputs, the stronger the business case.</p>
+</div>
 <p aria-live="polite" class="fine" hidden="" id="hoursNote" role="status" style="margin:-4px 0 0;color:#7a4a38;font-size:14px"></p>
 </fieldset>
 <details class="roi-section-more "><summary><span><strong>Fine-tune the schedule and assumptions</strong><small>Hours, days, uptime and how much of the savings you keep</small></span><span aria-hidden="true" class="roi-chevron">+</span></summary><fieldset><legend>Schedule and assumptions</legend>
 <div class="two"><label>Hours per shift<input id="hps" max="12" min="1" step="0.5" type="number" value="8"/></label>
 <label>Days the line runs per year<input id="days" max="365" min="1" step="1" type="number" value="250"/></label></div>
 <label>Share of labor savings you expect to keep<span class="u"><input id="realize" max="100" min="0" step="5" type="number" value="85"/><i>%</i></span></label>
-<label>Expected system uptime<span class="u"><input id="uptime" max="100" min="50" step="1" type="number" value="95"/><i>%</i></span></label>
-<label>First-year ramp-up (share of full benefit)<span class="u"><input id="ramp" max="100" min="10" step="5" type="number" value="80"/><i>%</i></span></label>
+<label>Expected system uptime<span class="u"><input id="uptime" max="100" min="0" step="1" type="number" value="95"/><i>%</i></span></label>
+<label>First-year ramp-up (share of full benefit)<span class="u"><input id="ramp" max="100" min="0" step="5" type="number" value="80"/><i>%</i></span></label>
 <label>Yearly wage increase<span class="u"><input id="esc" max="15" min="0" step="0.5" type="number" value="3"/><i>%</i></span></label>
 </fieldset></details>
 <details class="roi-section-more "><summary><span><strong>Costs beyond your quote</strong><small>Tooling, training, maintenance and more (only if outside your IME quote)</small></span><span aria-hidden="true" class="roi-chevron">+</span></summary><fieldset><legend>Other costs</legend>
-<label>Annual support cost after year one<span class="u"><input id="supp" max="30" min="0" step="0.5" type="number" value="3"/><i>% of cell cost</i></span></label>
+<label>Annual support after first 12 production months<span class="u"><input id="supp" max="30" min="0" step="0.5" type="number" value="3"/><i>% of cell cost</i></span></label>
 <div class="two"><label>One-time tooling / fixtures / integration<span class="u"><i>$</i><input id="setup" type="text" inputmode="numeric" autocomplete="off" data-money value="40,000"/></span></label><label>Training and changeover<span class="u"><i>$</i><input id="training" type="text" inputmode="numeric" autocomplete="off" data-money value="15,000"/></span></label></div>
 <label>Production loss during install / changeover<span class="u"><i>$</i><input id="disruption" type="text" inputmode="numeric" autocomplete="off" data-money value="25,000"/></span></label>
 <div class="two"><label>Annual maintenance / repairs<span class="u"><i>$</i><input id="maintenance" type="text" inputmode="numeric" autocomplete="off" data-money value="10,000"/></span></label><label>Annual software / licenses<span class="u"><i>$</i><input id="software" type="text" inputmode="numeric" autocomplete="off" data-money value="6,000"/></span></label></div>
@@ -6466,7 +6471,7 @@ header nav.ime-nav .nv-phone:focus-visible{
 <div><dt>Ongoing costs / yr</dt><dd id="o-drv-cost">–</dd></div>
 </div>
 <div class="roi-displace" id="o-displace" aria-label="What this project displaces">
-<div><dt>Positions affected</dt><dd id="o-fte">–</dd></div>
+<div><dt>Operator assignments across shifts</dt><dd id="o-fte">–</dd></div>
 <div><dt>Labor-hours / year</dt><dd id="o-hrs">–</dd></div>
 <div><dt>Base labor / year</dt><dd id="o-lab">–</dd></div>
 </div>
@@ -6481,7 +6486,7 @@ header nav.ime-nav .nv-phone:focus-visible{
 </details>
 <div class="roi-scenarios" id="roiScenarios"><h3>Return under different benefit assumptions</h3><p class="fine">A quick sensitivity check changes all annual benefits together while holding costs and financial assumptions constant. Use conservative assumptions for approval decisions.</p><div class="scenario-grid" id="scenarioGrid"></div></div>
 <div class="roi-break-even" id="roiBreakEven"></div>
-<p class="fine">Labor savings = operators affected × shifts × hours/shift × days/year × burdened rate, adjusted for uptime and the labor-value capture percentage, then grown with wage inflation. Benefits are scaled for the install lag (months until benefits start); year-one ramp applies to the first live year. Annual operating costs are deducted each year; support is charged from year two as a percent of cell cost. Optional residual value is added at the end of the period. Cost of delay is the net run-rate benefit forgone each month the project is postponed, plus the NPV lost by a 12-month deferral; it is context and is not part of NPV. Operating costs are charged for the full year from year one, and payback excludes residual value. Tax mode applies a straight-line depreciation shield on cell cost only — confirm treatment with your accountant. Strategic factors are qualitative and do not change the NPV. Validate inputs with operations, engineering and finance before a capital decision.</p>
+<p class="fine">Labor savings = operators affected × shifts × hours/shift × days/year × burdened rate, adjusted for uptime and the labor-value capture percentage, then grown with wage inflation. Benefits are prorated for the install lag; the ramp assumption applies during the first 12 months after production begins. Operating costs are prorated from production start; support begins after the first 12 months of production. Optional residual value is added at the end of the period. Cost of delay is the net run-rate benefit forgone each month the project is postponed, plus the NPV lost by a 12-month deferral; it is context and is not part of NPV. Operating costs are prorated from production start, and support begins after the first 12 months of production. Payback excludes residual value. Tax mode uses a simplified straight-line depreciation estimate on cell cost only; confirm treatment with your finance or tax adviser. Strategic factors are qualitative and do not change the NPV. Validate inputs with operations, engineering and finance before a capital decision.</p>
 </div>
 </details>
 </div></details>
@@ -7052,9 +7057,12 @@ function npv(cf,r){
 }
 function irr(cf){
   // Need a sign change for a real root
-  var hasPos=false,hasNeg=false;
-  for(var i=0;i<cf.length;i++){if(cf[i]>0)hasPos=true;if(cf[i]<0)hasNeg=true}
-  if(!hasPos||!hasNeg) return null;
+  var hasPos=false,hasNeg=false,lastSign=0,signChanges=0;
+  for(var i=0;i<cf.length;i++){
+    if(cf[i]>0){hasPos=true;if(lastSign<0)signChanges++;lastSign=1;}
+    else if(cf[i]<0){hasNeg=true;if(lastSign>0)signChanges++;lastSign=-1;}
+  }
+  if(!hasPos||!hasNeg||signChanges!==1) return null;
   var lo=-0.99,hi=10,flo=npv(cf,lo),fhi=npv(cf,hi);
   // Expand upper bound if needed
   var guard=0;
@@ -7078,21 +7086,21 @@ function calc(){
   var N=Math.max(1,Math.round(num("yrs")));
   var ops=Math.max(0,num("ops"));
   var sh=Math.max(0,num("shifts"));
-  var hps=clamp(num("hps")||8,1,12); if(sh>0) hps=Math.min(hps,24/sh);
-  var days=clamp(num("days")||250,1,365);
+  var hps=clamp(num("hps"),1,12); if(sh>0) hps=Math.min(hps,24/sh);
+  var days=clamp(num("days"),1,365);
   var rate=Math.max(0,num("rate"));
-  var esc=clamp(num("esc"),0,50)/100;
+  var esc=clamp(num("esc"),0,15)/100;
   var up=clamp(num("uptime"),0,100)/100;
   var ramp=clamp(num("ramp"),0,100)/100;
   var other=Math.max(0,num("other"));
-  var supp=clamp(num("supp"),0,100)/100;
-  var disc=clamp(num("disc"),0,100)/100;
+  var supp=clamp(num("supp"),0,30)/100;
+  var disc=clamp(num("disc"),0,40)/100;
   var lagM=clamp(num("lag"),0,24);
   var lagY=lagM/12;
   var residual=Math.max(0,num("residual"));
   var useTax=$("tax")&&$("tax").checked;
-  var tr=clamp(num("taxrate"),0,100)/100;
-  var depYrs=Math.max(1,Math.round(num("dep")));
+  var tr=clamp(num("taxrate"),0,50)/100;
+  var depYrs=clamp(Math.round(num("dep")||7),1,20);
 
   // Annual labor at today's rates, full attendance, before uptime/ramp
   var laborBase=ops*sh*hps*days*rate;
@@ -7101,41 +7109,43 @@ function calc(){
   var fullBenefits=(fullLabor+quality+overtime+throughput+avoided+other)*scenario;
   var fullRun=fullBenefits;
 
-  // Fraction of calendar year t that falls after benefits start (lag)
-  function liveFrac(t){
-    var a=t-1,b=t;
-    if(b<=lagY) return 0;
-    if(a>=lagY) return 1;
-    return b-lagY;
-  }
-  // First calendar year that has any live production (for ramp)
-  var firstLive=1;
-  for(var fy=1;fy<=N;fy++){ if(liveFrac(fy)>0){ firstLive=fy; break; } }
-
+  // Work in months so commissioning, first-year ramp-up, operating costs and support
+  // are all prorated from the point the system begins producing benefits.
+  function overlapMonths(a,b,start,end){return Math.max(0,Math.min(b,end)-Math.max(a,start));}
   var cf=[-initial],rows=[];
   for(var t=1;t<=N;t++){
+    var yearStart=(t-1)*12,yearEnd=t*12;
+    var liveMonths=overlapMonths(yearStart,yearEnd,lagM,yearEnd);
+    var rampMonths=overlapMonths(yearStart,yearEnd,lagM,lagM+12);
+    var fullMonths=Math.max(0,liveMonths-rampMonths);
+    var live=liveMonths/12;
+    // Ramp is the average benefit level during the first 12 months after production begins.
+    var benefitFactor=(rampMonths*ramp+fullMonths)/12;
     var labor=laborBase*Math.pow(1+esc,t-1)*up*realize*scenario;
     var nonLabor=(quality+overtime+throughput+avoided+other)*scenario;
-    var lf=liveFrac(t);
-    var rampF=(t===firstLive?ramp:1);
-    var sav=(labor+nonLabor)*lf*rampF;
-    // Support & operating costs once the cell exists (from year 1); support fee from year 2
-    var sup=(t>=2)?capex*supp:0;
-    var otherCosts=maintenance+software+consumables;
-    // If still in lag with zero live fraction, still incur operating costs once installed — simplified: costs from year 1
+    var sav=(labor+nonLabor)*benefitFactor;
+    // Operating costs begin when the system enters production; support begins after its first 12 live months.
+    var supportMonths=overlapMonths(yearStart,yearEnd,lagM+12,yearEnd);
+    var sup=capex*supp*(supportMonths/12);
+    var otherCosts=(maintenance+software+consumables)*live;
     var pre=sav-sup-otherCosts;
-    var dep=useTax&&t<=depYrs?capex/depYrs:0;
-    var taxOps=useTax?-pre*tr:0;
-    var shield=useTax?tr*dep:0;
+    // Simplified straight-line depreciation starts when the asset is placed in service.
+    var depMonths=overlapMonths(yearStart,yearEnd,lagM,lagM+depYrs*12);
+    var dep=useTax?capex*depMonths/(depYrs*12):0;
+    // No immediate tax benefit is assumed for operating losses or unused depreciation.
+    var taxOps=useTax?-Math.max(0,pre)*tr:0;
+    var shield=useTax?Math.min(Math.max(0,pre),dep)*tr:0;
     var net=useTax?pre+taxOps+shield:pre;
-    // Residual value as end-of-horizon cash inflow (simplified; tax on gain not modeled)
     var resAdd=0;
     if(t===N&&residual>0){
-      resAdd=useTax?residual*(1-tr):residual;
+      var elapsedDepMonths=Math.min(depYrs*12,Math.max(0,yearEnd-lagM));
+      var remainingBasis=capex*(1-elapsedDepMonths/(depYrs*12));
+      var taxableGain=Math.max(0,residual-remainingBasis);
+      resAdd=useTax?residual-taxableGain*tr:residual;
       net+=resAdd;
     }
     cf.push(net);
-    rows.push({t:t,sav:sav,sup:sup,otherCosts:otherCosts,dep:dep,taxOps:taxOps,shield:shield,net:net,labor:labor,nonLabor:nonLabor,live:lf,residual:resAdd});
+    rows.push({t:t,sav:sav,sup:sup,otherCosts:otherCosts,dep:dep,taxOps:taxOps,shield:shield,net:net,labor:labor,nonLabor:nonLabor,live:live,residual:resAdd});
   }
 
   var cum=[cf[0]];
@@ -7168,7 +7178,7 @@ function calc(){
     run:fullRun,net:cum[cum.length-1],N:N,capex:capex,initial:initial,setup:setup,training:training,disruption:disruption,
     maintenance:maintenance,software:software,consumables:consumables,realize:realize,quality:quality,overtime:overtime,throughput:throughput,avoided:avoided,other:other,
     laborBase:laborBase,hoursYr:hoursYr,fte:fte,useTax:useTax,discount:disc,
-    lagM:lagM,residual:residual,
+    lagM:lagM,residual:residual,depYrs:depYrs,
     laborRun:fullLabor*scenario,
     otherRun:(quality+overtime+throughput+avoided+other)*scenario,
     annualOpEx:maintenance+software+consumables,annualSupport:capex*supp,taxRate:tr
@@ -7268,7 +7278,8 @@ function scenarioList(r){
 }
 function delayInfo(r){
   var preNet=r.run-r.annualOpEx-r.annualSupport;
-  var netYr=r.useTax?preNet*(1-r.taxRate):preNet;
+  var depreciation=r.capex/r.depYrs;
+  var netYr=r.useTax?preNet-Math.max(0,preNet)*r.taxRate+Math.min(Math.max(0,preNet),depreciation)*r.taxRate:preNet;
   var pvLoss=(r.npv>0)?r.npv*r.discount/(1+r.discount):null;
   return{netYr:netYr,netMo:netYr/12,pvLoss:pvLoss,preNet:preNet};
 }
@@ -7286,7 +7297,7 @@ function update(){
   $("o-npv").textContent=money(r.npv);
   $("o-irr").textContent=r.irr===null?"n/a":(r.irr*100).toFixed(1)+"%";
   $("o-run").textContent=money(r.run);
-  $("o-nl").textContent=(r.useTax?"After-tax net gain over ":"Net gain over ")+r.N+" years";
+  $("o-nl").textContent=(r.useTax?"Cumulative net cash flow (after tax) over ":"Cumulative net cash flow over ")+r.N+" years";
   $("o-net").textContent=money(r.net);
   var basis=$("o-basis");
   if(basis){
@@ -7305,9 +7316,9 @@ function update(){
   var badge=$("o-badge"), sum=$("o-summary");
   if(badge){
     badge.className="roi-badge";
-    if(r.pay!==null&&r.pay<=1.75){badge.textContent="Strong payback window";badge.classList.add("fast")}
-    else if(r.pay!==null&&r.pay<=3){badge.textContent="Solid capital case";badge.classList.add("mid")}
-    else if(r.pay!==null){badge.textContent="Long-term investment";badge.classList.add("long")}
+    if(r.pay!==null&&r.pay<=1.75){badge.textContent="Shorter payback period";badge.classList.add("fast")}
+    else if(r.pay!==null&&r.pay<=3){badge.textContent="Intermediate payback period";badge.classList.add("mid")}
+    else if(r.pay!==null){badge.textContent="Longer payback period";badge.classList.add("long")}
     else{badge.textContent="Outside the analysis period";badge.classList.add("slow")}
   }
   if(sum){
@@ -7329,7 +7340,7 @@ function update(){
   var dl=$("o-drv-labor"), dor=$("o-drv-other"), dc=$("o-drv-cost");
   if(dl) dl.innerHTML=money(r.laborRun)+"<small>after uptime &amp; capture %</small>";
   if(dor) dor.innerHTML=money(r.otherRun)+"<small>quality, OT, capacity, other</small>";
-  if(dc) dc.innerHTML=money(r.annualOpEx+r.annualSupport)+"<small>maintenance, software, consumables, support (yr 2+)</small>";
+  if(dc) dc.innerHTML=money(r.annualOpEx+r.annualSupport)+"<small>maintenance, software, consumables, support after first 12 production months</small>";
   // Displacement snapshot
   var fteEl=$("o-fte"), hrsEl=$("o-hrs"), labEl=$("o-lab");
   if(fteEl) fteEl.textContent=(Math.round(r.fte*10)/10).toLocaleString("en-US");
@@ -7385,6 +7396,13 @@ if(resetBtn){
       else el.value="";
     });
     update();
+    if(window.roiReset){
+      window.roiReset();
+      var banner=document.getElementById("roiBanner"),bannerText=document.getElementById("roiBannerText"),tag=document.getElementById("roiTag");
+      if(banner)banner.dataset.state="blank";
+      if(bannerText)bannerText.innerHTML="<strong>Calculator cleared.</strong> Enter your project assumptions to begin a new estimate.";
+      if(tag)tag.textContent="Blank estimate";
+    }
     resetBtn.focus();
   });
 }
@@ -7401,9 +7419,9 @@ function reportAssumptions(taxOn){
   var MONEY={capex:1,setup:1,training:1,disruption:1,maintenance:1,software:1,consumables:1,quality:1,overtime:1,throughput:1,avoided:1,other:1,residual:1};
   var PCT={realize:1,esc:1,uptime:1,ramp:1,disc:1,taxrate:1};
   var groups=[
-    {title:"Investment and ownership costs",rows:[["capex","Cell and installation cost"],["setup","Tooling, fixtures and integration (one-time)"],["training","Training and changeover (one-time)"],["disruption","Production loss during install"],["maintenance","Annual maintenance and repairs"],["software","Annual software and licenses"],["consumables","Annual tooling, consumables and other operating costs"],["supp","Annual support, from year two"]]},
-    {title:"Labor and staffing",rows:[["ops","Operators affected per shift"],["shifts","Shifts per day"],["hps","Hours per shift"],["days","Operating days per year"],["rate","Burdened labor rate"],["esc","Yearly wage growth"],["realize","Share of labor value captured"]]},
-    {title:"Performance and annual benefits",rows:[["uptime","System uptime"],["ramp","Year-one ramp-up"],["quality","Scrap and rework reduction"],["overtime","Overtime and temporary labor reduction"],["throughput","Value of added capacity or speed"],["avoided","Avoided future hires or vacancies"],["other","Other annual benefits"]]},
+    {title:"Investment and ownership costs",rows:[["capex","Cell and installation cost"],["setup","Tooling, fixtures and integration (one-time)"],["training","Training and changeover (one-time)"],["disruption","Production loss during install"],["maintenance","Annual maintenance and repairs"],["software","Annual software and licenses"],["consumables","Annual tooling, consumables and other operating costs"],["supp","Annual support after first 12 production months"]]},
+    {title:"Labor and staffing",rows:[["ops","Operator assignments per shift"],["shifts","Shifts per day"],["hps","Hours per shift"],["days","Operating days per year"],["rate","Burdened labor rate"],["esc","Yearly wage growth"],["realize","Share of labor value captured"]]},
+    {title:"Performance and annual benefits",rows:[["uptime","System availability"],["ramp","Ramp during first 12 months of production"],["quality","Scrap and rework reduction"],["overtime","Overtime and temporary labor reduction"],["throughput","Value of added capacity or speed"],["avoided","Avoided future hires or vacancies"],["other","Other annual benefits"]]},
     {title:"Financial settings",rows:[["disc","Discount rate"],["yrs","Analysis period"],["lag","Months until benefits start"],["residual","Residual value at end of period"],["tax","Income tax effects"],["taxrate","Tax rate"],["dep","Depreciation period (straight-line, cell cost only)"]]}
   ];
   var html="";
@@ -7472,9 +7490,9 @@ function printReport(){
     kpi("Total investment",money(r.initial,true),"Cell, tooling, training and install disruption")+
     kpi("Simple payback",payLabel(r.pay,r.N),"Time to recover the investment from net cash flow")+
     kpi(taxOn?"NPV (after tax)":"Net present value",money(r.npv,true),"Present value of modeled cash flows at a "+disc+"% discount rate")+
-    kpi(taxOn?"IRR (after tax)":"Internal rate of return",irrTxt,"Modeled annualized return over the analysis period.");
+    kpi(taxOn?"IRR (after tax)":"Internal rate of return",irrTxt,"Modeled annualized return over the analysis period; shown only when the cash-flow pattern supports a single conventional IRR.");
   var secondary=
-    kpi((taxOn?"After-tax net gain, ":"Net gain, ")+r.N+" years",money(r.net,true),"Cumulative cash after recovering the investment","sm")+
+    kpi((taxOn?"Cumulative net cash flow (after tax), ":"Cumulative net cash flow, ")+r.N+" years",money(r.net,true),"Total modeled inflows less the initial investment and modeled costs","sm")+
     kpi("Annual benefits at full run rate",money(r.run,true),"Today’s dollars, before costs"+(taxOn?" and tax":""),"sm")+
     kpi("Net annual benefit at run rate",money(dl.preNet,true),"Benefits less operating costs and support"+(taxOn?" (pre-tax)":""),"sm");
   // investment composition
@@ -7495,7 +7513,7 @@ function printReport(){
   var sRows="";
   streams.forEach(function(s){if(s[1]>0) sRows+='<tr><td>'+escHTML(s[0])+'</td><td>'+escHTML(money(s[1],true))+'</td></tr>';});
   sRows+='<tr class="sub"><td>Annual benefits at full run rate</td><td>'+escHTML(money(r.run,true))+'</td></tr>';
-  [["Maintenance and repairs",r.maintenance],["Software and licenses",r.software],["Tooling, consumables and other operating",r.consumables],["Support (from year two)",r.annualSupport]].forEach(function(c){
+  [["Maintenance and repairs",r.maintenance],["Software and licenses",r.software],["Tooling, consumables and other operating",r.consumables],["Support (after first 12 production months)",r.annualSupport]].forEach(function(c){
     if(c[1]>0) sRows+='<tr><td>'+escHTML(c[0])+'</td><td>'+escHTML(money(-c[1],true))+'</td></tr>';
   });
   sRows+='<tr class="tot"><td>Net annual benefit at run rate'+(taxOn?" (pre-tax)":"")+'</td><td>'+escHTML(money(dl.preNet,true))+'</td></tr>';
@@ -7508,14 +7526,14 @@ function printReport(){
       kpi("Net benefit forgone per month of delay",money(dl.netMo,true),"Run-rate net benefit ÷ 12"+(taxOn?", after tax":""),"sm")+
       kpi("Net benefit forgone per year of delay",money(dl.netYr,true),"Benefits less operating costs and support","sm")+
       kpi("Value lost by a 12-month deferral",dl.pvLoss===null?"n/a":money(dl.pvLoss,true),dl.pvLoss===null?"NPV is not positive":"Reduction in NPV if the whole project slips a year","sm")+'</div>'+
-      '<p>Operating costs and labor continue while the process stays as it is. Each month the project is not running forgoes roughly the net benefit shown above. These figures are context for timing; they are <strong>not</strong> added into NPV, IRR, payback or the cash-flow table.</p>';
+      '<p>The estimate represents modeled automation benefits forgone while implementation is deferred. It does not assume the proposed system’s operating costs are incurred before production begins. These figures are context for timing; they are <strong>not</strong> added into NPV, IRR, payback or the cash-flow table.</p>';
   }
   var ctx=reportContext();
   var contextSec=ctx?'<section class="sec"><h2>Project context</h2><div class="notes">'+ctx+'</div></section>':'';
   var taxNote=(taxOn
-    ?'<p><strong>Tax basis.</strong> NPV, IRR, net cash flow and payback use a simplified after-tax model. Income tax is applied to operating cash flow; the depreciation tax shield is the tax rate times straight-line depreciation of cell and installation cost only (not tooling, training or disruption). Residual value is reduced by the tax rate; gain or loss detail is not modeled. Confirm tax treatment with your tax advisor.</p>'
+    ?'<p><strong>Tax basis.</strong> NPV, IRR, net cash flow and payback use a simplified after-tax estimate. The model applies tax only to positive operating cash flow and limits the modeled depreciation benefit to available positive operating cash flow. Straight-line depreciation is applied to cell cost only, beginning when modeled production starts. At the end of the analysis period, tax is applied to residual proceeds above the remaining modeled tax basis; no tax benefit is assumed for a disposal loss or unused tax deductions. Actual tax treatment, depreciation methods, asset classifications and loss utilization can differ. Confirm with your finance team or tax adviser.</p>'
     :'<p><strong>Tax basis.</strong> This analysis presents results on a pre-tax basis; income tax impacts are not included.</p>')+
-    '<p><strong>Timing.</strong> Benefits begin after a '+escHTML(String(r.lagM))+'-month lag and the year-one ramp applies to the first year with live benefits. Operating costs are charged for the full year from year one; support is charged from year two as a percent of cell cost. Payback excludes residual value.</p>';
+    '<p><strong>Timing.</strong> Benefits begin after a '+escHTML(String(r.lagM))+'-month lag. The ramp assumption applies during the first 12 months after production begins, then modeled benefits reach full run rate. Maintenance, software, consumables and other operating costs are prorated from production start; annual support begins after the first 12 months of production. Cash flows are presented by calendar year, with annual flows discounted at year-end. Payback excludes residual value.</p>';
   var css='@import url("https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100,800;112,700&family=Source+Sans+3:wght@400;600&display=swap");'+
   ':root{--ink:#0e1419;--blue:#476a95;--blued:#304d68;--cu:#8a5440;--sand:#d8a991;--warm:#f5f2ed;--soft:#faf8f5;--line:#ece7e1;--mut:#655f5a}'+
   '*{box-sizing:border-box}html{-webkit-print-color-adjust:exact;print-color-adjust:exact}'+
@@ -7737,22 +7755,22 @@ show(0,false);
 (function(){
   var help={
     capex:{title:'Your IME quote — cell and installation cost',what:'Enter the total cell and installation price from your IME quote.',how:'Use the quoted amount for the automation system as IME has scoped it for your facility. This may include the robot, equipment, controls, guarding, engineering, installation and commissioning when those items are included in the IME quote. Put additional one-time items in the separate fields below only when they are outside the quoted price.',example:'If your IME quote lists the cell and installation at $850,000, enter $850,000 here. Do not add items already included in that quote again under tooling or integration.',tip:'Use the total from your IME quote. If the quote separates optional items or excludes scope, follow the quote breakdown and avoid double counting.'},
-    supp:{title:'Annual support cost after year one',what:'This estimates ongoing IME or supplier support as a percentage of the cell cost, beginning in year two.',how:'Enter the expected annual support agreement or service allowance as a percentage. This model calculates it from the cell cost, not from every one-time cost.',example:'If the cell cost is $850,000 and support is estimated at 3%, the model deducts about $25,500 per year starting in year two.',tip:'If support is already covered in your maintenance figure or quote, avoid counting the same cost twice.'},
+    supp:{title:'Annual support after first 12 production months',what:'This estimates ongoing IME or supplier support as a percentage of the cell cost, beginning after the first 12 months of production.',how:'Enter the expected annual support agreement or service allowance as a percentage. This model calculates it from the cell cost, not from every one-time cost.',example:'If the cell cost is $850,000 and support is estimated at 3%, the model deducts about $25,500 per year starting after the first 12 months of production.',tip:'If support is already covered in your maintenance figure or quote, avoid counting the same cost twice.'},
     setup:{title:'One-time tooling, fixtures and integration',what:'Captures one-time costs needed to make the automation work with your actual product and process that are not already included in the cell price.',how:'Include special grippers, fixtures, tooling, line interfaces, custom integration, or ancillary equipment. Enter zero if these costs are already included in the cell cost.',example:'A $12,000 custom fixture and $8,000 line interface not included in the quote would mean $20,000 here.',tip:'Check the scope of supply before adding this amount.'},
     training:{title:'Training and changeover',what:'Estimates one-time costs to train employees and transition the process to the new system.',how:'Consider employee training time, backfill or overtime during training, procedure development, and the cost of switching from the old process. Do not include the same lost production here and in disruption.',example:'If training and backfill are expected to cost $6,000, enter $6,000.',tip:'Include internal labor only if it creates a real incremental cost or meaningful opportunity cost for your business case.'},
     disruption:{title:'Production disruption / transition cost',what:'Estimates the financial impact of downtime or reduced output while the new system is installed, tested, and brought up to speed.',how:'Use a realistic estimate based on planned shutdown hours, lost contribution margin, temporary workarounds, or other incremental transition expenses. Avoid counting the same impact under training.',example:'If a planned cutover is expected to cause $15,000 of lost contribution margin and extra costs, enter $15,000.',tip:'Ask operations how the cutover will affect production and how much recovery time is needed.'},
     maintenance:{title:'Annual maintenance and repairs',what:'Estimates yearly costs for preventive maintenance, spare parts, repairs, and service not included in the support percentage above.',how:'Use a maintenance plan, supplier estimate, or comparable equipment history. Include only costs expected to be additional after the automation is in production.',example:'If spare parts and planned maintenance are budgeted at $9,000 per year, enter $9,000.',tip:'Check whether your support agreement includes parts or service so you do not double count.'},
     software:{title:'Annual software and licenses',what:'Captures recurring software, subscriptions, license, or connectivity costs required to operate the system.',how:'Include only recurring costs not already included in the cell price or support agreement.',example:'A required $1,200 annual license is entered as $1,200.',tip:'If there are no recurring software charges, leave this at zero.'},
     consumables:{title:'Annual tooling, consumables and other operating costs',what:'Estimates the extra yearly cost of items consumed or replaced because the process is automated.',how:'Consider gripper wear items, welding consumables, filters, adhesives, tooling inserts, or other process-specific supplies. Enter only the incremental cost versus today.',example:'If the new process uses $4,000 more in annual consumables than the current process, enter $4,000.',tip:'Use the difference versus the current process, not the total cost of supplies you already buy.'},
-    ops:{title:'Operators affected per shift',what:'The number of operator positions that the automated process could reduce, avoid, or redeploy on each shift.',how:'Enter the number of people whose work is directly affected — not everyone in the department. You can use fractions for partial roles, but make sure the staffing assumption is realistic.',example:'If automation changes the workload of two full-time positions and half of another, enter 2.5.',tip:'This is theoretical labor value. Use the “Labor savings realistically captured” field to reflect how much becomes a real financial benefit.'},
+    ops:{title:'People assigned to this process per shift',what:'The number of people, or equivalent portions of their time, dedicated to this specific process on one shift.',how:'Count only the time spent on this process, not the person’s entire role if they split time across activities. Use fractions for shared roles.',example:'If two people spend a full shift on the process and another spends half a shift, enter 2.5.',tip:'This estimates labor capacity associated with the process. It does not assume positions will be eliminated. The labor-value capture percentage should reflect the portion that becomes a measurable financial benefit.'},
     shifts:{title:'Shifts per day',what:'How many shifts each operating day run the process that the automation will affect.',how:'Select the number of shifts that actually use this process. More shifts generally mean more labor-hours potentially affected.',example:'If the line runs two 8-hour shifts each weekday, select 2 shifts.',tip:'Do not select three shifts just because the facility is open around the clock; use the schedule for this specific process.'},
     hps:{title:'Hours per shift',what:'The scheduled hours in each shift for the process being automated.',how:'Use paid or scheduled hours that correspond to the labor rate you enter. If breaks are unpaid or the process is not staffed for the entire shift, use a realistic average.',example:'A standard 8-hour shift is entered as 8.',tip:'Keep this consistent with your operator count and burdened hourly rate.'},
     days:{title:'Operating days per year',what:'The number of days each year this process is expected to operate.',how:'Use the actual production calendar, not simply 365 days. Account for weekends, holidays, planned shutdowns, and seasonal operation.',example:'A facility that runs five days per week for about 50 weeks would use roughly 250 days.',tip:'If production is seasonal, use a realistic annual average.'},
     rate:{title:'Burdened labor rate',what:'The hourly cost of employing one person, beyond just the take-home wage.',how:'Include wages plus employer-paid payroll taxes, benefits, insurance, retirement contributions, and other labor burden that your finance team recognizes. Do not include costs that would remain unchanged regardless of automation.',example:'If wages are $30/hour and benefits and payroll burden add an estimated $12/hour, enter $42/hour.',tip:'Ask HR or finance for a standard fully burdened rate. Avoid using a billable rate or customer selling price.'},
     esc:{title:'Yearly wage growth',what:'The assumed annual increase in labor cost over the analysis period.',how:'Use a reasonable planning estimate based on wage reviews, labor market pressure, and benefits trends. The model applies this growth to labor savings, not to every other benefit.',example:'A 3% assumption means a $100,000 labor value grows to about $103,000 in year two.',tip:'Use a conservative assumption and confirm it with finance; higher wage growth can make future labor savings look larger.'},
     realize:{title:'Labor savings realistically captured',what:'The share of the calculated labor value that you believe will turn into a real business benefit.',how:'This is one of the most important assumptions. Use 100% only when the full cost is expected to disappear or be avoided. If employees will be reassigned, count only measurable value from productive work, avoided hiring, overtime reduction, or other documented outcomes.',example:'If theoretical labor value is $200,000 per year but you expect to capture about $100,000 through avoided hires and overtime, enter 50%.',tip:'Do not claim payroll savings if staffing will not change and redeployed employees will not create measurable additional value.'},
-    uptime:{title:'System uptime',what:'The percentage of scheduled production time that the automated system is available to run.',how:'Estimate availability after normal stoppages, faults, recovery, and planned downtime. Do not use the best-case number from a demonstration unless it reflects real production conditions.',example:'95% uptime means the system is available for production for about 95 out of every 100 scheduled hours.',tip:'If you are uncertain, model a conservative number and validate it with the integrator and operations team.'},
-    ramp:{title:'Year-one ramp-up',what:'How much of the expected benefit you think you will achieve during the first year while the team learns and the process stabilizes.',how:'This accounts for startup, operator training, recipe or product tuning, and gradual acceptance. It applies to all annual benefits in the first year with live benefits (year one, unless your start-up lag is 12 months or more).',example:'80% means the model assumes year-one benefits are 80% of the normal full-year level; later years use the full modeled level.',tip:'Ramp-up is different from uptime: uptime is availability once running, while ramp-up reflects how quickly the operation reaches its expected performance.'},
+    uptime:{title:'System availability',what:'The percentage of scheduled production time that the automated system is available to run.',how:'Estimate availability after normal stoppages, faults, recovery, and planned downtime. Do not use the best-case number from a demonstration unless it reflects real production conditions.',example:'95% availability means the system is ready to run for about 95 out of every 100 scheduled production hours.',tip:'If you are uncertain, model a conservative number and validate it with the integrator and operations team.'},
+    ramp:{title:'Ramp during the first 12 months of production',what:'The average share of full annual benefit expected during the first 12 months after the system begins producing.',how:'This accounts for startup, operator training, recipe or product tuning, and gradual acceptance. The selected percentage applies during the first 12 months after production begins, even when that period crosses calendar years.',example:'80% means the model uses 80% of full run-rate benefits during the first 12 operating months, then 100% after that.',tip:'Ramp-up is different from availability: availability measures whether the system is ready to run; ramp-up reflects how quickly the operation reaches its expected performance.'},
     quality:{title:'Annual scrap & rework reduction',what:'The yearly financial value of reducing scrap, rework, defects, returns, or quality-related labor.',how:'Enter the cost you reasonably expect to avoid — not the sales value of good product. Include material, rework labor, disposal, or verified quality costs only once.',example:'If documented scrap and rework costs are $40,000 per year and automation is expected to reduce them by 25%, the estimated benefit is $10,000.',tip:'Base this on defect history or a quality estimate, and avoid overlap with throughput or other benefits.'},
     overtime:{title:'Overtime / temporary labor reduction',what:'The annual cost avoided by reducing overtime, agency labor, or temporary staffing.',how:'Use actual current spending and estimate the portion automation can realistically eliminate. This should not duplicate regular labor savings above.',example:'If overtime costs $30,000 per year and the system is expected to reduce it by one-third, enter $10,000.',tip:'Use incremental overtime premiums and temporary labor costs you expect to avoid — not the same hours already counted as operators affected.'},
     throughput:{title:'Annual value of additional capacity / speed',what:'The annual financial value created when automation lets the process make more good units, run faster, reduce a bottleneck, or fulfill more demand with the same production resources.',how:'You can estimate this in either of two ways: (1) enter the annual contribution margin from additional units you realistically expect to sell, calculated as extra units sold × contribution margin per unit (selling price minus variable costs); or (2) enter a documented annual cost avoided because the faster process prevents overtime, an extra shift, outside processing, or another specific expense. Do not use gross revenue or count the same benefit in overtime reduction, avoided hires, labor savings, or another field.',example:'If automation enables 10,000 additional units to be sold each year and each contributes $3 after variable costs, enter $30,000. If the extra capacity has no likely demand and avoids no specific cost, do not assign it a cash value yet.',tip:'The machine may create capacity without immediately creating profit. Confirm demand, material availability, downstream capacity, and the likely financial outcome with operations and sales. Use conservative estimates and avoid double counting.'},
@@ -7768,8 +7786,8 @@ show(0,false);
     tax:{title:'Include income tax effects',what:'Turns on a simplified estimate of how income taxes and depreciation might affect modeled cash flow.',how:'Only select this if you have a reasonable tax-rate assumption and understand that the model uses a simplified straight-line depreciation treatment.',example:'When enabled, the model applies the entered tax rate to modeled operating cash flow and includes a depreciation tax shield during the selected depreciation period.',tip:'This is not tax advice or a tax schedule. Ask your finance lead or tax adviser to validate eligibility, depreciation rules, and actual tax effects.'},
     taxrate:{title:'Tax rate',what:'The assumed effective tax rate used in the optional simplified tax calculation.',how:'Use the rate finance recommends for this specific capital analysis. The company’s actual tax situation may differ from a headline statutory rate.',example:'A 25% assumption means the simplified model applies 25% to the modeled taxable operating amount.',tip:'Leave tax effects turned off if you cannot validate this assumption; pre-tax results can still support an initial discussion.'},
     dep:{title:'Depreciation period',what:'The number of years over which the model spreads the cell cost for its simplified depreciation tax-shield estimate.',how:'Enter the depreciation period finance says is appropriate for this asset class. The model assumes straight-line depreciation and uses the cell cost field, not every additional project cost.',example:'A 7-year period spreads the eligible modeled cell cost evenly over seven years.',tip:'Actual tax depreciation may use different rules, timing, or asset classifications. Confirm with finance before relying on after-tax results.'},
-    lag:{title:'Months until benefits start',what:'How long after the investment until the cell is producing the modeled benefits — typically from install through prove-out to stable production.',how:'Use a realistic schedule for your project. IME often has customers producing shortly after install; three months is a practical default for planning. Use a longer lag only if engineering, integration, or customer readiness will stretch start-up.',example:'A 3-month lag means the first calendar year counts about three-quarters of a year of benefits (before the separate year-one ramp factor).',tip:'Match this to the real install and handoff plan. Zero lag overstates year-one returns; an overly long lag understates them.'},
-    residual:{title:'Residual / salvage value',what:'An optional estimate of what the cell is worth (or what book value remains) at the end of the analysis period.',how:'Enter zero unless finance wants a residual in the horizon. If used, treat it as a planning placeholder — not a guaranteed resale price.',example:'A $50,000 residual at year 7 is added as an end-of-period cash inflow in the model (reduced by your tax rate when tax effects are on).',tip:'Many internal cases set residual to zero to stay conservative. Confirm with finance if your policy requires a terminal value.'}
+    lag:{title:'Months until benefits start',what:'How long after the investment until the cell is producing the modeled benefits — typically from install through prove-out to stable production.',how:'Use a realistic schedule for your project. IME often has customers producing shortly after install; three months is a practical default for planning. Use a longer lag only if engineering, integration, or customer readiness will stretch start-up.',example:'A 3-month lag means benefits are counted for nine months of the first calendar year, with the ramp assumption applied during the first 12 months of production.',tip:'Match this to the real install and handoff plan. Zero lag overstates year-one returns; an overly long lag understates them.'},
+    residual:{title:'Residual / salvage value',what:'An optional estimate of what the cell is worth (or what book value remains) at the end of the analysis period.',how:'Enter zero unless finance wants a residual in the horizon. If used, treat it as a planning placeholder — not a guaranteed resale price.',example:'A $50,000 residual at year 7 is added as an end-of-period cash inflow. In the simplified tax view, tax is applied only to proceeds above the remaining modeled tax basis.',tip:'Many internal cases set residual to zero to stay conservative. Confirm with finance if your policy requires a terminal value.'}
   };
   var labels={};
   Object.keys(help).forEach(function(id){
@@ -7813,9 +7831,9 @@ show(0,false);
   dlg.innerHTML='<div class="roi-help-head"><div><span class="roi-help-kicker">ROI guide</span><h3 id="roiRangeTitle">How payback is rated</h3></div><button type="button" class="roi-help-close" aria-label="Close">Close</button></div>'+
   '<div class="roi-help-body"><p class="roi-help-intro">The label above your payback result is a quick guide based on simple payback, the time for cumulative savings to cover the full investment.</p>'+
   '<ul class="roi-range-list">'+
-  '<li data-k="fast"><b>Strong payback window</b><span>1.75 years or less</span></li>'+
-  '<li data-k="mid"><b>Solid capital case</b><span>1.75 to 3 years</span></li>'+
-  '<li data-k="long"><b>Long-term investment</b><span data-r="long">3 to 7 years</span></li>'+
+  '<li data-k="fast"><b>Shorter payback period</b><span>1.75 years or less</span></li>'+
+  '<li data-k="mid"><b>Intermediate payback period</b><span>1.75 to 3 years</span></li>'+
+  '<li data-k="long"><b>Longer payback period</b><span data-r="long">3 to 7 years</span></li>'+
   '<li data-k="slow"><b data-r="slowb">Over 7 years</b><span>Outside the analysis period</span></li></ul>'+
   '<p class="roi-help-tip"><strong>Every company is different.</strong> Acceptable payback depends on your margins, cost of capital and how strategic the project is. Some companies approve projects at 4 to 5 years, others want under 2. Use this as a guide, not a pass or fail.</p></div>';
   document.body.appendChild(dlg);
@@ -8340,7 +8358,44 @@ document.querySelectorAll(".start-step").forEach(function(c){c.addEventListener(
   line-height:1.45;
   color:var(--ink);
 }
-.roi-labor-echo strong{font-weight:700}
+ .roi-labor-echo strong{font-weight:700}
+/* v496 — ROI bridge: editorial handoff from quick estimate → full business case (no alert box) */
+.roi-bridge{
+  margin:22px 0 6px;
+  padding:20px 0 4px;
+  border-top:1px solid var(--line,#dcd8d3);
+  max-width:54em;
+}
+.roi-bridge-kicker{
+  margin:0 0 8px;
+  font:800 11px/1 Archivo,sans-serif;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  color:#8a5440;
+}
+.roi-bridge-title{
+  margin:0 0 10px;
+  font:800 clamp(20px,2.2vw,26px)/1.15 Archivo,sans-serif;
+  letter-spacing:-.025em;
+  color:var(--ink,#231f20);
+}
+.roi-bridge-body{
+  margin:0;
+  font-size:15px;
+  line-height:1.55;
+  color:var(--mut,#5b5754);
+  max-width:52em;
+}
+.roi-bridge-body strong{
+  display:block;
+  margin:0 0 4px;
+  color:var(--ink,#231f20);
+  font:700 16px/1.35 Archivo,sans-serif;
+}
+@media(max-width:560px){
+  .roi-bridge{margin-top:18px;padding-top:16px}
+  .roi-bridge-title{font-size:19px}
+}
 .roi-drivers{
   display:grid;
   grid-template-columns:repeat(3,1fr);
@@ -10720,6 +10775,8 @@ sliders.forEach(function(p){p[1].value=p[0].value});paint();window.roiLeadUpdate
 })();
 </script>
 
+<!-- v495: ROI Q03 (shifts) help text added to match Q02 — notes 8-hour shift default and points to Fine-tune the schedule and assumptions. Built from v494. -->
+<!-- v496: ROI approval callout restyled as editorial bridge (copper kicker + heading + body, no blue box) to match site language. Built from v495. -->
 </body>
 </html>
 
@@ -10917,3 +10974,33 @@ sliders.forEach(function(p){p[1].value=p[0].value});paint();window.roiLeadUpdate
 @media(max-width:700px){#roi .roi-in .roi-field-help{font-size:12px}#roi .roi-in .roi-input-group-title{margin-top:12px}}
 @media(prefers-reduced-motion:reduce){#roi .roi-in .roi-chevron{transition:none!important}}
 </style>
+
+<style id="ime-v494-roi-parallel-inputs">
+/* v494 — align the paired quick-payback inputs without changing calculator behavior. */
+#roi .roi-quick > .two{
+  align-items:stretch;
+}
+#roi .roi-quick > .two > .roi-core{
+  display:grid;
+  grid-template-rows:minmax(3.75em,auto) minmax(4.35em,auto) auto;
+  align-content:start;
+  min-width:0;
+}
+#roi .roi-quick > .two > .roi-core .roi-q-meta{
+  min-height:3.75em;
+  align-items:flex-start;
+}
+#roi .roi-quick > .two > .roi-core .roi-qhelp{
+  min-height:4.35em;
+}
+@media(max-width:900px){
+  #roi .roi-quick > .two > .roi-core{
+    grid-template-rows:none;
+  }
+  #roi .roi-quick > .two > .roi-core .roi-q-meta,
+  #roi .roi-quick > .two > .roi-core .roi-qhelp{
+    min-height:0;
+  }
+}
+</style>
+
