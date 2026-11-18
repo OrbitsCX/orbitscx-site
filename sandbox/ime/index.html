@@ -3361,6 +3361,26 @@ header nav a{
 .roi-chip small{font:400 13px "Source Sans 3",sans-serif;color:var(--mut)}
 .roi-chip:hover,.roi-chip[aria-pressed=true]{border-color:var(--blue);background:var(--wash)}
 .roi-chip:focus-visible{outline:3px solid var(--blue);outline-offset:2px}
+
+/* ROI four-question clarity */
+.roi-quick-lead{margin:0 0 14px;font-size:15px;line-height:1.5;color:var(--mut);max-width:48em}
+.roi-q-meta{display:flex;align-items:baseline;gap:10px;margin:0 0 6px}
+.roi-qnum{flex:none;font:800 13px/1 Archivo,sans-serif;letter-spacing:.08em;color:var(--sand,#a9705a);min-width:1.6em}
+.roi-qtitle{font:700 16px/1.25 Archivo,sans-serif;color:var(--ink);letter-spacing:-.01em}
+.roi-qhelp{display:block;margin:0 0 8px;font-size:13px;line-height:1.45;color:var(--mut);font-weight:400}
+.roi-core{display:grid;gap:0}
+.roi-core .u,.roi-core>input,.roi-core>select{margin-top:2px}
+.roi-chips{margin:4px 0 8px 0;padding:12px 14px;border:1px dashed rgba(169,112,90,.35);background:linear-gradient(180deg,#fbf8f5,#fff)}
+.roi-chips-l{flex:0 0 100%;font-size:14px;color:var(--ink);font-weight:600}
+.roi-chips-note{font-weight:400;color:var(--mut)}
+.roi-chip[aria-pressed=true]{border-color:var(--sand,#a9705a)!important;background:#f7efe9!important;box-shadow:inset 3px 0 0 var(--sand,#a9705a)}
+.roi-chip-hint{margin:0 0 12px;padding:8px 12px;border-left:3px solid var(--sand,#a9705a);background:#f7f4f0;font-size:14px;color:var(--ink);font-weight:600}
+.roi-chip-hint[hidden]{display:none!important}
+.roi-progress{display:inline-block;margin-left:.35em;padding:2px 8px;border-radius:999px;background:rgba(35,31,32,.06);font:700 12px/1.4 Archivo,sans-serif;letter-spacing:.04em;color:var(--blue-d);vertical-align:middle}
+.roi-banner[data-state=yours] .roi-progress{background:rgba(47,125,87,.12);color:#2f7d57}
+.roi-core[data-q] .roi-qnum{color:var(--sand,#a9705a)}
+.roi-core.done .roi-qnum{color:#2f7d57}
+
 .roi-slider{width:100%;padding:0;border:0;background:transparent;accent-color:var(--blue);margin:-6px 0 0;height:28px}
 .roi-in .roi-section-more>fieldset+fieldset{border-top:1px solid var(--line)}
 .roi-in .roi-section-more .roi-input-group-title{margin:0}
@@ -6355,22 +6375,21 @@ header nav.ime-nav .nv-phone:focus-visible{
 <div class="section-head-major">
 <span class="section-kicker">ROI &amp; BUSINESS CASE</span>
 <h2>Build the business case for automation</h2>
-<p>Answer four quick questions to see your estimated payback. Want more precision? Open the optional sections, then download a branded report to share with your team.</p>
+<p>Answer four questions to see your estimated payback live on the right. Want more precision? Open the optional sections below, then download a branded report to share with your team.</p>
 </div>
 </div>
 <div class="roi">
 <div class="roi-in">
 <div class="roi-reset-row"><button class="roi-reset" id="roiRestore" type="button" aria-label="Restore the original ROI planning values">Restore defaults</button><button class="roi-reset" id="roiReset" type="button" aria-label="Clear all ROI calculator fields">Clear all fields</button></div>
-<div class="roi-banner" id="roiBanner" data-state="example"><span id="roiBannerText"><strong>Showing example numbers.</strong> Change the four highlighted fields to make it yours.</span><button class="roi-reset" id="roiRestore" type="button" aria-label="Start over with the example numbers">Start over</button></div>
-<fieldset class="roi-quick"><legend>Four quick questions</legend>
-<label class="roi-core">Project cost (your IME quote)<span class="u"><i>$</i><input id="capex" type="text" inputmode="numeric" autocomplete="off" data-money value="850,000"/></span></label>
-<div class="roi-chips" role="group" aria-label="Typical project sizes"><span class="roi-chips-l">No quote yet? Start with a typical size (placeholders; your quote replaces them):</span>
-<button type="button" class="roi-chip" data-v="250000">Compact cell<small>$250,000</small></button><button type="button" class="roi-chip" data-v="500000">Mid-size cell<small>$500,000</small></button><button type="button" class="roi-chip" data-v="850000">Full cell<small>$850,000</small></button><button type="button" class="roi-chip" data-v="1500000">Multi-cell<small>$1,500,000</small></button></div>
+<div class="roi-banner" id="roiBanner" data-state="example"><span id="roiBannerText"><strong>Showing example numbers.</strong> Answer the four questions below to make them yours.</span></div>
+<fieldset class="roi-quick"><legend>Four answers → live payback</legend>
+<p class="roi-quick-lead">Start with these four. Results update as you go. Everything below is optional detail.</p>
+<label class="roi-core" data-q="1"><span class="roi-q-meta"><span class="roi-qnum" aria-hidden="true">01</span><span class="roi-qtitle">What is the project cost?</span></span><span class="roi-qhelp">Enter your IME quote total, or a planning figure if you don’t have a quote yet.</span><span class="u"><i>$</i><input id="capex" type="text" inputmode="numeric" autocomplete="off" data-money value="850,000"/></span></label>
 <div class="two">
-<label class="roi-core">People doing this work, per shift<input id="ops" min="0" step="0.5" type="number" value="3"/></label>
-<label class="roi-core">Shifts per day<select id="shifts"><option value="1">1 shift</option><option selected="" value="2">2 shifts</option><option value="3">3 shifts</option></select></label>
+<label class="roi-core" data-q="2"><span class="roi-q-meta"><span class="roi-qnum" aria-hidden="true">02</span><span class="roi-qtitle">How many people do this work on one shift?</span></span><input id="ops" min="0" step="0.5" type="number" value="3"/></label>
+<label class="roi-core" data-q="3"><span class="roi-q-meta"><span class="roi-qnum" aria-hidden="true">03</span><span class="roi-qtitle">How many shifts run per day?</span></span><select id="shifts"><option value="1">1 shift</option><option selected="" value="2">2 shifts</option><option value="3">3 shifts</option></select></label>
 </div>
-<label class="roi-core">Hourly cost per worker (wages + benefits)<span class="u"><i>$/hr</i><input id="rate" min="0" step="1" type="number" value="42"/></span></label>
+<label class="roi-core" data-q="4"><span class="roi-q-meta"><span class="roi-qnum" aria-hidden="true">04</span><span class="roi-qtitle">What is the fully burdened hourly cost per worker?</span></span><span class="roi-qhelp">Wages plus benefits and typical employer burden.</span><span class="u"><i>$/hr</i><input id="rate" min="0" step="1" type="number" value="42"/></span></label>
 <p class="roi-labor-echo" id="laborEcho" aria-live="polite">Enter the details above to see your labor picture.</p>
 <p aria-live="polite" class="fine" hidden="" id="hoursNote" role="status" style="margin:-4px 0 0;color:#7a4a38;font-size:14px"></p>
 </fieldset>
@@ -6431,9 +6450,7 @@ header nav.ime-nav .nv-phone:focus-visible{
 <p class="roi-summary" id="o-summary"></p>
 <div class="roi-actions">
 <button class="btn" id="roiPrint" type="button">View business case report</button>
-<a class="btn ghost" href="#contact">Have an IME engineer pressure-test these numbers</a>
 </div>
-<p class="roi-cta" id="o-cta"></p>
 <details class="roi-section-more roi-full" open><summary><span><strong>See the full analysis</strong><small>NPV, IRR, value drivers, cash-flow chart and sensitivity</small></span><span aria-hidden="true" class="roi-chevron">+</span></summary>
 <div class="roi-full-body">
 <dl class="kpi">
@@ -7328,17 +7345,7 @@ function update(){
       waitEl.innerHTML="<strong>Cost of delay:</strong> At full run rate the project is worth about <strong>"+money(dly.netMo,true)+"</strong> a month ("+money(dly.netYr,true)+" a year) in net benefit"+(r.useTax?" after tax":"")+", so each month of delay forgoes roughly that amount."+(dly.pvLoss!==null?" Pushing the whole project back 12 months would lower its NPV by about <strong>"+money(dly.pvLoss,true)+"</strong>.":"")+" Context for timing only; it is not part of NPV or payback.";
     }
   }
-  // Result-aware next step
-  var cta=$("o-cta");
-  if(cta){
-    if(r.pay!==null&&r.pay<=3&&r.npv>=0){
-      cta.innerHTML="These numbers look supportive on paper. The next step is validating cycle time, volume, and integration on your floor — <a href=\"#contact\">request a site conversation</a> and we will pressure-test every assumption with you.";
-    }else if(r.pay!==null&&r.npv>=0){
-      cta.innerHTML="The case clears a positive NPV over the period, with a longer payback. That can still be the right call for capacity, quality, or staffing strategy — <a href=\"#contact\">talk through scope options</a> if you want a smaller first cell or a phased plan.";
-    }else{
-      cta.innerHTML="Under these inputs the project does not clear a typical capital hurdle. That is useful information: we would rather help you find a tighter scope or a different first step than push a weak case — <a href=\"#contact\">start a conversation</a> and we will say so plainly.";
-    }
-  }
+  var cta=$("o-cta"); if(cta) cta.innerHTML="";
   window.__roiLead={pay:payLabel(r.pay,r.N),net:delayInfo(r).netYr,tax:!!r.useTax};if(window.roiLeadUpdate)window.roiLeadUpdate();
   chart(r); table(r); renderScenarios(r);
 }
@@ -10584,15 +10591,18 @@ html.hero-ready.from-splash .hero-stage .hero-type h1 span:nth-child(3){animatio
   html.from-splash header .bar,html.from-splash .hero-below{animation:none!important}
 }
 </style>
+<!-- v564: ROI calculator clarity — four core inputs as numbered questions; full analysis open by default; removed pressure-test CTA. -->
+<!-- v566: ROI — removed result CTA paragraph (“request a site conversation…”) and banner Start over (Restore/Clear above remain). -->
+<!-- v565: ROI — removed progress counter and no-quote size chips; cost flows to Q2. Conversation CTAs open a contact dialog (no scroll). -->
 <script id="roi-simplify-script">
 (function(){
 var $=function(i){return document.getElementById(i)},root=document.querySelector('#roi .roi-in');if(!root)return;
 var CORE=['capex','ops','shifts','rate'],touched={},anyEdit=false,sliders=[];
 function paint(){
  var n=Object.keys(touched).length,b=$('roiBanner'),t=$('roiBannerText'),g=$('roiTag');
- if(!anyEdit){b.dataset.state='example';t.innerHTML='<strong>Showing example numbers.</strong> Change the four highlighted fields to make it yours.';g.textContent='Example numbers';}
- else if(n<4){b.dataset.state='example';t.innerHTML='<strong>Your numbers: '+n+' of 4 key fields updated.</strong> The rest still use example values.';g.textContent='Partly your numbers';}
- else{b.dataset.state='yours';t.innerHTML='<strong>Based on your inputs.</strong> Open the optional sections below to refine.';g.textContent='Your numbers';}
+ if(!anyEdit){b.dataset.state='example';t.innerHTML='<strong>Showing example numbers.</strong> Answer the four questions below to make them yours.';g.textContent='Example numbers';}
+ else if(n<4){b.dataset.state='example';t.innerHTML='<strong>Your numbers in progress.</strong> A few example values are still in use — finish the four questions to lock it in.';g.textContent='Partly your numbers';}
+ else{b.dataset.state='yours';t.innerHTML='<strong>Based on your answers.</strong> Open the optional sections below to refine.';g.textContent='Your numbers';}
 }
 function mark(id){touched[id]=1;anyEdit=true;var e=$(id),l=e&&e.closest('label');if(l)l.classList.add('done');paint();}
 root.addEventListener('input',function(e){if(!e.isTrusted)return;var t=e.target;if(t.classList.contains('roi-slider'))return;anyEdit=true;if(CORE.indexOf(t.id)>-1)mark(t.id);else paint();});
@@ -10602,11 +10612,8 @@ root.querySelectorAll('[data-money]').forEach(function(el){el.addEventListener('
  var pos=el.selectionStart||0,dig=el.value.slice(0,pos).replace(/\D/g,'').length;fmt(el);
  var p=0,c=0;while(p<el.value.length&&c<dig){if(/\d/.test(el.value[p]))c++;p++}
  try{el.setSelectionRange(p,p)}catch(_){}});});
-var chips=root.querySelectorAll('.roi-chip'),cap=$('capex');
-chips.forEach(function(c){c.setAttribute('aria-pressed','false');c.addEventListener('click',function(){
- cap.value=Number(c.dataset.v).toLocaleString('en-US');cap.dispatchEvent(new Event('input',{bubbles:true}));mark('capex');
- chips.forEach(function(o){o.setAttribute('aria-pressed',o===c?'true':'false')});});});
-cap.addEventListener('input',function(e){if(e.isTrusted)chips.forEach(function(o){o.setAttribute('aria-pressed','false')})});
+var cap=$('capex');
+
 ['uptime','ramp','realize'].forEach(function(id){var n=$(id),l=n&&n.closest('label');if(!l)return;
  var s=document.createElement('input');s.type='range';s.className='roi-slider';s.min=n.min;s.max=n.max;s.step=n.step;s.value=n.value;
  s.setAttribute('aria-label',(l.firstChild.textContent||id).trim()+' (slider)');l.after(s);
@@ -10614,7 +10621,7 @@ cap.addEventListener('input',function(e){if(e.isTrusted)chips.forEach(function(o
  n.addEventListener('input',function(){s.value=n.value});sliders.push([n,s]);});
 window.roiIsEdited=function(){return anyEdit};
 window.roiReset=function(){touched={};anyEdit=false;root.querySelectorAll('.roi-core').forEach(function(l){l.classList.remove('done')});
- chips.forEach(function(o){o.setAttribute('aria-pressed','false')});sliders.forEach(function(p){p[1].value=p[0].value});paint();};
+ sliders.forEach(function(p){p[1].value=p[0].value});paint();};
 function m(v){var a=Math.abs(v),s=v<0?'-':'';return a>=1e6?s+'$'+(a/1e6).toFixed(2)+'M':s+'$'+Math.round(a/1e3).toLocaleString('en-US')+'K';}
 var stick=document.createElement('div');stick.className='roi-stick';stick.id='roiStick';
 stick.innerHTML='<div><small>Estimated payback</small><strong id="roiStickVal">–</strong></div><a class="btn" href="#roiResults">See details</a>';
@@ -10631,6 +10638,88 @@ stick.querySelector('a').addEventListener('click',function(e){e.preventDefault()
 sliders.forEach(function(p){p[1].value=p[0].value});paint();window.roiLeadUpdate();
 })();
 </script>
+
+<!-- v565: ROI — removed progress counter and no-quote size chips; cost flows to Q2. Conversation CTAs open a contact dialog (no scroll). -->
+<style id="v565-roi-contact-dialog">
+.roi-cta button.roi-open-contact{appearance:none;border:0;background:none;padding:0;margin:0;font:inherit;font-weight:700;color:var(--blue-d,#2f4d70);text-decoration:underline;text-underline-offset:3px;cursor:pointer}
+.roi-cta button.roi-open-contact:hover{color:var(--sand,#a9705a)}
+.roi-cta button.roi-open-contact:focus-visible{outline:3px solid var(--blue);outline-offset:3px}
+#roiContactDlg{border:0;padding:0;width:min(520px,94vw);max-height:min(90vh,720px);background:#fff;color:var(--ink,#231f20);box-shadow:0 28px 80px rgba(14,20,25,.35)}
+#roiContactDlg::backdrop{background:rgba(14,20,25,.55);backdrop-filter:blur(2px)}
+#roiContactDlg[open]{animation:roiDlgIn .22s cubic-bezier(.2,.7,.2,1)}
+@keyframes roiDlgIn{from{opacity:0;transform:translateY(10px) scale(.98)}to{opacity:1;transform:none}}
+.roi-dlg-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;padding:18px 18px 14px;border-bottom:1px solid var(--line,#dcd8d3)}
+.roi-dlg-head h3{margin:0;font:800 22px/1.15 Archivo,sans-serif;letter-spacing:-.02em}
+.roi-dlg-head p{margin:6px 0 0;font-size:14px;line-height:1.45;color:var(--mut,#5b5754);max-width:36em}
+.roi-dlg-close{appearance:none;border:2px solid var(--ink,#231f20);background:#fff;color:var(--ink);width:40px;height:40px;flex:none;cursor:pointer;font:800 20px/1 Archivo,sans-serif}
+.roi-dlg-close:hover{background:var(--ink,#231f20);color:#fff}
+.roi-dlg-body{padding:16px 18px 20px;display:grid;gap:14px}
+.roi-dlg-reach{display:grid;gap:8px}
+.roi-dlg-reach a{display:block;font:700 18px/1.3 Archivo,sans-serif;color:var(--ink);text-decoration:none;border-bottom:1px solid transparent;width:fit-content}
+.roi-dlg-reach a.mail{font:600 16px/1.3 "Source Sans 3",sans-serif;color:var(--blue-d,#2f4d70)}
+.roi-dlg-reach a:hover{border-bottom-color:currentColor}
+.roi-dlg-body form{display:grid;gap:12px;margin:0}
+.roi-dlg-body label{display:grid;gap:5px;font-weight:600;font-size:14px}
+.roi-dlg-body input,.roi-dlg-body textarea{font:inherit;padding:10px 12px;border:1px solid #9a948f;background:#fff;color:var(--ink)}
+.roi-dlg-body textarea{min-height:88px;resize:vertical}
+.roi-dlg-body .btn{justify-self:start;cursor:pointer}
+.roi-dlg-note{margin:0;font-size:13px;color:var(--mut,#5b5754);line-height:1.45}
+.roi-dlg-note button.roi-open-contact-full{appearance:none;border:0;background:none;padding:0;font:inherit;font-weight:700;color:var(--blue-d,#2f4d70);text-decoration:underline;text-underline-offset:3px;cursor:pointer}
+@media(prefers-reduced-motion:reduce){#roiContactDlg[open]{animation:none}}
+</style>
+<dialog id="roiContactDlg" aria-labelledby="roiContactTitle">
+  <div class="roi-dlg-head">
+    <div>
+      <h3 id="roiContactTitle">Talk with an engineer</h3>
+      <p>No scroll, no sales pitch. Share a short note or call — we’ll help pressure-test the assumptions.</p>
+    </div>
+    <button type="button" class="roi-dlg-close" id="roiContactClose" aria-label="Close">×</button>
+  </div>
+  <div class="roi-dlg-body">
+    <div class="roi-dlg-reach">
+      <a href="tel:+14354141194">(435) 414-1194</a>
+      <a class="mail" href="mailto:info@imeautomation.com">info@imeautomation.com</a>
+    </div>
+    <form id="roiContactForm" action="mailto:info@imeautomation.com" enctype="text/plain" method="post">
+      <label>Name<input name="Name" autocomplete="name" required></label>
+      <label>Email<input name="Email" type="email" autocomplete="email" required></label>
+      <label>What should we look at?<textarea name="Details" placeholder="A few sentences on the process, volume, or constraint is enough."></textarea></label>
+      <button class="btn" type="submit">Send note</button>
+    </form>
+    <p class="roi-dlg-note">You’ll talk with an engineer, not a call center. Prefer the full contact form on the page? <button type="button" class="roi-open-contact-full" id="roiContactFull">Go to contact section</button></p>
+  </div>
+</dialog>
+<script id="v565-roi-contact-dialog-js">
+(function(){
+  var dlg=document.getElementById('roiContactDlg');
+  if(!dlg) return;
+  function openDlg(e){
+    if(e){e.preventDefault();e.stopPropagation();}
+    if(typeof dlg.showModal==='function') dlg.showModal();
+    else dlg.setAttribute('open','');
+    var first=dlg.querySelector('input,button');
+    if(first) try{first.focus()}catch(_){}
+  }
+  function closeDlg(){
+    if(typeof dlg.close==='function') dlg.close();
+    else dlg.removeAttribute('open');
+  }
+  document.addEventListener('click',function(e){
+    var t=e.target.closest && e.target.closest('.roi-open-contact');
+    if(t){ openDlg(e); }
+  });
+  var closeBtn=document.getElementById('roiContactClose');
+  if(closeBtn) closeBtn.addEventListener('click',closeDlg);
+  dlg.addEventListener('click',function(e){ if(e.target===dlg) closeDlg(); });
+  var full=document.getElementById('roiContactFull');
+  if(full) full.addEventListener('click',function(){
+    closeDlg();
+    var el=document.getElementById('contact');
+    if(el) el.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion:reduce)').matches?'auto':'smooth',block:'start'});
+  });
+})();
+</script>
+
 </body>
 </html>
 
