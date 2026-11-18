@@ -6459,10 +6459,10 @@ header nav.ime-nav .nv-phone:focus-visible{
 <details class="roi-section-more roi-full" open><summary><span><strong>See the full analysis</strong><small>NPV, IRR, value drivers, cash-flow chart and sensitivity</small></span><span aria-hidden="true" class="roi-chevron">+</span></summary>
 <div class="roi-full-body">
 <dl class="kpi">
-<div><dt>Net present value</dt><dd id="o-npv">–</dd></div>
-<div><dt>Internal rate of return</dt><dd id="o-irr">–</dd></div>
-<div><dt>Annual benefits at full run rate</dt><dd id="o-run">–</dd></div>
-<div><dt id="o-nl">Net gain over period</dt><dd id="o-net">–</dd></div>
+<div><dt data-roi-help="outNpv">Net present value</dt><dd id="o-npv">–</dd></div>
+<div><dt data-roi-help="outIrr">Internal rate of return</dt><dd id="o-irr">–</dd></div>
+<div><dt data-roi-help="outRun">Annual benefits at full run rate</dt><dd id="o-run">–</dd></div>
+<div><dt id="o-nl" data-roi-help="outNet">Net gain over period</dt><dd id="o-net">–</dd></div>
 </dl>
 <p class="fine" id="o-basis" style="margin-top:0;margin-bottom:12px"></p>
 <div class="roi-drivers" id="o-drivers" aria-label="What drives the return">
@@ -7796,7 +7796,11 @@ show(0,false);
     taxrate:{title:'Tax rate',what:'The assumed effective tax rate used in the optional simplified tax calculation.',how:'Use the rate finance recommends for this specific capital analysis. The company’s actual tax situation may differ from a headline statutory rate.',example:'A 25% assumption means the simplified model applies 25% to the modeled taxable operating amount.',tip:'Leave tax effects turned off if you cannot validate this assumption; pre-tax results can still support an initial discussion.'},
     dep:{title:'Depreciation period',what:'The number of years over which the model spreads the cell cost for its simplified depreciation tax-shield estimate.',how:'Enter the depreciation period finance says is appropriate for this asset class. The model assumes straight-line depreciation and uses the cell cost field, not every additional project cost.',example:'A 7-year period spreads the eligible modeled cell cost evenly over seven years.',tip:'Actual tax depreciation may use different rules, timing, or asset classifications. Confirm with finance before relying on after-tax results.'},
     lag:{title:'Months until benefits start',what:'How long after the investment until the cell is producing the modeled benefits — typically from install through prove-out to stable production.',how:'Use a realistic schedule for your project. IME often has customers producing shortly after install; three months is a practical default for planning. Use a longer lag only if engineering, integration, or customer readiness will stretch start-up.',example:'A 3-month lag means benefits are counted for nine months of the first calendar year, with the ramp assumption applied during the first 12 months of production.',tip:'Match this to the real install and handoff plan. Zero lag overstates year-one returns; an overly long lag understates them.'},
-    residual:{title:'Residual / salvage value',what:'An optional estimate of what the cell is worth (or what book value remains) at the end of the analysis period.',how:'Enter zero unless finance wants a residual in the horizon. If used, treat it as a planning placeholder — not a guaranteed resale price.',example:'A $50,000 residual at year 7 is added as an end-of-period cash inflow. In the simplified tax view, tax is applied only to proceeds above the remaining modeled tax basis.',tip:'Many internal cases set residual to zero to stay conservative. Confirm with finance if your policy requires a terminal value.'}
+    residual:{title:'Residual / salvage value',what:'An optional estimate of what the cell is worth (or what book value remains) at the end of the analysis period.',how:'Enter zero unless finance wants a residual in the horizon. If used, treat it as a planning placeholder — not a guaranteed resale price.',example:'A $50,000 residual at year 7 is added as an end-of-period cash inflow. In the simplified tax view, tax is applied only to proceeds above the remaining modeled tax basis.',tip:'Many internal cases set residual to zero to stay conservative. Confirm with finance if your policy requires a terminal value.'},
+    outNpv:{kind:'result',title:'Net present value (NPV)',what:'NPV is the value of the project’s modeled cash flows in today’s dollars, after discounting future years at your cost of capital.',how:'A positive NPV means the modeled benefits outweigh the investment and ongoing costs at the discount rate you entered. A negative NPV means the project does not clear that hurdle over the analysis period — even if simple payback looks acceptable.',example:'An NPV of $420,000 means that, in present-value terms, the project adds about $420,000 versus putting the same capital toward a return equal to your discount rate.',tip:'Compare NPV across options only when the analysis period and discount rate are the same. NPV is not the same as total cash put in the bank.'},
+    outIrr:{kind:'result',title:'Internal rate of return (IRR)',what:'IRR is the annualized return the model implies from the project’s cash flows — the discount rate at which NPV would equal zero.',how:'Read IRR next to your company’s hurdle rate or cost of capital. If IRR is higher than that rate, the project clears the bar on a pure financial basis under these assumptions. IRR does not replace payback; it answers a different question.',example:'An IRR of 28% means the project’s cash flows behave like an investment earning about 28% per year over the analysis period.',tip:'IRR can look strong on a small project and weaker on a large strategic one. Use it with NPV and payback, not alone.'},
+    outRun:{kind:'result',title:'Annual benefits at full run rate',what:'This is the ongoing yearly benefit the model expects once the system is past ramp-up and running at the uptime and capture rates you entered.',how:'It combines labor savings and any other benefits you enabled, minus nothing yet for ongoing costs (those appear separately). First-year results are often lower because of ramp-up.',example:'If full-run benefits are $310,000 per year and ramp-up is 80%, the model uses about $248,000 of benefit in the first 12 operating months.',tip:'If this number feels high, check headcount, shifts, wage rate, and the “share of labor savings you expect to keep.”'},
+    outNet:{kind:'result',title:'Net gain over the analysis period',what:'Net gain is the cumulative modeled benefit over the full analysis period after subtracting investment and ongoing costs (before or after tax, depending on your tax toggle).',how:'Use this as a period total, not an annual figure. It answers “how much net value does the model show across all years in scope?” NPV is the discounted cousin of this idea.',example:'A net gain of $1.2M over 7 years means cumulative inflows exceed cumulative outflows by about $1.2M in nominal dollars across that window.',tip:'Because later years are uncertain, pair this with NPV and payback rather than treating the period total as a guarantee.'}
   };
   var labels={};
   Object.keys(help).forEach(function(id){
@@ -7811,6 +7815,18 @@ show(0,false);
     label.insertBefore(btn,target);
     labels[id]=btn;
   });
+  // Output-side metric help (selective: NPV, IRR, run-rate benefits, net gain)
+  document.querySelectorAll('#roi .roi-out [data-roi-help]').forEach(function(dt){
+    var id=dt.getAttribute('data-roi-help');
+    if(!id || !help[id] || dt.querySelector('.roi-help-trigger')) return;
+    var btn=document.createElement('button');
+    btn.type='button'; btn.className='roi-help-trigger roi-help-trigger--result'; btn.textContent='?';
+    btn.setAttribute('aria-label','Help: '+help[id].title);
+    btn.setAttribute('title','Explain '+help[id].title);
+    btn.addEventListener('click',function(e){e.preventDefault();e.stopPropagation();openHelp(help[id]);});
+    dt.appendChild(btn);
+    labels[id]=btn;
+  });
   var dlg=document.createElement('dialog'); dlg.className='roi-help-dialog'; dlg.id='roiHelpDialog';
   dlg.setAttribute('aria-labelledby','roiHelpTitle');
   dlg.innerHTML='<div class="roi-help-head"><div><span class="roi-help-kicker">ROI guide</span><h3 id="roiHelpTitle">About this field</h3></div><button type="button" class="roi-help-close" aria-label="Close help">Close</button></div><div class="roi-help-body" id="roiHelpBody"></div>';
@@ -7820,9 +7836,11 @@ show(0,false);
   function openHelp(item){
     document.getElementById('roiHelpTitle').textContent=item.title;
     var body=document.getElementById('roiHelpBody'); body.textContent='';
-    var intro=document.createElement('p'); intro.className='roi-help-intro'; intro.textContent='A plain-language guide to entering this value.'; body.appendChild(intro);
+    var intro=document.createElement('p'); intro.className='roi-help-intro';
+    intro.textContent=item.kind==='result'?'A plain-language guide to reading this result.':'A plain-language guide to entering this value.';
+    body.appendChild(intro);
     addPara(body,'What it means',item.what);
-    addPara(body,'How to choose a value',item.how);
+    addPara(body,item.kind==='result'?'How to read it':'How to choose a value',item.how);
     if(item.example){var ex=document.createElement('div');ex.className='roi-help-example';var strong=document.createElement('strong');strong.textContent='Example: ';ex.appendChild(strong);ex.appendChild(document.createTextNode(item.example));body.appendChild(ex);}
     if(item.tip){var tip=document.createElement('p');tip.className='roi-help-tip';var st=document.createElement('strong');st.textContent='Practical tip: ';tip.appendChild(st);tip.appendChild(document.createTextNode(item.tip));body.appendChild(tip);}
     if(typeof dlg.showModal==='function')dlg.showModal(); else {dlg.setAttribute('open','');}
@@ -11048,6 +11066,33 @@ sliders.forEach(function(p){p[1].value=p[0].value});paint();window.roiLeadUpdate
 }
 </style>
 <!-- v497: ROI CX polish — required-path frame, quieter resets, progress pill, stronger done states, labor echo as payoff, mobile sticky bar. Built from v496. -->
+
+<style id="v498-roi-result-help">
+/* v498 — Selective help on result KPIs (NPV, IRR, run-rate, net gain) */
+#roi .roi-out .kpi dt{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  flex-wrap:wrap;
+}
+#roi .roi-out .kpi dt .roi-help-trigger{
+  width:20px;
+  height:20px;
+  margin:0;
+  flex:0 0 20px;
+  font-size:12px;
+  border-width:1.5px;
+}
+#roi .roi-out .kpi dd{
+  /* keep number hierarchy; help lives on the label only */
+}
+@media (hover:hover){
+  #roi .roi-out .kpi dt .roi-help-trigger{opacity:.82}
+  #roi .roi-out .kpi div:hover .roi-help-trigger,
+  #roi .roi-out .kpi dt .roi-help-trigger:focus-visible{opacity:1}
+}
+</style>
+<!-- v498: Result-side ROI help for NPV, IRR, annual benefits at full run rate, and net gain — reuses ROI guide dialog. Built from v497. -->
 </body>
 </html>
 
