@@ -11094,122 +11094,108 @@ sliders.forEach(function(p){p[1].value=p[0].value});paint();window.roiLeadUpdate
 <!-- v498: Result-side ROI help for NPV, IRR, annual benefits at full run rate, and net gain — reuses ROI guide dialog. Built from v497. -->
 
 <!-- v499: moved live v494 parallel-input CSS inside document; removed orphaned post-</html> styles (v491–v493). -->
-<style id="v500-roi-parallel-stable">
-/* v500 — Keep Q02/Q03 input controls on one shared baseline.
-   Before: done-state checkmark and uneven help wrapping shifted the two fields.
-   Now: paired cards share row tracks (subgrid when available); controls pin to the bottom;
-   checkmark space is reserved so .done does not reflow the pair. */
+<style id="v501-roi-parallel-stable">
+/* v501 — Q02/Q03 stay level before and after input.
+   Dropped subgrid + empty check placeholders (they skewed the initial layout).
+   Equal-height cards; help absorbs extra lines; identical control height; checkmark is absolute. */
 
-/* Reserve checkmark space so marking a question done never changes meta width/wrap */
-#roi .roi-qnum{
-  display:inline-flex;
-  align-items:center;
-  gap:5px;
-  min-width:2.55em;
+/* Checkmark: reserved slot, no layout shift, no empty ::after on idle */
+#roi .roi-core .roi-qnum{
+  position:relative;
+  display:inline-block;
+  min-width:1.7em;
+  padding-right:1em;
   box-sizing:border-box;
 }
 #roi .roi-core.done .roi-qnum::after{
   content:"✓";
-  display:inline-block;
-  width:0.85em;
-  margin-left:0;
+  position:absolute;
+  right:0;
+  top:50%;
+  transform:translateY(-50%);
   font-size:11px;
   font-weight:800;
   color:#2f7d57;
-  vertical-align:0;
   line-height:1;
+  margin:0;
+  width:auto;
+  display:block;
 }
-/* Invisible placeholder width when not done — keeps 02/03 meta stable */
 #roi .roi-core:not(.done) .roi-qnum::after{
-  content:"";
-  display:inline-block;
-  width:0.85em;
-  margin-left:0;
+  content:none;
+  display:none;
+  width:0;
+  margin:0;
 }
 
-/* Paired questions: equal-height cards, control on the bottom edge */
+/* Side-by-side pair */
 #roi .roi-quick > .two{
-  display:grid;
-  grid-template-columns:1fr 1fr;
+  display:grid !important;
+  grid-template-columns:minmax(0,1fr) minmax(0,1fr);
   gap:16px;
   align-items:stretch;
 }
 #roi .roi-quick > .two > .roi-core{
-  display:flex;
+  display:flex !important;
   flex-direction:column;
   align-items:stretch;
+  justify-content:flex-start;
   min-width:0;
-  height:100%;
+  height:auto;
+  min-height:100%;
   box-sizing:border-box;
 }
 #roi .roi-quick > .two > .roi-core .roi-q-meta{
   flex:0 0 auto;
-  min-height:3.5em;
 }
 #roi .roi-quick > .two > .roi-core .roi-qhelp{
-  flex:0 0 auto;
-  min-height:4.5em;
+  flex:1 1 auto;
+  margin-bottom:10px;
 }
-/* Pin number/select to the shared bottom of the pair */
+/* Same box for number + select so the controls line up */
 #roi .roi-quick > .two > .roi-core > input,
-#roi .roi-quick > .two > .roi-core > select,
-#roi .roi-quick > .two > .roi-core > .u{
+#roi .roi-quick > .two > .roi-core > select{
+  flex:0 0 auto;
   margin-top:auto;
   width:100%;
   max-width:100%;
+  height:48px;
+  min-height:48px;
+  max-height:48px;
   box-sizing:border-box;
+  padding:0 12px;
+  line-height:46px;
+  font:inherit;
+  border:1px solid #9a948f;
+  background:#fff;
+  color:var(--ink,#231f20);
+  border-radius:0;
+  -webkit-appearance:none;
+  appearance:none;
 }
-
-/* Modern browsers: true shared rows across both questions */
-@supports (grid-template-rows:subgrid){
-  #roi .roi-quick > .two{
-    grid-template-rows:auto auto auto;
-  }
-  #roi .roi-quick > .two > .roi-core{
-    display:grid;
-    grid-template-rows:subgrid;
-    grid-row:span 3;
-    height:auto;
-  }
-  #roi .roi-quick > .two > .roi-core .roi-q-meta,
-  #roi .roi-quick > .two > .roi-core .roi-qhelp{
-    min-height:0;
-  }
-  #roi .roi-quick > .two > .roi-core > input,
-  #roi .roi-quick > .two > .roi-core > select,
-  #roi .roi-quick > .two > .roi-core > .u{
-    margin-top:0;
-    align-self:end;
-  }
+#roi .roi-quick > .two > .roi-core > select{
+  padding-right:36px;
+  background-image:linear-gradient(45deg,transparent 50%,var(--mut,#5b5754) 50%),linear-gradient(135deg,var(--mut,#5b5754) 50%,transparent 50%);
+  background-position:calc(100% - 18px) calc(50% - 3px),calc(100% - 12px) calc(50% - 3px);
+  background-size:6px 6px,6px 6px;
+  background-repeat:no-repeat;
 }
 
 @media(max-width:900px){
   #roi .roi-quick > .two{
     grid-template-columns:1fr;
-    grid-template-rows:none;
   }
-  #roi .roi-quick > .two > .roi-core{
-    display:flex;
-    flex-direction:column;
-    grid-row:auto;
-    height:auto;
-  }
-  #roi .roi-quick > .two > .roi-core .roi-q-meta,
   #roi .roi-quick > .two > .roi-core .roi-qhelp{
-    min-height:0;
+    flex:0 0 auto;
+    margin-bottom:8px;
   }
   #roi .roi-quick > .two > .roi-core > input,
-  #roi .roi-quick > .two > .roi-core > select,
-  #roi .roi-quick > .two > .roi-core > .u{
-    margin-top:8px;
+  #roi .roi-quick > .two > .roi-core > select{
+    margin-top:0;
   }
 }
-
-@media(prefers-reduced-motion:reduce){
-  #roi .roi-core{transition:none}
-}
 </style>
-<!-- v500: Q02/Q03 stay parallel after input — shared baseline, reserved checkmark space, subgrid when supported. Built from v499. -->
+<!-- v501: Q02/Q03 parallel fix — equal-height cards, matched 48px controls, absolute checkmark; no subgrid. Built from v500. -->
 
 <!-- v499: Hygiene — post-</html> CSS removed (v494 parallel kept inside body), nested roi-report unwrapped, tel: links normalized to +1. Built from v498. -->
 </body>
