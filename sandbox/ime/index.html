@@ -6381,7 +6381,7 @@ header nav.ime-nav .nv-phone:focus-visible{
 <div class="roi">
 <div class="roi-in">
 <div class="roi-reset-row"><button class="roi-reset" id="roiRestore" type="button" aria-label="Restore the original ROI planning values">Restore defaults</button><button class="roi-reset" id="roiReset" type="button" aria-label="Clear all ROI calculator fields">Clear all fields</button></div>
-<div class="roi-banner" id="roiBanner" data-state="example"><span id="roiBannerText"><strong>Showing example numbers.</strong> Answer the four questions below to make them yours.</span></div>
+<div class="roi-banner" id="roiBanner" data-state="example"><span id="roiBannerText"><strong>Showing example numbers.</strong> Answer the four questions below to make them yours.</span><span class="roi-progress" id="roiProgress" hidden>0 of 4</span></div>
 <fieldset class="roi-quick"><legend>Four answers → live payback</legend>
 
 <label class="roi-core" data-q="1"><span class="roi-q-meta"><span class="roi-qnum" aria-hidden="true">01</span><span class="roi-qtitle">What is the project cost?</span></span><span class="roi-qhelp">Enter your IME quote total, or a planning figure if you don’t have a quote yet.</span><span class="u"><i>$</i><input id="capex" type="text" inputmode="numeric" autocomplete="off" data-money value="850,000"/></span></label>
@@ -6390,7 +6390,7 @@ header nav.ime-nav .nv-phone:focus-visible{
 <label class="roi-core" data-q="3"><span class="roi-q-meta"><span class="roi-qnum" aria-hidden="true">03</span><span class="roi-qtitle">How many shifts run per day?</span></span><span class="roi-qhelp">Assuming an 8-hour shift. If you need to adjust shift hours, open <strong>Fine-tune the schedule and assumptions</strong> below.</span><select id="shifts"><option value="1">1 shift</option><option selected="" value="2">2 shifts</option><option value="3">3 shifts</option></select></label>
 </div>
 <label class="roi-core" data-q="4"><span class="roi-q-meta"><span class="roi-qnum" aria-hidden="true">04</span><span class="roi-qtitle">What is the fully burdened hourly cost per worker?</span></span><span class="roi-qhelp">Wages plus benefits and typical employer burden.</span><span class="u"><i>$/hr</i><input id="rate" min="0" step="1" type="number" value="42"/></span></label>
-<p class="roi-labor-echo" id="laborEcho" aria-live="polite">Enter the details above to see your labor picture.</p>
+<p class="roi-labor-echo" id="laborEcho" aria-live="polite" hidden data-state="idle"></p>
 <div class="roi-bridge" role="note" aria-label="Build an approval-ready ROI analysis">
 <p class="roi-bridge-kicker">Next step</p>
 <h3 class="roi-bridge-title">Build the approval-ready business case</h3>
@@ -7331,10 +7331,19 @@ function update(){
       sum.textContent="The project pays for itself in "+pl+(r.npv>=0?" and is NPV-positive over "+r.N+" years"+taxPhrase+".":", but NPV is negative over "+r.N+" years at your discount rate"+taxPhrase+".")+lagNote;
     }
   }
-  // Labor echo beside inputs
+  // Labor echo beside inputs — only after the user has touched labor-related cores
   var echo=$("laborEcho");
   if(echo){
-    echo.innerHTML="That’s about <strong>"+r.hoursYr.toLocaleString("en-US",{maximumFractionDigits:0})+"</strong> labor-hours a year, roughly <strong>"+money(r.laborBase)+"</strong> in labor cost.";
+    var laborTouched = (window.roiCoreTouched && (window.roiCoreTouched("ops") || window.roiCoreTouched("shifts") || window.roiCoreTouched("rate")));
+    if(laborTouched && r.hoursYr > 0){
+      echo.hidden = false;
+      echo.dataset.state = "live";
+      echo.innerHTML = "That’s about <strong>"+r.hoursYr.toLocaleString("en-US",{maximumFractionDigits:0})+"</strong> labor-hours a year, roughly <strong>"+money(r.laborBase)+"</strong> in annual labor cost at these inputs.";
+    } else {
+      echo.hidden = true;
+      echo.dataset.state = "idle";
+      echo.innerHTML = "";
+    }
   }
   // Value drivers
   var dl=$("o-drv-labor"), dor=$("o-drv-other"), dc=$("o-drv-cost");
@@ -10654,10 +10663,11 @@ html.hero-ready.from-splash .hero-stage .hero-type h1 span:nth-child(3){animatio
 var $=function(i){return document.getElementById(i)},root=document.querySelector('#roi .roi-in');if(!root)return;
 var CORE=['capex','ops','shifts','rate'],touched={},anyEdit=false,sliders=[];
 function paint(){
- var n=Object.keys(touched).length,b=$('roiBanner'),t=$('roiBannerText'),g=$('roiTag');
+ var n=Object.keys(touched).length,b=$('roiBanner'),t=$('roiBannerText'),g=$('roiTag'),p=$('roiProgress');
+ if(p){if(!anyEdit){p.hidden=true;p.textContent='0 of 4';}else{p.hidden=false;p.textContent=n+' of 4';p.dataset.complete=n===4?'1':'0';}}
  if(!anyEdit){b.dataset.state='example';t.innerHTML='<strong>Showing example numbers.</strong> Answer the four questions below to make them yours.';g.textContent='Example numbers';}
- else if(n<4){b.dataset.state='example';t.innerHTML='<strong>Your numbers in progress.</strong> A few example values are still in use — finish the four questions to lock it in.';g.textContent='Partly your numbers';}
- else{b.dataset.state='yours';t.innerHTML='<strong>Based on your answers.</strong> Open the optional sections below to refine.';g.textContent='Your numbers';}
+ else if(n<4){b.dataset.state='example';t.innerHTML='<strong>Your numbers in progress.</strong> Finish the four questions to lock the estimate to your inputs.';g.textContent='Partly your numbers';}
+ else{b.dataset.state='yours';t.innerHTML='<strong>Based on your answers.</strong> Optional sections below refine the full business case.';g.textContent='Your numbers';}
 }
 function mark(id){touched[id]=1;anyEdit=true;var e=$(id),l=e&&e.closest('label');if(l)l.classList.add('done');paint();}
 root.addEventListener('input',function(e){if(!e.isTrusted)return;var t=e.target;if(t.classList.contains('roi-slider'))return;anyEdit=true;if(CORE.indexOf(t.id)>-1)mark(t.id);else paint();});
@@ -10675,8 +10685,11 @@ var cap=$('capex');
  s.addEventListener('input',function(){n.value=s.value;n.dispatchEvent(new Event('input',{bubbles:true}));anyEdit=true;paint();});
  n.addEventListener('input',function(){s.value=n.value});sliders.push([n,s]);});
 window.roiIsEdited=function(){return anyEdit};
+window.roiCoreTouched=function(id){return !!touched[id];};
 window.roiReset=function(){touched={};anyEdit=false;root.querySelectorAll('.roi-core').forEach(function(l){l.classList.remove('done')});
- sliders.forEach(function(p){p[1].value=p[0].value});paint();};
+ sliders.forEach(function(p){p[1].value=p[0].value});
+ var echo=$('laborEcho'); if(echo){echo.hidden=true;echo.dataset.state='idle';echo.innerHTML='';}
+ paint();};
 function m(v){var a=Math.abs(v),s=v<0?'-':'';return a>=1e6?s+'$'+(a/1e6).toFixed(2)+'M':s+'$'+Math.round(a/1e3).toLocaleString('en-US')+'K';}
 var stick=document.createElement('div');stick.className='roi-stick';stick.id='roiStick';
 stick.innerHTML='<div><small>Estimated payback</small><strong id="roiStickVal">–</strong></div><a class="btn" href="#roiResults">See details</a>';
@@ -10777,6 +10790,264 @@ sliders.forEach(function(p){p[1].value=p[0].value});paint();window.roiLeadUpdate
 
 <!-- v495: ROI Q03 (shifts) help text added to match Q02 — notes 8-hour shift default and points to Fine-tune the schedule and assumptions. Built from v494. -->
 <!-- v496: ROI approval callout restyled as editorial bridge (copper kicker + heading + body, no blue box) to match site language. Built from v495. -->
+
+<style id="v497-roi-cx">
+/* v497 — World-class ROI CX: required path hierarchy, progress, done states, quieter chrome, labor payoff, mobile stick */
+
+/* Quieter restore/clear — secondary utilities, not competing with the questions */
+#roi .roi-reset-row{
+  margin:0 0 10px;
+  gap:4px 14px;
+  opacity:.72;
+  transition:opacity .2s;
+}
+#roi .roi-reset-row:hover,
+#roi .roi-reset-row:focus-within{opacity:1}
+#roi .roi-reset{
+  font-size:12px;
+  letter-spacing:.02em;
+  padding:4px 0;
+  text-decoration-color:rgba(91,87,84,.35);
+}
+#roi .roi-reset:hover{color:#8a5440;text-decoration-color:currentColor}
+
+/* Banner: calm status + progress pill */
+#roi .roi-banner{
+  display:flex;
+  gap:10px 14px;
+  align-items:center;
+  justify-content:space-between;
+  flex-wrap:wrap;
+  margin:0 0 14px;
+  padding:11px 14px;
+  border:0;
+  border-left:3px solid #a9705a;
+  background:#f7f4f0;
+  font-size:14px;
+  line-height:1.45;
+  color:var(--mut,#5b5754);
+}
+#roi .roi-banner strong{color:var(--ink,#231f20);font-weight:700}
+#roi .roi-banner[data-state=yours]{
+  border-left-color:#2f7d57;
+  background:linear-gradient(100deg,#f3f8f5 0%,#f7f4f0 100%);
+}
+#roi .roi-banner[data-state=blank]{
+  border-left-color:#9a948f;
+  background:#f3f1ee;
+}
+#roi .roi-progress{
+  display:inline-block;
+  margin:0;
+  padding:4px 10px;
+  border-radius:999px;
+  background:rgba(35,31,32,.07);
+  font:700 11px/1.3 Archivo,sans-serif;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  color:var(--blue-d,#2f4d70);
+  white-space:nowrap;
+}
+#roi .roi-progress[data-complete="1"]{
+  background:rgba(47,125,87,.14);
+  color:#2f7d57;
+}
+#roi .roi-banner[data-state=example] .roi-progress[hidden]{display:none}
+
+/* Required path frame — the four answers are the work */
+#roi .roi-quick{
+  position:relative;
+  margin:0 0 4px;
+  padding:18px 18px 16px;
+  border:1px solid rgba(35,31,32,.1);
+  background:
+    linear-gradient(180deg,rgba(255,255,255,.92),#fff 40%),
+    #fff;
+  box-shadow:0 1px 0 rgba(255,255,255,.8) inset;
+}
+#roi .roi-quick > legend{
+  position:relative;
+  width:100%;
+  max-width:100%;
+  margin:0 0 14px;
+  padding:0 0 12px;
+  border-bottom:1px solid var(--line,#dcd8d3);
+  font:800 13px/1.3 Archivo,sans-serif;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  color:#8a5440;
+}
+#roi .roi-quick > legend::after{
+  content:"";
+  position:absolute;
+  left:0;bottom:-1px;
+  width:48px;height:2px;
+  background:#a9705a;
+}
+
+/* Core questions — clearer active/done states */
+#roi .roi-core{
+  border-left:3px solid rgba(169,112,90,.45);
+  padding:10px 0 12px 14px;
+  background:transparent;
+  transition:border-color .25s,background .25s,box-shadow .25s;
+}
+#roi .roi-core:focus-within{
+  border-left-color:#8a5440;
+  background:linear-gradient(90deg,rgba(169,112,90,.07),transparent 70%);
+}
+#roi .roi-core.done{
+  border-left-color:#2f7d57;
+  background:linear-gradient(90deg,rgba(47,125,87,.05),transparent 72%);
+}
+#roi .roi-qnum{
+  position:relative;
+  font:800 12px/1 Archivo,sans-serif;
+  letter-spacing:.1em;
+  color:#8a5440;
+  min-width:1.75em;
+}
+#roi .roi-core.done .roi-qnum{
+  color:#2f7d57;
+}
+#roi .roi-core.done .roi-qnum::after{
+  content:"✓";
+  display:inline-block;
+  margin-left:5px;
+  font-size:11px;
+  font-weight:800;
+  color:#2f7d57;
+  vertical-align:1px;
+}
+#roi .roi-qtitle{
+  font:700 15px/1.3 Archivo,sans-serif;
+  letter-spacing:-.015em;
+}
+#roi .roi-qhelp{
+  font-size:12.5px;
+  line-height:1.45;
+  color:var(--mut,#5b5754);
+  margin:0 0 9px;
+}
+#roi .roi-core .u,
+#roi .roi-core > input,
+#roi .roi-core > select{
+  margin-top:2px;
+}
+#roi .roi-core input,
+#roi .roi-core select,
+#roi .roi-core .u{
+  transition:border-color .2s,box-shadow .2s;
+}
+#roi .roi-core:focus-within .u,
+#roi .roi-core:focus-within > input,
+#roi .roi-core:focus-within > select{
+  border-color:#8a5440;
+}
+#roi .roi-core .u:focus-within{
+  outline-color:#8a5440;
+}
+
+/* Labor echo as payoff insight, not permanent chrome */
+#roi .roi-labor-echo{
+  margin:12px 0 4px;
+  padding:12px 14px;
+  border:0;
+  border-left:3px solid #a9705a;
+  background:#f7f4f0;
+  font-size:14px;
+  line-height:1.5;
+  color:var(--ink,#231f20);
+}
+#roi .roi-labor-echo[hidden]{display:none !important}
+#roi .roi-labor-echo strong{
+  font:700 14px/1.4 Archivo,sans-serif;
+  color:var(--blue-d,#2f4d70);
+}
+
+/* Bridge sits cleanly after required path */
+#roi .roi-bridge{
+  margin:20px 0 8px;
+  padding:18px 0 2px;
+  border-top:1px solid var(--line,#dcd8d3);
+}
+
+/* Optional expanders read as secondary */
+#roi .roi-in > .roi-section-more{
+  opacity:.96;
+}
+#roi .roi-in > .roi-section-more > summary{
+  color:var(--mut,#5b5754);
+}
+#roi .roi-in > .roi-section-more > summary strong{
+  color:var(--ink,#231f20);
+}
+
+/* Results: one primary action weight already on .btn — keep report dominant */
+#roi .roi-out .roi-actions .btn{
+  box-shadow:0 8px 20px rgba(71,106,149,.22);
+}
+#roi .roi-tag[data-state=yours],
+#roi .roi-banner[data-state=yours] ~ * .roi-tag{
+  /* tag text handled in JS */
+}
+
+/* Mobile sticky payback — calmer, safer, more present */
+#roi ~ .roi-stick,
+.roi-stick{
+  display:none;
+  position:fixed;
+  left:0;right:0;bottom:0;
+  z-index:95;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px 16px;
+  padding:12px 16px calc(12px + env(safe-area-inset-bottom,0px));
+  background:#f6f1ed;
+  border-top:3px solid #a9705a;
+  box-shadow:0 -10px 28px rgba(14,20,25,.18);
+}
+.roi-stick small{
+  display:block;
+  margin:0 0 2px;
+  font:700 10px/1 Archivo,sans-serif;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  color:#8a5440;
+}
+.roi-stick strong{
+  font:800 24px/1 Archivo,sans-serif;
+  letter-spacing:-.02em;
+  color:var(--ink,#231f20);
+}
+.roi-stick a.btn,
+.roi-stick .btn{
+  flex:none;
+  padding:11px 16px;
+  font-size:14px;
+  background:#8a5440;
+  border-color:#8a5440;
+  color:#fff;
+}
+.roi-stick a.btn:hover,
+.roi-stick .btn:hover{
+  background:#6e3f2e;
+  border-color:#6e3f2e;
+}
+@media(max-width:900px){
+  .roi-stick.on{display:flex}
+  #roi .roi-quick{padding:16px 14px 14px}
+  #roi .roi-core{padding-left:12px}
+  /* leave room so stick doesn't cover last fields while scrolling ROI */
+  #roi .roi-in{padding-bottom:8px}
+}
+
+@media(prefers-reduced-motion:reduce){
+  #roi .roi-core,
+  #roi .roi-reset-row{transition:none}
+}
+</style>
+<!-- v497: ROI CX polish — required-path frame, quieter resets, progress pill, stronger done states, labor echo as payoff, mobile sticky bar. Built from v496. -->
 </body>
 </html>
 
