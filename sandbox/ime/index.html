@@ -7315,10 +7315,10 @@ function update(){
   var badge=$("o-badge"), sum=$("o-summary");
   if(badge){
     badge.className="roi-badge";
-    if(r.pay!==null&&r.pay<=1.75){badge.textContent="Shorter payback period";badge.classList.add("fast")}
-    else if(r.pay!==null&&r.pay<=3){badge.textContent="Intermediate payback period";badge.classList.add("mid")}
-    else if(r.pay!==null){badge.textContent="Longer payback period";badge.classList.add("long")}
-    else{badge.textContent="Outside the analysis period";badge.classList.add("slow")}
+    if(r.pay!==null&&r.pay<=1.75){badge.textContent="Fast capital recovery";badge.classList.add("fast")}
+    else if(r.pay!==null&&r.pay<=3){badge.textContent="Steady capital recovery";badge.classList.add("mid")}
+    else if(r.pay!==null){badge.textContent="Longer-horizon recovery";badge.classList.add("long")}
+    else{badge.textContent="Outside this analysis window";badge.classList.add("slow")}
   }
   if(sum){
     var taxPhrase=r.useTax?" after tax":"";
@@ -7854,14 +7854,14 @@ show(0,false);
   badge.setAttribute('role','button'); badge.setAttribute('tabindex','0');
   badge.setAttribute('aria-haspopup','dialog'); badge.setAttribute('title','See how payback is rated');
   var dlg=document.createElement('dialog'); dlg.className='roi-help-dialog'; dlg.id='roiRangeDialog'; dlg.setAttribute('aria-labelledby','roiRangeTitle');
-  dlg.innerHTML='<div class="roi-help-head"><div><span class="roi-help-kicker">ROI guide</span><h3 id="roiRangeTitle">How payback is rated</h3></div><button type="button" class="roi-help-close" aria-label="Close">Close</button></div>'+
-  '<div class="roi-help-body"><p class="roi-help-intro">The label above your payback result is a quick guide based on simple payback, the time for cumulative savings to cover the full investment.</p>'+
+  dlg.innerHTML='<div class="roi-help-head"><div><span class="roi-help-kicker">ROI guide</span><h3 id="roiRangeTitle">How to read your payback label</h3></div><button type="button" class="roi-help-close" aria-label="Close">Close</button></div>'+
+  '<div class="roi-help-body"><p class="roi-help-intro">The label above your payback result is a plain-language guide to simple payback — how long modeled savings take to cover the full investment under your inputs. It is a planning signal, not an approval decision.</p>'+
   '<ul class="roi-range-list">'+
-  '<li data-k="fast"><b>Shorter payback period</b><span>1.75 years or less</span></li>'+
-  '<li data-k="mid"><b>Intermediate payback period</b><span>1.75 to 3 years</span></li>'+
-  '<li data-k="long"><b>Longer payback period</b><span data-r="long">3 to 7 years</span></li>'+
-  '<li data-k="slow"><b data-r="slowb">Over 7 years</b><span>Outside the analysis period</span></li></ul>'+
-  '<p class="roi-help-tip"><strong>Every company is different.</strong> Acceptable payback depends on your margins, cost of capital and how strategic the project is. Some companies approve projects at 4 to 5 years, others want under 2. Use this as a guide, not a pass or fail.</p></div>';
+  '<li data-k="fast"><b>Fast capital recovery</b><span>1.75 years or less — cash returns quickly under these assumptions</span></li>'+
+  '<li data-k="mid"><b>Steady capital recovery</b><span>1.75 to 3 years — a common range for many automation projects</span></li>'+
+  '<li data-k="long"><b>Longer-horizon recovery</b><span data-r="long">3 to 7 years — still recovers inside the analysis window; often fits capacity, quality, or multi-shift strategy</span></li>'+
+  '<li data-k="slow"><b data-r="slowb">Outside this analysis window</b><span>Payback is beyond the years modeled — try a longer horizon, different scope, or refined assumptions</span></li></ul>'+
+  '<p class="roi-help-tip"><strong>Every company is different.</strong> Some teams target under two years; others approve four to five when the project unlocks capacity, safety, quality, or a multi-cell roadmap. Match the label to your hurdle rate and strategy — use it as a guide, not a pass or fail.</p></div>';
   document.body.appendChild(dlg);
   function open(){
     var c=badge.classList.contains('fast')?'fast':badge.classList.contains('mid')?'mid':badge.classList.contains('long')?'long':badge.classList.contains('slow')?'slow':'';
@@ -11198,5 +11198,24 @@ sliders.forEach(function(p){p[1].value=p[0].value});paint();window.roiLeadUpdate
 <!-- v501: Q02/Q03 parallel fix — equal-height cards, matched 48px controls, absolute checkmark; no subgrid. Built from v500. -->
 
 <!-- v499: Hygiene — post-</html> CSS removed (v494 parallel kept inside body), nested roi-report unwrapped, tel: links normalized to +1. Built from v498. -->
+
+<style id="v502-roi-intro-payback">
+/* v502 — ROI section intro spans the content width on desktop; payback labels clarified in JS/dialog */
+#roi > .wrap > .section-head-major{
+  max-width:none;
+  width:100%;
+}
+#roi > .wrap > .section-head-major > p{
+  max-width:none;
+  width:100%;
+}
+@media(min-width:901px){
+  #roi > .wrap > .section-head-major > p{
+    font-size:19px;
+    line-height:1.6;
+  }
+}
+</style>
+<!-- v502: ROI intro full-width on desktop; payback labels reframed as helpful recovery bands (not negative grades). Built from v501. -->
 </body>
 </html>
