@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta name="referrer" content="strict-origin-when-cross-origin"/>
-<script>try{var q=location.search+location.hash;if(/intro/.test(q)){sessionStorage.removeItem("imeIntro")}else if(sessionStorage.getItem("imeIntro")||(window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches)){document.documentElement.classList.add("sp-off")}}catch(e){}</script>
+<script>try{var q=location.search+location.hash;if(/intro/.test(q)){sessionStorage.removeItem("imeIntro");document.documentElement.classList.remove("sp-off")}else if(sessionStorage.getItem("imeIntro")||(window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches)){document.documentElement.classList.add("sp-off")}}catch(e){}</script>
 <style id="sp-pre">html:not(.sp-off),html:not(.sp-off) body{background:#0e1419!important;animation:spPre 0s linear 14s forwards}@keyframes spPre{to{background:#fff}}
 
 </style>
@@ -6474,6 +6474,7 @@ header nav.ime-nav .nv-phone:focus-visible{
 <div><dt>Labor-hours / year</dt><dd id="o-hrs">–</dd></div>
 <div><dt>Base labor / year</dt><dd id="o-lab">–</dd></div>
 </div>
+<div class="roi-delay-heading"><dt data-roi-help="outDelay">Cost of delay</dt></div>
 <p class="roi-wait" id="o-wait"></p>
 <h3>Cumulative cash flow</h3>
 <svg aria-label="Bar chart of cumulative cash flow by year" id="chart" role="img" viewbox="0 0 620 298"></svg>
@@ -7271,7 +7272,7 @@ function breakEven(r){
   return{factor:factor,txt:txt};
 }
 function scenarioList(r){
-  return [{label:"Conservative",factor:.75,desc:"Annual benefits 25% lower"},{label:"Expected",factor:1,desc:"Current assumptions"},{label:"Upside",factor:1.15,desc:"Annual benefits 15% higher"}].map(function(sc){
+  return [{label:"Conservative",factor:.75,desc:"Labor + other annual benefits 25% lower"},{label:"Expected",factor:1,desc:"Current benefit and cost assumptions"},{label:"Upside",factor:1.15,desc:"Labor + other annual benefits 15% higher"}].map(function(sc){
     return{label:sc.label,desc:sc.desc,q:(sc.factor===1?r:calc(sc.factor))};
   });
 }
@@ -7280,7 +7281,7 @@ function delayInfo(r){
   var depreciation=r.capex/r.depYrs;
   var netYr=r.useTax?preNet-Math.max(0,preNet)*r.taxRate+Math.min(Math.max(0,preNet),depreciation)*r.taxRate:preNet;
   var pvLoss=(r.npv>0)?r.npv*r.discount/(1+r.discount):null;
-  return{netYr:netYr,netMo:netYr/12,pvLoss:pvLoss,preNet:preNet};
+  return{netYr:netYr,netMo:netYr/12,pvLoss:pvLoss,preNet:preNet,run:r.run,annualOpEx:r.annualOpEx,annualSupport:r.annualSupport};
 }
 function renderScenarios(r){
   var grid=$("scenarioGrid"),be=$("roiBreakEven"); if(!grid||!be)return;
@@ -7466,15 +7467,75 @@ function reportContext(){
   if(chips) out+='<div class="note"><h3>Strategic factors flagged</h3><ul class="chips">'+chips+'</ul><p class="muted">Non-cash decision drivers. They are not included in NPV, IRR or payback.</p></div>';
   return out;
 }
-function reportSummary(r,cons,verdict){
+function payBand(pay,N){
+  if(pay===null) return {key:"slow",label:"Outside this analysis window",hint:"Payback is beyond the years modeled — refine scope, horizon, or assumptions"};
+  if(pay<=1.75) return {key:"fast",label:"Fast capital recovery",hint:"Cash returns quickly under these assumptions"};
+  if(pay<=3) return {key:"mid",label:"Steady capital recovery",hint:"A common range for many automation projects"};
+  return {key:"long",label:"Longer-horizon recovery",hint:"Still recovers inside the analysis window; often fits capacity, quality, or multi-shift strategy"};
+}
+function reportSummary(r,cons){
+  var band=payBand(r.pay,r.N);
+  var disc=((r.discount||0)*100).toFixed(1).replace(/\.0$/,"");
   var proj=($("bcProject")&&$("bcProject").value.trim())||"This project";
-  var t=proj+" requires a total investment of "+money(r.initial,true)+". ";
-  if(r.pay===null) t+="At these inputs it does not recover that investment from operating cash flow within the "+r.N+"-year analysis period. ";
-  else t+="At these inputs it recovers the investment in "+payLabel(r.pay,r.N)+" (simple payback). ";
-  t+="Over "+r.N+" years, modeled cumulative "+(r.useTax?"after-tax ":"")+"net cash flow is "+money(r.net,true)+". Net present value is "+money(r.npv,true)+" at a "+((r.discount||0)*100).toFixed(1).replace(/\.0$/,"")+" discount rate"+(r.irr===null?".":", and internal rate of return is "+(r.irr*100).toFixed(1)+"%.");
-  if(cons) t+=" If annual benefits come in 25% lower, NPV is "+money(cons.npv,true)+(cons.pay===null?" and payback falls outside the period.":" with payback in "+payLabel(cons.pay,cons.N)+".");
-  if(r.lagM>0) t+=" Benefits are modeled to start after a "+r.lagM+"-month install and start-up period.";
+  var t=proj+" requires "+money(r.initial,true)+". ";
+  if(r.pay===null) t+="Payback is outside the "+r.N+"-year window. ";
+  else t+="Payback "+payLabel(r.pay,r.N)+" ("+band.label+"). ";
+  t+="NPV "+money(r.npv,true)+" at "+disc+"%.";
   return t;
+}
+function execSummaryHtml(r,cons,band,taxOn){
+  var disc=((r.discount||0)*100).toFixed(1).replace(/\.0$/,"");
+  var proj=($("bcProject")&&$("bcProject").value.trim())||"This project";
+  var rows=[];
+  function row(label,value){rows.push('<div class="exec-row"><span>'+escHTML(label)+'</span><strong>'+value+'</strong></div>');}
+  row("Project",escHTML(proj));
+  row("Total investment",escHTML(money(r.initial,true)));
+  if(r.pay===null) row("Simple payback",escHTML("Outside "+r.N+"-year window"));
+  else row("Simple payback",escHTML(payLabel(r.pay,r.N)));
+  row("Recovery band",escHTML(band.label));
+  row(taxOn?"NPV (after tax)":"Net present value",escHTML(money(r.npv,true))+' <em>at '+escHTML(disc)+'%</em>');
+  if(r.irr!==null) row(taxOn?"IRR (after tax)":"Internal rate of return",escHTML((r.irr*100).toFixed(1)+"%"));
+  row(taxOn?"Cumulative net cash flow (after tax)":"Cumulative net cash flow",escHTML(money(r.net,true))+' <em>over '+r.N+' years</em>');
+  if(cons){
+    var cPay=cons.pay===null?"outside period":payLabel(cons.pay,cons.N);
+    row("If benefits are 25% lower","NPV "+escHTML(money(cons.npv,true))+" · payback "+escHTML(cPay));
+  }
+  if(r.lagM>0) row("Benefit start","After "+escHTML(String(r.lagM))+"-month install / start-up lag");
+
+  /* Qualitative decision context — only when the planner provided it */
+  var qual=[];
+  var problemEl=$("bcProblem");
+  var problemTxt=problemEl?String(problemEl.value||"").trim():"";
+  if(problemTxt){
+    var short=problemTxt.length>240?problemTxt.slice(0,237)+"…":problemTxt;
+    qual.push('<p class="exec-why"><strong>Why this project.</strong> '+escHTML(short)+'</p>');
+  }
+  var strat=[["stSafety","Safety / ergonomics"],["stQuality","Quality / scrap / traceability"],["stStaffing","Staffing / retention"],["stCapacity","Capacity vs demand"],["stShift","Added shifts / lights-out"],["stScale","Multi-cell / multi-site roadmap"]];
+  var chips=[];
+  strat.forEach(function(s){var el=$(s[0]); if(el&&el.checked) chips.push(s[1]);});
+  if(chips.length){
+    qual.push('<p class="exec-strat"><strong>Strategic factors.</strong> '+escHTML(chips.join(" · "))+'</p>');
+  }
+  var notesEl=$("bcNotes");
+  var notesTxt=notesEl?String(notesEl.value||"").trim():"";
+  if(notesTxt){
+    var ask=notesTxt;
+    var m=notesTxt.match(/(?:decision requested|request(?:ed)? decision|seeking approval(?: for)?|approve|authorization to)\s*[:\-]?\s*([^\n.]+)/i);
+    if(m&&m[1]) ask=m[1].trim();
+    else {
+      var first=notesTxt.split(/\n/)[0].trim();
+      if(/^(approve|decision|request|seek|authorize)/i.test(first)) ask=first;
+      else ask="";
+    }
+    if(ask){
+      if(ask.length>160) ask=ask.slice(0,157)+"…";
+      qual.push('<p class="exec-ask"><strong>Decision requested.</strong> '+escHTML(ask)+'</p>');
+    }
+  }
+  var qualHtml=qual.length?'<div class="exec-qual">'+qual.join("")+'</div>':'';
+
+  return '<div class="exec-grid">'+rows.join("")+'</div>'+qualHtml+
+    '<p class="band-note"><strong>'+escHTML(band.label)+'.</strong> '+escHTML(band.hint)+' Every company’s hurdle is different — match this label to your capital policy.</p>';
 }
 function printReport(){
   var r=lastResult(); if(!r) return;
@@ -7508,8 +7569,9 @@ function printReport(){
   var compBar="",compLeg="";
   comp.forEach(function(c){
     if(c[1]<=0||r.initial<=0) return;
-    compBar+='<i style="width:'+(c[1]/r.initial*100).toFixed(2)+'%;background:'+c[2]+'"></i>';
-    compLeg+='<li><b style="background:'+c[2]+'"></b>'+escHTML(c[0])+' <strong>'+escHTML(money(c[1],true))+'</strong></li>';
+    var pct=(c[1]/r.initial*100);
+    compBar+='<i style="width:'+pct.toFixed(2)+'%;background:'+c[2]+'"></i>';
+    compLeg+='<li><b style="background:'+c[2]+'"></b>'+escHTML(c[0])+' <strong>'+escHTML(money(c[1],true))+'</strong> <span class="pct">'+pct.toFixed(0)+'%</span></li>';
   });
   // sensitivity
   var scenHtml=scen.map(function(s){
@@ -7525,19 +7587,51 @@ function printReport(){
     if(c[1]>0) sRows+='<tr><td>'+escHTML(c[0])+'</td><td>'+escHTML(money(-c[1],true))+'</td></tr>';
   });
   sRows+='<tr class="tot"><td>Net annual benefit at run rate'+(taxOn?" (pre-tax)":"")+'</td><td>'+escHTML(money(dl.preNet,true))+'</td></tr>';
-  // delay
+  // delay — monthly / yearly net + how full run-rate benefit is built
   var delayHtml;
   if(dl.netYr<=0){
-    delayHtml='<p>At these inputs the project has no net benefit at run rate, so delaying it does not forgo value. The decision turns on the benefit and cost assumptions, not on timing.</p>';
+    delayHtml='<p>At these inputs there is no positive net benefit at full run rate, so deferring the project does not forgo modeled operating value.</p>';
   }else{
-    delayHtml='<div class="metrics3">'+
-      kpi("Net benefit forgone per month of delay",money(dl.netMo,true),"Run-rate net benefit ÷ 12"+(taxOn?", after tax":""),"sm")+
-      kpi("Net benefit forgone per year of delay",money(dl.netYr,true),"Benefits less operating costs and support","sm")+
-      kpi("Value lost by a 12-month deferral",dl.pvLoss===null?"n/a":money(dl.pvLoss,true),dl.pvLoss===null?"NPV is not positive":"Reduction in NPV if the whole project slips a year","sm")+'</div>'+
-      '<p>The estimate represents modeled automation benefits forgone while implementation is deferred. It does not assume the proposed system’s operating costs are incurred before production begins. These figures are context for timing; they are <strong>not</strong> added into NPV, IRR, payback or the cash-flow table.</p>';
+    var taxTag=taxOn?" after tax":"";
+    var benefitParts=[
+      ["Labor savings (after uptime and capture %)",r.laborRun],
+      ["Scrap and rework reduction",r.quality],
+      ["Overtime and temporary labor reduction",r.overtime],
+      ["Value of added capacity or speed",r.throughput],
+      ["Avoided hires or vacancies",r.avoided],
+      ["Other annual benefits",r.other]
+    ];
+    var benefitRows="";
+    benefitParts.forEach(function(p){
+      if(p[1]>0) benefitRows+='<tr><td>'+escHTML(p[0])+'</td><td>'+escHTML(money(p[1],true))+'</td></tr>';
+    });
+    benefitRows+='<tr class="sub"><td>Annual benefits at full run rate</td><td>'+escHTML(money(r.run,true))+'</td></tr>';
+    benefitRows+='<tr><td>Minus ongoing operating costs</td><td>'+escHTML(money(-dl.annualOpEx,true))+'</td></tr>';
+    benefitRows+='<tr><td>Minus support after first 12 production months</td><td>'+escHTML(money(-dl.annualSupport,true))+'</td></tr>';
+    benefitRows+='<tr class="sub"><td>Net run-rate benefit (pre-tax)</td><td>'+escHTML(money(dl.preNet,true))+'</td></tr>';
+    if(taxOn){
+      var taxAdj=dl.netYr-dl.preNet;
+      benefitRows+='<tr><td>Simplified tax effect on run-rate net</td><td>'+escHTML(money(taxAdj,true))+'</td></tr>';
+      benefitRows+='<tr class="tot"><td>Net run-rate benefit after tax</td><td>'+escHTML(money(dl.netYr,true))+'</td></tr>';
+    }else{
+      benefitRows+='<tr class="tot"><td>Net run-rate benefit</td><td>'+escHTML(money(dl.netYr,true))+'</td></tr>';
+    }
+    delayHtml='<p class="delay-lead"><strong>What does Cost of Delay mean?</strong> It is the net operating benefit this cell would generate each year once it is fully running. If the project is delayed, that is the operating value your business does not capture during the wait. This uses the same assumptions as the rest of the report; it is a timing measure, not an additional return added into NPV, IRR, payback, or the cash-flow table.</p>'+
+      '<div class="metrics3">'+
+      kpi("Per month of delay",money(dl.netMo,true),"Net run-rate benefit ÷ 12","sm")+
+      kpi("Per year of delay",money(dl.netYr,true),"Full-year net at run rate"+taxTag,"sm")+
+      kpi("Approx. NPV impact of a 1-year slip",dl.pvLoss===null?"n/a":money(dl.pvLoss,true),dl.pvLoss===null?"NPV is not positive under these inputs":"If the project starts one year later","sm")+
+      '</div>'+
+      '<div class="delay-how">'+
+      '<h3>How we get the annual figure</h3>'+
+      '<table class="vs delay-build"><tbody>'+benefitRows+'</tbody></table>'+
+      '<p class="muted" style="margin:10px 0 0">Monthly cost of delay is the annual net ÷ 12. Benefit lines match <strong>Where the annual value comes from</strong> above.</p>'+
+      '</div>';
   }
   var ctx=reportContext();
-  var contextSec=ctx?'<section class="sec"><h2>Project context</h2><div class="notes">'+ctx+'</div></section>':'';
+  var contextSec=ctx
+    ?'<section class="sec"><h2>Project context</h2><div class="notes">'+ctx+'</div></section>'
+    :'<section class="sec"><h2>Project context</h2><div class="notes"><div class="note"><h3>Not provided in this run</h3><p>Add a business problem, decision notes, or strategic factors under <strong>Personalize your report</strong> on the planner to strengthen this packet for review.</p></div></div></section>';
   var taxNote=(taxOn
     ?'<p><strong>Tax basis.</strong> NPV, IRR, net cash flow and payback use a simplified after-tax estimate. The model applies tax only to positive operating cash flow and limits the modeled depreciation benefit to available positive operating cash flow. Straight-line depreciation is applied to cell cost only, beginning when modeled production starts. At the end of the analysis period, tax is applied to residual proceeds above the remaining modeled tax basis; no tax benefit is assumed for a disposal loss or unused tax deductions. Actual tax treatment, depreciation methods, asset classifications and loss utilization can differ. Confirm with your finance team or tax adviser.</p>'
     :'<p><strong>Tax basis.</strong> This analysis presents results on a pre-tax basis; income tax impacts are not included.</p>')+
@@ -7581,6 +7675,39 @@ function printReport(){
   '@page{size:Letter;margin:11mm 10mm 14mm;@bottom-center{content:"IME Automation  ·  ROI Planning Report  ·  Page " counter(page) " of " counter(pages);font:9pt "Source Sans 3",Arial,sans-serif;color:#655f5a}}'+
   '@media print{body{background:#fff}.bar{display:none}.sheet{margin:0;max-width:none;box-shadow:none;padding:2mm 4mm 0}}'+
   '@media(max-width:700px){.scens,.notes,.agrid,.metrics3{grid-template-columns:1fr}.metrics,.metrics.two{grid-template-columns:1fr 1fr}.sheet{padding:20px 18px 0}h1{font-size:28px}.foot{flex-direction:column}}'+
+  /* v503 report decision-packet */
+  '.cover-strip{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:0;margin:18px 0 14px;border:1px solid var(--line);background:var(--soft)}'+
+  '.cover-strip div{padding:12px 14px;border-right:1px solid var(--line)}'+
+  '.cover-strip div:last-child{border-right:0}'+
+  '.cover-strip span{display:block;font:700 10px/1.2 Archivo,Arial,sans-serif;letter-spacing:.1em;text-transform:uppercase;color:var(--cu);margin-bottom:6px}'+
+  '.cover-strip strong{display:block;font:800 20px/1.15 Archivo,Arial,sans-serif;color:var(--ink);letter-spacing:-.02em}'+
+  '.cover-strip em{display:block;margin-top:4px;font:600 11px/1.3 "Source Sans 3",Arial,sans-serif;font-style:normal;color:var(--mut)}'+
+  '.delay-teaser{margin:0 0 8px;padding:12px 14px;border-left:4px solid var(--cu);background:linear-gradient(100deg,#faf7f3,#fff);font-size:13.5px;color:var(--ink)}'+
+  '.delay-teaser span{color:var(--mut)}'+
+  '.why{margin:10px 0 8px;font-size:14px;line-height:1.45;color:var(--ink)}'+
+  '.band-note{margin:10px 0 0;font-size:13px;color:var(--mut)}'+
+  '.exec-grid{display:grid;gap:0;border:1px solid var(--line);background:#fff;margin:0 0 12px}'+
+  '.exec-row{display:grid;grid-template-columns:minmax(140px,0.9fr) minmax(0,1.4fr);gap:12px;padding:10px 14px;border-bottom:1px solid var(--line);align-items:baseline}'+
+  '.exec-row:last-child{border-bottom:0}'+
+  '.exec-row span{font:700 11px/1.3 Archivo,Arial,sans-serif;letter-spacing:.06em;text-transform:uppercase;color:var(--mut)}'+
+  '.exec-row strong{font:700 15px/1.35 "Source Sans 3",Arial,sans-serif;color:var(--ink)}'+
+  '.exec-row strong em{font:600 12px/1.3 "Source Sans 3",Arial,sans-serif;font-style:normal;color:var(--mut);margin-left:6px}'+
+  '.exec-qual{margin:12px 0 0;padding:12px 14px;background:var(--soft);border-left:4px solid var(--cu)}'+
+  '.exec-qual p{margin:0 0 8px;font-size:13.5px;line-height:1.45;color:var(--ink)}'+
+  '.exec-qual p:last-child{margin-bottom:0}'+
+  '.exec-qual strong{color:var(--ink)}'+
+  '.cash-cap{margin:0 0 12px;font-size:13px;color:var(--mut);line-height:1.45}'+
+  '.delay-lead{margin:0 0 12px;font-size:13.5px;line-height:1.5;color:var(--ink)}'+
+  '.delay-table{margin:14px 0 12px;max-width:420px}'+
+  '.delay-how{margin-top:12px;padding:12px 14px;background:var(--soft);border:1px solid var(--line)}'+
+  '.delay-how h3{margin:0 0 8px;font-size:14px;color:var(--blued)}'+
+  '.delay-steps{margin:0;padding-left:1.2em;font-size:13px;line-height:1.55;color:var(--ink)}'+
+  '.delay-steps li{margin:0 0 5px}'+
+  '.delay-build{margin-top:8px}'+
+  '.comp .pct{color:var(--mut);font-weight:600;margin-left:4px}'+
+  '.foot .stamp{display:block;margin-top:6px;font-size:11px;color:var(--mut)}'+
+  '@media(max-width:800px){.cover-strip{grid-template-columns:1fr 1fr}}'+
+  '@media print{.cover-strip{break-inside:avoid}.delay-teaser{break-inside:avoid}}'+
   /* v488: premium IME-branded report styling; preserve title lines where space allows. */
   '.sheet{position:relative;overflow:hidden;border-top:5px solid var(--cu);box-shadow:0 22px 65px rgba(14,20,25,.17)}'+
   '.cover-top{padding:0 0 20px;margin-bottom:28px;border-bottom:1px solid var(--line)}'+
@@ -7602,22 +7729,43 @@ function printReport(){
   '.foot{border-top:2px solid var(--ink);padding-top:17px}.foot strong{color:var(--cu);letter-spacing:.04em}.foot p{font-size:11px;line-height:1.5}'+
   '@media(max-width:700px){h1{white-space:normal;overflow-wrap:anywhere;font-size:27px}h2{white-space:normal;font-size:16px}.cover-top{gap:12px}.cover-top img{height:40px}.cover-top span{font-size:9px;letter-spacing:.1em;padding:7px 8px}.meta{gap:10px 16px}.kpi{padding:12px}.kpi strong{font-size:21px}}'+
   '@media print{.sheet{border-top-width:4px;box-shadow:none}.cover-top{margin-bottom:22px}.sec{break-inside:auto}h1{white-space:nowrap;font-size:30px}h2{white-space:nowrap}}';
+  var band=payBand(r.pay,r.N);
+  var irrDisp=r.irr===null?"n/a":(r.irr*100).toFixed(1)+"%";
+  var coverStrip='<div class="cover-strip" aria-label="Key results">'+
+    '<div><span>Investment</span><strong>'+escHTML(money(r.initial,true))+'</strong></div>'+
+    '<div><span>Simple payback</span><strong>'+escHTML(payLabel(r.pay,r.N))+'</strong><em>'+escHTML(band.label)+'</em></div>'+
+    '<div><span>'+(taxOn?"NPV after tax":"NPV")+'</span><strong>'+escHTML(money(r.npv,true))+'</strong></div>'+
+    '<div><span>'+(taxOn?"IRR after tax":"IRR")+'</span><strong>'+escHTML(irrDisp)+'</strong></div>'+
+    '<div><span>Net annual benefit</span><strong>'+escHTML(money(dl.preNet,true))+'</strong><em>At full run rate'+(taxOn?" (pre-tax)":"")+'</em></div>'+
+    '</div>';
+  var delayTeaser='';
+  if(dl.netYr>0){
+    delayTeaser='<div class="delay-teaser"><strong>Cost of delay:</strong> About <b>'+escHTML(money(dl.netYr,true))+'</b> net benefit per year of deferral (same assumptions as this report). <span>See Cost of delay for the calculation.</span></div>';
+  }
+  var whyLine='';
+  var problemEl=$("bcProblem"); var problemTxt=problemEl?String(problemEl.value||"").trim():"";
+  if(problemTxt){
+    whyLine='<p class="why"><strong>Why this project:</strong> '+escHTML(problemTxt.length>220?problemTxt.slice(0,217)+"…":problemTxt)+'</p>';
+  }
+  var cashCaption='<p class="cash-cap"><strong>Timing.</strong> Benefits begin after a '+escHTML(String(r.lagM))+'-month install/start-up lag. Ramp applies to the first 12 operating months, then full run rate. Simple payback excludes residual value. Annual flows are shown by calendar year.</p>';
+  var stamp='Generated from the IME ROI planner · '+escHTML(dateTxt)+' · '+escHTML(tag)+' · '+r.N+'-year horizon';
   var doc='<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>'+escHTML(title)+' — ROI Planning Report | IME Automation</title><style>'+css+'</style></head><body>'+
-  '<div class="bar"><span>Report preview. Use Print and choose “Save as PDF” to share it.</span><button type="button" onclick="window.print()">Print or save as PDF</button></div>'+
+  '<div class="bar"><span>Report preview · '+escHTML(stamp)+'</span><button type="button" onclick="window.print()">Print or save as PDF</button></div>'+
   '<div class="sheet">'+
   '<header><div class="cover-top">'+(logo?'<img alt="IME Automation" src="'+logo+'">':'<b>IME Automation</b>')+'<span>ROI Planning Report</span></div>'+
   '<div class="rule"></div><h1>'+escHTML(title)+'</h1>'+(company?'<p class="co">'+escHTML(company)+'</p>':'')+
-  '<div class="meta">'+(prepared?'<div>Prepared by<b>'+escHTML(prepared)+'</b></div>':'')+'<div>Date<b>'+escHTML(dateTxt)+'</b></div><div>Basis<b>'+tag+' · '+r.N+' years</b></div></div></header>'+
-  '<section class="sec"><h2>Executive summary</h2><div class="exec"><p>'+escHTML(reportSummary(r,cons))+'</p></div></section>'+
+  '<div class="meta">'+(prepared?'<div>Prepared by<b>'+escHTML(prepared)+'</b></div>':'')+'<div>Date<b>'+escHTML(dateTxt)+'</b></div><div>Basis<b>'+tag+' · '+r.N+' years</b></div></div>'+
+  coverStrip+whyLine+delayTeaser+'</header>'+
+  '<section class="sec"><h2>Executive summary</h2><div class="exec">'+execSummaryHtml(r,cons,band,taxOn)+'</div></section>'+
   '<section class="sec"><h2>Financial overview</h2><div class="metrics">'+primary+'</div><div class="metrics two">'+secondary+'</div>'+
-  '<div class="comp"><h3>Where the investment goes</h3><div class="bar2">'+compBar+'</div><ul>'+compLeg+'</ul></div></section>'+
-  '<section class="sec"><h2>Cash flow</h2><div class="frame">'+chartSvg+'</div>'+tblHtml+'</section>'+
-  '<section class="sec"><h2>Scenario analysis</h2><div class="scens">'+scenHtml+'</div><p class="callout">'+escHTML(be.txt)+' This is a mathematical sensitivity analysis, not a forecast. Actual results will depend on operating conditions and the assumptions used. Review the scenario definitions alongside the modeled outcomes.</p></section>'+
+  '<div class="comp"><h3>Where the investment goes</h3><p class="muted" style="margin:0 0 8px">Total '+escHTML(money(r.initial,true))+'. Support after the first 12 production months is modeled as an operating cost, not part of this initial stack.</p><div class="bar2">'+compBar+'</div><ul>'+compLeg+'</ul></div></section>'+
+  '<section class="sec"><h2>Cash flow</h2>'+cashCaption+'<div class="frame">'+chartSvg+'</div>'+tblHtml+'</section>'+
+  '<section class="sec"><h2>Scenario analysis</h2><p class="muted" style="margin:0 0 10px">Scenarios scale <strong>annual benefits</strong> (labor savings plus other benefits you enabled). Costs and investment stay at the expected case unless you change them in the planner.</p><div class="scens">'+scenHtml+'</div><p class="callout">'+escHTML(be.txt)+' This is a mathematical sensitivity analysis, not a forecast. Actual results depend on operating conditions and the assumptions used.</p></section>'+
   '<section class="sec"><h2>Where the annual value comes from</h2><table class="vs"><tbody>'+sRows+'</tbody></table><p class="muted" style="margin-top:8px">Full run rate, in today’s dollars, before wage growth and ramp-up. Wage growth raises labor savings in later years; see the cash-flow table.</p></section>'+
   contextSec+
   '<section class="sec"><h2>Cost of delay</h2>'+delayHtml+'</section>'+
   '<section class="sec"><h2>Assumptions used</h2><div class="agrid">'+reportAssumptions(taxOn)+'</div><div class="basis" style="margin-top:14px">'+taxNote+'</div></section>'+
-  '<footer class="foot"><div><strong>IME Automation</strong>1801 Anderson Junction Rd., Toquerville, Utah 84774<br>(435) 414-1194 · info@imeautomation.com · imeautomation.com</div><p>Prepared for preliminary capital planning using the operating and financial assumptions shown. Estimates should be reviewed by the appropriate operations, finance, tax and project stakeholders. Final costs and performance depend on project scope and operating conditions.</p></footer>'+
+  '<footer class="foot"><div><strong>IME Automation</strong>1801 Anderson Junction Rd., Toquerville, Utah 84774<br>(435) 414-1194 · info@imeautomation.com · imeautomation.com<br><span class="stamp">'+escHTML(stamp)+'</span></div><p><strong>Planning model, not a quotation or guarantee.</strong> Figures use the operating and financial assumptions shown and should be validated by operations, finance, and tax stakeholders. Final costs and performance depend on project scope and operating conditions.</p></footer>'+
   '</div>'+
   '</body></html>';
   w.document.open();w.document.write(doc);w.document.close();
@@ -7799,7 +7947,8 @@ show(0,false);
     outNpv:{kind:'result',title:'Net present value (NPV)',what:'NPV is the value of the project’s modeled cash flows in today’s dollars, after discounting future years at your cost of capital.',how:'A positive NPV means the modeled benefits outweigh the investment and ongoing costs at the discount rate you entered. A negative NPV means the project does not clear that hurdle over the analysis period — even if simple payback looks acceptable.',example:'An NPV of $420,000 means that, in present-value terms, the project adds about $420,000 versus putting the same capital toward a return equal to your discount rate.',tip:'Compare NPV across options only when the analysis period and discount rate are the same. NPV is not the same as total cash put in the bank.'},
     outIrr:{kind:'result',title:'Internal rate of return (IRR)',what:'IRR is the annualized return the model implies from the project’s cash flows — the discount rate at which NPV would equal zero.',how:'Read IRR next to your company’s hurdle rate or cost of capital. If IRR is higher than that rate, the project clears the bar on a pure financial basis under these assumptions. IRR does not replace payback; it answers a different question.',example:'An IRR of 28% means the project’s cash flows behave like an investment earning about 28% per year over the analysis period.',tip:'IRR can look strong on a small project and weaker on a large strategic one. Use it with NPV and payback, not alone.'},
     outRun:{kind:'result',title:'Annual benefits at full run rate',what:'This is the ongoing yearly benefit the model expects once the system is past ramp-up and running at the uptime and capture rates you entered.',how:'It combines labor savings and any other benefits you enabled, minus nothing yet for ongoing costs (those appear separately). First-year results are often lower because of ramp-up.',example:'If full-run benefits are $310,000 per year and ramp-up is 80%, the model uses about $248,000 of benefit in the first 12 operating months.',tip:'If this number feels high, check headcount, shifts, wage rate, and the “share of labor savings you expect to keep.”'},
-    outNet:{kind:'result',title:'Net gain over the analysis period',what:'Net gain is the cumulative modeled benefit over the full analysis period after subtracting investment and ongoing costs (before or after tax, depending on your tax toggle).',how:'Use this as a period total, not an annual figure. It answers “how much net value does the model show across all years in scope?” NPV is the discounted cousin of this idea.',example:'A net gain of $1.2M over 7 years means cumulative inflows exceed cumulative outflows by about $1.2M in nominal dollars across that window.',tip:'Because later years are uncertain, pair this with NPV and payback rather than treating the period total as a guarantee.'}
+    outNet:{kind:'result',title:'Net gain over the analysis period',what:'Net gain is the cumulative modeled benefit over the full analysis period after subtracting investment and ongoing costs (before or after tax, depending on your tax toggle).',how:'Use this as a period total, not an annual figure. It answers “how much net value does the model show across all years in scope?” NPV is the discounted cousin of this idea.',example:'A net gain of $1.2M over 7 years means cumulative inflows exceed cumulative outflows by about $1.2M in nominal dollars across that window.',tip:'Because later years are uncertain, pair this with NPV and payback rather than treating the period total as a guarantee.'},
+    outDelay:{kind:'result',title:'Cost of delay',what:'Cost of delay is the net operating benefit this cell would generate each year once it is fully running. If the project is delayed, this is the operating value your business is waiting to capture.',how:'The monthly figure is the annual net run-rate benefit divided by 12. When available, the 12-month NPV impact estimates how much less the project is worth if the entire start is pushed back one year. It is a timing measure only — it is not an additional return added to NPV, IRR, payback, or the cash-flow table.',example:'If the net benefit at full run rate is $240,000 per year, each month of delay represents roughly $20,000 in operating value not yet captured.',tip:'Treat this as context for timing and prioritization, not as a separate benefit to add to the project returns.'}
   };
   var labels={};
   Object.keys(help).forEach(function(id){
@@ -8451,6 +8600,8 @@ document.querySelectorAll(".start-step").forEach(function(c){c.addEventListener(
 .roi-displace dd{margin:2px 0 0;font:800 20px Archivo,sans-serif;color:var(--blue-d)}
 .roi-wait{margin:0 0 14px;padding:12px 14px;border-left:5px solid var(--sand);background:var(--wash);font-size:15px;line-height:1.45}
 .roi-wait strong{font:800 15px Archivo,sans-serif;color:var(--ink)}
+.roi-delay-heading{margin:2px 0 6px}
+.roi-delay-heading dt{display:flex;align-items:center;gap:6px;font:800 13px Archivo,sans-serif;color:var(--ink);letter-spacing:.02em;text-transform:uppercase}
 .roi-cta{margin:14px 0 0;padding:14px 16px;border:1px solid var(--line);background:#fff;font-size:15px;line-height:1.5}
 .roi-cta a{font-weight:700;color:var(--blue-d);text-decoration:underline;text-underline-offset:3px}
 .roi-strat{display:grid;gap:8px;margin-top:4px}
@@ -11217,5 +11368,29 @@ sliders.forEach(function(p){p[1].value=p[0].value});paint();window.roiLeadUpdate
 }
 </style>
 <!-- v502: ROI intro full-width on desktop; payback labels reframed as helpful recovery bands (not negative grades). Built from v501. -->
+<!-- v503: Business case report as decision packet — cover metrics strip, payband labels, delay teaser, cash-flow caption, context empty-state, scenario clarity, stronger footer. Built from v502. -->
+
+<style id="v504-roi-intro-width">
+/* v504 — force ROI section intro to full content width on desktop */
+#roi > .wrap > .section-head-major{
+  max-width:none !important;
+  width:100% !important;
+}
+#roi > .wrap > .section-head-major h2{
+  max-width:none !important;
+}
+#roi > .wrap > .section-head-major > p{
+  max-width:none !important;
+  width:100% !important;
+}
+</style>
+<!-- v504: Fixed report CSS string injection that broke the ROI calculator JS; reinforced full-width ROI intro. Built from v503. -->
+<!-- v505: Digestible executive summary grid in report; splash re-show via ?intro / #intro clearer. Built from v504. -->
+<!-- v506: Executive summary qualitative layer — why, strategic factors, decision ask when provided. Built from v505. -->
+<!-- v507: Cost of delay hardened for pushback — method, 3/6/12 table, what must be true, what it is not. Built from v506. -->
+<!-- v508: Cost of delay simplified — straightforward calculation steps, less defensive copy. Built from v507. -->
+<!-- v509: Cost of delay — drop 3/6/12 table; show full run-rate benefit build-up into annual net. Built from v508. -->
+<!-- v510: Define Cost of Delay in the live ROI results and generated report in plain language. Built from v509. -->
+<!-- v511: Move the live Cost of Delay explanation into the existing question-mark ROI help pattern; retain the fuller report explanation. Built from v510. -->
 </body>
 </html>
