@@ -3347,6 +3347,39 @@ header nav a{
 }
 
 
+
+/* ===== ROI simplification ===== */
+.roi-banner{display:flex;gap:12px;align-items:center;justify-content:space-between;flex-wrap:wrap;padding:12px 14px;margin:0 0 18px;background:var(--wash);border-left:4px solid var(--sand);font-size:15px;line-height:1.4}
+.roi-banner[data-state=yours]{border-left-color:#2f7d57}
+.roi-banner .roi-reset{padding:4px 0;white-space:nowrap}
+.roi-quick{gap:16px}
+.roi-core{border-left:4px solid var(--blue);padding:8px 0 10px 12px;background:linear-gradient(90deg,rgba(71,106,149,.09),transparent 75%);transition:background .3s,border-color .3s}
+.roi-core.done{border-left-color:#2f7d57;background:none}
+.roi-chips{display:flex;flex-wrap:wrap;gap:8px;align-items:stretch;margin:-6px 0 0}
+.roi-chips-l{flex:0 0 100%;font-size:14px;color:var(--mut)}
+.roi-chip{appearance:none;cursor:pointer;display:grid;gap:2px;text-align:left;padding:9px 12px;min-height:44px;border:1px solid #9a948f;background:#fff;color:var(--ink);font:600 14px Archivo,sans-serif}
+.roi-chip small{font:400 13px "Source Sans 3",sans-serif;color:var(--mut)}
+.roi-chip:hover,.roi-chip[aria-pressed=true]{border-color:var(--blue);background:var(--wash)}
+.roi-chip:focus-visible{outline:3px solid var(--blue);outline-offset:2px}
+.roi-slider{width:100%;padding:0;border:0;background:transparent;accent-color:var(--blue);margin:-6px 0 0;height:28px}
+.roi-in .roi-section-more>fieldset+fieldset{border-top:1px solid var(--line)}
+.roi-in .roi-section-more .roi-input-group-title{margin:0}
+.roi-tag{display:inline-block;font:700 12px Archivo,sans-serif;letter-spacing:.08em;text-transform:uppercase;padding:4px 9px;background:var(--wash);color:var(--mut);margin:0 0 8px}
+.roi-lead{font:700 clamp(20px,2.4vw,25px)/1.3 Archivo,sans-serif;margin:0 0 12px;color:var(--ink)}
+.roi-lead strong{color:var(--blue-d)}
+.roi-out .roi-section-more{border:1px solid var(--line);background:#fff;margin:18px 0 0}
+.roi-out .roi-section-more>summary{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:14px;padding:16px;min-height:66px}
+.roi-out .roi-section-more>summary::-webkit-details-marker{display:none}
+.roi-out .roi-section-more>summary:focus-visible{outline:3px solid var(--blue);outline-offset:2px}
+.roi-out .roi-section-more[open]>summary{border-bottom:1px solid var(--line)}
+.roi-full-body{padding:4px 16px 16px}
+.roi-sens-inner{margin-top:18px}
+.roi-stick{display:none;position:fixed;left:0;right:0;bottom:0;z-index:90;align-items:center;justify-content:space-between;gap:12px;padding:10px 16px calc(10px + env(safe-area-inset-bottom,0px));background:#fff;border-top:3px solid var(--blue);box-shadow:0 -8px 24px rgba(12,25,36,.16)}
+.roi-stick small{display:block;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--mut)}
+.roi-stick strong{font:800 22px Archivo,sans-serif;color:var(--blue-d)}
+.roi-stick a{padding:11px 16px;font-size:14px}
+@media(max-width:900px){.roi-stick.on{display:flex}}
+@media(prefers-reduced-motion:reduce){.roi-core{transition:none}}
 </style>
 <style id="ime-splash-css">
 #ime-splash{--sp-bg:#0e1419;--sp-cy:#476a95;--sp-cu:#d9ab96;position:fixed;inset:0;z-index:2147483000;visibility:visible;color:#fff;font-family:Archivo,"Arial Narrow",sans-serif;overflow:hidden;display:grid;place-items:center}
@@ -6322,151 +6355,56 @@ header nav.ime-nav .nv-phone:focus-visible{
 <div class="section-head-major">
 <span class="section-kicker">ROI &amp; BUSINESS CASE</span>
 <h2>Build the business case for automation</h2>
-<p>Build a practical picture of what automation could mean for your operation. Start with your IME quote and the way the process runs today. Then add the improvements you expect. Use the information you have — estimates are fine — and refine the details as the project takes shape.</p>
-<p>Your entries build a branded ROI Planning Report with the financial results, year-by-year cash flows, sensitivity analysis, cost of delay, and project context. It is designed to help you review the opportunity with operations, engineering, and finance.</p>
-</div>
-<div class="roi-start roi-two-step" aria-label="Two steps to build your automation business case">
-  <section class="roi-step roi-step-one" aria-labelledby="roi-step-one-title">
-    <div class="roi-step-meta">
-      <span class="roi-step-number"><small>STEP</small>01</span>
-      <div>
-        <h3 id="roi-step-one-title">Build your starting picture</h3>
-        <p>Develop your IME quote and current operating information in parallel. Add each input as it becomes available.</p>
-      </div>
-    </div>
-    <div class="roi-parallel-inputs" aria-label="Parallel starting inputs">
-      <article class="roi-input-item">
-        <span class="roi-input-label">INVESTMENT</span>
-        <h4>Your IME Quote</h4>
-        <p>The quoted cost to design, build, and install your automation system.</p>
-      </article>
-      <article class="roi-input-item">
-        <span class="roi-input-label">CURRENT OPERATION</span>
-        <h4>Your Operating Inputs</h4>
-        <p>Production, staffing, shifts, labor rates, quality, and operating costs.</p>
-      </article>
-    </div>
-  </section>
-  <section class="roi-step roi-step-two" aria-labelledby="roi-step-two-title">
-    <div class="roi-step-meta">
-      <span class="roi-step-number"><small>STEP</small>02</span>
-      <div>
-        <h3 id="roi-step-two-title">Model the business impact</h3>
-        <p>Add the improvements you expect automation to deliver, then see how they change the financial picture.</p>
-      </div>
-    </div>
-    <div class="roi-impact-list" aria-label="Business impact inputs">
-      <span>Throughput &amp; capacity</span>
-      <span>Labor &amp; overtime</span>
-      <span>Scrap &amp; quality</span>
-      <span>Operating savings</span>
-    </div>
-  </section>
+<p>Answer four quick questions to see your estimated payback. Want more precision? Open the optional sections, then download a branded report to share with your team.</p>
 </div>
 </div>
 <div class="roi">
 <div class="roi-in">
 <div class="roi-reset-row"><button class="roi-reset" id="roiRestore" type="button" aria-label="Restore the original ROI planning values">Restore defaults</button><button class="roi-reset" id="roiReset" type="button" aria-label="Clear all ROI calculator fields">Clear all fields</button></div>
-<div class="roi-phase-heading roi-phase-one"><span>STEP 01</span><div><h3>Build your starting picture</h3><p>Start with the investment in your IME proposal, then describe the process as it runs today. You can use estimates and come back to refine them.</p></div></div>
-<p class="roi-starting-values">The calculator opens with editable planning values. Replace them with your own figures as you go; estimates are fine to start.</p>
-<fieldset><legend>Your IME quote</legend>
-<label>Your IME quote — cell and installation cost<span class="u"><i>$</i><input id="capex" min="0" step="50000" type="number" value="850000"/></span></label><p class="roi-field-help">Enter the total quoted investment from IME for the automation cell and installation. If your proposal lists optional items separately, include only the scope you want to evaluate here.</p>
-<details class="roi-more roi-section-more">
-<summary><span><strong>Other project and operating costs</strong><small>Add costs only when they are outside your IME quote</small></span><span aria-hidden="true" class="roi-chevron">+</span></summary>
-<div class="roi-more-content">
+<div class="roi-banner" id="roiBanner" data-state="example"><span id="roiBannerText"><strong>Showing example numbers.</strong> Change the four highlighted fields to make it yours.</span><button class="roi-reset" id="roiRestore" type="button" aria-label="Start over with the example numbers">Start over</button></div>
+<fieldset class="roi-quick"><legend>Four quick questions</legend>
+<label class="roi-core">Project cost (your IME quote)<span class="u"><i>$</i><input id="capex" type="text" inputmode="numeric" autocomplete="off" data-money value="850,000"/></span></label>
+<div class="roi-chips" role="group" aria-label="Typical project sizes"><span class="roi-chips-l">No quote yet? Start with a typical size (placeholders; your quote replaces them):</span>
+<button type="button" class="roi-chip" data-v="250000">Compact cell<small>$250,000</small></button><button type="button" class="roi-chip" data-v="500000">Mid-size cell<small>$500,000</small></button><button type="button" class="roi-chip" data-v="850000">Full cell<small>$850,000</small></button><button type="button" class="roi-chip" data-v="1500000">Multi-cell<small>$1,500,000</small></button></div>
+<div class="two">
+<label class="roi-core">People doing this work, per shift<input id="ops" min="0" step="0.5" type="number" value="3"/></label>
+<label class="roi-core">Shifts per day<select id="shifts"><option value="1">1 shift</option><option selected="" value="2">2 shifts</option><option value="3">3 shifts</option></select></label>
+</div>
+<label class="roi-core">Hourly cost per worker (wages + benefits)<span class="u"><i>$/hr</i><input id="rate" min="0" step="1" type="number" value="42"/></span></label>
+<p class="roi-labor-echo" id="laborEcho" aria-live="polite">Enter the details above to see your labor picture.</p>
+<p aria-live="polite" class="fine" hidden="" id="hoursNote" role="status" style="margin:-4px 0 0;color:#7a4a38;font-size:14px"></p>
+</fieldset>
+<details class="roi-section-more "><summary><span><strong>Fine-tune the schedule and assumptions</strong><small>Hours, days, uptime and how much of the savings you keep</small></span><span aria-hidden="true" class="roi-chevron">+</span></summary><fieldset><legend>Schedule and assumptions</legend>
+<div class="two"><label>Hours per shift<input id="hps" max="12" min="1" step="0.5" type="number" value="8"/></label>
+<label>Days the line runs per year<input id="days" max="365" min="1" step="1" type="number" value="250"/></label></div>
+<label>Share of labor savings you expect to keep<span class="u"><input id="realize" max="100" min="0" step="5" type="number" value="85"/><i>%</i></span></label>
+<label>Expected system uptime<span class="u"><input id="uptime" max="100" min="50" step="1" type="number" value="95"/><i>%</i></span></label>
+<label>First-year ramp-up (share of full benefit)<span class="u"><input id="ramp" max="100" min="10" step="5" type="number" value="80"/><i>%</i></span></label>
+<label>Yearly wage increase<span class="u"><input id="esc" max="15" min="0" step="0.5" type="number" value="3"/><i>%</i></span></label>
+</fieldset></details>
+<details class="roi-section-more "><summary><span><strong>Costs beyond your quote</strong><small>Tooling, training, maintenance and more (only if outside your IME quote)</small></span><span aria-hidden="true" class="roi-chevron">+</span></summary><fieldset><legend>Other costs</legend>
 <label>Annual support cost after year one<span class="u"><input id="supp" max="30" min="0" step="0.5" type="number" value="3"/><i>% of cell cost</i></span></label>
-<div class="two">
-<label>One-time tooling / fixtures / integration<span class="u"><i>$</i><input id="setup" min="0" step="5000" type="number" value="40000"/></span></label>
-<label>Training and changeover<span class="u"><i>$</i><input id="training" min="0" step="1000" type="number" value="15000"/></span></label>
-</div>
-<label>Production loss during install / changeover<span class="u"><i>$</i><input id="disruption" min="0" step="1000" type="number" value="25000"/></span></label>
-<div class="two">
-<label>Annual maintenance / repairs<span class="u"><i>$</i><input id="maintenance" min="0" step="1000" type="number" value="10000"/></span></label>
-<label>Annual software / licenses<span class="u"><i>$</i><input id="software" min="0" step="500" type="number" value="6000"/></span></label>
-</div>
-<label>Annual tooling, consumables and other operating costs<span class="u"><i>$</i><input id="consumables" min="0" step="1000" type="number" value="8000"/></span></label>
-</div>
-</details>
-</fieldset>
-<fieldset><legend>Your current operation — labor</legend>
-<p class="roi-input-intro">Tell us about the people and time currently dedicated to this process. Enter only the work this cell is expected to take over or materially reduce. A reasonable estimate is a good place to start.</p>
-<p class="roi-tip">Count only the work this automation can genuinely remove, avoid, or redeploy — not everyone in the department. Confirm the estimate with the people who run the area.</p>
-<div class="two">
-<label>People whose tasks automation could take over per shift<input id="ops" min="0" step="0.5" type="number" value="3"/></label>
-<label>Shifts per day<select id="shifts"><option value="1">1 shift</option><option selected="" value="2">2 shifts</option><option value="3">3 shifts</option></select></label>
-</div>
-<div class="two">
-<label>Hours per shift<input id="hps" max="12" min="1" step="0.5" type="number" value="8"/></label>
-<label>Operating days per year<input id="days" max="365" min="1" step="1" type="number" value="250"/></label>
-</div>
-<p aria-live="polite" class="fine" hidden="" id="hoursNote" role="status" style="margin:-4px 0 12px;color:#7a4a38;font-size:14px"></p>
-<label>Fully burdened labor cost per hour<span class="u"><i>$/hr</i><input id="rate" min="0" step="1" type="number" value="42"/></span></label><p class="roi-field-help">Include wages plus employer-paid taxes and benefits if you have them. If you only know the hourly wage, use that for now and refine it later.</p>
-<p class="roi-labor-echo" id="laborEcho" aria-live="polite">About <strong>–</strong> positions · <strong>–</strong> labor-hours/year · <strong>–</strong> base labor/year before uptime</p>
-<details class="roi-more roi-section-more">
-<summary><span><strong>Labor assumptions</strong><small>Wage growth and capture rate</small></span><span aria-hidden="true" class="roi-chevron">+</span></summary>
-<div class="roi-more-content">
-<div class="two">
-<label>Yearly wage growth<span class="u"><input id="esc" max="15" min="0" step="0.5" type="number" value="3"/><i>%</i></span></label>
-<label>Share of labor value actually captured<span class="u"><input id="realize" max="100" min="0" step="5" type="number" value="85"/><i>% of labor value</i></span></label>
-</div>
-<p class="fine" style="margin:0">Rarely 100%. 70–90% is common after residual tasks, breaks, and inefficiency. Do not also count the same people under avoided hires.</p>
-</div>
-</details>
-</fieldset>
-<div class="roi-phase-heading roi-phase-two"><span>STEP 02</span><div><h3>Model the business impact</h3><p>Estimate the measurable improvements the automation is expected to deliver.</p></div></div>
-<details class="roi-section-more" open>
-<summary><span><strong>Expected operating improvements</strong><small>System performance, capacity, labor, quality and other savings</small></span><span aria-hidden="true" class="roi-chevron">+</span></summary>
-<fieldset><legend>Efficiency and throughput gains</legend>
-<p class="roi-input-intro">Estimate the changes you expect the system to deliver. Use conservative, supportable numbers; you can adjust them as the solution is defined.</p>
-<div class="roi-input-group-title">System performance</div>
-<div class="two">
-<label>System uptime<span class="u"><input id="uptime" max="100" min="50" step="1" type="number" value="95"/><i>%</i></span></label>
-<label>Year-one ramp-up<span class="u"><input id="ramp" max="100" min="10" step="5" type="number" value="80"/><i>% of full</i></span></label>
-</div>
-<div class="roi-input-group-title">Annual operating improvements</div>
-<p class="fine" style="margin:2px 0 10px">Enter the annual dollar value of improvements beyond the labor calculation. Only count benefits you can explain and support. Avoid counting the same benefit twice.</p>
-<div class="two"><label>Annual scrap &amp; rework reduction<span class="u"><i>$</i><input id="quality" min="0" step="1000" type="number" value="10000"/></span></label>
-<label>Overtime / temporary labor reduction<span class="u"><i>$</i><input id="overtime" min="0" step="1000" type="number" value="10000"/></span></label></div>
-<p class="roi-tip">If overtime falls because headcount drops, prefer capturing that in labor above — not twice here.</p>
-<div class="two"><label>Annual value of additional capacity / speed<span class="u"><i>$</i><input id="throughput" min="0" step="5000" type="number" value="10000"/></span></label>
-<label>Avoided future hires / vacancies<span class="u"><i>$</i><input id="avoided" min="0" step="1000" type="number" value="0"/></span></label></div>
-<p class="roi-tip">For added capacity, enter the value of extra units you can realistically sell or a specific cost avoided — not gross revenue. Count avoided hires only when they are part of a real staffing plan or budget.</p>
-<label>Other annual benefits (document separately)<span class="u"><i>$</i><input id="other" min="0" step="1000" type="number" value="0"/></span></label>
-</fieldset>
-</details>
-<details class="roi-section-more">
-<summary><span><strong>Project notes</strong><small>Context, constraints, decision notes</small></span><span aria-hidden="true" class="roi-chevron">+</span></summary>
-<fieldset><legend>Business case details</legend>
-<label>Company / facility (optional)<input id="bcCompany" placeholder="Company or plant name" type="text"/></label>
-<label>Project name (optional)<input id="bcProject" placeholder="e.g., Case packing automation" type="text"/></label>
-<label>Prepared by (optional)<input id="bcPrepared" placeholder="Name and role" type="text"/></label>
-<label>Business problem / current constraint<textarea id="bcProblem" placeholder="What is limiting output, increasing cost, creating risk, or making staffing difficult?" rows="3"></textarea></label>
-<label>Risks, dependencies or decision notes<textarea id="bcNotes" placeholder="List assumptions to validate, implementation risks, dependencies, or the decision being requested." rows="3"></textarea></label>
-</fieldset>
-</details>
-<details class="roi-section-more">
-<summary><span><strong>Financial settings</strong><small>Discount rate, period, tax</small></span><span aria-hidden="true" class="roi-chevron">+</span></summary>
-<fieldset><legend>Financial assumptions</legend>
-<div class="two">
-<label>Discount rate (finance hurdle)<span class="u"><input id="disc" max="40" min="0" step="0.5" type="number" value="10"/><i>%</i></span></label>
-<label>Analysis period<select id="yrs"><option value="5">5 years</option><option selected="" value="7">7 years</option><option value="10">10 years</option></select></label>
-</div>
-<div class="two">
-<label>Months until benefits start<span class="u"><input id="lag" max="24" min="0" step="1" type="number" value="3"/><i>months</i></span></label>
-<label>What the cell might still be worth at the end<span class="u"><i>$</i><input id="residual" min="0" step="10000" type="number" value="0"/></span></label>
-</div>
-<p class="roi-tip">8–12% is a common planning range if finance has not given you a rate. Leave tax off unless they asked for after-tax results.</p>
+<div class="two"><label>One-time tooling / fixtures / integration<span class="u"><i>$</i><input id="setup" type="text" inputmode="numeric" autocomplete="off" data-money value="40,000"/></span></label><label>Training and changeover<span class="u"><i>$</i><input id="training" type="text" inputmode="numeric" autocomplete="off" data-money value="15,000"/></span></label></div>
+<label>Production loss during install / changeover<span class="u"><i>$</i><input id="disruption" type="text" inputmode="numeric" autocomplete="off" data-money value="25,000"/></span></label>
+<div class="two"><label>Annual maintenance / repairs<span class="u"><i>$</i><input id="maintenance" type="text" inputmode="numeric" autocomplete="off" data-money value="10,000"/></span></label><label>Annual software / licenses<span class="u"><i>$</i><input id="software" type="text" inputmode="numeric" autocomplete="off" data-money value="6,000"/></span></label></div>
+<label>Annual tooling, consumables and other operating costs<span class="u"><i>$</i><input id="consumables" type="text" inputmode="numeric" autocomplete="off" data-money value="8,000"/></span></label>
+</fieldset></details>
+<details class="roi-section-more "><summary><span><strong>Other savings and benefits</strong><small>Scrap, overtime, added capacity and more</small></span><span aria-hidden="true" class="roi-chevron">+</span></summary><fieldset><legend>Other benefits</legend>
+<div class="two"><label>Annual scrap &amp; rework reduction<span class="u"><i>$</i><input id="quality" type="text" inputmode="numeric" autocomplete="off" data-money value="10,000"/></span></label><label>Overtime / temporary labor reduction<span class="u"><i>$</i><input id="overtime" type="text" inputmode="numeric" autocomplete="off" data-money value="10,000"/></span></label></div>
+<div class="two"><label>Annual value of additional capacity / speed<span class="u"><i>$</i><input id="throughput" type="text" inputmode="numeric" autocomplete="off" data-money value="10,000"/></span></label><label>Avoided future hires / vacancies<span class="u"><i>$</i><input id="avoided" type="text" inputmode="numeric" autocomplete="off" data-money value="0"/></span></label></div>
+<label>Other annual benefits (document separately)<span class="u"><i>$</i><input id="other" type="text" inputmode="numeric" autocomplete="off" data-money value="0"/></span></label>
+</fieldset></details>
+<details class="roi-section-more "><summary><span><strong>Fine-tune for finance and leadership (optional)</strong><small>Discount rate, analysis period, tax and strategic factors</small></span><span aria-hidden="true" class="roi-chevron">+</span></summary><fieldset><legend>Financial assumptions</legend>
+<div class="roi-input-group-title">Finance details</div>
+<div class="two"><label>Return your finance team requires (discount rate)<span class="u"><input id="disc" max="40" min="0" step="0.5" type="number" value="10"/><i>%</i></span></label>
+<label>Years to evaluate<select id="yrs"><option value="5">5 years</option><option selected="" value="7">7 years</option><option value="10">10 years</option></select></label></div>
+<div class="two"><label>Months until savings start<span class="u"><input id="lag" max="24" min="0" step="1" type="number" value="3"/><i>months</i></span></label><label>Resale value at the end (optional)<span class="u"><i>$</i><input id="residual" type="text" inputmode="numeric" autocomplete="off" data-money value="0"/></span></label></div>
 <label class="chk"><input id="tax" type="checkbox"/> Include income tax effects</label>
-<div class="two taxrow" hidden="" id="taxrow">
-<label>Tax rate<span class="u"><input id="taxrate" max="50" min="0" step="1" type="number" value="25"/><i>%</i></span></label>
-<label>Depreciation (straight-line)<span class="u"><input id="dep" max="20" min="1" step="1" type="number" value="7"/><i>years</i></span></label>
-</div>
+<div class="two taxrow" hidden="" id="taxrow"><label>Tax rate<span class="u"><input id="taxrate" max="50" min="0" step="1" type="number" value="25"/><i>%</i></span></label><label>Depreciation (straight-line)<span class="u"><input id="dep" max="20" min="1" step="1" type="number" value="7"/><i>years</i></span></label></div>
 </fieldset>
-</details>
-<details class="roi-section-more">
-<summary><span><strong>Strategic factors</strong><small>Non-cash decision drivers</small></span><span aria-hidden="true" class="roi-chevron">+</span></summary>
-<fieldset><legend>Why this may still matter when numbers are close</legend>
-<p class="fine roi-strat-intro">These do not change the NPV. They often decide the project when the financial case is borderline. Check any that apply so they appear in your report for leadership review.</p>
+<fieldset><legend>Strategic factors</legend>
+<div class="roi-input-group-title">Strategic factors</div>
+<p class="fine roi-strat-intro">These don’t change the NPV, but they often decide a close call. Checked items appear in your report.</p>
 <div class="roi-strat">
 <label class="chk"><input id="stSafety" type="checkbox"/> Safety or ergonomics exposure on the current process</label>
 <label class="chk"><input id="stQuality" type="checkbox"/> Quality consistency, scrap, or traceability pressure</label>
@@ -6474,17 +6412,30 @@ header nav.ime-nav .nv-phone:focus-visible{
 <label class="chk"><input id="stCapacity" type="checkbox"/> Known demand that current capacity cannot meet</label>
 <label class="chk"><input id="stShift" type="checkbox"/> Path to additional shifts or lights-out operation</label>
 <label class="chk"><input id="stScale" type="checkbox"/> First cell in a multi-cell or multi-site roadmap</label>
-</div>
-</fieldset>
-</details>
+</div></fieldset></details>
+<details class="roi-section-more "><summary><span><strong>Personalize your report</strong><small>Company, project name and notes (optional)</small></span><span aria-hidden="true" class="roi-chevron">+</span></summary><fieldset><legend>Business case details</legend>
+<label>Company / facility (optional)<input id="bcCompany" placeholder="Company or plant name" type="text"/></label>
+<label>Project name (optional)<input id="bcProject" placeholder="e.g., Case packing automation" type="text"/></label>
+<label>Prepared by (optional)<input id="bcPrepared" placeholder="Name and role" type="text"/></label>
+<label>Business problem / current constraint<textarea id="bcProblem" placeholder="What is limiting output, increasing cost, creating risk, or making staffing difficult?" rows="3"></textarea></label>
+<label>Risks, dependencies or decision notes<textarea id="bcNotes" placeholder="List assumptions to validate, implementation risks, dependencies, or the decision being requested." rows="3"></textarea></label>
+</fieldset></details>
 </div>
 <div aria-live="polite" class="roi-out">
 <div class="roi-report">
+<div class="roi-report">
+<span class="roi-tag" id="roiTag">Example numbers</span>
+<p class="roi-lead" id="roiLead" aria-live="polite">–</p>
 <div class="roi-badge" id="o-badge">Working model</div>
-<p class="fine" style="margin:6px 0 10px">Payback targets vary by company. Click the label to see how this is rated.</p>
 <div class="big"><span id="o-pay">–</span><small>simple payback</small></div>
-<p class="fine" style="margin:10px 0 0">We’ll pressure-test every assumption with you on the floor.</p>
 <p class="roi-summary" id="o-summary"></p>
+<div class="roi-actions">
+<button class="btn" id="roiPrint" type="button">View business case report</button>
+<a class="btn ghost" href="#contact">Have an IME engineer pressure-test these numbers</a>
+</div>
+<p class="roi-cta" id="o-cta"></p>
+<details class="roi-section-more roi-full" open><summary><span><strong>See the full analysis</strong><small>NPV, IRR, value drivers, cash-flow chart and sensitivity</small></span><span aria-hidden="true" class="roi-chevron">+</span></summary>
+<div class="roi-full-body">
 <dl class="kpi">
 <div><dt>Net present value</dt><dd id="o-npv">–</dd></div>
 <div><dt>Internal rate of return</dt><dd id="o-irr">–</dd></div>
@@ -6503,15 +6454,9 @@ header nav.ime-nav .nv-phone:focus-visible{
 <div><dt>Base labor / year</dt><dd id="o-lab">–</dd></div>
 </div>
 <p class="roi-wait" id="o-wait"></p>
-<div class="roi-actions">
-<button class="btn" id="roiPrint" type="button">View business case report</button>
-</div>
-<p class="roi-cta" id="o-cta"></p>
-</div>
 <h3>Cumulative cash flow</h3>
 <svg aria-label="Bar chart of cumulative cash flow by year" id="chart" role="img" viewbox="0 0 620 298"></svg>
-<details class="roi-section-more roi-sens" open style="margin-top:18px">
-<summary><span><strong>Sensitivity & method</strong><small>Upside/downside, break-even, method</small></span><span aria-hidden="true" class="roi-chevron">+</span></summary>
+<details class="roi-sens-inner"><summary>Sensitivity &amp; method</summary>
 <div style="padding:4px 16px 16px;border-top:1px solid var(--line)">
 <details>
 <summary>Year-by-year detail</summary>
@@ -6522,6 +6467,8 @@ header nav.ime-nav .nv-phone:focus-visible{
 <p class="fine">Labor savings = operators affected × shifts × hours/shift × days/year × burdened rate, adjusted for uptime and the labor-value capture percentage, then grown with wage inflation. Benefits are scaled for the install lag (months until benefits start); year-one ramp applies to the first live year. Annual operating costs are deducted each year; support is charged from year two as a percent of cell cost. Optional residual value is added at the end of the period. Cost of delay is the net run-rate benefit forgone each month the project is postponed, plus the NPV lost by a 12-month deferral; it is context and is not part of NPV. Operating costs are charged for the full year from year one, and payback excludes residual value. Tax mode applies a straight-line depreciation shield on cell cost only — confirm treatment with your accountant. Strategic factors are qualitative and do not change the NPV. Validate inputs with operations, engineering and finance before a capital decision.</p>
 </div>
 </details>
+</div></details>
+</div>
 </div>
 </div>
 
@@ -7069,7 +7016,7 @@ var $=function(i){return document.getElementById(i)};
 var ids=["capex","setup","training","disruption","supp","maintenance","software","consumables","ops","realize","shifts","hps","days","rate","esc","uptime","ramp","quality","overtime","throughput","avoided","other","disc","yrs","lag","residual","tax","taxrate","dep","stSafety","stQuality","stStaffing","stCapacity","stShift","stScale"];
 function num(i){
   var el=$(i); if(!el) return 0;
-  var v=parseFloat(el.value);
+  var v=parseFloat(String(el.value).replace(/,/g,""));
   return isFinite(v)?v:0;
 }
 function clamp(v,lo,hi){return Math.min(hi,Math.max(lo,v))}
@@ -7359,7 +7306,7 @@ function update(){
   // Labor echo beside inputs
   var echo=$("laborEcho");
   if(echo){
-    echo.innerHTML="About <strong>"+(Math.round(r.fte*10)/10).toLocaleString("en-US")+"</strong> positions · <strong>"+r.hoursYr.toLocaleString("en-US",{maximumFractionDigits:0})+"</strong> labor-hours/year · <strong>"+money(r.laborBase,true)+"</strong> base labor/year before uptime";
+    echo.innerHTML="That’s about <strong>"+r.hoursYr.toLocaleString("en-US",{maximumFractionDigits:0})+"</strong> labor-hours a year, roughly <strong>"+money(r.laborBase)+"</strong> in labor cost.";
   }
   // Value drivers
   var dl=$("o-drv-labor"), dor=$("o-drv-other"), dc=$("o-drv-cost");
@@ -7392,6 +7339,7 @@ function update(){
       cta.innerHTML="Under these inputs the project does not clear a typical capital hurdle. That is useful information: we would rather help you find a tighter scope or a different first step than push a weak case — <a href=\"#contact\">start a conversation</a> and we will say so plainly.";
     }
   }
+  window.__roiLead={pay:payLabel(r.pay,r.N),net:delayInfo(r).netYr,tax:!!r.useTax};if(window.roiLeadUpdate)window.roiLeadUpdate();
   chart(r); table(r); renderScenarios(r);
 }
 ids.forEach(function(i){
@@ -7411,8 +7359,10 @@ function restoreRoiDefaults(){
 var restoreBtn=$("roiRestore");
 if(restoreBtn){
   restoreBtn.addEventListener("click",function(){
+    if(window.roiIsEdited&&window.roiIsEdited()&&!window.confirm("Start over with the example numbers? Your changes will be cleared."))return;
     restoreRoiDefaults();
     update();
+    if(window.roiReset)window.roiReset();
     restoreBtn.focus();
   });
 }
@@ -10634,6 +10584,53 @@ html.hero-ready.from-splash .hero-stage .hero-type h1 span:nth-child(3){animatio
   html.from-splash header .bar,html.from-splash .hero-below{animation:none!important}
 }
 </style>
+<script id="roi-simplify-script">
+(function(){
+var $=function(i){return document.getElementById(i)},root=document.querySelector('#roi .roi-in');if(!root)return;
+var CORE=['capex','ops','shifts','rate'],touched={},anyEdit=false,sliders=[];
+function paint(){
+ var n=Object.keys(touched).length,b=$('roiBanner'),t=$('roiBannerText'),g=$('roiTag');
+ if(!anyEdit){b.dataset.state='example';t.innerHTML='<strong>Showing example numbers.</strong> Change the four highlighted fields to make it yours.';g.textContent='Example numbers';}
+ else if(n<4){b.dataset.state='example';t.innerHTML='<strong>Your numbers: '+n+' of 4 key fields updated.</strong> The rest still use example values.';g.textContent='Partly your numbers';}
+ else{b.dataset.state='yours';t.innerHTML='<strong>Based on your inputs.</strong> Open the optional sections below to refine.';g.textContent='Your numbers';}
+}
+function mark(id){touched[id]=1;anyEdit=true;var e=$(id),l=e&&e.closest('label');if(l)l.classList.add('done');paint();}
+root.addEventListener('input',function(e){if(!e.isTrusted)return;var t=e.target;if(t.classList.contains('roi-slider'))return;anyEdit=true;if(CORE.indexOf(t.id)>-1)mark(t.id);else paint();});
+root.addEventListener('change',function(e){if(!e.isTrusted)return;var t=e.target;anyEdit=true;if(CORE.indexOf(t.id)>-1)mark(t.id);else paint();});
+function fmt(el){var d=el.value.replace(/\D/g,'');el.value=d?Number(d).toLocaleString('en-US'):'';}
+root.querySelectorAll('[data-money]').forEach(function(el){el.addEventListener('input',function(){
+ var pos=el.selectionStart||0,dig=el.value.slice(0,pos).replace(/\D/g,'').length;fmt(el);
+ var p=0,c=0;while(p<el.value.length&&c<dig){if(/\d/.test(el.value[p]))c++;p++}
+ try{el.setSelectionRange(p,p)}catch(_){}});});
+var chips=root.querySelectorAll('.roi-chip'),cap=$('capex');
+chips.forEach(function(c){c.setAttribute('aria-pressed','false');c.addEventListener('click',function(){
+ cap.value=Number(c.dataset.v).toLocaleString('en-US');cap.dispatchEvent(new Event('input',{bubbles:true}));mark('capex');
+ chips.forEach(function(o){o.setAttribute('aria-pressed',o===c?'true':'false')});});});
+cap.addEventListener('input',function(e){if(e.isTrusted)chips.forEach(function(o){o.setAttribute('aria-pressed','false')})});
+['uptime','ramp','realize'].forEach(function(id){var n=$(id),l=n&&n.closest('label');if(!l)return;
+ var s=document.createElement('input');s.type='range';s.className='roi-slider';s.min=n.min;s.max=n.max;s.step=n.step;s.value=n.value;
+ s.setAttribute('aria-label',(l.firstChild.textContent||id).trim()+' (slider)');l.after(s);
+ s.addEventListener('input',function(){n.value=s.value;n.dispatchEvent(new Event('input',{bubbles:true}));anyEdit=true;paint();});
+ n.addEventListener('input',function(){s.value=n.value});sliders.push([n,s]);});
+window.roiIsEdited=function(){return anyEdit};
+window.roiReset=function(){touched={};anyEdit=false;root.querySelectorAll('.roi-core').forEach(function(l){l.classList.remove('done')});
+ chips.forEach(function(o){o.setAttribute('aria-pressed','false')});sliders.forEach(function(p){p[1].value=p[0].value});paint();};
+function m(v){var a=Math.abs(v),s=v<0?'-':'';return a>=1e6?s+'$'+(a/1e6).toFixed(2)+'M':s+'$'+Math.round(a/1e3).toLocaleString('en-US')+'K';}
+var stick=document.createElement('div');stick.className='roi-stick';stick.id='roiStick';
+stick.innerHTML='<div><small>Estimated payback</small><strong id="roiStickVal">–</strong></div><a class="btn" href="#roiResults">See details</a>';
+document.body.appendChild(stick);
+var out=document.querySelector('#roi .roi-out'),wrap=document.querySelector('#roi .roi');out.id='roiResults';out.style.scrollMarginTop='80px';
+window.roiLeadUpdate=function(){var d=window.__roiLead;if(!d)return;var lead=$('roiLead');
+ lead.innerHTML=d.net>0?'Estimated payback: <strong>'+d.pay+'</strong>, with about <strong>'+m(d.net)+'</strong> in net savings per year'+(d.tax?' after tax':'')+'.':'At these numbers the project doesn’t yet produce net savings. Try adjusting the inputs above.';
+ $('roiStickVal').textContent=d.pay;};
+var inW=false,inO=false;function sv(){stick.classList.toggle('on',inW&&!inO)}
+if('IntersectionObserver' in window){
+ new IntersectionObserver(function(es){es.forEach(function(e){inW=e.isIntersecting});sv()}).observe(wrap);
+ new IntersectionObserver(function(es){es.forEach(function(e){inO=e.intersectionRatio>.25});sv()},{threshold:[0,.25,.5]}).observe(out);}
+stick.querySelector('a').addEventListener('click',function(e){e.preventDefault();out.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion:reduce)').matches?'auto':'smooth',block:'start'});});
+sliders.forEach(function(p){p[1].value=p[0].value});paint();window.roiLeadUpdate();
+})();
+</script>
 </body>
 </html>
 
