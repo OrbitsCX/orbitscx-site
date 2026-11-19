@@ -6395,7 +6395,7 @@ header nav.ime-nav .nv-phone:focus-visible{
 <div class="roi-bridge" role="note" aria-label="Build an approval-ready ROI analysis">
 <p class="roi-bridge-kicker">Next step</p>
 <h3 class="roi-bridge-title">Build the approval-ready business case</h3>
-<p class="roi-bridge-body"><strong>The estimate above is a starting point.</strong> Before an automation investment is ready for approval, go deeper. Expand the sections below to refine production assumptions, operating costs, additional benefits and financial criteria. The stronger the inputs, the stronger the business case.</p>
+<p class="roi-bridge-body"><strong>The estimate is a starting point.</strong> Before an automation investment is ready for approval, go deeper. Expand the sections below to refine production assumptions, operating costs, additional benefits and financial criteria. The stronger the inputs, the stronger the business case.</p>
 </div>
 <p aria-live="polite" class="fine" hidden="" id="hoursNote" role="status" style="margin:-4px 0 0;color:#7a4a38;font-size:14px"></p>
 </fieldset>
@@ -7643,7 +7643,7 @@ function printReport(){
   'body{margin:0;background:#ebe8e3;color:var(--ink);font:400 14px/1.55 "Source Sans 3",Arial,sans-serif}'+
   'h1,h2,h3,.kpi strong,.scen strong,.verdict strong,th{font-family:Archivo,"Arial Narrow",Arial,sans-serif}'+
   '.bar{position:sticky;top:0;z-index:5;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:10px 24px;background:var(--ink);color:#fff;font-size:13px}'+
-  '.bar button{font:700 14px Archivo,Arial,sans-serif;color:#fff;background:linear-gradient(180deg,#a2674f,#8a5440);border:1px solid #6e3f2e;padding:9px 18px;cursor:pointer}'+
+  '.bar button{font:700 14px Archivo,Arial,sans-serif;color:#fff;background:linear-gradient(180deg,#a2674f,#8a5440);border:1px solid #6e3f2e;padding:9px 18px;cursor:pointer}.bar-actions{display:flex;gap:8px;align-items:center;flex-wrap:wrap}.bar button.ghost{background:#fff;color:var(--ink);border:1px solid #9a948f;box-shadow:none}.bar button.ghost:hover{background:#f3f1ee;border-color:#6e3f2e}'+
   '.sheet{max-width:900px;margin:24px auto;background:#fff;box-shadow:0 12px 40px rgba(14,20,25,.15);padding:40px 48px 0}'+
   '.cover-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:34px}.cover-top img{height:50px;width:auto;display:block}'+
   '.cover-top span{font:700 12.5px Archivo,Arial,sans-serif;letter-spacing:.12em;color:var(--mut);text-transform:uppercase}'+
@@ -7751,7 +7751,7 @@ function printReport(){
   var cashCaption='<p class="cash-cap"><strong>Timing.</strong> Benefits begin after a '+escHTML(String(r.lagM))+'-month install/start-up lag. Ramp applies to the first 12 operating months, then full run rate. Simple payback excludes residual value. Annual flows are shown by calendar year.</p>';
   var stamp='Generated from the IME ROI planner · '+escHTML(dateTxt)+' · '+escHTML(tag)+' · '+r.N+'-year horizon';
   var doc='<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>'+escHTML(title)+' — ROI Planning Report | IME Automation</title><style>'+css+'</style></head><body>'+
-  '<div class="bar"><span>Report preview · '+escHTML(stamp)+'</span><button type="button" onclick="window.print()">Print or save as PDF</button></div>'+
+  '<div class="bar"><span>Report preview · '+escHTML(stamp)+'</span><div class="bar-actions"><button type="button" class="ghost" onclick="try{window.close()}catch(e){};setTimeout(function(){try{if(!window.closed){if(window.history.length>1)history.back();else if(window.opener)window.opener.focus()}}catch(e){}},120)">Close</button><button type="button" onclick="window.print()">Print or save as PDF</button></div></div>'+
   '<div class="sheet">'+
   '<header><div class="cover-top">'+(logo?'<img alt="IME Automation" src="'+logo+'">':'<b>IME Automation</b>')+'<span>ROI Planning Report</span></div>'+
   '<div class="rule"></div><h1>'+escHTML(title)+'</h1>'+(company?'<p class="co">'+escHTML(company)+'</p>':'')+
