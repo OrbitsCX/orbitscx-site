@@ -6868,5 +6868,49 @@ main .wrap, .site-footer .wrap { position: relative; z-index: 2; }
   requestAnimationFrame(function(){ document.documentElement.classList.add('fx-on'); });
 })();
 </script>
+<script>
+/* Deep links: every article popup and the workbook has its own shareable URL (e.g. orbitscx.com/#business-physics-of-momentum).
+   Opening a popup updates the address bar, closing it returns to the section behind it, and back/forward work. */
+(function(){
+  var LINKS = {
+    'business-physics-of-momentum': ['modal-business-physics', 'insights'],
+    'thriving-in-the-ai-age': ['modal-thriving-ai', 'insights'],
+    'greased-pig-theory-of-innovation': ['modal-greased-pig', 'insights'],
+    'ai-golden-rule': ['modal-ai-golden-rule', 'insights'],
+    'eliza-effect': ['modal-eliza', 'insights'],
+    'ai-gold-rush': ['modal-ai-gold-rush', 'insights'],
+    'workbook': ['modal-worksheet', 'book']
+  };
+  var byModal = {};
+  Object.keys(LINKS).forEach(function(slug){ byModal[LINKS[slug][0]] = slug; });
+
+  function show(){
+    var hit = LINKS[decodeURIComponent(location.hash.slice(1))];
+    document.querySelectorAll('dialog[open]').forEach(function(d){ if (!hit || d.id !== hit[0]) d.close(); });
+    if (!hit) return;
+    var dlg = document.getElementById(hit[0]);
+    if (!dlg || dlg.open) return;
+    var behind = document.getElementById(hit[1]);
+    if (behind) {
+      var pad = parseFloat(getComputedStyle(document.documentElement).scrollPaddingTop) || 0;
+      window.scrollTo({ top: Math.max(0, behind.getBoundingClientRect().top + window.pageYOffset - pad), left: 0, behavior: 'instant' });
+    }
+    dlg.showModal();
+  }
+
+  document.querySelectorAll('[data-open]').forEach(function(btn){
+    var slug = byModal[btn.dataset.open];
+    if (slug) btn.addEventListener('click', function(){ history.pushState(null, '', '#' + slug); });
+  });
+  Object.keys(byModal).forEach(function(id){
+    var dlg = document.getElementById(id);
+    if (dlg) dlg.addEventListener('close', function(){
+      if (decodeURIComponent(location.hash.slice(1)) === byModal[id]) history.replaceState(null, '', '#' + LINKS[byModal[id]][1]);
+    });
+  });
+  window.addEventListener('hashchange', show);
+  if (document.readyState === 'complete') show(); else window.addEventListener('load', show);
+})();
+</script>
 </body>
 </html>
