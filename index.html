@@ -3682,6 +3682,14 @@ dialog::backdrop {
 .es-body .es-payoff p:last-child{margin-bottom:0}
 .es-body .es-payoff .es-peak{font:400 clamp(1.9rem,4vw,2.7rem)/1.12 var(--serif);letter-spacing:-.03em;color:var(--ink-brown);padding-top:8px}
 .es-equation .es-formula[style]{line-height:1.2}
+.read-bar{display:none}
+body.is-reading main > :not(#declaration){display:none !important}
+body.is-reading .read-bar{display:block;position:sticky;top:var(--header-h);z-index:30;background:rgba(250,246,240,.94);-webkit-backdrop-filter:saturate(1.4) blur(10px);backdrop-filter:saturate(1.4) blur(10px);border-bottom:1px solid var(--line)}
+.read-bar-in{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:10px 0}
+.read-exit{font:700 .78rem/1 var(--sans);letter-spacing:.06em;color:var(--flat-rust);background:none;border:0;padding:8px 0;cursor:pointer}
+.read-exit:hover,.read-exit:focus-visible{color:var(--rust)}
+.read-title{font:700 .66rem/1 var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+@media(max-width:700px){.read-title{display:none}}
 @media(max-width:700px){.es-orbits{grid-template-columns:repeat(3,1fr)}.es-orbits div:nth-child(3){border-right:0}.es-orbits div:nth-child(-n+3){border-bottom:1px solid var(--line)}.es-orbits div::after{display:none!important}}
 
 @media (max-width: 1024px) {
@@ -5246,6 +5254,7 @@ main .wrap, .site-footer .wrap { position: relative; z-index: 2; }
 </script>
 
 <section class="section declaration" id="declaration" aria-labelledby="declaration-title">
+  <div class="read-bar" id="read-bar"><div class="wrap read-bar-in"><button type="button" class="read-exit" id="read-exit"><span aria-hidden="true">←</span> Back to the site</button><span class="read-title">The Physics of Business</span></div></div>
   <div class="dc-band">
     <div class="dc-orbits" aria-hidden="true">
       <span class="dc-ring dc-ring-a"><i class="dc-orb gold" style="left:90.96%;top:78.68%;width:26px;height:26px"></i><i class="dc-orb white" style="left:9.04%;top:21.32%;width:14px;height:14px"></i></span>
@@ -5452,7 +5461,7 @@ main .wrap, .site-footer .wrap { position: relative; z-index: 2; }
         <section id="es-close"><div class="es-num">15 / The declaration</div><h3>The declaration</h3>
 <p>Your company has the mass. What it needs now is velocity, and velocity belongs to the customer.</p>
 <div class="es-declaration"><p><strong>A business exists because of its customers.</strong></p><p><strong>Mass is what it builds. Velocity is how efficiently its customers move.</strong></p><p><strong>The company must be built around the journey, and the journey of every customer counts.</strong></p><blockquote>Watch the scoreboard and you lose the game. Focus on CX and the numbers soar.</blockquote><p>Put the customer at the center of every meeting, every plan, every design review, and every budget line, and hold that line when the quarter gets hard.</p><p>Then light the engines.</p></div>
-<div class="es-author"><div class="es-author-name">Stephen McBride</div><div class="es-author-role">CX Performance Architect · Creator of <em>The CX Curve: Rewiring Corporate DNA for Relentless Customer Focus</em></div></div><div class="es-end"><a class="btn btn-primary" href="#book">Explore The CX Curve <span>→</span></a><button type="button" class="btn-quiet" id="es-collapse">Back to the top <span>↑</span></button></div>
+<div class="es-author"><div class="es-author-name">Stephen McBride</div><div class="es-author-role">CX Performance Architect · Creator of <em>The CX Curve: Rewiring Corporate DNA for Relentless Customer Focus</em></div></div><div class="es-end"><a class="btn btn-primary" href="#book">Explore The CX Curve <span>→</span></a><button type="button" class="btn-quiet" id="es-collapse">Back to the site <span>↑</span></button></div>
 </section>
       </div>
 
@@ -7464,11 +7473,30 @@ main .wrap, .site-footer .wrap { position: relative; z-index: 2; }
     var pad = parseFloat(getComputedStyle(document.documentElement).scrollPaddingTop) || 0;
     return Math.max(0, el.getBoundingClientRect().top + window.pageYOffset - pad);
   }
+  var reading = false, lastY = 0;
+  function enter(){
+    expand();
+    if (reading) return;
+    lastY = window.pageYOffset;
+    reading = true;
+    document.body.classList.add('is-reading');
+  }
+  function leave(y){
+    if (!reading) return;
+    reading = false;
+    document.body.classList.remove('is-reading');
+    collapse();
+    window.scrollTo({ top: (y == null ? lastY : y), left: 0, behavior: 'instant' });
+  }
+  function exitToSite(){
+    history.replaceState(null, '', location.pathname + location.search);
+    leave();
+  }
   function go(el){ requestAnimationFrame(function(){ window.scrollTo({ top: top(el), left: 0, behavior: 'instant' }); }); }
   function route(){
     var h = location.hash;
-    if (!wants(h)) return;
-    expand();
+    if (!wants(h)) { leave(); return; }
+    enter();
     if (ALIASES[h] === 1) { history.replaceState(null, '', '#declaration'); go(sec); return; }
     var t = document.getElementById(h.slice(1));
     if (t) go(t);
@@ -7478,18 +7506,34 @@ main .wrap, .site-footer .wrap { position: relative; z-index: 2; }
   window.addEventListener('hashchange', route);
   if (document.readyState === 'complete') route(); else window.addEventListener('load', route);
 
-  toggle.addEventListener('click', function(){ expand(); history.replaceState(null, '', '#declaration'); });
-  back.addEventListener('click', function(){ collapse(); history.replaceState(null, '', '#declaration'); go(sec); });
+  toggle.addEventListener('click', function(){ enter(); history.pushState(null, '', '#declaration'); go(sec); });
+  back.addEventListener('click', function(){ if (reading) exitToSite(); else { collapse(); go(sec); } });
+  var exitBtn = document.getElementById('read-exit');
+  if (exitBtn) exitBtn.addEventListener('click', exitToSite);
+  document.addEventListener('keydown', function(e){ if (e.key === 'Escape' && reading && !document.querySelector('dialog[open]')) exitToSite(); });
+  /* Leaving the article: any link to the rest of the site restores the page first, so the jump lands in the right place. */
+  document.addEventListener('click', function(e){
+    if (!reading) return;
+    var a = e.target.closest && e.target.closest('a[href^="#"]');
+    if (!a) return;
+    var id = a.getAttribute('href').slice(1);
+    if (!id) return;
+    var t = document.getElementById(decodeURIComponent(id));
+    if (!t || sec.contains(t)) return;
+    reading = false;
+    document.body.classList.remove('is-reading');
+    collapse();
+  }, true);
   body.addEventListener('focusin', expand);
   document.addEventListener('click', function(e){
-    if (e.target.closest && e.target.closest('a[href="#declaration"]')) expand();
+    if (e.target.closest && e.target.closest('a[href="#declaration"]')) { enter(); go(sec); }
   });
   links.forEach(function(a){
     a.addEventListener('click', function(e){
       var id = a.getAttribute('href').slice(1), t = document.getElementById(id);
       if (!t) return;
       e.preventDefault();
-      expand();
+      enter();
       history.replaceState(null, '', '#' + id);
       go(t);
     });
@@ -7544,6 +7588,7 @@ main .wrap, .site-footer .wrap { position: relative; z-index: 2; }
       })(t0);
     };
     var jump = function(){
+      enter();
       window.scrollTo({ top: top(sec), left: 0, behavior: 'instant' });
       history.pushState(null, '', '#declaration');
     };
