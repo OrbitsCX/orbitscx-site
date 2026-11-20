@@ -3303,6 +3303,406 @@ dialog::backdrop {
 
 
 
+/* The Declaration: hero ignition button + cinematic opening + full reading */
+.hero-ignite {
+  display: inline-flex;
+  align-items: center;
+  gap: 22px;
+  max-width: 100%;
+  margin-top: 30px;
+  padding: 12px 34px 12px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(218, 176, 112, 0.3);
+  background:
+    radial-gradient(120% 140% at 0% 50%, rgba(191, 132, 62, 0.22), transparent 55%),
+    linear-gradient(160deg, rgba(62, 26, 19, 0.88), rgba(26, 17, 13, 0.94));
+  box-shadow: 0 22px 50px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  color: #fff;
+  text-decoration: none;
+  transition: transform .35s var(--ease), border-color .35s var(--ease), box-shadow .35s var(--ease);
+}
+.hi-orb {
+  position: relative;
+  flex: 0 0 auto;
+  width: 78px;
+  height: 78px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background:
+    radial-gradient(circle at 32% 26%, rgba(255, 255, 255, 0.42), rgba(255, 255, 255, 0.06) 24%, transparent 44%),
+    radial-gradient(circle at 50% 52%, #4A3A32 0%, #2A1F1A 36%, #140D0A 68%, #050302 100%);
+  box-shadow: 0 0 0 2px rgba(218, 176, 112, 0.4), 0 0 0 10px rgba(218, 176, 112, 0.06), 0 12px 28px rgba(0, 0, 0, 0.5), inset -8px -10px 20px rgba(0, 0, 0, 0.55);
+  transition: transform .3s var(--ease);
+}
+.hi-orb::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 32% 28%, rgba(255, 255, 255, 0.55), rgba(255, 255, 255, 0.12) 20%, transparent 44%),
+    radial-gradient(circle at 50% 52%, #F2C142 0%, #BF843E 34%, #A85426 60%, #5C2618 84%, #1A110D 100%);
+  opacity: 0;
+  transition: opacity .45s var(--ease);
+}
+.hi-orb svg {
+  position: relative;
+  z-index: 1;
+  width: 30px;
+  height: 30px;
+  fill: none;
+  stroke: var(--tan);
+  stroke-width: 2.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: stroke .45s var(--ease), transform .45s var(--ease);
+}
+.hi-ring {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 1px solid rgba(218, 176, 112, 0.55);
+  pointer-events: none;
+  animation: hi-pulse 2.8s ease-out infinite;
+}
+.hi-ring + .hi-ring { animation-delay: 1.4s; }
+@keyframes hi-pulse {
+  0% { transform: scale(1); opacity: 0.75; }
+  100% { transform: scale(1.85); opacity: 0; }
+}
+.hi-text { display: grid; gap: 4px; text-align: left; }
+.hi-kicker { font: 700 0.66rem/1.4 var(--sans); letter-spacing: 0.16em; text-transform: uppercase; color: var(--tan); }
+.hi-title { font: 400 clamp(1.45rem, 2.3vw, 1.85rem)/1.1 var(--serif); letter-spacing: -0.028em; color: #fff; }
+.hi-cta { margin-top: 4px; font: 700 0.74rem/1 var(--sans); letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255, 255, 255, 0.62); }
+.hi-cta span { display: inline-block; transition: transform .25s var(--ease); }
+.hero-ignite:hover,
+.hero-ignite:focus-visible,
+.hero.is-igniting .hero-ignite {
+  transform: translateY(-3px);
+  border-color: rgba(218, 176, 112, 0.6);
+  box-shadow: 0 28px 60px rgba(0, 0, 0, 0.45), 0 0 48px rgba(191, 132, 62, 0.28), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+.hero-ignite:focus-visible { outline: 2px solid var(--tan); outline-offset: 4px; }
+.hero-ignite:hover .hi-orb::before,
+.hero-ignite:focus-visible .hi-orb::before,
+.hero.is-igniting .hi-orb::before { opacity: 1; }
+.hero-ignite:hover .hi-orb svg,
+.hero-ignite:focus-visible .hi-orb svg,
+.hero.is-igniting .hi-orb svg { stroke: #1A110D; transform: translateY(-2px); }
+.hero-ignite:hover .hi-cta,
+.hero-ignite:focus-visible .hi-cta,
+.hero.is-igniting .hi-cta { color: var(--tan); }
+.hero-ignite:hover .hi-cta span { transform: translateX(4px); }
+.hero-ignite:active .hi-orb { transform: scale(0.94); }
+.hero .orbit-stage { transition: filter .6s var(--ease); }
+.hero.is-igniting .orbit-stage { filter: brightness(1.45) saturate(1.2); }
+@media (max-width: 640px) {
+  .hero-ignite { display: flex; gap: 16px; padding-right: 20px; }
+  .hi-orb { width: 64px; height: 64px; }
+  .hi-orb svg { width: 26px; height: 26px; }
+}
+
+/* Opening band */
+.section.declaration { padding: 0; background: var(--sand); border-bottom: 1px solid var(--line); }
+.dc-band {
+  position: relative;
+  overflow: hidden;
+  padding: clamp(96px, 12vw, 150px) 0 clamp(72px, 9vw, 110px);
+  color: #fff;
+  background:
+    radial-gradient(70% 90% at 82% 40%, rgba(191, 132, 62, 0.18), transparent 70%),
+    radial-gradient(50% 60% at 8% 100%, rgba(168, 84, 38, 0.14), transparent 70%),
+    var(--umber);
+  border-top: 1px solid rgba(218, 176, 112, 0.18);
+}
+.dc-band::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0.14;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.4) 0.6px, transparent 0.6px);
+  background-size: 22px 22px;
+  mask-image: linear-gradient(to right, transparent 5%, black 70%);
+  pointer-events: none;
+}
+.dc-orbits {
+  position: absolute;
+  right: -160px;
+  top: 50%;
+  width: 820px;
+  height: 820px;
+  margin-top: -410px;
+  pointer-events: none;
+  animation: dc-spin 180s linear infinite;
+}
+@keyframes dc-spin { to { transform: rotate(360deg); } }
+.dc-ring {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  border: 1px solid rgba(218, 176, 112, 0.17);
+  border-radius: 50%;
+}
+.dc-ring-a { top: 31%; height: 38%; transform: rotate(-24deg); }
+.dc-ring-b { top: 24%; height: 52%; transform: rotate(32deg); }
+.dc-ring-c { top: 35%; height: 30%; transform: rotate(-70deg); }
+.dc-orb {
+  position: absolute;
+  display: block;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
+.dc-orb.gold {
+  background: radial-gradient(circle at 32% 28%, rgba(255, 255, 255, 0.58) 0%, rgba(255, 255, 255, 0.14) 18%, transparent 44%), radial-gradient(circle at 50% 52%, #E0B878 0%, #BF843E 32%, #A85426 58%, #5C2618 82%, #1A110D 100%);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.45), 0 0 22px rgba(191, 132, 62, 0.38);
+}
+.dc-orb.rust {
+  background: radial-gradient(circle at 32% 28%, rgba(255, 236, 210, 0.5) 0%, rgba(255, 200, 160, 0.12) 16%, transparent 42%), radial-gradient(circle at 50% 52%, #C96A3A 0%, #A85426 30%, #802E1E 55%, #3E1A13 80%, #1A110D 100%);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.45), 0 0 22px rgba(168, 84, 38, 0.4);
+}
+.dc-orb.white {
+  background: radial-gradient(circle at 32% 28%, rgba(255, 255, 255, 0.72) 0%, rgba(255, 255, 255, 0.22) 20%, transparent 46%), radial-gradient(circle at 50% 52%, #FFFDFC 0%, #E6E1D8 34%, #B0A99E 60%, #6A645C 85%, #2A2723 100%);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4), 0 0 20px rgba(255, 255, 255, 0.22);
+}
+.dc-mark {
+  position: absolute;
+  left: -0.04em;
+  bottom: -0.18em;
+  font: 400 clamp(9rem, 26vw, 24rem)/1 var(--serif);
+  letter-spacing: -0.05em;
+  color: rgba(255, 255, 255, 0.035);
+  white-space: nowrap;
+  pointer-events: none;
+  user-select: none;
+}
+.dc-inner { position: relative; z-index: 2; }
+.dc-band .eyebrow { color: var(--tan); margin-bottom: 24px; }
+.dc-band h2 {
+  max-width: 11ch;
+  font-size: clamp(3.1rem, 8.4vw, 7rem);
+  line-height: 0.95;
+  letter-spacing: -0.04em;
+  color: #fff;
+  text-wrap: balance;
+}
+.dc-band h2 span { display: block; color: var(--tan); }
+.dc-deck {
+  max-width: 30ch;
+  margin: 24px 0 46px;
+  font: italic 400 clamp(1.3rem, 2.4vw, 1.8rem)/1.4 var(--serif);
+  color: rgba(255, 255, 255, 0.8);
+  text-wrap: balance;
+}
+.dc-principles {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 28px;
+  max-width: 1000px;
+  margin: 0 0 38px;
+}
+.dc-principles li { padding-top: 16px; border-top: 1px solid rgba(218, 176, 112, 0.38); }
+.dc-principles b { display: block; margin-bottom: 8px; font: 400 clamp(1.5rem, 2.4vw, 1.95rem)/1.1 var(--serif); letter-spacing: -0.02em; color: var(--tan); }
+.dc-principles span { display: block; font-size: 0.92rem; line-height: 1.5; color: rgba(255, 255, 255, 0.68); }
+.dc-byline { font: 600 0.78rem/1.5 var(--sans); letter-spacing: 0.08em; color: rgba(255, 255, 255, 0.55); }
+
+/* Reading area */
+.dc-read { padding: clamp(64px, 8vw, 96px) 0 clamp(72px, 9vw, 110px); }
+.essay-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 300px) minmax(0, 1fr);
+  gap: 80px;
+  align-items: start;
+}
+.essay-side {
+  position: sticky;
+  top: calc(var(--header-h) + 36px);
+  max-height: calc(100vh - var(--header-h) - 56px);
+  overflow-y: auto;
+  padding-right: 4px;
+}
+.essay-share { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 30px; }
+.es-chip {
+  display: inline-block;
+  padding: 10px 15px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: #fff;
+  font: 700 0.7rem/1 var(--sans);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--flat-rust);
+  cursor: pointer;
+  transition: border-color .25s var(--ease), background .25s var(--ease), transform .25s var(--ease);
+}
+.es-chip:hover,
+.es-chip:focus-visible { border-color: var(--sandstone); background: var(--sand); transform: translateY(-1px); }
+.essay-toc-label {
+  font: 700 0.68rem/1.4 var(--sans);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--rust);
+  margin-bottom: 10px;
+}
+.essay-toc ol { list-style: none; border-left: 1px solid var(--line); }
+.essay-toc a {
+  display: block;
+  margin-left: -1px;
+  padding: 6px 0 6px 14px;
+  border-left: 2px solid transparent;
+  font: 500 0.86rem/1.4 var(--sans);
+  color: var(--muted);
+  transition: color .2s, border-color .2s;
+}
+.essay-toc a:hover,
+.essay-toc a:focus-visible,
+.essay-toc a.is-current { color: var(--flat-rust); border-left-color: var(--sandstone); }
+
+.es-body {
+  max-width: 700px;
+  font-size: 1.12rem;
+  line-height: 1.82;
+  color: #4B3F36;
+}
+.es-body.is-collapsed { max-height: 29rem; overflow: hidden; position: relative; }
+.es-body.is-collapsed::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  height: 10rem;
+  background: linear-gradient(to bottom, rgba(250, 246, 240, 0), var(--sand) 88%);
+  pointer-events: none;
+}
+.es-more { margin-top: 8px; }
+.es-more[hidden] { display: none; }
+.es-body p { margin-bottom: 20px; }
+.es-body strong { color: var(--ink-brown); font-weight: 700; }
+.es-body a { color: var(--rust); text-decoration: underline; text-underline-offset: 3px; }
+.es-body section { margin-bottom: 68px; }
+.es-lede {
+  font: 400 clamp(1.3rem, 2vw, 1.55rem)/1.5 var(--serif);
+  color: var(--ink-brown);
+  margin-bottom: 44px;
+  padding-bottom: 36px;
+  border-bottom: 1px solid var(--line);
+}
+.es-num {
+  font: 700 0.7rem/1.4 var(--sans);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--rust);
+  margin-bottom: 12px;
+}
+.es-body h3 {
+  font: 400 clamp(1.9rem, 3.2vw, 2.6rem)/1.12 var(--serif);
+  letter-spacing: -0.03em;
+  color: var(--ink-brown);
+  margin-bottom: 24px;
+}
+.es-body h4 {
+  font: 400 1.45rem/1.25 var(--serif);
+  letter-spacing: -0.02em;
+  color: var(--flat-rust);
+  margin: 34px 0 12px;
+}
+.es-source { font-size: 0.82rem; line-height: 1.5; color: var(--muted); margin: -8px 0 24px; }
+.es-principle {
+  margin: 36px 0;
+  padding: 22px 28px;
+  background: #fff;
+  border-left: 3px solid var(--sandstone);
+  border-radius: 0 12px 12px 0;
+  box-shadow: var(--shadow-sm);
+}
+.es-principle p { margin: 0; font: italic 400 1.42rem/1.4 var(--serif); color: var(--ink-brown); text-wrap: balance; }
+.es-equation {
+  margin: 34px 0;
+  padding: 30px 32px;
+  border-radius: 14px;
+  text-align: center;
+  background: radial-gradient(110% 120% at 100% 0%, rgba(191, 132, 62, 0.24), transparent 62%), linear-gradient(160deg, var(--maroon), var(--umber));
+  box-shadow: var(--shadow);
+}
+.es-formula { font: 400 clamp(2.6rem, 6vw, 3.4rem)/1.1 var(--serif); letter-spacing: -0.03em; color: var(--tan); }
+.es-caption { margin-top: 8px; font: 700 0.7rem/1.4 var(--sans); letter-spacing: 0.17em; text-transform: uppercase; color: rgba(255, 255, 255, 0.7); }
+.es-first {
+  margin: 38px 0;
+  padding: clamp(28px, 5vw, 46px) clamp(24px, 4.5vw, 40px);
+  border-radius: 16px;
+  text-align: center;
+  background: radial-gradient(110% 120% at 50% 0%, rgba(191, 132, 62, 0.26), transparent 62%), linear-gradient(160deg, var(--maroon), var(--umber));
+  box-shadow: var(--shadow);
+}
+.es-first-label { margin-bottom: 18px; font: 700 0.7rem/1.4 var(--sans); letter-spacing: 0.18em; text-transform: uppercase; color: var(--tan); }
+.es-body .es-first-q { margin: 0 0 8px; font: italic 400 clamp(1.25rem, 2.2vw, 1.6rem)/1.35 var(--serif); color: rgba(255, 255, 255, 0.78); }
+.es-body .es-first-a { margin: 0; font: 400 clamp(2.3rem, 5.6vw, 3.6rem)/1.05 var(--serif); letter-spacing: -0.035em; color: #fff; }
+.es-first-a span { color: var(--tan); }
+.es-pull {
+  margin: 40px 0;
+  padding: 28px 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  font: 400 clamp(1.5rem, 2.4vw, 1.8rem)/1.35 var(--serif);
+  letter-spacing: -0.015em;
+  color: var(--flat-rust);
+  text-wrap: balance;
+}
+.es-declaration {
+  margin: 44px 0 0;
+  padding: clamp(30px, 5vw, 48px) clamp(24px, 4.5vw, 44px);
+  border-radius: 16px;
+  background: radial-gradient(110% 100% at 100% 0%, rgba(191, 132, 62, 0.22), transparent 60%), linear-gradient(160deg, var(--maroon), var(--umber));
+  box-shadow: var(--shadow);
+}
+.es-declaration p { color: rgba(255, 255, 255, 0.82); }
+.es-declaration p:last-child { margin-bottom: 0; }
+.es-declaration strong { color: #fff; }
+.es-declaration blockquote {
+  margin: 28px 0;
+  padding-left: 22px;
+  border-left: 3px solid var(--tan);
+  font: italic 400 clamp(1.35rem, 2.4vw, 1.7rem)/1.35 var(--serif);
+  color: var(--tan);
+}
+.es-author { margin-top: 48px; padding-top: 24px; border-top: 1px solid var(--line); }
+.es-author-name { font: 400 1.5rem/1.2 var(--serif); color: var(--ink-brown); }
+.es-author-role { margin-top: 4px; font-size: 0.85rem; line-height: 1.5; color: var(--muted); }
+.es-end { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 24px; margin-top: 30px; }
+.es-body .es-end a.btn { color: #fff; text-decoration: none; }
+.es-orbits{margin:34px 0 10px;display:grid;grid-template-columns:repeat(6,1fr);border:1px solid var(--line);background:#fff;border-radius:12px;overflow:hidden}
+.es-orbits div{padding:16px 6px;text-align:center;border-right:1px solid var(--line);position:relative}
+.es-orbits div:last-child{border-right:0}
+.es-orbits div:not(:last-child)::after{content:"drift";position:absolute;right:0;top:50%;transform:translate(50%,-50%);background:var(--sand);color:var(--rust);font:700 .56rem/1 var(--sans);letter-spacing:.08em;text-transform:uppercase;padding:3px 4px;z-index:1}
+.es-orbits b{display:block;font:400 1.9rem/1.1 var(--serif);color:var(--rust)}
+.es-orbits span{font:700 .62rem/1.3 var(--sans);letter-spacing:.08em;text-transform:uppercase;color:var(--ink-brown)}
+.es-body .es-figcap{font-size:.85rem;color:var(--muted);margin:0 0 26px}
+.es-payoff{margin:40px 0;padding:clamp(30px,5vw,48px) clamp(22px,4vw,40px);border-radius:16px;background:radial-gradient(110% 120% at 50% 0%,rgba(191,132,62,.18),transparent 62%),#fff;border:1px solid var(--line);box-shadow:var(--shadow-sm)}
+.es-body .es-payoff p{font:400 clamp(1.3rem,2.2vw,1.55rem)/1.4 var(--serif);color:var(--flat-rust);margin:0 0 24px}
+.es-body .es-payoff p:last-child{margin-bottom:0}
+.es-body .es-payoff .es-peak{font:400 clamp(1.9rem,4vw,2.7rem)/1.12 var(--serif);letter-spacing:-.03em;color:var(--ink-brown);padding-top:8px}
+.es-equation .es-formula[style]{line-height:1.2}
+@media(max-width:700px){.es-orbits{grid-template-columns:repeat(3,1fr)}.es-orbits div:nth-child(3){border-right:0}.es-orbits div:nth-child(-n+3){border-bottom:1px solid var(--line)}.es-orbits div::after{display:none!important}}
+
+@media (max-width: 1024px) {
+  .essay-grid { grid-template-columns: minmax(0, 1fr); gap: 28px; }
+  .essay-side { position: static; max-height: none; overflow: visible; }
+  .essay-toc { display: none; }
+  .essay-share { margin-bottom: 0; }
+  .es-body { font-size: 1.06rem; }
+  .es-body.is-collapsed { max-height: 37rem; }
+  .dc-orbits { right: -300px; opacity: 0.7; }
+}
+@media (max-width: 760px) {
+  .dc-principles { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px; }
+  .dc-orbits { right: -420px; opacity: 0.55; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-ignite, .es-chip, .hi-cta span, .essay-toc a, .hi-orb, .hi-orb::before, .hi-orb svg, .hero .orbit-stage { transition: none; }
+  .hero-ignite:hover, .hero-ignite:focus-visible, .es-chip:hover { transform: none; }
+  .hi-ring, .dc-orbits { animation: none; }
+}
+
 /* Outcomes */
 .outcomes {
   background: var(--paper);
@@ -4715,6 +5115,7 @@ main .wrap, .site-footer .wrap { position: relative; z-index: 2; }
       </li>
       <li class="nav-item has-sub"><a class="nav-top" href="#cx-curve">CX Curve</a><button type="button" class="nav-caret" aria-expanded="false" aria-label="Show CX Curve submenu"><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 4.5 6 8l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
         <ul class="nav-sub">
+          <li><a href="#declaration">The Declaration</a></li>
           <li><a href="#cx-curve">What Is the CX Curve?</a></li>
           <li><a href="#momentum">The Physics of Momentum</a></li>
           <li><a href="#momentum-feeling">When Momentum Takes Hold</a></li>
@@ -4743,6 +5144,17 @@ main .wrap, .site-footer .wrap { position: relative; z-index: 2; }
       <div class="eyebrow">Generating Momentum</div>
       <h1>Every business wants <em>more</em> momentum.</h1>
       <p class="hero-lead hero-lead--tight">CX drives the velocity of your business. When customers glide, momentum builds. We work alongside your leadership team to rally the entire organization around the customer. </p>
+      <a class="hero-ignite" id="ignite" href="#declaration" aria-label="Read The Declaration: The Physics of Business. Light the engines.">
+        <span class="hi-orb" aria-hidden="true">
+          <span class="hi-ring"></span><span class="hi-ring"></span>
+          <svg viewBox="0 0 24 24"><path d="M12 17V5"/><path d="M6.5 10.5 12 5l5.5 5.5"/><path d="M7 20h10"/></svg>
+        </span>
+        <span class="hi-text">
+          <span class="hi-kicker">The Declaration · 18 min read</span>
+          <span class="hi-title">The Physics of Business</span>
+          <span class="hi-cta">Light the engines <span aria-hidden="true">→</span></span>
+        </span>
+      </a>
       <div class="hero-note">
         <i aria-hidden="true"></i>
         For CEOs, executive teams, product and CX leaders, and investors who want real momentum. We don’t drop off a deck and disappear. We stay until momentum takes off.
@@ -4832,6 +5244,225 @@ main .wrap, .site-footer .wrap { position: relative; z-index: 2; }
   var t=0; addEventListener('resize',function(){cancelAnimationFrame(t);t=requestAnimationFrame(fit);},{passive:true});
 })();
 </script>
+
+<section class="section declaration" id="declaration" aria-labelledby="declaration-title">
+  <div class="dc-band">
+    <div class="dc-orbits" aria-hidden="true">
+      <span class="dc-ring dc-ring-a"><i class="dc-orb gold" style="left:90.96%;top:78.68%;width:26px;height:26px"></i><i class="dc-orb white" style="left:9.04%;top:21.32%;width:14px;height:14px"></i></span>
+      <span class="dc-ring dc-ring-b"><i class="dc-orb rust" style="left:75%;top:6.7%;width:30px;height:30px"></i><i class="dc-orb gold" style="left:25%;top:93.3%;width:16px;height:16px"></i></span>
+      <span class="dc-ring dc-ring-c"><i class="dc-orb white" style="left:.8%;top:41.3%;width:18px;height:18px"></i><i class="dc-orb rust" style="left:97%;top:67.1%;width:22px;height:22px"></i></span>
+    </div>
+    <div class="dc-mark" aria-hidden="true">P = MV</div>
+    <div class="wrap dc-inner">
+      <div class="eyebrow">The Declaration</div>
+      <h2 id="declaration-title">The Physics <span>of Business</span></h2>
+      <p class="dc-deck">Every business wants more momentum. It is surprisingly hard to say what really drives it.</p>
+      <ul class="dc-principles">
+        <li><b>Mass</b><span>What you have built. Potential, and inertia.</span></li>
+        <li><b>Velocity</b><span>The half of the equation most companies never define.</span></li>
+        <li><b>Friction</b><span>Energy lost before it reaches the customer.</span></li>
+        <li><b>Leverage</b><span>Output rising faster than the mass behind it.</span></li>
+      </ul>
+      <div class="dc-byline">By Stephen McBride · 18 min read</div>
+    </div>
+  </div>
+
+  <div class="dc-read">
+    <div class="wrap essay-grid">
+      <aside class="essay-side">
+        <div class="essay-share">
+          <button type="button" class="es-chip" id="es-copy">Copy link</button>
+          <a class="es-chip" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Forbitscx.com%2F%23declaration" target="_blank" rel="noopener">Share on LinkedIn</a>
+        </div>
+        <nav class="essay-toc" aria-label="In this declaration">
+          <div class="essay-toc-label">In this declaration</div>
+          <ol>
+            <li><a href="#es-equation">Half an equation</a></li>
+            <li><a href="#es-premise">Without customers, no business</a></li>
+            <li><a href="#es-discover">Where velocity comes from</a></li>
+            <li><a href="#es-trap">The Momentum Trap</a></li>
+            <li><a href="#es-vector">Momentum is a vector</a></li>
+            <li><a href="#es-efficiency">Efficient, not faster</a></li>
+            <li><a href="#es-aggregate">One customer, thousands of times</a></li>
+            <li><a href="#es-drift">Customers drift between stages</a></li>
+            <li><a href="#es-department">Customer success is not a department</a></li>
+            <li><a href="#es-noise">In a world of noise, drift is the default</a></li>
+            <li><a href="#es-booster">The booster comes back</a></li>
+            <li><a href="#es-rewire">Rewiring around the journey</a></li>
+            <li><a href="#es-test">Five questions for Monday</a></li>
+            <li><a href="#es-feeling">When momentum takes hold</a></li>
+            <li><a href="#es-close">The declaration</a></li>
+          </ol>
+        </nav>
+      </aside>
+      <div class="essay-main">
+      <div class="es-body" id="es-body">
+        <p class="es-lede">Every business wants <em>more</em> momentum. Yet it is surprisingly hard to put our finger on what really drives it. This is a piece about finding out: the one ingredient most companies depend on completely and measure least, and what changes once you see it.</p>
+
+        <section id="es-equation"><div class="es-num">01 / The equation</div><h3>Half an equation</h3>
+<p>Picture a Falcon 9 on the launch pad. Fully built. Fully fueled. Every bolt checked, the mission funded, the world watching. It is the most capable object on the field, and in that moment it has zero momentum.</p>
+<p>Physics is blunt about why. Momentum is mass multiplied by velocity. The rocket has the mass. Until it moves, the product is zero.</p>
+<div class="es-equation"><div class="es-formula">P = MV</div><div class="es-caption">Momentum = Mass × Velocity</div></div>
+<p>Business borrowed the word momentum long ago and kept half of the equation. Ask a leadership team what momentum looks like and they describe mass: capital, headcount, talent, patents, innovation, brand, technology, years in market. All of it real. All of it necessary. All of it potential.</p>
+<p>Mass is easy to count. It lives on the balance sheet, the org chart, and the funding announcement. So leaders build it, and every addition feels like progress. When growth stalls, the instinct is to add more: more people, more tools, more initiatives. The company gets heavier, and heavier things are harder to move.</p>
+<div class="es-principle"><p>Mass is potential. Only velocity turns it into momentum.</p></div>
+<p>Mistaking the one for the other is so common, and so costly, that it has a name. We will come to it. First, a question that most companies never stop to ask.</p>
+<p class="lead-q">Mass we can name and count. But what is velocity? What, in a business, is actually moving?</p>
+</section>
+
+        <section id="es-premise"><div class="es-num">02 / The premise</div><h3>Start with the one fact no business can escape</h3>
+<div class="es-first"><div class="es-first-label">Start here</div><p class="es-first-q">The one fact no business can escape:</p><p class="es-first-a">Without <span>customers,</span><br>there is no business.</p></div>
+<p>Sit with that for a moment, because everything else in this piece depends on it. Better still, don’t take it on faith.</p>
+<p>Run an experiment. Take a company and start removing things. Remove the headquarters, and it is still a business, working from a rented room. Remove half the staff, and it is a smaller business. Remove the patents, the brand, the capital, one at a time, and the business is wounded, perhaps badly, but alive.</p>
+<p>Now remove the customers. What remains is a building, a payroll, and a portfolio of IP with nowhere to go. It is no longer a business. It is a cost, and it ends.</p>
+<p>Now look closely at what just happened, because the two kinds of removal behaved differently.</p>
+<p>Every time we removed an asset, the business got smaller. Each loss took a bite, and the bite had a size.</p>
+<p>When we removed the customers, no bite was taken. The building was still there. So was the payroll, the IP, the brand, and the cash. Nothing had been subtracted from what the company owns, and the business was finished anyway.</p>
+<p>Now hold that beside the equation. Momentum is mass multiplied by something else. Take a bite out of mass, and momentum shrinks by that bite. But set the other factor to zero, and momentum is zero, however much mass is left standing.</p>
+<p>That is precisely the behavior we just watched. Assets add. Customers multiply. Take away an asset and you subtract something. Take away the customers and you take away the leverage, the thing that turns everything else into results. In an equation, only one factor can do that to a product, and it is not the mass.</p>
+<p>So the missing half of the equation is not hiding inside the building. It is out where the customers are. Let’s go and find it.</p>
+</section>
+
+        <section id="es-discover"><div class="es-num">03 / The discovery</div><h3>Where velocity comes from</h3>
+<p>We know where to look. What we still need to find out is what, exactly, about customers is velocity.</p>
+<h4>First, what velocity is not</h4>
+<p>It is not how fast the company operates on the inside: features shipped faster, people hired faster, the quarter closed faster. That is mass moving around internally. It is activity. A company can run at tremendous internal speed while its customers stand still. And in physics, velocity always means velocity <em>toward</em> something. Internal speed has no destination.</p>
+<h4>Then, look for what actually moves</h4>
+<p>Look around the business. The building does not move. The org chart does not move. The patents, the capital, and the brand sit where they are. One thing in the picture is in motion, because it has somewhere to go: the customer.</p>
+<p>Every customer arrives with a gap. A problem to solve, a result to reach, a place they need to be and are not. They set out from where they are, toward where they need to be, and they invite a company to help them travel.</p>
+<h4>The reveal</h4>
+<p>That journey is the velocity. Velocity is the movement of customers from their problem to their outcome, and onward to the moment they carry the story to someone else. The more directly and efficiently they travel, the greater the velocity. It is not a department or a target. It is what happens out in the world of your customers because of everything you built.</p>
+<div class="es-principle"><p>Mass is what you built. Velocity is how efficiently your customers move toward value because of it. Momentum is what happens when the two meet.</p></div>
+<p>That movement has a shape. The CX Curve maps it in six phases, and the first letters spell ORBITS. Customers rise and dip along the way, because doubt before a decision and second thoughts after one are normal. No two customers trace it identically. Some soar, some drift, some crash, some recover.</p>
+<div class="es-orbits" role="img" aria-label="The six phases of the CX Curve: Obstacle, Research, Benchmark, Invest, Transform, Share, with Drift Zones in the gaps between them"><div><b>O</b><span>Obstacle</span></div><div><b>R</b><span>Research</span></div><div><b>B</b><span>Benchmark</span></div><div><b>I</b><span>Invest</span></div><div><b>T</b><span>Transform</span></div><div><b>S</b><span>Share</span></div></div>
+<p class="es-figcap">The six phases of the CX Curve. Drift Zones live in the gaps between them.</p>
+<p>This is the premise behind The CX Curve, and it changes what a company is for. It is not a machine for producing offerings. It is a system for moving customers to value.</p>
+</section>
+
+        <section id="es-trap"><div class="es-num">04 / The Momentum Trap</div><h3>The Momentum Trap</h3>
+<div class="es-principle"><p><strong>Momentum Trap™</strong> <em>(noun)</em><br>Mistaking mass for momentum. Believing that what a company has accumulated is the same as what it is creating for its customers.</p></div>
+<p>Call it a mistake and you miss what makes it dangerous. It is a trap because the business rewards you for walking into it. Every step looks like progress, every step has a sponsor, and every step is defensible on its own. The trap closes without anyone deciding to close it.</p>
+<h4>Why it works on smart people</h4>
+<p><strong>Mass is countable.</strong> It sits on the balance sheet, the org chart, the patent register, and the funding announcement. Anyone can check it by Friday.</p>
+<p><strong>Mass has owners.</strong> Every asset has a budget line and a leader. Customer velocity has neither, so it loses every internal argument for attention.</p>
+<p><strong>Mass gets applause.</strong> Boards, investors, and the press celebrate the raise, the hire, the acquisition, the launch. Nobody has ever been congratulated for a customer arriving at value a little more efficiently.</p>
+<p><strong>Mass feels like motion.</strong> Each addition delivers a small hit of forward movement. A busy company feels like a moving one.</p>
+<h4>How the trap closes</h4>
+<p>It runs as a loop. Customers slow down. Leaders sense the stall and do what has always worked: add mass. More people, more tools, more process, more product. The new mass brings new handoffs, approvals, and integrations, and customers move more slowly still. The stall deepens, so leaders add more.</p>
+<p>Rocket engineers know this loop in mathematical form. Every kilogram of dead weight needs fuel to lift it, and that fuel has weight of its own and needs more fuel to lift. The penalty compounds. Inside a company, the same compounding hides in each reasonable decision, until a large share of the energy goes to carrying the structure and little is left to move the customer.</p>
+<h4>When the trap pays out</h4>
+<p>The trap is most convincing when it works. Adding mass often does bring more customers. New salespeople open new accounts, a new market opens, a new product sells. Revenue climbs, and the investment looks vindicated.</p>
+<p>So run one test on the ratio. If revenue is rising at the same rate as the mass behind it, so that every new dollar costs a proportional addition of people, tools, and spend, you are not building momentum. You are buying growth at a fixed price. Stop adding mass and the growth stops with it.</p>
+<p>Momentum has a different signature, and it is leverage. Output rises faster than the mass behind it, because each unit of what you have built carries more customers further, and more easily, than the last. Customers arrive by recommendation instead of by campaign. Existing customers expand without a new sales push. The business begins to pull instead of being pushed. Growth that moves in lockstep with mass is the trap wearing a good quarter.</p>
+<h4>Two ways to fall in</h4>
+<p><strong>Heavy and still.</strong> This is the rocket on the pad. Enormous mass, impressive capability, and customers who are waiting for value, or leaving without announcing it.</p>
+<p><strong>Fast and scattered.</strong> This is the opposite failure and the harder one to see, because it feels like the cure. The company is in constant motion: dozens of initiatives, sprints, campaigns, and launches. But the pushes point in different directions and partly cancel, so the activity never becomes momentum. Section 5 explains the physics of why.</p>
+<h4>The tell</h4>
+<p>Revenue grows only as fast as headcount and spend. Every new initiative asks for a bigger team than the last. Results arrive later than planned, from people working harder than ever. Leadership meetings spend more time on resources than on what customers experienced last week. Each win costs more than the one before.</p>
+<h4>The way out</h4>
+<p>Change the question. Stop asking what else you can build. Ask how efficiently your customers are moving toward value, and who owns the answer.</p>
+<p>The solution is not to shed mass. Mass has two faces. It is fuel: capital, talent, IP, and brand, stored energy waiting to be released. It is also weight: legacy systems, layers of approval, and habits that exist only because they always have. The work is to aim the fuel and stop paying to carry the weight.</p>
+<p>The model is the rocket itself. A vehicle like Starship weighs thousands of tonnes at liftoff, and very little of it is accidental. Engineers argue over every kilogram of structure, because each one must be lifted by fuel and each one comes out of the payload. Every component answers to the mission: this much propellant, this much structure, this much capability, for this journey, to put this payload where the customer needs it. The ambition is outrageous. The mass is disciplined.</p>
+<p>That is the opposite of minimalism. A rocket is neither light nor small. It is exactly as heavy as the mission requires, and every part of that weight has a job. A company’s mass should be the same: sized to the journey its customers are on. Big ambition does not call for loose mass. It calls for mass with a purpose.</p>
+</section>
+
+        <section id="es-vector"><div class="es-num">05 / The physics</div><h3>Momentum is a vector. Direction decides everything.</h3>
+<p>Most people remember momentum as a number. Physicists treat it as a vector, which means it has a size and a direction, and the momentum of a whole system is the vector sum of its parts. Pushes in the same direction add. Pushes in opposite directions cancel.</p>
+<p>Consider the air in a quiet room. It has substantial mass, and its molecules are moving at hundreds of meters per second, far faster than any car on a highway. Yet the air has no net momentum, and nothing in the room moves. The motion is real, but it points everywhere at once, so the sum is zero.</p>
+<p>A company is a system of this kind. Sales pushes toward quota. Finance pushes toward cost control. Product pushes toward its roadmap. Support pushes toward ticket closure. Every engine fires, and every engine is firing in a slightly different direction. Total activity tells you almost nothing. What counts is the net push in the direction of the customer.</p>
+<p>The same arithmetic applies on the other side of the interface. Your company’s momentum is the vector sum of your customers’ momentum, each one moving toward realized value or not. A customer drifting sideways, or backward, subtracts from the total. One loud customer racing ahead cannot rescue a thousand who stalled.</p>
+<div class="es-principle"><p>Speed is not momentum. Momentum is mass moving the same way, together.</p></div>
+</section>
+
+        <section id="es-efficiency"><div class="es-num">06 / The efficiency principle</div><h3>The goal is not faster. It is efficient.</h3>
+<p>This is where the physics corrects a common instinct. When leaders hear that velocity matters, they conclude that customers should move faster: shorter sales cycles, quicker onboarding, urgency in every email. Faster customers are not the goal. Efficient customers are.</p>
+<p>Rocket engineers can teach the difference. The rocket equation says the velocity a vehicle can gain depends on how much of its starting mass is propellant, and the relationship is logarithmic. Each additional increment of speed costs disproportionately more fuel, and that fuel adds weight that demands still more fuel.</p>
+<div class="es-equation"><div class="es-formula" style="font-size:38px">Δv = vₑ · ln(m₀ / m₁)</div><div class="es-caption">The rocket equation</div></div>
+<p>Then reality taxes the budget. Orbit requires roughly 7.8 kilometers per second of sideways speed, but a launch must buy something like 9 to 9.5. The difference is lost to gravity, drag, and steering, energy burned that never becomes orbit. A launch team measures success by how little it wastes, never by raw speed. Falcon 9 even throttles its engines down as it passes through the point of maximum aerodynamic pressure, because pushing harder there would cost more than it gains.</p>
+<p>Customers behave the same way. Press a customer through Invest before they are confident, and the push comes back as regret. Newton’s third law applies to sales pressure: every push meets an equal push back, and it arrives later as a stalled implementation, a quiet renewal, or a departure. Hurry a customer past a Drift Zone, and you have only moved the drift to a later stage.</p>
+<h4>What efficiency means here</h4>
+<p>For the customer, efficiency is the value they realize relative to the time, effort, and risk it costs them to get there. A customer who reaches real value in sixty days with little rework and no fear has moved efficiently. A customer who signs in a week and spends six months untangling handoffs has moved quickly and wastefully.</p>
+<p>For the company, efficiency is how much of its total energy ends up as customer progress. Friction is what spoils it. Wherever information gets trapped, decisions stall, or a handoff drops context, work turns into heat. Customers feel that heat as repeated stories, unanswered questions, and promises that did not survive the journey.</p>
+<div class="es-principle"><p>Velocity, in business, is the efficiency with which customers convert your capability into progress they care about.</p></div>
+<p>In aggregate, this is the number that matters: across every customer on the curve, how much of what you put in arrives as value, and how much is lost on the way. Watch its trend. If output only rises as fast as mass, you are buying growth. If it rises faster, you have leverage, and leverage is what momentum feels like.</p>
+</section>
+
+        <section id="es-aggregate"><div class="es-num">07 / The aggregate</div><h3>One customer at a time, thousands of times over</h3>
+<p>Here is the idea that should change how a company sees itself. No customer experiences “the business.” Each one experiences their own journey, alone, on their own clock. One is soaring through Transform. Another stalled between Research and Benchmark three weeks ago. A third signed, hit a wall in onboarding, and is quietly deciding whether to stay.</p>
+<p>Your company’s velocity is the sum of all of them. It is not a survey average or a quarterly score. It is a living total of individual people, each moving or not. When enough of them glide, momentum builds, and revenue, retention, and referrals follow as results. When enough of them stall, momentum disappears, whatever the mass.</p>
+<p>That is why velocity is so hard to see from the inside. Mass sits still and waits to be counted. Velocity is people in motion, and no line item owns it.</p>
+</section>
+
+        <section id="es-drift"><div class="es-num">08 / The Drift Zones</div><h3>Customers do not fail at stages. They drift between them.</h3>
+<p>Look at where customers actually slow down. Rarely in the middle of a stage, where a team is actively working with them. Mostly in the gaps: from marketing to sales, from the promise to the delivery, from signature to first real value, from first value to confident advocacy.</p>
+<p>These gaps are <strong>Drift Zones</strong>: transition failures where confidence stalls and nobody owns the moment. Normal reporting misses them, because every function can show that its own stage is performing. Marketing hit its lead target. Sales hit quota. Implementation closed its tickets. The customer sits in between, losing speed.</p>
+<div class="es-pull">Every department reports green while the customer drifts between them.</div>
+</section>
+
+        <section id="es-department"><div class="es-num">09 / The gap in the response</div><h3>Customer success is not a department</h3>
+<p>Almost every company now agrees that customers are what make revenue happen. The usual response is to appoint someone to look after them: a customer success team, a head of CX, a satisfaction survey. That is progress, and it is not enough.</p>
+<p>A customer success team inherits the customer after the decisions that shaped their journey have been made. It cannot change the promise sales made, the product’s learning curve, the pricing structure, the handoff that drops context, or the incentives that reward the quarter over the customer. Bolting one engine onto the side of a rocket does not align the vehicle.</p>
+<p>Meanwhile the rest of the company is arranged around itself. Structures, budgets, incentives, and metrics orbit the organization, and the customer is left to navigate the complexity.</p>
+<p>The proposal here is different. Not a department that looks after customers, but a company that wraps itself around the customer journey, in aggregate, as the sum of every individual customer moving through the curve. Every function sees itself as part of the same journey. Every handoff has an owner. The numbers that matter measure how efficiently customers move, and not only how busy the company is. That is what it means to rewire corporate DNA.</p>
+<div class="es-principle"><p>Customer experience is not a function of the business. It is the business, as the customer lives it.</p></div>
+</section>
+
+        <section id="es-noise"><div class="es-num">10 / The signal-to-noise problem</div><h3>In a world of noise, drift is the default</h3>
+<p>Customers used to tolerate a great deal, because switching was hard and alternatives were few. That cushion is gone. Today’s customer arrives already at capacity: a full inbox, ads that follow them across the web, reviews that contradict each other, AI answers delivered with total confidence. Gartner found that 77% of B2B buyers describe their latest purchase as very complex or difficult. Behind each of them is a person trying not to make a mistake they will have to explain.</p><p class="es-source">Source: <a target="_blank" rel="noopener" href="https://www.gartner.com/en/sales/insights/customer-confidence">Gartner, Customer Confidence</a></p>
+<p>In that environment, doing nothing wrong is not enough. Orbit takes continuous sideways speed, and a satellite that stops moving falls. Customer momentum works the same way. Competitors, shifting needs, and plain neglect add a little drag to every customer every day. A rival is one search away, and an AI assistant will gladly draft the comparison.</p>
+<p>And drift is quiet. Customers who lose momentum rarely complain. They reply less, use less, renew reluctantly, and stop mentioning you. The dashboard shows a healthy company until the loss arrives all at once, and late.</p>
+<p>Capability is not the shortage. BCG’s July 2026 survey of CEOs found that 55% cite people redesign as a key barrier to scaling AI, yet only 30% include HR in AI governance. The tools are ready. The connecting work is not.</p><p class="es-source">Source: <a target="_blank" rel="noopener" href="https://www.bcg.com/press/22july2026-ceos-cost-revenue-benefits-ai-struggling-scale">BCG, July 2026</a></p>
+</section>
+
+        <section id="es-booster"><div class="es-num">11 / The reclaim loop</div><h3>The booster comes back</h3>
+<p>The most important advance in rocketry was not a bigger engine. It was getting the first stage back. SpaceX lands the Falcon 9 booster and flies it again, so every flight makes the next one cheaper and the whole system gets stronger with use.</p>
+<p>A customer who completes the curve does the same. They are recovered: they renew, expand, and buy again, reigniting their own purchases. And they carry payload. They tell others, and customers who arrive on a recommendation start closer to trust, move faster through Research and Benchmark, and cost less to win. One customer’s success funds the next launch.</p>
+<p>Now see the other side. A customer lost in a Drift Zone is a booster that burns up on reentry. You pay full price to replace it, and the referrals it would have carried never launch. Multiply that across thousands of customers, and you have the difference between a business that compounds and one that must re-buy its growth every year.</p>
+<div class="es-principle"><p>Every customer you reclaim lowers the cost of the next launch.</p></div>
+</section>
+
+        <section id="es-rewire"><div class="es-num">12 / The reconstruction</div><h3>Rewiring the company around the journey</h3>
+<p>Rewiring does not require tearing down what works. It requires a change of orientation: the customer journey becomes the organizing center, and the mass you have built is aimed at it. Ask of every asset what rocket engineers ask of every kilogram: what part of the customer’s journey does this serve? In practice, that takes three moves, run through the Orbits CX OS.</p>
+<p><strong>Align.</strong> Get the leadership team pointed at one customer problem to solve this year, and decide which projects wait.</p>
+<p><strong>Rewire.</strong> Change processes, incentives, and technology so internal operations speed up the customer journey instead of slowing it down. Measure sales, support, and product on shared customer outcomes.</p>
+<p><strong>Perform.</strong> Tie experience decisions to revenue, margin, and retention, so CX is judged in financial results and not treated as a soft initiative.</p>
+<p>Then instrument the flight. <strong>Time to Value</strong> shows how efficiently customers reach value. The <strong>Journey Friction Index</strong> shows the drag. The <strong>Momentum Score</strong> shows the whole flight path. Revenue shows where you have been. These show where you are heading.</p>
+</section>
+
+        <section id="es-test"><div class="es-num">13 / The test</div><h3>Five questions for your next leadership meeting</h3>
+<p><strong>1. Where do customers slow down?</strong> Can we name the gap between stages where we lose the most momentum?</p>
+<p><strong>2. Who owns the whole journey?</strong> When a customer’s result depends on four departments, whose number is it?</p>
+<p><strong>3. How long from first problem to first real value?</strong> Do we measure it, and does anyone own it?</p>
+<p><strong>4. What did our last three investments do to the customer’s path?</strong> What did they remove, and what did they add? And is revenue growing faster than the mass behind it?</p>
+<p><strong>5. How many customers drifted last quarter, and how would we know?</strong></p>
+<p>If these are hard to answer, you have found your first Drift Zone. This week, walk your newest customer’s path from first problem to first real value. Find where they slow down. Name it, put one owner on it, and fix it before you add anything else.</p>
+</section>
+
+        <section id="es-feeling"><div class="es-num">14 / The payoff</div><h3>When momentum takes hold, everything changes</h3>
+<p>Do that work, and you arrive somewhere worth describing. Everything in this piece has been in service of one feeling. It is the reason the work is worth doing.</p>
+<p>Remember the Falcon on the pad: fully built, fully fueled, every system green, zero momentum. This is the other side of that moment.</p>
+<div class="es-payoff"><p>Things start clicking. Customers respond. Teams come alive. Wins build on wins. What once required enormous effort begins to feel almost effortless.</p>
+<p>Great talent wants to join you. Partners want to work with you. Opportunities appear that you never saw coming. There’s an energy throughout the company that everyone can feel.</p>
+<p>You’re winning. People are having fun. Success starts feeding on itself.</p>
+<p class="es-peak">Instead of constantly pushing the business forward, you begin to feel the momentum pulling you forward.</p></div>
+<p>This is leverage, felt from the inside: output rising faster than effort, because mass and customers are finally moving together. Nothing mystical is happening. The physics has come into alignment, and the energy once spent overcoming friction is now spent going somewhere.</p>
+<div class="es-pull">Once you’ve experienced it, you never want to lose it. And if you haven’t, imagine what it could mean for your business.</div>
+</section>
+
+        <section id="es-close"><div class="es-num">15 / The declaration</div><h3>The declaration</h3>
+<p>Your company has the mass. What it needs now is velocity, and velocity belongs to the customer.</p>
+<div class="es-declaration"><p><strong>A business exists because of its customers.</strong></p><p><strong>Mass is what it builds. Velocity is how efficiently its customers move.</strong></p><p><strong>The company must be built around the journey, and the journey of every customer counts.</strong></p><blockquote>Watch the scoreboard and you lose the game. Focus on CX and the numbers soar.</blockquote><p>Put the customer at the center of every meeting, every plan, every design review, and every budget line, and hold that line when the quarter gets hard.</p><p>Then light the engines.</p></div>
+<div class="es-author"><div class="es-author-name">Stephen McBride</div><div class="es-author-role">CX Performance Architect · Creator of <em>The CX Curve: Rewiring Corporate DNA for Relentless Customer Focus</em></div></div><div class="es-end"><a class="btn btn-primary" href="#book">Explore The CX Curve <span>→</span></a><button type="button" class="btn-quiet" id="es-collapse">Back to the top <span>↑</span></button></div>
+</section>
+      </div>
+
+      <div class="es-more" id="es-more" hidden>
+        <button type="button" class="btn btn-primary" id="es-toggle" aria-expanded="false" aria-controls="es-body">Read the full declaration <span>↓</span></button>
+      </div>
+    </div>
+    </div>
+  </div>
+</section>
 
 <section class="section book" id="book">
   <div class="wrap book-grid">
@@ -5305,13 +5936,7 @@ main .wrap, .site-footer .wrap { position: relative; z-index: 2; }
     <div class="insight-swipe-hint" aria-hidden="true"><span>Swipe to explore</span><span class="swipe-arrow">→</span></div>
     <div class="insight-scroller-wrap">
     <div class="insight-scroller" id="insight-scroller">
-      <article class="card featured" data-open="modal-business-physics" role="button" tabindex="0" aria-haspopup="dialog" aria-label="Open article: The Business Physics of Momentum">
-        <div class="meta"><span>Leadership &amp; Strategy</span><time datetime="2026-11-18">Nov 18, 2026</time></div>
-        <h3>The Business Physics of Momentum</h3>
-        <p>A Falcon 9 on the pad has the fuel, the funding, and zero momentum. Newton, the rocket equation, and the Momentum Trap explain why adding mass leaves a business sitting still.</p>
-      </article>
-
-      <article class="card" data-open="modal-thriving-ai" role="button" tabindex="0" aria-haspopup="dialog" aria-label="Open article: Thriving in the AI Age">
+      <article class="card featured" data-open="modal-thriving-ai" role="button" tabindex="0" aria-haspopup="dialog" aria-label="Open article: Thriving in the AI Age">
         <div class="meta"><span>Leadership &amp; AI</span><time datetime="2026-10-14">Oct 14, 2026</time></div>
         <h3>Thriving in the AI Age</h3>
         <p>AI can speed everything up, including the loss of the judgment that keeps customer reality in view. Critical thinking is still the real advantage.</p>
@@ -5430,6 +6055,7 @@ main .wrap, .site-footer .wrap { position: relative; z-index: 2; }
       <div class="footer-links">
         <a href="#partner">How We Work</a>
         <a href="#book">The Book</a>
+        <a href="#declaration">The Declaration</a>
         <a href="#insights">Insights</a>
         <a href="#about">About</a>
         <a href="mailto:stephen@orbitscx.com">Email</a>
@@ -5600,113 +6226,6 @@ main .wrap, .site-footer .wrap { position: relative; z-index: 2; }
 <p>AI provides both unprecedented opportunity and a harsh proving ground: tools rise and fade faster than ever. The real question isn’t whether your innovation matters today. It’s whether it will still matter a year from now.</p>
 <p>Design your innovation like a prospector stakes a claim: strategically, patiently, and with an eye on compounding value. Use the SPIRAL framework to guide development from initial spark to habitual reliance.</p>
 <p>In the AI gold rush, momentum is the currency that endures. Will your innovation be a relic or a habit?</p>
-<blockquote>This article draws on principles from my book, <em>“The CX Curve: Rewiring Corporate DNA for Relentless Customer Focus”</em>.</blockquote>
-</div>
-</div>
-</dialog>
-
-<dialog aria-labelledby="t-business-physics" id="modal-business-physics">
-<div class="dialog-inner">
-<button aria-label="Close article" class="dialog-close" type="button">×</button>
-<div class="meta"><span>Leadership &amp; Strategy</span><time datetime="2026-11-18">November 18, 2026</time></div>
-<h2 class="dlg-title" id="t-business-physics">The Business Physics of Momentum</h2>
-<div class="byline">A Perspective by Stephen McBride</div>
-<div class="article-body">
-<p>Picture a SpaceX Falcon 9 on the launch pad. Fully built. Fully fueled. The best engineers in the world have checked every bolt, the mission is funded, and the whole world is watching.</p>
-<p>Ten seconds to launch. The engines are silent.</p>
-<p>At this exact moment, that magnificent machine has zero momentum.</p>
-<p>I have spent more than twenty years inside product, operations, and executive teams, and most companies I meet are sitting on that pad. The product is strong. The capital is there. The people are talented. And yet everything takes more effort than it should.</p>
-<p>Motivation and talent are fine. The cause is physics, and physics ignores how hard your team works.</p>
-
-<h2>The Equation Everyone Reads Half Of</h2>
-<p>In physics, momentum is mass multiplied by velocity. Both numbers count. If either one is zero, so is the answer.</p>
-<blockquote>P = MV. Mass times zero velocity is zero momentum.</blockquote>
-<p>Business borrowed the word long ago and kept half of the equation. Ask a leadership team what momentum looks like and they describe mass: capital raised, headcount, revenue, brand, patents, years in market. All real. All necessary. All potential. The rocket on the pad is the heaviest, most expensive object on the field, and it sits perfectly still.</p>
-
-<h2>The Momentum Trap</h2>
-<p>I call it the <strong>Momentum Trap</strong>: mistaking mass for momentum. Of everything I have seen inside growing companies, it is the most common pattern and the hardest to spot, because it hides inside good news.</p>
-<blockquote>Momentum trap (noun). Mistaking mass for momentum.</blockquote>
-
-<h3>Why it is so easy to fall into</h3>
-<p>Mass is easy to count. It lives on the balance sheet, the org chart, the funding announcement, and the board deck. Velocity lives in the experience of a customer moving between the boxes on that org chart, and no line item owns it. Leaders manage what they can see, so they build mass, and every addition feels like progress. A new hire, a new round, a new product, an acquisition: each one delivers a small hit of forward motion.</p>
-
-<h3>How the trap closes</h3>
-<p>The trap runs as a loop. Customers slow down. Leaders sense the stall and do what has always worked: add mass. More people, more tools, more process, more product. The new mass brings inertia and extra handoffs, and customers move slower still. The stall deepens, so leaders add more. Every turn of the loop makes the company bigger, heavier, and slower, and every individual decision looks reasonable.</p>
-
-<h3>Signs you are inside it</h3>
-<ul>
-<li>Revenue grows about as fast as headcount.</li>
-<li>Every new initiative asks for a bigger team than the last one.</li>
-<li>Results arrive later than the plan promised, from people working harder than ever.</li>
-<li>Leadership meetings spend more time on resources than on what customers experienced last week.</li>
-<li>Wins feel more expensive every year.</li>
-</ul>
-
-<h3>The way out</h3>
-<p>Change the question. Instead of asking what else you can build, ask how fast your customers are moving. Then run one test. Take your newest customer and count the days from their first problem to their first real value. Name the person who owns that number. If the number is a mystery and nobody owns it, you are in the trap. More mass leaves you heavier on the pad. Velocity lifts you off.</p>
-
-<h2>Newton Is Already Running Your Company</h2>
-<p>Three laws, settled for more than three hundred years, already govern your company.</p>
-<ul>
-<li><strong>Inertia.</strong> A body at rest stays at rest, and a body in motion stays in motion, until something acts on it. Customers follow the same rule. A customer making progress keeps going. A stalled customer stays stalled until something changes.</li>
-<li><strong>Force.</strong> Changing direction takes force, and more mass takes more force. Every system, approval layer, and legacy commitment makes your next turn slower and more expensive.</li>
-<li><strong>Action and reaction.</strong> Every push meets an equal push back. A new form, a new approval, or a new handoff lands on a customer as friction, and customers push back by slowing down, shopping around, or leaving.</li>
-</ul>
-
-<h2>Mass Is Fuel, and Mass Is Weight</h2>
-<p>Most of what sits on the pad is fuel, stored energy that releases when it burns. That is your capital, your talent, your IP, and your brand. Potential, waiting for a reason to move.</p>
-<p>But mass has a second face. Rocket engineers live with the rocket equation, and its message is blunt: every pound of dead weight needs fuel to lift it, and that fuel weighs something too and needs lifting. The penalty compounds. Legacy systems, layers of approval, and old habits are dead weight, and the bigger you get, the more of your fuel goes to carrying them.</p>
-
-<h2>Velocity Is Thrust</h2>
-<p>If mass is what you have built, velocity is how fast your customers move: from a pressing problem, through evaluation and commitment, to real value and advocacy. That is customer experience, and it is the thrust.</p>
-<p>CX belongs to every function. Pricing, product, supply chain, onboarding, and operations all set the speed at which a customer reaches value. When customers glide, momentum builds. When they wait, your weight is irrelevant.</p>
-<p>Finance tracks mass beautifully. Few companies track how long customers wait between feeling a problem and feeling the benefit. Without that number you fly a rocket with a fuel gauge and no speedometer.</p>
-
-<h2>Momentum Has Direction</h2>
-<p>Momentum is a vector, which means it points somewhere. A rocket that leaves the pad a few degrees off course ends up thousands of miles from where it meant to go.</p>
-<p>Now look at your own company. Sales pushes toward quota. Finance pushes toward cost control. Product pushes toward its roadmap. Support pushes toward ticket closure. Every engine fires, and every engine points somewhere different.</p>
-<p>Pushes in different directions partially cancel. Your real momentum is the sum of every push in the direction of the customer. Total thrust tells you little. That is why a company full of talented, exhausted people can feel like it burns fuel and goes nowhere.</p>
-
-<h2>Max-Q, Staging, and the Drift Zones</h2>
-<p>Every launch has a moment called max-Q, the point of peak stress, when speed and air resistance together push the vehicle hardest. Companies have a max-Q too. As you scale, friction grows faster than output. Approvals, handoffs, tools, and exceptions pile up, and drag catches up with thrust.</p>
-<p>Where does the friction hide? Rockets reach orbit in stages, each with one job and each handing off to the next, and engineers will tell you the handoffs are among the riskiest moments of any flight. Your customer’s journey works the same way. The CX Curve maps it in six stages we spell ORBITS: Obstacle, Research, Benchmark, Invest, Transform, Share.</p>
-<p>Customers usually stall in the gaps between stages, where confidence slips and no one owns the handoff. I call these gaps Drift Zones. They are transition failures that stage-level reporting misses, because every team can report that its own stage is performing while customers drift away between them.</p>
-
-<h2>Orbit Takes Sideways Speed</h2>
-<p>Orbit surprises people. It takes sideways speed more than height, roughly 17,500 miles per hour of it. A satellite falls constantly and moves sideways fast enough to keep missing the ground. Take away that speed and the orbit decays.</p>
-<p>Customers behave the same way. Staying in orbit around you takes a steady supply of speed, while competitors, changing needs, and plain neglect add a little drag every day. That is why CX is a cycle. Lose focus and momentum breaks, and your company drifts away from the customer. Take your foot off the gas and momentum disappears.</p>
-
-<h2>Pick Your Center of Gravity</h2>
-<p>Everything in orbit circles something. Every company has a center of gravity too, and you can find yours by watching what pulls attention when the quarter gets hard. For most, it is the scoreboard: revenue targets, cost controls, internal metrics. Everything ends up orbiting the number.</p>
-<p>Customer behavior produces the numbers, so the scoreboard sits downstream of the thing that matters. Put the customer at the center and the physics change. Teams fall into alignment because everyone is pulled the same way. When your business aligns with the curve, growth stops feeling forced. It begins to flow with clarity and direction, like gravity.</p>
-
-<h2>The Booster Comes Back</h2>
-<p>But there is good news. The biggest advance in rocketry was a recovered booster, and a bigger engine came second. SpaceX lands the Falcon 9’s first stage and flies it again, so every flight makes the next one cheaper. That is the Share stage.</p>
-<p>Customers who realize real value tell others, which brings better-fit customers who reach value faster and share more. Success starts funding itself. Once that loop spins, you stop pushing the business forward and start feeling the momentum pull you forward. Wins build on wins, great people want to join, and what once took enormous effort begins to feel almost effortless.</p>
-
-<h2>What to Do on Monday</h2>
-<p>If the picture is right, the work follows a clear order. These are the three pillars of the Orbits CX OS.</p>
-<p><strong>Align.</strong> Get leadership pointing the same way. Agree on the top customer problem to solve this year, and decide which projects wait.</p>
-<p><strong>Rewire.</strong> Change processes, incentives, and technology so operations speed up the customer journey instead of slowing it down.</p>
-<p><strong>Perform.</strong> Tie experience decisions to revenue, margin, and retention, so CX is measured in financial results instead of treated as a soft initiative.</p>
-<p>And instrument the flight:</p>
-<ul>
-<li><strong>Journey Friction Index (JFI)</strong> for drag.</li>
-<li><strong>Time to Value (TTV)</strong> for liftoff.</li>
-<li><strong>Momentum Score</strong> for the whole flight path.</li>
-</ul>
-<p>Track them alongside revenue. Revenue shows where you have been. These show where you are heading.</p>
-<p>Call it a metaphor if you like. The pattern is real, and so is the cost of ignoring it.</p>
-
-<h2>The Cost of Staying on the Pad</h2>
-<p>Every quarter spent admiring your mass is a quarter your customers spend drifting. Drift Zones announce themselves late, as flat retention, weak referrals, and a team that works harder every year for the same result.</p>
-<p>Meanwhile, somewhere, a competitor with less mass and more velocity is already in orbit. Their advantage is focus. They stopped admiring the rocket and started measuring how fast their customers move.</p>
-
-<h2>Light the Engines</h2>
-<p>Most leaders resist this part: you have enough fuel already. What you need is thrust, pointed in one direction, with the friction cleared out of the way.</p>
-<p>So stop adding mass. Watch the scoreboard and you lose the game. Focus on the customer and the numbers follow. Put the customer at the center of every meeting, every plan, every design review, and every budget line, and hold that line when the quarter gets hard. That is the entire discipline.</p>
-<p>This week, do one thing. Walk your customer’s path from first problem to first real value. Find the place where they slow down. That is your first Drift Zone. Name it, put one owner on it, and fix it before you do anything else.</p>
-<p>Then light the engines.</p>
 <blockquote>This article draws on principles from my book, <em>“The CX Curve: Rewiring Corporate DNA for Relentless Customer Focus”</em>.</blockquote>
 </div>
 </div>
@@ -6483,6 +7002,7 @@ main .wrap, .site-footer .wrap { position: relative; z-index: 2; }
   // Nav active state while scrolling (highlight current section tab)
   (function(){
     var sections = [
+      { id: 'declaration', tab: 'cx-curve' },
       { id: 'book', tab: 'book' },
       { id: 'cx-curve', tab: 'cx-curve' },
       { id: 'momentum', tab: 'cx-curve' },
@@ -6869,11 +7389,10 @@ main .wrap, .site-footer .wrap { position: relative; z-index: 2; }
 })();
 </script>
 <script>
-/* Deep links: every article popup and the workbook has its own shareable URL (e.g. orbitscx.com/#business-physics-of-momentum).
+/* Deep links: every article popup and the workbook has its own shareable URL (e.g. orbitscx.com/#workbook).
    Opening a popup updates the address bar, closing it returns to the section behind it, and back/forward work. */
 (function(){
   var LINKS = {
-    'business-physics-of-momentum': ['modal-business-physics', 'insights'],
     'thriving-in-the-ai-age': ['modal-thriving-ai', 'insights'],
     'greased-pig-theory-of-innovation': ['modal-greased-pig', 'insights'],
     'ai-golden-rule': ['modal-ai-golden-rule', 'insights'],
@@ -6910,6 +7429,139 @@ main .wrap, .site-footer .wrap { position: relative; z-index: 2; }
   });
   window.addEventListener('hashchange', show);
   if (document.readyState === 'complete') show(); else window.addEventListener('load', show);
+})();
+</script>
+<script>
+/* The Declaration: the hero ignition button, a collapsed preview with in-page full reading, and shareable links for the whole piece
+   (#declaration) and each of its sections (#es-rocket, ...). #essay, #manifesto, #physics-of-business and #business-physics-of-momentum resolve to it. */
+(function(){
+  var sec = document.getElementById('declaration');
+  if (!sec) return;
+  var body = document.getElementById('es-body'),
+      more = document.getElementById('es-more'),
+      toggle = document.getElementById('es-toggle'),
+      back = document.getElementById('es-collapse'),
+      copy = document.getElementById('es-copy'),
+      copyLabel = copy.textContent,
+      links = [].slice.call(sec.querySelectorAll('.essay-toc a')),
+      ALIASES = { '#essay': 1, '#manifesto': 1, '#physics-of-business': 1, '#business-physics-of-momentum': 1 };
+
+  function wants(h){ return h === '#declaration' || ALIASES[h] === 1 || h.indexOf('#es-') === 0; }
+  function isCollapsed(){ return body.classList.contains('is-collapsed'); }
+  function collapse(){
+    body.classList.add('is-collapsed');
+    more.hidden = false;
+    toggle.setAttribute('aria-expanded', 'false');
+  }
+  function expand(){
+    if (!isCollapsed()) return;
+    body.scrollTop = 0;
+    body.classList.remove('is-collapsed');
+    more.hidden = true;
+    toggle.setAttribute('aria-expanded', 'true');
+  }
+  function top(el){
+    var pad = parseFloat(getComputedStyle(document.documentElement).scrollPaddingTop) || 0;
+    return Math.max(0, el.getBoundingClientRect().top + window.pageYOffset - pad);
+  }
+  function go(el){ requestAnimationFrame(function(){ window.scrollTo({ top: top(el), left: 0, behavior: 'instant' }); }); }
+  function route(){
+    var h = location.hash;
+    if (!wants(h)) return;
+    expand();
+    if (ALIASES[h] === 1) { history.replaceState(null, '', '#declaration'); go(sec); return; }
+    var t = document.getElementById(h.slice(1));
+    if (t) go(t);
+  }
+
+  if (!wants(location.hash)) collapse();
+  window.addEventListener('hashchange', route);
+  if (document.readyState === 'complete') route(); else window.addEventListener('load', route);
+
+  toggle.addEventListener('click', function(){ expand(); history.replaceState(null, '', '#declaration'); });
+  back.addEventListener('click', function(){ collapse(); history.replaceState(null, '', '#declaration'); go(sec); });
+  body.addEventListener('focusin', expand);
+  document.addEventListener('click', function(e){
+    if (e.target.closest && e.target.closest('a[href="#declaration"]')) expand();
+  });
+  links.forEach(function(a){
+    a.addEventListener('click', function(e){
+      var id = a.getAttribute('href').slice(1), t = document.getElementById(id);
+      if (!t) return;
+      e.preventDefault();
+      expand();
+      history.replaceState(null, '', '#' + id);
+      go(t);
+    });
+  });
+
+  function shareUrl(){ return location.href.split('#')[0] + '#declaration'; }
+  function copied(){
+    copy.textContent = 'Link copied';
+    setTimeout(function(){ copy.textContent = copyLabel; }, 2000);
+  }
+  function legacyCopy(){
+    var ta = document.createElement('textarea');
+    ta.value = shareUrl();
+    ta.setAttribute('readonly', '');
+    ta.style.cssText = 'position:fixed;opacity:0';
+    document.body.appendChild(ta);
+    ta.select();
+    try { document.execCommand('copy'); copied(); } catch (err) { window.prompt('Copy this link', shareUrl()); }
+    document.body.removeChild(ta);
+  }
+  copy.addEventListener('click', function(){
+    if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(shareUrl()).then(copied, legacyCopy);
+    else legacyCopy();
+  });
+
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if (!en.isIntersecting) return;
+        links.forEach(function(a){ a.classList.toggle('is-current', a.getAttribute('href') === '#' + en.target.id); });
+      });
+    }, { rootMargin: '-20% 0px -70% 0px' });
+    [].slice.call(body.querySelectorAll('section[id]')).forEach(function(s){ io.observe(s); });
+  }
+
+  /* Ignition: pressing the hero button lights the orb, spins every hero orbit up to speed, then jumps to the Declaration. */
+  var ignite = document.getElementById('ignite');
+  if (ignite) {
+    var hero = ignite.closest('.hero'),
+        reduce = window.matchMedia('(prefers-reduced-motion: reduce)'),
+        busy = false;
+    var rate = function(r){
+      if (!hero.getAnimations) return;
+      hero.getAnimations({ subtree: true }).forEach(function(a){ try { a.updatePlaybackRate(r); } catch (err) {} });
+    };
+    var ramp = function(from, to, ms, done){
+      var t0 = performance.now();
+      (function step(now){
+        var k = Math.min(1, (now - t0) / ms), e = k * k * (3 - 2 * k);
+        rate(from + (to - from) * e);
+        if (k < 1) requestAnimationFrame(step); else if (done) done();
+      })(t0);
+    };
+    var jump = function(){
+      window.scrollTo({ top: top(sec), left: 0, behavior: 'instant' });
+      history.pushState(null, '', '#declaration');
+    };
+    ignite.addEventListener('click', function(e){
+      e.preventDefault();
+      e.stopPropagation();
+      if (busy) return;
+      expand();
+      if (reduce.matches) { jump(); return; }
+      busy = true;
+      hero.classList.add('is-igniting');
+      ramp(1, 9, 700, function(){
+        jump();
+        hero.classList.remove('is-igniting');
+        ramp(9, 1, 1600, function(){ busy = false; });
+      });
+    });
+  }
 })();
 </script>
 </body>
