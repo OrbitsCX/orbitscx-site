@@ -6453,8 +6453,9 @@ header nav.ime-nav .nv-phone:focus-visible{
 <div class="roi-badge" id="o-badge">Working model</div>
 <div class="big"><span id="o-pay">–</span><small>simple payback</small></div>
 <p class="roi-summary" id="o-summary"></p>
-<div class="roi-actions">
-<button class="btn" id="roiPrint" type="button">View business case report</button>
+<div class="roi-actions roi-actions-hero">
+<span class="roi-cta-kicker">Your deliverable</span>
+<button class="btn" id="roiPrint" type="button"><svg aria-hidden="true" class="roi-cta-ico" viewBox="0 0 24 24"><path d="M6 2h8l4 4v16H6z"/><path d="M14 2v4h4M9 12h6M9 16h6M9 8h2"/></svg><span class="roi-cta-text">View business case report<small>A professional PDF summary of your results</small></span><svg aria-hidden="true" class="roi-cta-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
 </div>
 <details class="roi-section-more roi-full" open><summary><span><strong>See the full analysis</strong><small>NPV, IRR, value drivers, cash-flow chart and sensitivity</small></span><span aria-hidden="true" class="roi-chevron">+</span></summary>
 <div class="roi-full-body">
@@ -11393,5 +11394,29 @@ sliders.forEach(function(p){p[1].value=p[0].value});paint();window.roiLeadUpdate
 <!-- v509: Cost of delay — drop 3/6/12 table; show full run-rate benefit build-up into annual net. Built from v508. -->
 <!-- v510: Define Cost of Delay in the live ROI results and generated report in plain language. Built from v509. -->
 <!-- v511: Move the live Cost of Delay explanation into the existing question-mark ROI help pattern; retain the fuller report explanation. Built from v510. -->
+<style id="roi-report-hero">
+/* Report button: the centerpiece CTA. Ink panel + copper button, larger and animated so it outranks every other button. */
+#roi .roi-out .roi-actions.roi-actions-hero{display:block;margin:6px 0 26px;padding:18px 18px 20px;background:var(--ink);border-top:4px solid var(--sand);box-shadow:0 18px 40px rgba(35,31,32,.22)}
+#roi .roi-cta-kicker{display:block;margin:0 0 12px;font:800 12px/1 Archivo,sans-serif;letter-spacing:.3em;text-transform:uppercase;color:#dd9f7e}
+#roi .roi-out .roi-actions #roiPrint{position:relative;overflow:hidden;display:flex;align-items:center;gap:16px;width:100%;padding:20px 22px;font:800 20px/1.15 Archivo,sans-serif;text-align:left;cursor:pointer;border-radius:0;
+ background:linear-gradient(180deg,#b9795f 0,#9a5f48 100%)!important;border:1px solid #e8c3ae!important;
+ box-shadow:0 1px 0 rgba(255,255,255,.3) inset,0 0 0 4px rgba(169,112,90,.28),0 14px 30px rgba(0,0,0,.35)!important;
+ transition:transform .2s ease,box-shadow .2s ease}
+#roi .roi-cta-text{flex:1;display:block}
+#roi .roi-cta-text small{display:block;margin-top:5px;font:600 14px/1.2 "Source Sans 3",system-ui,sans-serif;color:#f6e3d8;text-shadow:none}
+#roi .roi-cta-ico{flex:none;width:34px;height:34px;fill:none;stroke:#fff;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+#roi .roi-cta-arrow{flex:none;width:28px;height:28px;fill:none;stroke:#fff;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;transition:transform .2s ease}
+#roi .roi-out .roi-actions #roiPrint::after{content:"";position:absolute;top:0;bottom:0;left:-40%;width:30%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.28),transparent);transform:skewX(-20deg);animation:roiShine 4.5s ease-in-out 1.5s infinite;pointer-events:none}
+@keyframes roiShine{0%,60%{left:-40%}100%{left:130%}}
+@media (hover:hover){
+ #roi .roi-out .roi-actions #roiPrint:hover{transform:translateY(-2px);background:linear-gradient(180deg,#c78466 0,#a76650 100%)!important;box-shadow:0 1px 0 rgba(255,255,255,.3) inset,0 0 0 4px rgba(221,159,126,.4),0 20px 40px rgba(0,0,0,.45)!important}
+ #roi .roi-out .roi-actions #roiPrint:hover .roi-cta-arrow{transform:translateX(5px)}
+}
+#roi .roi-out .roi-actions #roiPrint:active{transform:translateY(1px)}
+#roi .roi-out .roi-actions #roiPrint:focus-visible{outline:3px solid #fff;outline-offset:3px}
+@media(max-width:560px){#roi .roi-out .roi-actions #roiPrint{padding:16px;font-size:17px;gap:12px}#roi .roi-cta-ico{width:28px;height:28px}#roi .roi-cta-text small{font-size:13px}}
+@media(prefers-reduced-motion:reduce){#roi .roi-out .roi-actions #roiPrint::after{animation:none;display:none}#roi .roi-out .roi-actions #roiPrint,#roi .roi-cta-arrow{transition:none}}
+@media print{.roi-actions.roi-actions-hero{display:none!important}}
+</style>
 </body>
 </html>
