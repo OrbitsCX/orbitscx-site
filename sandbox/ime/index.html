@@ -11496,7 +11496,7 @@ function show(card){const grid=card.closest(".svc");if(!grid)return;const panel=
 root.querySelectorAll(".svc-capability").forEach(card=>{card.addEventListener("click",()=>show(card));card.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();show(card);}});});
 })();
 </script>
-<!-- v570: cue text shortened to one word ("Explore"; "Close" / "Viewing" when open). v569: Hover/focus "Explore" cue on What We Build tiles and Project Journey steps (real elements, so existing tile ::before/::after hover art is untouched). Built from v568. -->
+<!-- v571: journey cue now reads "Close" when open, matching What We Build. v570: cue text shortened to one word ("Explore"; "Close" / "Viewing" when open). v569: Hover/focus "Explore" cue on What We Build tiles and Project Journey steps (real elements, so existing tile ::before/::after hover art is untouched). Built from v568. -->
 <style id="ime-v569-hover-cue">
 /* Shared cue */
 ime-cue{display:inline-flex;align-items:center;gap:8px;font:700 11.5px/1 Archivo,"Source Sans 3",system-ui,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#e8c4b0;white-space:nowrap;pointer-events:none;opacity:0;transform:translateY(5px);transition:opacity .22s ease,transform .26s cubic-bezier(.2,.7,.2,1)}
@@ -11549,7 +11549,30 @@ ime-cue::after{content:"";flex:0 0 auto;width:22px;height:9px;background:url("da
     if(!t.querySelector(':scope>ime-cue'))t.appendChild(cue('Explore','Close'));
   });
   document.querySelectorAll('#project-journey .journey-step .journey-card').forEach(function(card){
-    if(!card.querySelector('ime-cue'))card.appendChild(cue('Explore','Viewing'));
+    if(!card.querySelector('ime-cue'))card.appendChild(cue('Explore','Close'));
+  });
+})();
+</script>
+
+<!-- v572: Product cards — plus sign and "View details" replaced by the same "Explore →" hover/focus cue used on What We Build and Project Journey. Built from v571. -->
+<style id="ime-v572-product-cue">
+#products .tile .plus,
+#products .tile .tv{display:none!important}
+#products .tile ime-cue{position:absolute;right:28px;bottom:38px;z-index:3}
+#products .tile:hover ime-cue,
+#products .tile:focus-visible ime-cue{opacity:1;transform:none}
+#products .tile:hover ime-cue::after,
+#products .tile:focus-visible ime-cue::after{transform:translateX(4px)}
+@media (max-width:760px){#products .tile{padding-bottom:58px!important}#products .tile ime-cue{left:28px;right:auto;bottom:22px}}
+</style>
+<script id="ime-v572-product-cue-js">
+(function(){
+  document.querySelectorAll('#products .tile').forEach(function(t){
+    if(t.querySelector(':scope>ime-cue'))return;
+    var c=document.createElement('ime-cue');
+    c.setAttribute('aria-hidden','true');
+    c.innerHTML='<ime-t class="c-open">Explore</ime-t><ime-t class="c-close">Close</ime-t>';
+    t.appendChild(c);
   });
 })();
 </script>
