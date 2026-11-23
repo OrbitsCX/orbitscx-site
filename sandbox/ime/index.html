@@ -7771,51 +7771,7 @@ function printReport(){
   '<section class="sec"><h2>Cost of delay</h2>'+delayHtml+'</section>'+
   '<section class="sec"><h2>Assumptions used</h2><div class="agrid">'+reportAssumptions(taxOn)+'</div><div class="basis" style="margin-top:14px">'+taxNote+'</div></section>'+
   '<footer class="foot"><div><strong>IME Automation</strong>1801 Anderson Junction Rd., Toquerville, Utah 84774<br>(435) 414-1194 · info@imeautomation.com · imeautomation.com<br><span class="stamp">'+escHTML(stamp)+'</span></div><p><strong>Planning model, not a quotation or guarantee.</strong> Figures use the operating and financial assumptions shown and should be validated by operations, finance, and tax stakeholders. Final costs and performance depend on project scope and operating conditions.</p></footer>'+
-  '</div>'+
-  '\n<!-- v576: visual contrast sharpened — fragmented handoffs/rework loops vs. IME direct continuity -->
-<style id="ime-v576-engineer-contrast">
-#engineers .ev-them .ev-track{padding-bottom:42px}
-#engineers .ev-them .ev-track::before{background:repeating-linear-gradient(90deg,rgba(255,255,255,.25) 0 4px,transparent 4px 12px)!important}
-#engineers .ev-them .ev-node:nth-child(2),#engineers .ev-them .ev-node:nth-child(3){transform:translateY(5px)}
-#engineers .ev-them .ev-node:nth-child(4){transform:translateY(-3px)}
-#engineers .ev-rework{position:absolute;inset:0;width:100%;height:100%;overflow:visible;pointer-events:none}
-#engineers .ev-rework path{fill:none;stroke:#d9ab96;stroke-width:2.5;stroke-dasharray:7 5;opacity:.75}
-#engineers .ev-loop-label{position:absolute;bottom:0;font:700 9px/1.2 Archivo,sans-serif;letter-spacing:.08em;text-transform:uppercase;color:#d9ab96;opacity:.8;white-space:nowrap}
-#engineers .ev-loop-one{left:24%}#engineers .ev-loop-two{left:56%}
-#engineers .ev-them .ev-gap{border-color:rgba(217,171,150,.8)}
-#engineers .ev-them .ev-pulse{animation:evFade 2.8s ease-in-out infinite}
-#engineers .ev-them .ev-label small{color:#d9ab96}
-#engineers .ev-us .ev-track::before{background:linear-gradient(90deg,#d9ab96,#b77a62,#d9ab96)!important;box-shadow:0 0 22px rgba(207,156,132,.65)!important}
-#engineers .ev-us .ev-node{transform:none!important}
-#engineers .ev-us .ev-ring::before{border-style:solid}
-#engineers .ev-us .ev-bracket{border-color:rgba(217,171,150,.72)}
-@media(max-width:760px){#engineers .ev-them .ev-track{padding-bottom:60px}#engineers .ev-rework{display:none}#engineers .ev-loop-label{left:84px;bottom:auto;white-space:normal;max-width:220px}#engineers .ev-loop-one{top:calc(2*88px + 12px)}#engineers .ev-loop-two{top:calc(3*88px + 12px)}#engineers .ev-them .ev-node:nth-child(2),#engineers .ev-them .ev-node:nth-child(3),#engineers .ev-them .ev-node:nth-child(4){transform:none}}
-@media(prefers-reduced-motion:reduce){#engineers .ev-them .ev-pulse{animation:none}}
-</style>
-
-<!-- v577: declutter competitor lane; let fragmented path and rework loops carry the message -->
-<style id="ime-v577-rework-visual">
-#engineers .ev-them .ev-label small{display:none!important}
-#engineers .ev-them .ev-gap{font-size:0!important;letter-spacing:0!important;width:13px;height:13px;padding:0;border-radius:50%;background:#151c23;border:1px solid rgba(217,171,150,.9);box-shadow:0 0 10px rgba(217,171,150,.12)}
-#engineers .ev-them .ev-gap::after{content:"↺";font:700 11px/12px Arial,sans-serif;color:#d9ab96;display:block;text-align:center}
-#engineers .ev-loop-label{display:none!important}
-#engineers .ev-rework path{stroke:#d9ab96;stroke-width:3;stroke-dasharray:5 4;opacity:.95}
-#engineers .ev-rework{filter:drop-shadow(0 0 4px rgba(217,171,150,.12))}
-@media(max-width:760px){#engineers .ev-them .ev-gap{transform:translate(-50%,-50%);}}
-</style>
-
-
-<!-- v578: More visible backtracking, stalled implementation and repeated returns to design on the fragmented-integrator lane -->
-<style id="ime-v578-backtrack">
-#engineers .ev-rework path{stroke:#d9ab96;stroke-width:3.5;stroke-dasharray:7 5;opacity:.98;fill:none;animation:evLoopFlow 3.8s linear infinite}
-#engineers .ev-rework path:nth-child(2){animation-delay:-.9s;opacity:.85}
-#engineers .ev-rework path:nth-child(3){animation-delay:-1.8s;opacity:.9}
-#engineers .ev-rework path:nth-child(4){animation-delay:-2.7s;opacity:.78}
-#engineers .ev-rework path:nth-child(5){animation-delay:-1.3s;opacity:.9}
-@keyframes evLoopFlow{to{stroke-dashoffset:-48}}
-@media(prefers-reduced-motion:reduce){#engineers .ev-rework path{animation:none}}
-</style>
-</body></html>';
+  '</div></body></html>';
   w.document.open();w.document.write(doc);w.document.close();
 }
 if(printBtn) printBtn.addEventListener("click",printReport);
