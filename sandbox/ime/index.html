@@ -6407,7 +6407,7 @@ header nav.ime-nav .nv-phone:focus-visible{
 </div>
 <div class="roi">
 <div class="roi-in">
-<div class="roi-reset-row"><button aria-label="Restore the original ROI planning values" class="roi-reset" id="roiRestore" type="button">Restore defaults</button><button aria-label="Clear all ROI calculator fields" class="roi-reset" id="roiReset" type="button">Clear all fields</button></div>
+<div class="roi-reset-row"><button aria-label="Clear all ROI calculator fields" class="roi-reset" id="roiReset" type="button">Clear all fields</button><button aria-label="Restore the original ROI planning values" class="roi-reset" id="roiRestore" type="button">Restore defaults</button></div>
 <div class="roi-banner" data-state="example" id="roiBanner"><span id="roiBannerText"><strong>Showing example numbers.</strong> Answer the four questions below to make them yours.</span><span class="roi-progress" hidden="" id="roiProgress">0 of 4</span></div>
 <fieldset class="roi-quick"><legend>Four answers → live payback</legend>
 <label class="roi-core" data-q="1"><span class="roi-q-meta"><span aria-hidden="true" class="roi-qnum">01</span><span class="roi-qtitle">What is the project cost?</span></span><span class="roi-qhelp">Enter your IME quote total, or a planning figure if you don’t have a quote yet.</span><span class="u"><i>$</i><input autocomplete="off" data-money="" id="capex" inputmode="numeric" type="text" value="850,000"/></span></label>
@@ -7774,136 +7774,7 @@ function printReport(){
   '<section class="sec"><h2>Assumptions used</h2><div class="agrid">'+reportAssumptions(taxOn)+'</div><div class="basis" style="margin-top:14px">'+taxNote+'</div></section>'+
   '<footer class="foot"><div><strong>IME Automation</strong>1801 Anderson Junction Rd., Toquerville, Utah 84774<br>(435) 414-1194 · info@imeautomation.com · imeautomation.com<br><span class="stamp">'+escHTML(stamp)+'</span></div><p><strong>Planning model, not a quotation or guarantee.</strong> Figures use the operating and financial assumptions shown and should be validated by operations, finance, and tax stakeholders. Final costs and performance depend on project scope and operating conditions.</p></footer>'+
   '</div>'+
-  '
-<style id="ime-click-affordances">
-/* Clear clickability for What we build + Project journey — text only, no symbols */
-
-/* ---- What we build: capability tiles ---- */
-#services .svc-capability{
-  cursor:pointer;
-}
-#services .svc-capability::after{
-  content:"Open details";
-  position:absolute;
-  left:12px;
-  bottom:14px;
-  font:700 12px/1 Archivo,sans-serif;
-  letter-spacing:.1em;
-  text-transform:uppercase;
-  color:#e8c4b0;
-  opacity:.95;
-  transition:opacity .2s ease, transform .2s ease, color .2s ease;
-}
-#services .svc-capability:hover::after,
-#services .svc-capability:focus-visible::after,
-#services .svc-capability[aria-expanded="true"]::after{
-  opacity:1;
-  color:#f3d5c4;
-  transform:translateX(2px);
-}
-#services .svc-capability:hover,
-#services .svc-capability:focus-visible{
-  transform:translateY(-4px);
-}
-#services .svc-capability[aria-expanded="true"]::after{
-  content:"Close details";
-}
-/* Footer hint under capability grids */
-#services .svc-foot,
-#services .journey-foot.svc-foot{
-  display:flex;
-  align-items:center;
-  gap:16px;
-  margin:8px 0 28px;
-  color:#cfcac5;
-  font:600 15px/1.4 "Source Sans 3",system-ui,sans-serif;
-  letter-spacing:.01em;
-}
-#services .svc-foot span,
-#services .journey-foot.svc-foot span{
-  white-space:normal;
-  text-align:center;
-  color:#e6ddd4;
-  font-weight:700;
-}
-#services .svc-foot i,
-#services .journey-foot.svc-foot i{
-  flex:1;
-  height:1px;
-  background:rgba(255,255,255,.16);
-}
-
-/* ---- Project journey steps ---- */
-#project-journey .journey-step{
-  cursor:pointer;
-}
-#project-journey .journey-card{
-  position:relative;
-  transition:background .2s ease, border-color .2s ease, transform .2s ease;
-  border:1px solid transparent;
-  border-radius:8px;
-  padding:10px 8px 28px;
-}
-#project-journey .journey-card::after{
-  content:"Open";
-  position:absolute;
-  left:50%;
-  bottom:8px;
-  transform:translateX(-50%);
-  font:700 11px/1 Archivo,sans-serif;
-  letter-spacing:.12em;
-  text-transform:uppercase;
-  color:#d9ab96;
-  opacity:.88;
-  transition:opacity .2s ease, color .2s ease;
-  pointer-events:none;
-}
-#project-journey .journey-step:hover .journey-card,
-#project-journey .journey-step:focus-visible .journey-card,
-#project-journey .journey-step[aria-selected="true"] .journey-card{
-  background:rgba(255,255,255,.06);
-  border-color:rgba(169,112,90,.45);
-}
-#project-journey .journey-step:hover .journey-card::after,
-#project-journey .journey-step:focus-visible .journey-card::after,
-#project-journey .journey-step[aria-selected="true"] .journey-card::after{
-  opacity:1;
-  color:#f0c9b4;
-}
-#project-journey .journey-step[aria-selected="true"] .journey-card::after{
-  content:"Selected";
-}
-#project-journey .journey-foot{
-  display:flex;
-  align-items:center;
-  gap:16px;
-  margin:0 0 8px;
-  padding:0 48px 6px;
-  color:#e6ddd4;
-  font:700 15px/1.4 "Source Sans 3",system-ui,sans-serif;
-}
-#project-journey .journey-foot span{
-  white-space:normal;
-  text-align:center;
-}
-#project-journey .journey-foot i{
-  flex:1;
-  height:1px;
-  background:rgba(255,255,255,.16);
-}
-@media(max-width:900px){
-  #project-journey .journey-foot{padding:0 22px 6px;font-size:14px}
-  #services .svc-foot{font-size:14px}
-}
-@media(prefers-reduced-motion:reduce){
-  #services .svc-capability,
-  #services .svc-capability::after,
-  #project-journey .journey-card,
-  #project-journey .journey-card::after{transition:none}
-}
-</style>
-
-</body></html>';
+  '\n</body></html>';
   w.document.open();w.document.write(doc);w.document.close();
 }
 if(printBtn) printBtn.addEventListener("click",printReport);
@@ -11576,5 +11447,38 @@ ime-cue::after{content:"";flex:0 0 auto;width:22px;height:9px;background:url("da
   });
 })();
 </script>
+
+<!-- v573 also: removed a stray multi-line CSS block that had been pasted inside the ROI report JavaScript string (a syntax error that stopped the whole ROI script from running). v573: ROI — "Clear all fields" moved first and restyled as a primary copper button; "Restore defaults" stays a quiet text link beside it. Built from v572. -->
+<style id="ime-v573-roi-reset">
+#roi .roi-reset-row{
+  display:flex;flex-wrap:wrap;align-items:center;justify-content:flex-start;
+  gap:10px 22px;margin:0 0 16px;opacity:1;
+}
+#roi .roi-reset-row:hover,#roi .roi-reset-row:focus-within{opacity:1}
+#roi .roi-reset#roiReset{
+  display:inline-flex;align-items:center;gap:9px;
+  padding:12px 24px;border:0;border-radius:999px;
+  background:linear-gradient(155deg,#b97c64,#94604a);
+  color:#fff;font:700 14px/1 Archivo,"Source Sans 3",system-ui,sans-serif;letter-spacing:.04em;
+  text-decoration:none;cursor:pointer;
+  box-shadow:0 6px 16px rgba(148,96,74,.28);
+  transition:transform .2s ease,box-shadow .2s ease,background .2s ease;
+}
+#roi .roi-reset#roiReset::before{
+  content:"";width:15px;height:15px;flex:0 0 auto;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='%23fff' stroke-width='1.8' stroke-linecap='round'%3E%3Cpath d='M3.5 3.5l9 9M12.5 3.5l-9 9'/%3E%3C/svg%3E") no-repeat center/contain;
+}
+#roi .roi-reset#roiReset:hover{
+  background:linear-gradient(155deg,#c88a72,#a06752);
+  transform:translateY(-1px);box-shadow:0 10px 22px rgba(148,96,74,.36);color:#fff;
+}
+#roi .roi-reset#roiReset:focus-visible{outline:2px solid #94604a;outline-offset:3px}
+#roi .roi-reset#roiRestore{
+  font-size:13px;font-weight:600;letter-spacing:.02em;padding:6px 0;
+  color:#5b5754;text-decoration:underline;text-underline-offset:4px;
+}
+#roi .roi-reset#roiRestore:hover{color:#8a5440}
+@media (prefers-reduced-motion:reduce){#roi .roi-reset#roiReset{transition:none}#roi .roi-reset#roiReset:hover{transform:none}}
+</style>
 </body>
 </html>
