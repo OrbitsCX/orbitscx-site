@@ -6408,7 +6408,7 @@ header nav.ime-nav .nv-phone:focus-visible{
 <div class="roi">
 <div class="roi-in">
 <div class="roi-reset-row"><button aria-label="Clear all ROI calculator fields" class="roi-reset" id="roiReset" type="button">Clear all fields</button><button aria-label="Restore the original ROI planning values" class="roi-reset" id="roiRestore" type="button">Restore defaults</button></div>
-<div class="roi-banner" data-state="example" id="roiBanner"><span id="roiBannerText"><strong>Showing example numbers.</strong> Answer the four questions below to make them yours.</span><span class="roi-progress" hidden="" id="roiProgress">0 of 4</span></div>
+<div class="roi-banner" data-state="example" id="roiBanner"><span id="roiBannerText"><strong>Showing example numbers.</strong> Edit the four answers below, or clear all fields to start fresh.</span><span class="roi-progress" hidden="" id="roiProgress">0 of 4</span></div>
 <fieldset class="roi-quick"><legend>Four answers → live payback</legend>
 <label class="roi-core" data-q="1"><span class="roi-q-meta"><span aria-hidden="true" class="roi-qnum">01</span><span class="roi-qtitle">What is the project cost?</span></span><span class="roi-qhelp">Enter your IME quote total, or a planning figure if you don’t have a quote yet.</span><span class="u"><i>$</i><input autocomplete="off" data-money="" id="capex" inputmode="numeric" type="text" value="850,000"/></span></label>
 <div class="two">
@@ -10782,7 +10782,7 @@ var CORE=['capex','ops','shifts','rate'],touched={},anyEdit=false,sliders=[];
 function paint(){
  var n=Object.keys(touched).length,b=$('roiBanner'),t=$('roiBannerText'),g=$('roiTag'),p=$('roiProgress');
  if(p){if(!anyEdit){p.hidden=true;p.textContent='0 of 4';}else{p.hidden=false;p.textContent=n+' of 4';p.dataset.complete=n===4?'1':'0';}}
- if(!anyEdit){b.dataset.state='example';t.innerHTML='<strong>Showing example numbers.</strong> Answer the four questions below to make them yours.';g.textContent='Example numbers';}
+ if(!anyEdit){b.dataset.state='example';t.innerHTML='<strong>Showing example numbers.</strong> Edit the four answers below, or clear all fields to start fresh.';g.textContent='Example numbers';}
  else if(n<4){b.dataset.state='example';t.innerHTML='<strong>Your numbers in progress.</strong> Finish the four questions to lock the estimate to your inputs.';g.textContent='Partly your numbers';}
  else{b.dataset.state='yours';t.innerHTML='<strong>Based on your answers.</strong> Optional sections below refine the full business case.';g.textContent='Your numbers';}
 }
@@ -11448,6 +11448,7 @@ ime-cue::after{content:"";flex:0 0 auto;width:22px;height:9px;background:url("da
 })();
 </script>
 
+<!-- v574: ROI banner reads "Edit the four answers below, or clear all fields to start fresh." (HTML + paint() script). Built from v573. -->
 <!-- v573 also: removed a stray multi-line CSS block that had been pasted inside the ROI report JavaScript string (a syntax error that stopped the whole ROI script from running). v573: ROI — "Clear all fields" moved first and restyled as a primary copper button; "Restore defaults" stays a quiet text link beside it. Built from v572. -->
 <style id="ime-v573-roi-reset">
 #roi .roi-reset-row{
