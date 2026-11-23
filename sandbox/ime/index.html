@@ -11495,5 +11495,63 @@ function closeGroup(grid){grid.querySelectorAll(".svc-capability").forEach(card=
 function show(card){const grid=card.closest(".svc");if(!grid)return;const panel=grid.nextElementSibling;if(!panel||!panel.classList.contains("svc-detail"))return;const key=card.dataset.capability;const d=content[key];if(!d)return;const wasOpen=card.getAttribute("aria-expanded")==="true";closeGroup(grid);if(wasOpen)return;root.querySelectorAll(".svc-detail").forEach(p=>{p.hidden=true;p.innerHTML="";});root.querySelectorAll(".svc-capability").forEach(c=>c.setAttribute("aria-expanded","false"));card.setAttribute("aria-expanded","true");const title=card.querySelector("h3")?.textContent||"Capability";panel.innerHTML=`<div class="svc-detail-top"><div><span class="svc-detail-kicker">IME capability</span><h4>${esc(title)}</h4><p class="svc-detail-intro">${esc(d.intro)}</p><p class="svc-detail-body">${esc(d.body)}</p></div><button class="svc-detail-close" type="button" aria-label="Close capability details">×</button></div><div class="svc-detail-columns"><div><h5>What we can build</h5><ul>${d.capabilities.map(x=>`<li>${esc(x)}</li>`).join("")}</ul></div><div><h5>Where it helps</h5><p class="svc-detail-where">${esc(d.where)}</p></div></div><div class="svc-detail-result"><b>What it delivers</b><p>${esc(d.result)}</p></div>`;panel.hidden=false;panel.querySelector(".svc-detail-close")?.addEventListener("click",()=>{closeGroup(grid);card.focus();});}
 root.querySelectorAll(".svc-capability").forEach(card=>{card.addEventListener("click",()=>show(card));card.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();show(card);}});});
 })();
-</script></body>
+</script>
+<!-- v570: cue text shortened to one word ("Explore"; "Close" / "Viewing" when open). v569: Hover/focus "Explore" cue on What We Build tiles and Project Journey steps (real elements, so existing tile ::before/::after hover art is untouched). Built from v568. -->
+<style id="ime-v569-hover-cue">
+/* Shared cue */
+ime-cue{display:inline-flex;align-items:center;gap:8px;font:700 11.5px/1 Archivo,"Source Sans 3",system-ui,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#e8c4b0;white-space:nowrap;pointer-events:none;opacity:0;transform:translateY(5px);transition:opacity .22s ease,transform .26s cubic-bezier(.2,.7,.2,1)}
+ime-cue .c-close{display:none}
+ime-cue::after{content:"";flex:0 0 auto;width:22px;height:9px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 22 9' fill='none' stroke='%23e8c4b0' stroke-width='1.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M1 4.5h19M16 1l4 3.5L16 8'/%3E%3C/svg%3E") no-repeat center/contain;transition:transform .26s cubic-bezier(.2,.7,.2,1)}
+
+/* What We Build tiles */
+#services .svc-capability ime-cue{position:absolute;left:28px;bottom:14px;z-index:3}
+#services .svc-capability:hover ime-cue,
+#services .svc-capability:focus-visible ime-cue,
+#services .svc-capability[aria-expanded="true"] ime-cue{opacity:1;transform:none}
+#services .svc-capability:hover ime-cue::after,
+#services .svc-capability:focus-visible ime-cue::after{transform:translateX(4px)}
+#services .svc-capability[aria-expanded="true"] ime-cue .c-open{display:none}
+#services .svc-capability[aria-expanded="true"] ime-cue .c-close{display:inline}
+#services .svc-capability[aria-expanded="true"] ime-cue::after{display:none}
+
+/* Project Journey steps */
+#project-journey .journey-step ime-cue{display:flex;justify-content:center;margin-top:12px;min-height:12px;color:#e8c4b0}
+#project-journey .journey-step:hover ime-cue,
+#project-journey .journey-step:focus-visible ime-cue,
+#project-journey .journey-step[aria-selected="true"] ime-cue{opacity:1;transform:none}
+#project-journey .journey-step:hover ime-cue::after,
+#project-journey .journey-step:focus-visible ime-cue::after{transform:translateX(4px)}
+#project-journey .journey-step[aria-selected="true"] ime-cue .c-open{display:none}
+#project-journey .journey-step[aria-selected="true"] ime-cue .c-close{display:inline}
+#project-journey .journey-step[aria-selected="true"] ime-cue::after{display:none}
+
+/* Touch devices have no hover: keep a quiet, always-visible cue instead */
+@media (hover:none){
+  ime-cue{opacity:.8;transform:none}
+}
+@media (max-width:760px){
+  ime-cue{font-size:10.5px;letter-spacing:.12em}
+  #services .svc-capability ime-cue{left:20px}
+}
+@media (prefers-reduced-motion:reduce){
+  ime-cue,ime-cue::after{transition:none;transform:none}
+}
+</style>
+<script id="ime-v569-hover-cue-js">
+(function(){
+  function cue(openTxt,closeTxt){
+    var c=document.createElement('ime-cue');
+    c.setAttribute('aria-hidden','true');
+    c.innerHTML='<ime-t class="c-open">'+openTxt+'</ime-t><ime-t class="c-close">'+closeTxt+'</ime-t>';
+    return c;
+  }
+  document.querySelectorAll('#services .svc-capability').forEach(function(t){
+    if(!t.querySelector(':scope>ime-cue'))t.appendChild(cue('Explore','Close'));
+  });
+  document.querySelectorAll('#project-journey .journey-step .journey-card').forEach(function(card){
+    if(!card.querySelector('ime-cue'))card.appendChild(cue('Explore','Viewing'));
+  });
+})();
+</script>
+</body>
 </html>
