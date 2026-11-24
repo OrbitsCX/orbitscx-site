@@ -7084,8 +7084,11 @@ if(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches||!(
     });
     tb.id='tbLogoSvg';tb.setAttribute('class','tb-logo');tb.setAttribute('aria-hidden','true');tb.setAttribute('focusable','false');
     tb.removeAttribute('aria-label');tb.removeAttribute('role');
-    link.insertBefore(tb,img);
+    /* Hide the static logo synchronously, before the animated clone can be painted.
+       Inline important styling works immediately and does not depend on the late toolbar stylesheet. */
+    img.style.setProperty('display','none','important');
     img.classList.add('tb-static-hidden'); /* stays in the DOM: the ROI report still reads its src */
+    link.insertBefore(tb,img);
     document.documentElement.classList.add('tb-logo-live');
 
     function tbRender(t){var s=logoRoots;logoRoots=[tb];try{render(t,1)}finally{logoRoots=s}}
