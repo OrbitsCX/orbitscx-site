@@ -6296,8 +6296,8 @@ header nav.ime-nav .nv-phone:focus-visible{
 <path class="ev-rework-route" d="M375 32 C445 32 445 132 375 132 C305 132 305 32 375 32"/>
 <path class="ev-rework-route" d="M625 32 C700 32 700 158 500 158 C300 158 300 32 375 32"/>
 <g class="ev-rework-ball" opacity="0"><circle r="7"/>
-<animateMotion id="evBallMove" begin="indefinite" dur="59.505s" fill="freeze" calcMode="linear" keyPoints="0;0.02055;0.02055;0.09204;0.09204;0.16353;0.16353;0.50566;0.50566;0.66173;0.66173;0.87758;0.87758;0.94907;0.94907;1" keyTimes="0;0.01475;0.05508;0.10639;0.14672;0.19803;0.23836;0.48389;0.52423;0.63624;0.67657;0.83148;0.87181;0.92311;0.96345;1"><mpath href="#evReworkRoute"/></animateMotion>
-<animate attributeName="opacity" begin="evBallMove.begin" dur="59.505s" fill="freeze" calcMode="linear" values="1;1;0.25;1;0.25;1;1;0.25;1;0.25;1;1;0.25;1;0.25;1;1;0.25;1;0.25;1;1;0.25;1;0.25;1;1;0.25;1;0.25;1;1;0.25;1;0.25;1;1" keyTimes="0;0.01475;0.02483;0.03492;0.045;0.05508;0.10639;0.11647;0.12656;0.13664;0.14672;0.19803;0.20811;0.21819;0.22828;0.23836;0.48389;0.49398;0.50406;0.51414;0.52423;0.63624;0.64632;0.6564;0.66649;0.67657;0.83148;0.84156;0.85164;0.86172;0.87181;0.92311;0.9332;0.94328;0.95336;0.96345;1"/></g>
+<animateMotion id="evBallMove" begin="indefinite" dur="59.505s" repeatCount="indefinite" calcMode="linear" keyPoints="0;0.02055;0.02055;0.09204;0.09204;0.16353;0.16353;0.50566;0.50566;0.66173;0.66173;0.87758;0.87758;0.94907;0.94907;1" keyTimes="0;0.01475;0.05508;0.10639;0.14672;0.19803;0.23836;0.48389;0.52423;0.63624;0.67657;0.83148;0.87181;0.92311;0.96345;1"><mpath href="#evReworkRoute"/></animateMotion>
+<animate attributeName="opacity" begin="evBallMove.beginEvent" end="evBallMove.endEvent" dur="59.505s" repeatCount="indefinite" calcMode="linear" values="1;1;0.25;1;0.25;1;1;0.25;1;0.25;1;1;0.25;1;0.25;1;1;0.25;1;0.25;1;1;0.25;1;0.25;1;1;0.25;1;0.25;1;1;0.25;1;0.25;1;1" keyTimes="0;0.01475;0.02483;0.03492;0.045;0.05508;0.10639;0.11647;0.12656;0.13664;0.14672;0.19803;0.20811;0.21819;0.22828;0.23836;0.48389;0.49398;0.50406;0.51414;0.52423;0.63624;0.64632;0.6564;0.66649;0.67657;0.83148;0.84156;0.85164;0.86172;0.87181;0.92311;0.9332;0.94328;0.95336;0.96345;1"/></g>
 </svg></div>
 </div>
 <div class="ev-lane ev-us">
@@ -8352,12 +8352,14 @@ show(0,false);
 var reduce=window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches;
 if(reduce||!("IntersectionObserver" in window))return;
 el.classList.add("js-rv");
-var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){el.classList.add("in");var m=el.querySelector("#evBallMove");if(m&&m.beginElementAt)m.beginElementAt(1.2);io.disconnect()}})},{threshold:.2});
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){el.classList.add("in");io.disconnect()}})},{threshold:.2});
 io.observe(el);})();
 </script>
 <script>
-(function(){var s=document.querySelector("#engineers .ev-rework");if(!s||!window.ResizeObserver)return;
-new ResizeObserver(function(){var w=s.clientWidth;if(w)s.style.setProperty("--kx",1000/w)}).observe(s);})();
+(function(){var s=document.querySelector("#engineers .ev-rework");if(!s)return;
+if(window.ResizeObserver)new ResizeObserver(function(){var w=s.clientWidth;if(w)s.style.setProperty("--kx",1000/w)}).observe(s);
+var m=s.querySelector("#evBallMove"),first=true;if(!m||!("IntersectionObserver" in window))return;
+new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){m.beginElementAt(first?1.2:0);first=false}else{m.endElement()}})},{threshold:.5}).observe(s);})();
 </script>
 <script>
 (function(){document.querySelectorAll("#engineers .eng-points article").forEach(function(c){var n=0,t=c.querySelector(".eng-ico");if(t)c.addEventListener("pointerenter",function(){n+=1;t.style.setProperty("--h",n)})})})();
