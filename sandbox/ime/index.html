@@ -9412,34 +9412,39 @@ header.scrolled .bar{
 @keyframes lr424F5{0%,68%{opacity:0}72%,90%{opacity:1}96%,100%{opacity:0}}
 
 #line .lr-amr .lr-s{stroke-width:1.4}
-#line .lr-amr{transform-box:fill-box;transform-origin:center;animation:lrAmrRun 11s ease-in-out infinite}
+#line .lr-amr{transform-box:fill-box;transform-origin:center;animation:lrAmrRun 14s ease-in-out infinite}
 #line .lr-amr .lr-lidar{transform-box:fill-box;transform-origin:center;animation:lrAmrLidar 2.4s ease-in-out infinite}
-#line .lr-amr .lr-wheel{transform-box:fill-box;transform-origin:center;animation:lrAmrWheel 11s linear infinite}
+#line .lr-amr .lr-wheel{transform-box:fill-box;transform-origin:center;animation:lrAmrWheel 14s linear infinite}
 #line .lr-amr-path{stroke-dasharray:5 6;animation:lr410Dash 4s linear infinite;opacity:.9}
 @keyframes lrAmrRun{
   0%{transform:translate(48px,0);opacity:0}
-  8%{opacity:1}
-  22%{transform:translate(0,0)}
-  42%{transform:translate(0,0)}
-  78%{transform:translate(72px,0);opacity:1}
-  92%{transform:translate(96px,0);opacity:0}
+  6%{opacity:1}
+  20%{transform:translate(0,0)}
+  62%{transform:translate(0,0)}
+  86%{transform:translate(72px,0);opacity:1}
+  96%{transform:translate(96px,0);opacity:0}
   100%{transform:translate(96px,0);opacity:0}
 }
+#line .lr-amr-row{transform-box:fill-box;animation:lrAmrLoad1 14s ease-out infinite}
+#line .lr-amr-row.r2{animation-name:lrAmrLoad2}
+#line .lr-amr-row.r3{animation-name:lrAmrLoad3}
+@keyframes lrAmrLoad1{0%,26%{opacity:0;transform:translateY(-14px)}31%,100%{opacity:1;transform:none}}
+@keyframes lrAmrLoad2{0%,36%{opacity:0;transform:translateY(-14px)}41%,100%{opacity:1;transform:none}}
+@keyframes lrAmrLoad3{0%,46%{opacity:0;transform:translateY(-14px)}51%,100%{opacity:1;transform:none}}
 @keyframes lrAmrLidar{
   0%,100%{opacity:.45;transform:scale(.92)}
   50%{opacity:1;transform:scale(1.12)}
 }
 @keyframes lrAmrWheel{
-  0%,22%{transform:rotate(0deg)}
-  42%{transform:rotate(0deg)}
-  78%{transform:rotate(360deg)}
-  100%{transform:rotate(480deg)}
+  0%{transform:rotate(0deg)}
+  20%,62%{transform:rotate(-305deg)}
+  96%,100%{transform:rotate(305deg)}
 }
 @media(max-width:1100px){#line .scope-flow>.lr-scope-art{display:none}}
 @media(max-width:900px){#line .lr-plan{opacity:.1;width:520px;right:-180px}}
 @media(max-width:560px){#line .lr-plan{opacity:.08;width:420px;right:-190px;top:6px}}
 @media(prefers-reduced-motion:reduce){
-  .lr-dash,.lr-spark,.lr-scan,.lr-node,.lr-prod,.lr-prod .ph1,.lr-prod .ph2,.lr-prod .ph3,.lr-prod .ph4,.lr-prod .ph5,.lr-amr,.lr-amr .lr-lidar,.lr-amr .lr-wheel,.lr-amr-path{animation:none!important}
+  .lr-dash,.lr-spark,.lr-scan,.lr-node,.lr-prod,.lr-prod .ph1,.lr-prod .ph2,.lr-prod .ph3,.lr-prod .ph4,.lr-prod .ph5,.lr-amr,.lr-amr .lr-lidar,.lr-amr .lr-wheel,.lr-amr-row,.lr-amr-path{animation:none!important}
   .lr-prod{opacity:.85;transform:none}
   .lr-amr{opacity:1;transform:none}
   .lr-prod .ph1{opacity:1}.lr-prod .ph2,.lr-prod .ph3,.lr-prod .ph4,.lr-prod .ph5{opacity:0}
@@ -9512,7 +9517,7 @@ header.scrolled .bar{
  g+='<ellipse class="lr-s" cx="1120" cy="200" rx="54" ry="7"/><path class="lr-s" d="M1080 192h80v8h-80z"/>';
  g+=box(1086,100,68,90)+'<path class="lr-f" d="M1086 120h68M1086 142h68M1086 164h68"/>';
  g+='<path class="lr-s" d="M1180 206V56h12v150z"/><path class="lr-s" d="M1170 100h28v32h-28z"/>'+joint(1184,116,8);
- /* 7 AMR: mobile base under a finished pallet, departing the cell */
+ /* 7 AMR: arrives with an empty pallet, is loaded at the cell, departs with a full pallet */
  g+='<g class="lr-amr">';
  /* AMR chassis */
  g+='<path class="lr-s" d="M1248 188h120v18h-120z"/>';
@@ -9524,9 +9529,9 @@ header.scrolled .bar{
  g+='<path class="lr-f lr-lidar" d="M1240 176a42 24 0 0 1 136 0" stroke-dasharray="3 4"/>';
  /* pallet + load */
  g+='<path class="lr-s" d="M1260 168h96v20h-96z"/>';
- g+=box(1266,128,28,40)+box(1298,128,28,40)+box(1330,128,20,40);
- g+=box(1266,108,40,20)+box(1310,108,40,20);
- g+=box(1280,88,48,20);
+ g+='<g class="lr-amr-row r1">'+box(1266,128,28,40)+box(1298,128,28,40)+box(1330,128,20,40)+'</g>';
+ g+='<g class="lr-amr-row r2">'+box(1266,108,40,20)+box(1310,108,40,20)+'</g>';
+ g+='<g class="lr-amr-row r3">'+box(1280,88,48,20)+'</g>';
  /* outbound path (fixed in world; AMR rides along) */
  g+='<path class="lr-k lr-amr-path" d="M1372 178H1410" stroke-width="1.4"/>';
  g+='<path class="lr-k" d="M1402 172l10 6-10 6" stroke-width="1.5"/>';
