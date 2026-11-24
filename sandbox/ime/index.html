@@ -9400,53 +9400,66 @@ header.scrolled .bar{
 @keyframes lr424Ride{
   0%{transform:translate(40px,0);opacity:0}
   4%{opacity:1}
-  88%{opacity:1}
-  96%{opacity:0}
-  100%{transform:translate(1180px,0);opacity:0}
+  80%{transform:translate(850px,0);opacity:1}
+  94%{transform:translate(850px,0);opacity:1}
+  98%{transform:translate(850px,0);opacity:0}
+  100%{transform:translate(850px,0);opacity:0}
 }
-/* form phases keyed to position along the ride */
-@keyframes lr424F1{0%,14%{opacity:1}18%,100%{opacity:0}}
-@keyframes lr424F2{0%,14%{opacity:0}18%,32%{opacity:1}36%,100%{opacity:0}}
-@keyframes lr424F3{0%,32%{opacity:0}36%,50%{opacity:1}54%,100%{opacity:0}}
-@keyframes lr424F4{0%,50%{opacity:0}54%,68%{opacity:1}72%,100%{opacity:0}}
-@keyframes lr424F5{0%,68%{opacity:0}72%,90%{opacity:1}96%,100%{opacity:0}}
+/* form phases keyed to position along the ride (cartons stop at the pallet) */
+@keyframes lr424F1{0%,18%{opacity:1}22%,100%{opacity:0}}
+@keyframes lr424F2{0%,18%{opacity:0}22%,38%{opacity:1}42%,100%{opacity:0}}
+@keyframes lr424F3{0%,38%{opacity:0}42%,58%{opacity:1}62%,100%{opacity:0}}
+@keyframes lr424F4{0%,58%{opacity:0}62%,72%{opacity:1}76%,100%{opacity:0}}
+@keyframes lr424F5{0%,72%{opacity:0}76%,94%{opacity:1}98%,100%{opacity:0}}
 
 #line .lr-amr .lr-s{stroke-width:1.4}
-#line .lr-amr{transform-box:fill-box;transform-origin:center;animation:lrAmrRun 14s ease-in-out infinite}
+#line .lr-amr .lr-wheel{transform-box:fill-box;transform-origin:center}
 #line .lr-amr .lr-lidar{transform-box:fill-box;transform-origin:center;animation:lrAmrLidar 2.4s ease-in-out infinite}
-#line .lr-amr .lr-wheel{transform-box:fill-box;transform-origin:center;animation:lrAmrWheel 14s linear infinite}
-#line .lr-amr-path{stroke-dasharray:5 6;animation:lr410Dash 4s linear infinite;opacity:.9}
-@keyframes lrAmrRun{
-  0%{transform:translate(48px,0);opacity:0}
-  6%{opacity:1}
-  20%{transform:translate(0,0)}
-  62%{transform:translate(0,0)}
-  86%{transform:translate(72px,0);opacity:1}
-  96%{transform:translate(96px,0);opacity:0}
-  100%{transform:translate(96px,0);opacity:0}
-}
-#line .lr-amr-row{transform-box:fill-box;animation:lrAmrLoad1 14s ease-out infinite}
-#line .lr-amr-row.r2{animation-name:lrAmrLoad2}
-#line .lr-amr-row.r3{animation-name:lrAmrLoad3}
-@keyframes lrAmrLoad1{0%,26%{opacity:0;transform:translateY(-14px)}31%,100%{opacity:1;transform:none}}
-@keyframes lrAmrLoad2{0%,36%{opacity:0;transform:translateY(-14px)}41%,100%{opacity:1;transform:none}}
-@keyframes lrAmrLoad3{0%,46%{opacity:0;transform:translateY(-14px)}51%,100%{opacity:1;transform:none}}
+#line .lr-film{stroke-dasharray:100}
+#line .lr-turn{opacity:0}
+#line .lr-filmlink{opacity:0}
+#line .lr-carry{opacity:0}
+#line .lr-pal,#line .lr-head,#line .lr-amr,#line .lr-lift,#line .lr-layer,#line .lr-film{animation:none 32s linear infinite}
+#line .lr-pal{animation-name:lrPalMove}
+#line .lr-amr{animation-name:lrAmrDrive}
+#line .lr-amr .lr-wheel{animation:lrAmrWheel 32s linear infinite}
+#line .lr-lift{animation-name:lrAmrLift}
+#line .lr-head{animation-name:lrHeadMove}
+#line .lr-carry{animation:lrCarry 32s linear infinite}
+#line .lr-layer{transform-box:fill-box}
+#line .lr-layer.l1{animation-name:lrLayer1}
+#line .lr-layer.l2{animation-name:lrLayer2}
+#line .lr-layer.l3{animation-name:lrLayer3}
+#line .lr-layer.l4{animation-name:lrLayer4}
+#line .lr-film{animation-name:lrFilm}
+#line .lr-filmlink{animation:lrWrapOn 32s linear infinite}
+#line .lr-turn{animation:lrWrapOn 32s linear infinite,lrTurn 1.6s linear infinite}
+@keyframes lrPalMove{0%{transform:translate(0,0);opacity:1;animation-timing-function:ease-in-out}28.125%{transform:translate(0,0);animation-timing-function:ease-in-out}35.938%{transform:translate(188px,-30px);animation-timing-function:ease-in-out}71.25%{transform:translate(188px,-30px);animation-timing-function:ease-in-out}73.125%{transform:translate(188px,-36px);animation-timing-function:ease-in-out}74.375%{transform:translate(188px,-36px);opacity:1;animation-timing-function:ease-in-out}90.625%{transform:translate(556px,-36px);opacity:1;animation-timing-function:ease-in-out}91.875%{transform:translate(556px,-36px);opacity:0;animation-timing-function:ease-in-out}92.188%{transform:translate(0,0);opacity:0;animation-timing-function:ease-in-out}96.875%{transform:translate(0,0);opacity:0;animation-timing-function:ease-in-out}100%{transform:translate(0,0);opacity:1;animation-timing-function:ease-in-out}}
+@keyframes lrAmrDrive{0%{transform:translate(100px,0);opacity:0;animation-timing-function:ease-in-out}48.125%{transform:translate(100px,0);opacity:0;animation-timing-function:ease-in-out}48.75%{transform:translate(100px,0);opacity:1;animation-timing-function:ease-in-out}51.562%{transform:translate(100px,0);animation-timing-function:ease-in-out}67.188%{transform:translate(-188px,0);animation-timing-function:ease-in-out}74.375%{transform:translate(-188px,0);animation-timing-function:ease-in-out}90.625%{transform:translate(180px,0);opacity:1;animation-timing-function:ease-in-out}91.875%{transform:translate(180px,0);opacity:0;animation-timing-function:ease-in-out}92.188%{transform:translate(100px,0);opacity:0;animation-timing-function:ease-in-out}100%{transform:translate(100px,0);opacity:0;animation-timing-function:ease-in-out}}
+@keyframes lrAmrWheel{0%{transform:rotate(0deg);animation-timing-function:linear}51.562%{transform:rotate(0deg);animation-timing-function:linear}67.188%{transform:rotate(-2063deg);animation-timing-function:linear}74.375%{transform:rotate(-2063deg);animation-timing-function:linear}90.625%{transform:rotate(576deg);animation-timing-function:linear}92.188%{transform:rotate(0deg);animation-timing-function:linear}100%{transform:rotate(0deg);animation-timing-function:linear}}
+@keyframes lrAmrLift{0%{transform:translateY(0);animation-timing-function:ease-in-out}69.375%{transform:translateY(0);animation-timing-function:ease-in-out}71.25%{transform:translateY(-14px);animation-timing-function:ease-in-out}73.125%{transform:translateY(-20px);animation-timing-function:ease-in-out}92.031%{transform:translateY(-20px);animation-timing-function:ease-in-out}92.188%{transform:translateY(0);animation-timing-function:ease-in-out}100%{transform:translateY(0);animation-timing-function:ease-in-out}}
+@keyframes lrHeadMove{0%{transform:translateY(0);animation-timing-function:ease-in-out}3.125%{transform:translateY(0);animation-timing-function:ease-in-out}5.312%{transform:translateY(94px);animation-timing-function:ease-in-out}5.625%{transform:translateY(94px);animation-timing-function:ease-in-out}7.812%{transform:translateY(0);animation-timing-function:ease-in-out}9.375%{transform:translateY(0);animation-timing-function:ease-in-out}11.562%{transform:translateY(74px);animation-timing-function:ease-in-out}11.875%{transform:translateY(74px);animation-timing-function:ease-in-out}14.062%{transform:translateY(0);animation-timing-function:ease-in-out}15.625%{transform:translateY(0);animation-timing-function:ease-in-out}17.812%{transform:translateY(54px);animation-timing-function:ease-in-out}18.125%{transform:translateY(54px);animation-timing-function:ease-in-out}20.312%{transform:translateY(0);animation-timing-function:ease-in-out}21.875%{transform:translateY(0);animation-timing-function:ease-in-out}24.062%{transform:translateY(34px);animation-timing-function:ease-in-out}24.375%{transform:translateY(34px);animation-timing-function:ease-in-out}26.562%{transform:translateY(0);animation-timing-function:ease-in-out}100%{transform:translateY(0);animation-timing-function:ease-in-out}}
+@keyframes lrCarry{0%{opacity:0;animation-timing-function:linear}2.969%{opacity:0;animation-timing-function:linear}3.125%{opacity:1;animation-timing-function:linear}5.625%{opacity:1;animation-timing-function:linear}5.781%{opacity:0;animation-timing-function:linear}9.219%{opacity:0;animation-timing-function:linear}9.375%{opacity:1;animation-timing-function:linear}11.875%{opacity:1;animation-timing-function:linear}12.031%{opacity:0;animation-timing-function:linear}15.469%{opacity:0;animation-timing-function:linear}15.625%{opacity:1;animation-timing-function:linear}18.125%{opacity:1;animation-timing-function:linear}18.281%{opacity:0;animation-timing-function:linear}21.719%{opacity:0;animation-timing-function:linear}21.875%{opacity:1;animation-timing-function:linear}24.375%{opacity:1;animation-timing-function:linear}24.531%{opacity:0;animation-timing-function:linear}100%{opacity:0;animation-timing-function:linear}}
+@keyframes lrLayer1{0%{opacity:0;transform:translateY(-6px);animation-timing-function:ease-out}5.469%{opacity:0;transform:translateY(-6px);animation-timing-function:ease-out}6.25%{opacity:1;transform:none;animation-timing-function:ease-out}92.188%{opacity:1;transform:none;animation-timing-function:ease-out}92.344%{opacity:0;transform:none;animation-timing-function:ease-out}100%{opacity:0;transform:none;animation-timing-function:ease-out}}
+@keyframes lrLayer2{0%{opacity:0;transform:translateY(-6px);animation-timing-function:ease-out}11.719%{opacity:0;transform:translateY(-6px);animation-timing-function:ease-out}12.5%{opacity:1;transform:none;animation-timing-function:ease-out}92.188%{opacity:1;transform:none;animation-timing-function:ease-out}92.344%{opacity:0;transform:none;animation-timing-function:ease-out}100%{opacity:0;transform:none;animation-timing-function:ease-out}}
+@keyframes lrLayer3{0%{opacity:0;transform:translateY(-6px);animation-timing-function:ease-out}17.969%{opacity:0;transform:translateY(-6px);animation-timing-function:ease-out}18.75%{opacity:1;transform:none;animation-timing-function:ease-out}92.188%{opacity:1;transform:none;animation-timing-function:ease-out}92.344%{opacity:0;transform:none;animation-timing-function:ease-out}100%{opacity:0;transform:none;animation-timing-function:ease-out}}
+@keyframes lrLayer4{0%{opacity:0;transform:translateY(-6px);animation-timing-function:ease-out}24.219%{opacity:0;transform:translateY(-6px);animation-timing-function:ease-out}25%{opacity:1;transform:none;animation-timing-function:ease-out}92.188%{opacity:1;transform:none;animation-timing-function:ease-out}92.344%{opacity:0;transform:none;animation-timing-function:ease-out}100%{opacity:0;transform:none;animation-timing-function:ease-out}}
+@keyframes lrFilm{0%{opacity:0;stroke-dashoffset:100;animation-timing-function:linear}36.875%{opacity:0;stroke-dashoffset:100;animation-timing-function:linear}37.031%{opacity:1;stroke-dashoffset:100;animation-timing-function:linear}53.125%{opacity:1;stroke-dashoffset:0;animation-timing-function:linear}92.188%{opacity:1;stroke-dashoffset:0;animation-timing-function:linear}92.344%{opacity:0;stroke-dashoffset:100;animation-timing-function:linear}100%{opacity:0;stroke-dashoffset:100;animation-timing-function:linear}}
+@keyframes lrWrapOn{0%{opacity:0;animation-timing-function:linear}36.25%{opacity:0;animation-timing-function:linear}36.562%{opacity:1;animation-timing-function:linear}53.438%{opacity:1;animation-timing-function:linear}53.75%{opacity:0;animation-timing-function:linear}100%{opacity:0;animation-timing-function:linear}}
+@keyframes lrTurn{to{stroke-dashoffset:-96}}
 @keyframes lrAmrLidar{
   0%,100%{opacity:.45;transform:scale(.92)}
   50%{opacity:1;transform:scale(1.12)}
 }
-@keyframes lrAmrWheel{
-  0%{transform:rotate(0deg)}
-  20%,62%{transform:rotate(-305deg)}
-  96%,100%{transform:rotate(305deg)}
 }
 @media(max-width:1100px){#line .scope-flow>.lr-scope-art{display:none}}
 @media(max-width:900px){#line .lr-plan{opacity:.1;width:520px;right:-180px}}
 @media(max-width:560px){#line .lr-plan{opacity:.08;width:420px;right:-190px;top:6px}}
 @media(prefers-reduced-motion:reduce){
-  .lr-dash,.lr-spark,.lr-scan,.lr-node,.lr-prod,.lr-prod .ph1,.lr-prod .ph2,.lr-prod .ph3,.lr-prod .ph4,.lr-prod .ph5,.lr-amr,.lr-amr .lr-lidar,.lr-amr .lr-wheel,.lr-amr-row,.lr-amr-path{animation:none!important}
+  .lr-dash,.lr-spark,.lr-scan,.lr-node,.lr-prod,.lr-prod .ph1,.lr-prod .ph2,.lr-prod .ph3,.lr-prod .ph4,.lr-prod .ph5,.lr-amr,.lr-amr .lr-lidar,.lr-amr .lr-wheel,.lr-pal,.lr-head,.lr-carry,.lr-layer,.lr-film,.lr-lift,.lr-turn,.lr-filmlink{animation:none!important}
   .lr-prod{opacity:.85;transform:none}
   .lr-amr{opacity:1;transform:none}
+  .lr-film{opacity:0}
   .lr-prod .ph1{opacity:1}.lr-prod .ph2,.lr-prod .ph3,.lr-prod .ph4,.lr-prod .ph5{opacity:0}
   .lr-prod.p3 .ph3{opacity:1}.lr-prod.p3 .ph1{opacity:0}
   .lr-prod.p5 .ph4{opacity:1}.lr-prod.p5 .ph1{opacity:0}
@@ -9465,6 +9478,7 @@ header.scrolled .bar{
  var BG='#0e1419';
  function link(x1,y1,x2,y2,w){return '<line class="lr-s" x1="'+x1+'" y1="'+y1+'" x2="'+x2+'" y2="'+y2+'" stroke-width="'+(w+2.4)+'"/><line class="lr-bg" x1="'+x1+'" y1="'+y1+'" x2="'+x2+'" y2="'+y2+'" stroke-width="'+w+'"/>';}
  function joint(x,y,r){return '<circle class="lr-s" cx="'+x+'" cy="'+y+'" r="'+r+'" fill="'+BG+'"/>';}
+ function bx(x,y,w,h){return '<rect class="lr-s" style="fill:#0e1419" x="'+x+'" y="'+y+'" width="'+w+'" height="'+h+'"/>';}
  function box(x,y,w,h){return '<rect class="lr-s" x="'+x+'" y="'+y+'" width="'+w+'" height="'+h+'"/>';}
 
  /* ---------- side elevation ---------- */
@@ -9506,45 +9520,39 @@ header.scrolled .bar{
  g+='<path class="lr-s" d="M768 95v28"/><path class="lr-s" d="M756 123h24v5h-24z"/>';
  var bc='';[678,681,684,687,690,693,696,699].forEach(function(x){bc+='M'+x+' 176v8';});
  g+='<path class="lr-f" d="'+bc+'"/>';
- /* 5 PALLETIZE */
- g+='<path class="lr-s" d="M880 198h104v-8h-104zM884 198v6h14v-6M925 198v6h14v-6M966 198v6h14v-6"/>';
- g+=box(882,170,33,20)+box(915,170,33,20)+box(948,170,33,20);
- g+=box(882,150,16,20)+box(898,150,33,20)+box(931,150,33,20)+box(964,150,17,20);
- g+=box(882,130,33,20)+box(915,130,33,20)+box(948,130,33,20);
- g+=box(882,110,33,20)+box(915,110,33,20);
- g+='<path class="lr-s" d="M1012 206V34h12v172z"/><path class="lr-s" d="M872 34h152v10H872z"/>'+link(964,44,964,68,5)+'<path class="lr-s" d="M950 68h28v5h-28z"/>'+box(948,76,33,22);
- /* 6 WRAP */
- g+='<ellipse class="lr-s" cx="1120" cy="200" rx="54" ry="7"/><path class="lr-s" d="M1080 192h80v8h-80z"/>';
- g+=box(1086,100,68,90)+'<path class="lr-f" d="M1086 120h68M1086 142h68M1086 164h68"/>';
+ /* 5 PALLETIZE: layer-picking robot stacks four layers on the pallet */
+ g+='<path class="lr-s" d="M1012 206V34h12v172z"/><path class="lr-s" d="M872 34h152v10H872z"/>';
+ g+='<g class="lr-pal">';
+ g+='<path class="lr-s" style="fill:#0e1419" d="M880 198h104v-8h-104zM884 198v6h14v-6M925 198v6h14v-6M966 198v6h14v-6"/>';
+ g+='<g class="lr-layer l1">'+bx(882,170,33,20)+bx(915,170,33,20)+bx(948,170,33,20)+'</g>';
+ g+='<g class="lr-layer l2">'+bx(882,150,33,20)+bx(915,150,33,20)+bx(948,150,33,20)+'</g>';
+ g+='<g class="lr-layer l3">'+bx(882,130,33,20)+bx(915,130,33,20)+bx(948,130,33,20)+'</g>';
+ g+='<g class="lr-layer l4">'+bx(882,110,33,20)+bx(915,110,33,20)+bx(948,110,33,20)+'</g>';
+ g+='<path class="lr-k lr-film" pathLength="100" d="M878 190L986 176L878 162L986 148L878 134L986 120L878 108" stroke-width="1"/>';
+ g+='</g>';
+ g+='<g class="lr-head"><path class="lr-s" d="M932 44V68"/><path class="lr-s" style="fill:#0e1419" d="M880 66h104v6h-104z"/><g class="lr-carry"><rect class="lr-s" style="fill:#0e1419" x="882" y="76" width="33" height="20"/><rect class="lr-s" style="fill:#0e1419" x="915" y="76" width="33" height="20"/><rect class="lr-s" style="fill:#0e1419" x="948" y="76" width="33" height="20"/></g></g>';
+ /* 6 WRAP: raised turntable + film dispenser; the pallet is wrapped here and collected by the AMR */
+ g+='<path class="lr-s" d="M1068 180v26M1172 180v26M1058 206h20M1162 206h20"/><ellipse class="lr-s" cx="1120" cy="178" rx="58" ry="4"/>';
+ g+='<ellipse class="lr-k lr-turn" cx="1120" cy="178" rx="58" ry="4" stroke-dasharray="5 7" stroke-width="1.2"/>';
  g+='<path class="lr-s" d="M1180 206V56h12v150z"/><path class="lr-s" d="M1170 100h28v32h-28z"/>'+joint(1184,116,8);
- /* 7 AMR: arrives with an empty pallet, is loaded at the cell, departs with a full pallet */
- g+='<g class="lr-amr">';
- /* AMR chassis */
- g+='<path class="lr-s" d="M1248 188h120v18h-120z"/>';
- g+='<circle class="lr-s lr-wheel" cx="1264" cy="210" r="9"/><circle class="lr-s" cx="1264" cy="210" r="3"/>';
- g+='<circle class="lr-s lr-wheel" cx="1352" cy="210" r="9"/><circle class="lr-s" cx="1352" cy="210" r="3"/>';
- g+='<path class="lr-f" d="M1254 194h108M1254 200h108"/>';
- /* LiDAR + safety envelope */
- g+='<circle class="lr-s lr-lidar" cx="1308" cy="182" r="11"/><circle class="lr-kf lr-lidar" cx="1308" cy="182" r="3.2"/>';
- g+='<path class="lr-f lr-lidar" d="M1240 176a42 24 0 0 1 136 0" stroke-dasharray="3 4"/>';
- /* pallet + load */
- g+='<path class="lr-s" d="M1260 168h96v20h-96z"/>';
- g+='<g class="lr-amr-row r1">'+box(1266,128,28,40)+box(1298,128,28,40)+box(1330,128,20,40)+'</g>';
- g+='<g class="lr-amr-row r2">'+box(1266,108,40,20)+box(1310,108,40,20)+'</g>';
- g+='<g class="lr-amr-row r3">'+box(1280,88,48,20)+'</g>';
- /* outbound path (fixed in world; AMR rides along) */
- g+='<path class="lr-k lr-amr-path" d="M1372 178H1410" stroke-width="1.4"/>';
- g+='<path class="lr-k" d="M1402 172l10 6-10 6" stroke-width="1.5"/>';
+ g+='<path class="lr-k lr-filmlink" d="M1172 116H1166" stroke-dasharray="2 3"/>';
+ /* 7 AMR: drives under the wrapped pallet at the wrap station, lifts it and leaves */
+  g+='<g class="lr-amr">';
+ g+='<path class="lr-s" style="fill:#0e1419" d="M1268 186h80v18h-80z"/>';
+ g+='<g class="lr-lift"><path class="lr-s" style="fill:#0e1419" d="M1274 182h68v4h-68z"/></g>';
+ g+='<circle class="lr-s lr-wheel" style="fill:#0e1419" cx="1284" cy="208" r="8"/><circle class="lr-s" cx="1284" cy="208" r="2.6"/>';
+ g+='<circle class="lr-s lr-wheel" style="fill:#0e1419" cx="1332" cy="208" r="8"/><circle class="lr-s" cx="1332" cy="208" r="2.6"/>';
+ g+='<circle class="lr-kf lr-lidar" cx="1352" cy="195" r="3.2"/>';
+ g+='<path class="lr-f lr-lidar" d="M1358 178a26 26 0 0 1 0 34" stroke-dasharray="3 4"/>';
+ g+='</g>';
+ g+='<path class="lr-k" d="M1384 196H1412" stroke-width="1.3" stroke-dasharray="5 6"/><path class="lr-k" d="M1404 190l10 6-10 6" stroke-width="1.5"/>';
  g+='</g>';
  g+='</g>';
 
  /* accents + product stream */
  var a='<g class="lr-art-a">';
  a+='<path class="lr-k lr-dash" d="M0 198H1040"/>';
- a+='<path class="lr-k lr-dash slow" d="M1086 108L1154 122L1086 136L1154 150L1086 164" stroke-width="1"/>';
- a+='<path class="lr-k" d="M1170 116H1154" stroke-dasharray="2 3"/>';
- /* AMR path dash leaving the cell */
- a+='<path class="lr-k lr-dash" d="M1374 178H1395" stroke-width="1.3"/>';
+ 
  a+='<g class="lr-spark"><path class="lr-k" d="M347 170l-8 -7M347 170l0 -10M347 170l9 -6M347 170l-12 3M347 170l13 2"/></g>';
  a+='<g class="lr-scan"><path class="lr-k" d="M474 166H526"/></g>';
  a+='<path class="lr-k" d="M903 176H937" stroke-dasharray="2 3"/>';
