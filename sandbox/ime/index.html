@@ -7062,10 +7062,11 @@ var host=document.getElementById('lga-host');
 render(0,1);
 if(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches||!('IntersectionObserver' in window))return;
 
-/* v589: floating-toolbar logo = the animated footer logo. It rests in the static logo for TB_HOLD ms, plays the pick-and-place move once, then rests again.
+/* v589: floating-toolbar logo = the animated footer logo. It waits TB_INITIAL_DELAY before the first move, then TB_REPEAT_DELAY between later moves.
    Reduced-motion visitors (and any failure) keep the original static toolbar image. */
 (function(){
-  var TB_HOLD=30000; /* seconds of rest between moves, in ms */
+  var TB_INITIAL_DELAY=15000; /* initial wait before the first toolbar animation, in ms */
+  var TB_REPEAT_DELAY=25000; /* wait between subsequent toolbar animations, in ms */
   try{
     var link=document.querySelector('header .bar a[href="#top"]')||document.querySelector('header .bar a'),
         img=link&&link.querySelector('img'),srcSvg=$('lga-svg');
@@ -7089,17 +7090,17 @@ if(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches||!(
 
     function tbRender(t){var s=logoRoots;logoRoots=[tb];try{render(t,1)}finally{logoRoots=s}}
     var tbT=0,tbLast=null,tbRun=false,tbTimer=0;
-    function tbWait(){clearTimeout(tbTimer);tbTimer=setTimeout(function(){tbT=0;tbLast=null;tbRun=true;requestAnimationFrame(tbFrame)},TB_HOLD)}
+    function tbWait(delay){clearTimeout(tbTimer);tbTimer=setTimeout(function(){tbT=0;tbLast=null;tbRun=true;requestAnimationFrame(tbFrame)},delay)}
     function tbFrame(ms){
       if(!tbRun)return;
       if(tbLast!==null)tbT+=Math.min((ms-tbLast)/1000,.1);
       tbLast=ms;
-      if(tbT>=T){tbRun=false;tbT=0;tbLast=null;tbRender(0);tbWait();return}
+      if(tbT>=T){tbRun=false;tbT=0;tbLast=null;tbRender(0);tbWait(TB_REPEAT_DELAY);return}
       tbRender(tbT);requestAnimationFrame(tbFrame);
     }
     function tbStop(){clearTimeout(tbTimer);tbRun=false;tbT=0;tbLast=null;tbRender(0)}
-    tbRender(0);tbWait();
-    document.addEventListener('visibilitychange',function(){if(document.hidden)tbStop();else tbWait()});
+    tbRender(0);tbWait(TB_INITIAL_DELAY);
+    document.addEventListener('visibilitychange',function(){if(document.hidden)tbStop();else tbWait(TB_INITIAL_DELAY)});
   }catch(e){}
 })();
 var el=0,last=null,run=false,seen=false,timer=0;
@@ -11711,6 +11712,7 @@ ime-cue::after{content:"";flex:0 0 auto;width:22px;height:9px;background:url("da
 @media(prefers-reduced-motion:reduce){#engineers .ev-rework-ball{display:none!important}}
 </style>
 
+<!-- v572: toolbar logo starts after 15s, then repeats every 25s -->
 <!-- v589: toolbar logo is now the animated footer logo (rests 30s, moves once, repeats) -->
 <style id="ime-v589-toolbar-animated-logo">
 /* the animated SVG takes the static image's place and size (48px tall; 40px on small screens) */
