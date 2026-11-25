@@ -9368,7 +9368,48 @@ header.scrolled .bar{
 .lr-dash{stroke-dasharray:5 7;animation:lr410Dash 8s linear infinite}
 .lr-dash.slow{animation-duration:14s}
 .lr-spark{transform-box:fill-box;transform-origin:center;animation:lr410Spark 1.1s steps(2,end) infinite}
-.lr-scan{animation:lr410Scan 2.8s ease-in-out infinite alternate}
+/* stations 1-4: each loops once per carton (2.3s) and is phased to the moment a carton reaches it */
+#line .st-hop,#line .st-new,#line .st-out,#line .st-queue,#line .st-up,#line .st-fore,#line .st-tool,#line .st-pp,#line .st-pick,#line .st-lab,#line .st-sparkwin{transform-box:view-box}
+#line .st-hop{animation:stHop 2.3s linear infinite;animation-delay:-2.09s}
+#line .st-queue{animation:stQueue 2.3s ease-in-out infinite;animation-delay:-2.09s}
+#line .st-new{animation:stNew 2.3s ease-out infinite;animation-delay:-2.09s}
+#line .st-out{animation:stOut 2.3s linear infinite;animation-delay:-2.09s}
+#line .st-eye{animation:stEye 2.3s linear infinite;animation-delay:-2.09s}
+#line .st-up{transform-origin:300px 144px;animation:stUp 2.3s ease-in-out infinite;animation-delay:-0.77s}
+#line .st-fore{transform-origin:276px 96px;animation:stFore 2.3s ease-in-out infinite;animation-delay:-0.77s}
+#line .st-tool{transform-origin:333px 117px;animation:stTool 2.3s ease-in-out infinite;animation-delay:-0.77s}
+#line .st-sparkwin{animation:stSpark 2.3s linear infinite;animation-delay:-0.77s}
+#line .st-bead{stroke-dasharray:100;animation:stBead 2.3s linear infinite;animation-delay:-0.77s}
+#line .lr-scan{animation:stScan 2.3s ease-in-out infinite;animation-delay:-2.29s}
+#line .st-fov{animation:stFov 2.3s linear infinite;animation-delay:-2.29s}
+#line .st-brk{transform-box:fill-box;transform-origin:center;animation:stBrk 2.3s ease-in-out infinite;animation-delay:-2.29s}
+#line .st-lens{transform-box:fill-box;transform-origin:center;animation:stLens 2.3s ease-in-out infinite;animation-delay:-2.29s}
+#line .st-ok{animation:stOk 2.3s linear infinite;animation-delay:-2.29s}
+#line .st-pp{animation:stPP 2.3s ease-in-out infinite;animation-delay:-1.47s}
+#line .st-pick{animation:stPick 2.3s linear infinite;animation-delay:-1.47s}
+#line .st-lab{animation:stLab 2.3s ease-in-out infinite;animation-delay:-0.75s}
+#line .st-sheet{animation:stSheet 2.3s linear infinite;animation-delay:-0.75s}
+#line .st-bc{animation:stBc 2.3s linear infinite;animation-delay:-0.75s}
+@keyframes stHop{0%,100%{transform:translateX(0)}4%{transform:translateX(-1.2px)}8%{transform:translateX(1.2px)}12%{transform:translateX(-1px)}16%{transform:translateX(1px)}20%{transform:translateX(0)}}
+@keyframes stNew{0%{opacity:0;transform:translateY(-46px)}22%{opacity:1;transform:translateY(0)}100%{opacity:1;transform:translateY(0)}}
+@keyframes stQueue{0%,60%{transform:translateX(0)}92%,100%{transform:translateX(44px)}}
+@keyframes stOut{0%,70%{opacity:1}92%,100%{opacity:0}}
+@keyframes stEye{0%,58%{opacity:.75}68%{opacity:1}78%{opacity:.35}88%{opacity:1}100%{opacity:.75}}
+@keyframes stUp{0%,100%{transform:rotate(0deg)}15%{transform:rotate(4deg)}80%{transform:rotate(-3deg)}}
+@keyframes stFore{0%,100%{transform:rotate(-4deg)}15%{transform:rotate(-10deg)}80%{transform:rotate(8deg)}}
+@keyframes stTool{0%,100%{transform:rotate(0deg)}15%{transform:rotate(4deg)}80%{transform:rotate(-6deg)}}
+@keyframes stSpark{0%,14%{opacity:0}18%,78%{opacity:1}84%,100%{opacity:0}}
+@keyframes stBead{0%,16%{stroke-dashoffset:100;opacity:1}80%{stroke-dashoffset:0;opacity:1}96%{stroke-dashoffset:0;opacity:0}100%{stroke-dashoffset:100;opacity:0}}
+@keyframes stScan{0%{opacity:0;transform:translateY(0)}8%{opacity:1}52%{opacity:1;transform:translateY(22px)}60%,100%{opacity:0;transform:translateY(22px)}}
+@keyframes stFov{from{stroke-dashoffset:0}to{stroke-dashoffset:-14}}
+@keyframes stBrk{0%,100%{transform:scale(1.06);opacity:.5}30%{transform:scale(1);opacity:1}60%{transform:scale(1);opacity:1}}
+@keyframes stLens{0%,100%{transform:scale(1)}30%{transform:scale(1.9)}55%{transform:scale(1)}}
+@keyframes stOk{0%,60%{opacity:0}68%,92%{opacity:1}100%{opacity:0}}
+@keyframes stPP{0%,12%{transform:translateY(0)}38%{transform:translateY(22px)}46%{transform:translateY(22px)}72%{transform:translateY(0)}100%{transform:translateY(0)}}
+@keyframes stPick{0%,46%{opacity:1}47%,88%{opacity:0}96%,100%{opacity:1}}
+@keyframes stLab{0%,45%{transform:translateY(0)}60%{transform:translateY(14px)}68%{transform:translateY(14px)}85%,100%{transform:translateY(0)}}
+@keyframes stSheet{0%,44%{opacity:1}61%,100%{opacity:0}}
+@keyframes stBc{0%,72%{opacity:.75}80%{opacity:1}88%{opacity:.3}96%,100%{opacity:.75}}
 .lr-node{transform-box:fill-box;transform-origin:center;animation:lr410Pulse 4.2s ease-in-out infinite}
 .lr-node.n2{animation-delay:-.6s}.lr-node.n3{animation-delay:-1.2s}.lr-node.n4{animation-delay:-1.8s}.lr-node.n5{animation-delay:-2.4s}.lr-node.n6{animation-delay:-3s}.lr-node.n7{animation-delay:-3.6s}
 /* product stream on the belt — units transform as they travel */
@@ -9394,7 +9435,6 @@ header.scrolled .bar{
 .lr-prod.p7 .ph1,.lr-prod.p7 .ph2,.lr-prod.p7 .ph3,.lr-prod.p7 .ph4,.lr-prod.p7 .ph5{animation-delay:-13.8s}
 @keyframes lr410Dash{to{stroke-dashoffset:-110}}
 @keyframes lr410Spark{0%{opacity:.2;transform:scale(.75)}100%{opacity:1;transform:scale(1.15)}}
-@keyframes lr410Scan{from{transform:translateY(0)}to{transform:translateY(22px)}}
 @keyframes lr410Pulse{0%,100%{opacity:.4;transform:scale(.85)}50%{opacity:1;transform:scale(1.25)}}
 /* ride from feeder zone across the full process length */
 @keyframes lr424Ride{
@@ -9478,7 +9518,7 @@ header.scrolled .bar{
 @media(max-width:900px){#line .lr-plan{opacity:.1;width:520px;right:-180px}}
 @media(max-width:560px){#line .lr-plan{opacity:.08;width:420px;right:-190px;top:6px}}
 @media(prefers-reduced-motion:reduce){
-  .lr-dash,.lr-spark,.lr-scan,.lr-node,.lr-prod,.lr-prod .ph1,.lr-prod .ph2,.lr-prod .ph3,.lr-prod .ph4,.lr-prod .ph5,.lr-amr,.lr-amr .lr-lidar,.lr-amr .lr-wheel,.lr-pal,.rb-a1,.rb-a2,.rb-a3,.lr-carry,.lr-feed,.lr-bx,.lr-film,.lr-lift,.lr-turn,.lr-filmlink{animation:none!important}
+  .st-hop,.st-queue,.st-new,.st-out,.st-eye,.st-up,.st-fore,.st-tool,.st-sparkwin,.st-bead,.st-fov,.st-brk,.st-lens,.st-ok,.st-pp,.st-pick,.st-lab,.st-sheet,.st-bc,.lr-dash,.lr-spark,.lr-scan,.lr-node,.lr-prod,.lr-prod .ph1,.lr-prod .ph2,.lr-prod .ph3,.lr-prod .ph4,.lr-prod .ph5,.lr-amr,.lr-amr .lr-lidar,.lr-amr .lr-wheel,.lr-pal,.rb-a1,.rb-a2,.rb-a3,.lr-carry,.lr-feed,.lr-bx,.lr-film,.lr-lift,.lr-turn,.lr-filmlink{animation:none!important}
   .lr-prod{opacity:.85;transform:none}
   .lr-amr{opacity:1;transform:none}
   .lr-film{opacity:0}
@@ -9501,6 +9541,8 @@ header.scrolled .bar{
  var BG='#0e1419';
  function link(x1,y1,x2,y2,w){return '<line class="lr-s" x1="'+x1+'" y1="'+y1+'" x2="'+x2+'" y2="'+y2+'" stroke-width="'+(w+2.4)+'"/><line class="lr-bg" x1="'+x1+'" y1="'+y1+'" x2="'+x2+'" y2="'+y2+'" stroke-width="'+w+'"/>';}
  function joint(x,y,r){return '<circle class="lr-s" cx="'+x+'" cy="'+y+'" r="'+r+'" fill="'+BG+'"/>';}
+ function bar(x1,y1,x2,y2,w){var dx=x2-x1,dy=y2-y1,l=Math.sqrt(dx*dx+dy*dy),h=w/2,nx=-dy/l*h,ny=dx/l*h,f=function(v){return Math.round(v*100)/100};return '<path class="lr-s" style="fill:#0e1419" d="M'+f(x1+nx)+' '+f(y1+ny)+'L'+f(x2+nx)+' '+f(y2+ny)+'A'+h+' '+h+' 0 0 0 '+f(x2-nx)+' '+f(y2-ny)+'L'+f(x1-nx)+' '+f(y1-ny)+'A'+h+' '+h+' 0 0 0 '+f(x1+nx)+' '+f(y1+ny)+'Z"/>';}
+ function jt(x,y,r){return '<circle class="lr-s" style="fill:#0e1419" cx="'+x+'" cy="'+y+'" r="'+r+'"/><circle class="lr-kf" cx="'+x+'" cy="'+y+'" r="'+(r>6?2:1.5)+'"/>';}
  function box(x,y,w,h){return '<rect class="lr-s" x="'+x+'" y="'+y+'" width="'+w+'" height="'+h+'"/>';}
 
  /* ---------- side elevation ---------- */
@@ -9517,31 +9559,34 @@ header.scrolled .bar{
    g+='<path class="lr-f" d="M'+zones[zi]+' 214v8" opacity=".8"/>';
    g+='<text class="lr-t" x="'+zones[zi]+'" y="236" opacity=".75">'+zl[zi]+'</text>';
  }
- /* 1 MOVE: feeder + accumulation */
- g+='<path class="lr-s" d="M34 96h58l-14 40H48zM41 136v8h44v-8"/><path class="lr-f" d="M63 144v14" stroke-dasharray="2 4"/>';
- g+=box(46,166,30,24)+box(92,170,26,20)+box(134,166,30,24);
- g+='<path class="lr-s" d="M176 190v-46M171 144h10v9h-10z"/><path class="lr-f" d="M158 150a22 22 0 0 1 0 26M150 146a34 34 0 0 1 0 34"/>';
- /* 2 PROCESS: six-axis arm */
- g+='<path class="lr-s" d="M270 190h60v-8h-60z"/>'+link(300,182,300,146,14)+joint(300,144,8)+link(300,144,276,98,10)+joint(276,96,6)+link(276,96,332,116,9)+joint(333,117,5.5)+link(333,117,347,160,6);
- g+='<path class="lr-s" d="M342 160h10l-3 9h-4z"/>';
- g+=box(322,176,56,14)+'<path class="lr-f" d="M326 183h48"/>';
- /* 3 INSPECT: vision gantry */
+ /* 1 MOVE: vibratory feeder drops parts onto the accumulation conveyor; a photo-eye counts them */
+ g+='<g class="st-hop"><path class="lr-s" d="M34 96h58l-14 40H48zM41 136v8h44v-8"/></g><path class="lr-f" d="M63 144v14" stroke-dasharray="2 4"/>';
+ g+='<g class="st-queue"><g class="st-new">'+box(46,166,30,24)+'</g>'+box(90,166,30,24)+'<g class="st-out">'+box(134,166,30,24)+'</g></g>';
+ g+='<path class="lr-s" d="M176 190v-46M171 144h10v9h-10z"/><path class="lr-f st-eye" d="M158 150a22 22 0 0 1 0 26M150 146a34 34 0 0 1 0 34"/>';
+ /* 2 PROCESS: six-axis arm runs a weld pass, sparks follow the torch */
+ g+='<path class="lr-s" d="M270 190h60v-8h-60z"/>'+bar(300,184,300,146,14)+jt(300,144,8);
+ g+='<g class="st-up">'+bar(300,144,276,98,10)+jt(276,96,6)+'<g class="st-fore">'+bar(276,96,332,116,9)+jt(333,117,5.5)+'<g class="st-tool">'+bar(333,117,347,160,6);
+ g+='<path class="lr-s" style="fill:#0e1419" d="M342 160h10l-3 9h-4z"/><g class="st-sparkwin"><g class="lr-spark"><path class="lr-k" d="M347 170l-8 -7M347 170l0 -10M347 170l9 -6M347 170l-12 3M347 170l13 2"/></g></g></g></g></g>';
+ g+=box(322,176,56,14)+'<path class="lr-f" d="M326 183h48"/><path class="lr-k st-bead" pathLength="100" d="M326 183h48" stroke-width="1.6"/>';
+ /* 3 INSPECT: AI vision gantry */
  g+='<path class="lr-s" d="M440 190V90m10 100V90m100 100V90m10 100V90"/><path class="lr-s" d="M434 84h132v10H434z"/>';
- g+='<path class="lr-s" d="M486 94h28v22h-28z"/>'+joint(500,124,7)+'<circle class="lr-s" cx="500" cy="124" r="2.4"/>';
- g+='<path class="lr-f" d="M494 130L468 188M506 130L532 188" stroke-dasharray="3 4"/>';
+ g+='<path class="lr-s" d="M486 94h28v22h-28z"/>'+joint(500,124,7)+'<circle class="lr-s st-lens" cx="500" cy="124" r="2.4"/>';
+ g+='<path class="lr-s" d="M520 98h22v12h-22z"/><text class="lr-t" x="531" y="107.5" style="font-size:8px;letter-spacing:.06em;fill:#d4a890">AI</text>';
+ g+='<path class="lr-f st-fov" d="M494 130L468 188M506 130L532 188" stroke-dasharray="3 4"/>';
  g+=box(478,166,44,24);
- g+='<path class="lr-f" d="M470 160v-6h6M530 160v-6h-6M470 192v6h6M530 192v6h-6"/>';
+ g+='<path class="lr-f st-brk" d="M470 160v-6h6M530 160v-6h-6M470 192v6h6M530 192v6h-6"/>';
+ g+='<path class="lr-k st-ok" d="M538 150l5 5 10-11" stroke-width="1.8"/>';
  g+='<path class="lr-f" d="M572 190l30 30" stroke-dasharray="3 4"/><path class="lr-s" d="M566 160l-8 30"/>';
- /* 4 PACK & LABEL: pick-and-place + label head on one station */
- g+='<path class="lr-s" d="M640 66h120v10H640z"/><path class="lr-s" d="M690 76h20v12h-20z"/>'+link(700,88,700,126,5);
- g+='<path class="lr-s" d="M688 126h24M690 126v12M710 126v12"/>'+box(694,140,12,12);
+ /* 4 PACK & LABEL: pick-and-place drops a unit into the case, the label head presses a label */
+ g+='<path class="lr-s" d="M640 66h120v10H640z"/><path class="lr-s" d="M690 76h20v12h-20z"/>';
+ g+='<g class="st-pp">'+link(700,88,700,126,5)+'<path class="lr-s" d="M688 126h24M690 126v12M710 126v12"/><g class="st-pick">'+box(694,140,12,12)+'</g></g>';
  g+=box(664,160,72,30)+'<path class="lr-s" d="M664 160l-12-18M736 160l12-18"/>';
  g+=box(674,168,14,22)+box(692,168,14,22)+box(710,168,14,22);
  /* label applicator mounted over the same case path */
  g+='<path class="lr-s" d="M748 72h40v28h-40z"/>'+joint(768,86,9)+'<circle class="lr-s" cx="768" cy="86" r="3"/>';
- g+='<path class="lr-s" d="M768 95v28"/><path class="lr-s" d="M756 123h24v5h-24z"/>';
+ g+='<g class="st-lab"><path class="lr-s" d="M768 95v28"/><path class="lr-s" d="M756 123h24v5h-24z"/><rect class="lr-k st-sheet" x="758" y="130" width="20" height="7"/></g>';
  var bc='';[678,681,684,687,690,693,696,699].forEach(function(x){bc+='M'+x+' 176v8';});
- g+='<path class="lr-f" d="'+bc+'"/>';
+ g+='<path class="lr-f st-bc" d="'+bc+'"/>';
  /* 5 PALLETIZE: ceiling-mounted robot picks single cartons off the conveyor and builds the pallet */
  g+='<path class="lr-s" d="M1012 206V34h12v172z"/><path class="lr-s" d="M872 34h152v10H872z"/>';
  for(var pn=0;pn<2;pn++){
@@ -9588,7 +9633,6 @@ header.scrolled .bar{
  var a='<g class="lr-art-a">';
  a+='<path class="lr-k lr-dash" d="M0 198H1040"/>';
  
- a+='<g class="lr-spark"><path class="lr-k" d="M347 170l-8 -7M347 170l0 -10M347 170l9 -6M347 170l-12 3M347 170l13 2"/></g>';
  a+='<g class="lr-scan"><path class="lr-k" d="M474 166H526"/></g>';
  a+='<path class="lr-k" d="M903 176H937" stroke-dasharray="2 3"/>';
  /* controls bus */
