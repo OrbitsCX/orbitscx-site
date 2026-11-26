@@ -4741,6 +4741,8 @@ box-shadow:0 0 0 5px rgba(71,106,149,.16),0 8px 18px rgba(14,20,25,.2),inset 0 1
 <style id="ime-v245">
 /* v245: "How a project starts" tiles brought in line with the Engineers tiles + Project Journey */
 .start-steps{gap:20px}
+.start-steps-kicker{display:block;margin:clamp(28px,4vw,44px) 0 0}
+.start-steps-kicker+.start-steps{margin-top:14px}
 .start-step{position:relative;isolation:isolate;overflow:hidden;padding:32px 30px 36px;background:linear-gradient(180deg,#151c24,#0e1419);border:1px solid rgba(255,255,255,.14);border-top:1px solid rgba(255,255,255,.14);border-radius:2px;color:#fff;box-shadow:0 18px 44px rgba(14,20,25,.18);transition:transform .35s cubic-bezier(.2,.7,.2,1),border-color .3s,box-shadow .3s}
 .start-step::before{content:"";position:absolute;inset:0;z-index:-1;opacity:0;transition:opacity .3s;background:radial-gradient(360px circle at var(--mx,50%) var(--my,0%),rgba(169,112,90,.30),transparent 65%)}
 .start-step::after{content:"";position:absolute;left:0;top:0;height:3px;width:100%;background:#a9705a;transform:scaleX(0);transform-origin:left;transition:transform .45s cubic-bezier(.2,.7,.2,1)}
@@ -6363,8 +6365,9 @@ header nav.ime-nav .nv-phone:focus-visible{
 </div>
 <a class="rom-start-link" href="#contact">Talk with IME about your project <span aria-hidden="true">→</span></a>
 </aside>
-<div class="start-credit-callout" role="note"><strong>When a paid site visit or analysis is appropriate, that cost is typically applied toward the project if you move forward.</strong></div>
+<div class="start-credit-callout" role="note"><strong>Paid discovery work is typically credited toward the project if you move forward.</strong></div>
 <p>Simpler projects may need only a video call and a quote to get started.</p></div>
+<span class="section-kicker start-steps-kicker">PAID DISCOVERY WORK</span>
 <ol class="start-steps">
 <li class="start-step"><span aria-hidden="true" class="start-icon"><svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" viewbox="0 0 24 24"><path d="M12 21s-6.5-5.4-6.5-10.2a6.5 6.5 0 1 1 13 0C18.5 15.6 12 21 12 21z"></path><circle cx="12" cy="10.8" r="2.3"></circle><path d="M3.5 19.5h4M16.5 19.5h4" opacity=".55"></path></svg></span><h3>Site visit</h3><p>We walk your floor, study your product and process, and look for the place where automation will pay off first — without forcing a bigger solution than you need.</p></li>
 <li class="start-step"><span aria-hidden="true" class="start-icon"><svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" viewbox="0 0 24 24"><path d="M9 2.5h6M10 2.5v5.8L5.8 17.6A2.1 2.1 0 0 0 7.6 20.5h8.8a2.1 2.1 0 0 0 1.8-2.9L14 8.3V2.5"></path><path d="M9.2 14.5h5.6"></path><path d="M10.5 11.8h3"></path></svg></span><h3>Proof of Concept</h3><p>We build a rough prototype or test setup to validate the critical process, technology, or application. You get evidence of what works, what needs refinement, and what a full automation system will require.</p></li>
