@@ -7078,11 +7078,12 @@ var host=document.getElementById('lga-host');
 render(0,1);
 if(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches||!('IntersectionObserver' in window))return;
 
-/* v589: floating-toolbar logo = the animated footer logo. It waits TB_INITIAL_DELAY before the first move, then TB_REPEAT_DELAY between later moves.
-   Reduced-motion visitors (and any failure) keep the original static toolbar image. */
+/* v602: floating-toolbar logo = the animated footer logo, an easter egg. First move after TB_INITIAL_DELAY, then a random wait
+   between TB_REPEAT_MIN and TB_REPEAT_MAX, for TB_MAX_PLAYS plays per visit. Reduced-motion visitors (and any failure) keep the static toolbar image. */
 (function(){
-  var TB_INITIAL_DELAY=15000; /* initial wait before the first toolbar animation, in ms */
-  var TB_REPEAT_DELAY=25000; /* wait between subsequent toolbar animations, in ms */
+  var TB_INITIAL_DELAY=10000; /* wait before the first toolbar animation, in ms */
+  var TB_REPEAT_MIN=30000,TB_REPEAT_MAX=90000; /* random wait between later animations, in ms */
+  var TB_MAX_PLAYS=4; /* plays per visit */
   try{
     var link=document.querySelector('header .bar a[href="#top"]')||document.querySelector('header .bar a'),
         img=link&&link.querySelector('img'),srcSvg=$('lga-svg');
@@ -7108,18 +7109,22 @@ if(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches||!(
     document.documentElement.classList.add('tb-logo-live');
 
     function tbRender(t){var s=logoRoots;logoRoots=[tb];try{render(t,1)}finally{logoRoots=s}}
-    var tbT=0,tbLast=null,tbRun=false,tbTimer=0;
-    function tbWait(delay){clearTimeout(tbTimer);tbTimer=setTimeout(function(){tbT=0;tbLast=null;tbRun=true;requestAnimationFrame(tbFrame)},delay)}
+    var tbT=0,tbLast=null,tbRun=false,tbTimer=0,tbPlays=0,tbHover=false;
+    function tbWait(delay){clearTimeout(tbTimer);tbTimer=setTimeout(function(){if(tbRun){tbNext();return}tbHover=false;tbT=0;tbLast=null;tbRun=true;requestAnimationFrame(tbFrame)},delay)}
+    /* hover (or tap) replays the move on demand; it does not use up the timed plays */
+    function tbPlayNow(){if(tbRun)return;tbHover=true;tbT=0;tbLast=null;tbRun=true;requestAnimationFrame(tbFrame)}
+    function tbNext(){if(tbPlays>=TB_MAX_PLAYS)return;tbWait(tbPlays?TB_REPEAT_MIN+Math.random()*(TB_REPEAT_MAX-TB_REPEAT_MIN):TB_INITIAL_DELAY)}
     function tbFrame(ms){
       if(!tbRun)return;
       if(tbLast!==null)tbT+=Math.min((ms-tbLast)/1000,.1);
       tbLast=ms;
-      if(tbT>=T){tbRun=false;tbT=0;tbLast=null;tbRender(0);tbWait(TB_REPEAT_DELAY);return}
+      if(tbT>=T){tbRun=false;tbT=0;tbLast=null;tbRender(0);if(tbHover)tbHover=false;else{tbPlays++;tbNext()}return}
       tbRender(tbT);requestAnimationFrame(tbFrame);
     }
-    function tbStop(){clearTimeout(tbTimer);tbRun=false;tbT=0;tbLast=null;tbRender(0)}
-    tbRender(0);tbWait(TB_INITIAL_DELAY);
-    document.addEventListener('visibilitychange',function(){if(document.hidden)tbStop();else tbWait(TB_INITIAL_DELAY)});
+    function tbStop(){clearTimeout(tbTimer);tbRun=false;tbHover=false;tbT=0;tbLast=null;tbRender(0)}
+    tbRender(0);tbNext();
+    link.addEventListener('mouseenter',tbPlayNow);link.addEventListener('click',tbPlayNow);
+    document.addEventListener('visibilitychange',function(){if(document.hidden)tbStop();else tbNext()});
   }catch(e){}
 })();
 var el=0,last=null,run=false,seen=false,timer=0;
@@ -11821,7 +11826,7 @@ ime-cue::after{content:"";flex:0 0 auto;width:22px;height:9px;background:url("da
 
 
 <!-- v572: toolbar logo starts after 15s, then repeats every 25s -->
-<!-- v589: toolbar logo is now the animated footer logo (rests 30s, moves once, repeats) -->
+<!-- v589: toolbar logo is the animated footer logo; v602 timing: first move at 10s, then random 30-90s, 4 plays per visit; v603: hover or tap replays it on demand -->
 <style id="ime-v589-toolbar-animated-logo">
 /* the animated SVG takes the static image's place and size (48px tall; 40px on small screens) */
 header .bar a svg.tb-logo{display:block;height:48px !important;width:auto !important;aspect-ratio:1530/625;overflow:hidden;flex:none}
