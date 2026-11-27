@@ -8382,7 +8382,7 @@ new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting
   var conn=navigator.connection||{}; if(conn.saveData) return;
   /* Play the complete action once. Then loop from the moment the robot has
      lifted the jugs into the foreground, so they reappear as the loop resets. */
-  var LOOP_START=5.9, LOOP_END=11.85;
+  var LOOP_START=2.0, LOOP_END=5.9;
   var held=false, go=false, ready=false, prepared=false, resetting=false;
   var spl=document.getElementById('ime-splash');
   if(spl&&!document.documentElement.classList.contains('sp-off')) held=true;
