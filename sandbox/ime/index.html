@@ -11830,6 +11830,25 @@ ime-cue::after{content:"";flex:0 0 auto;width:22px;height:9px;background:url("da
 }
 @media(prefers-reduced-motion:reduce){#engineers .ev-rework-ball{display:none}}
 </style>
+<!-- v591: legibility fix for the lane labels (left of the graphic) and handoff captions -->
+<style id="ime-v591-label-legibility">
+@media(min-width:761px){
+  .ev{--lab:280px}
+  #engineers .ev-label{padding-right:32px}
+}
+#engineers .ev-label b{font-size:20px;line-height:1.2;color:#fff}
+#engineers .ev-them .ev-label b{color:rgba(255,255,255,.92)}
+#engineers .ev-us .ev-label b{color:#f0c9b6}
+#engineers .ev-label small,
+#engineers .ev-them .ev-label small{max-width:230px;margin-top:10px;font-size:16px;line-height:1.45;color:rgba(255,255,255,.82)}
+#engineers .ev-us .ev-label small{color:rgba(240,201,182,.95)}
+#engineers .ev-node b{font-size:17px}
+#engineers .ev-head{font-size:12.5px;color:rgba(255,255,255,.8)}
+.ev-gap em{font-size:11.5px;letter-spacing:.14em;color:#ecc2ad}
+@media(max-width:760px){
+  #engineers .ev-label small,#engineers .ev-them .ev-label small{max-width:none}
+}
+</style>
 
 <style id="v573-roi-visual-usability">
 /* v573 — ROI calculator visual usability refinement. Presentation only; no markup or calculation changes. */
