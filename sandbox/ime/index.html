@@ -6458,12 +6458,12 @@ header nav.ime-nav .nv-phone:focus-visible{
 <div class="roi-reset-row"><button aria-label="Clear all ROI calculator fields" class="roi-reset" id="roiReset" type="button">Clear all fields</button><button aria-label="Restore the original ROI planning values" class="roi-reset" id="roiRestore" type="button">Restore defaults</button></div>
 <div class="roi-banner" data-state="example" id="roiBanner"><span id="roiBannerText"><strong>Showing example numbers.</strong> Edit the four answers below, or clear all fields to start fresh.</span><span class="roi-progress" hidden="" id="roiProgress">0 of 4</span></div>
 <fieldset class="roi-quick"><legend>Four answers → live payback</legend>
-<label class="roi-core" data-q="1"><span class="roi-q-meta"><span aria-hidden="true" class="roi-qnum">01</span><span class="roi-qtitle">What is the project cost?</span></span><span class="roi-qhelp">Use your formal IME quote when available. Before that, enter a ROM estimate or preliminary planning figure.</span><span class="u"><i>$</i><input autocomplete="off" data-money="" id="capex" inputmode="numeric" type="text" value="850,000"/></span></label>
+<label class="roi-core" data-q="1"><span class="roi-q-meta"><span aria-hidden="true" class="roi-qnum">1</span><span class="roi-qtitle">What is the project cost?</span></span><span class="roi-qhelp">Use your formal IME quote when available. Before that, enter a ROM estimate or preliminary planning figure.</span><span class="u"><i>$</i><input autocomplete="off" data-money="" id="capex" inputmode="numeric" type="text" value="850,000"/></span></label>
 <div class="two">
-<label class="roi-core" data-q="2"><span class="roi-q-meta"><span aria-hidden="true" class="roi-qnum">02</span><span class="roi-qtitle">How many people are assigned to this work on one shift?</span></span><span class="roi-qhelp">Count only the time dedicated to this process. Use fractions for shared roles, such as 0.5 for half a shift.</span><input id="ops" min="0" step="0.5" type="number" value="3"/></label>
-<label class="roi-core" data-q="3"><span class="roi-q-meta"><span aria-hidden="true" class="roi-qnum">03</span><span class="roi-qtitle">How many shifts run per day?</span></span><span class="roi-qhelp">Assuming an 8-hour shift. If you need to adjust shift hours, open <strong>Fine-tune the schedule and assumptions</strong> below.</span><select id="shifts"><option value="1">1 shift</option><option selected="" value="2">2 shifts</option><option value="3">3 shifts</option></select></label>
+<label class="roi-core" data-q="2"><span class="roi-q-meta"><span aria-hidden="true" class="roi-qnum">2</span><span class="roi-qtitle">How many people are assigned to this work on one shift?</span></span><span class="roi-qhelp">Count only the time dedicated to this process. Use fractions for shared roles, such as 0.5 for half a shift.</span><input id="ops" min="0" step="0.5" type="number" value="3"/></label>
+<label class="roi-core" data-q="3"><span class="roi-q-meta"><span aria-hidden="true" class="roi-qnum">3</span><span class="roi-qtitle">How many shifts run per day?</span></span><span class="roi-qhelp">Assuming an 8-hour shift. If you need to adjust shift hours, open <strong>Fine-tune the schedule and assumptions</strong> below.</span><select id="shifts"><option value="1">1 shift</option><option selected="" value="2">2 shifts</option><option value="3">3 shifts</option></select></label>
 </div>
-<label class="roi-core" data-q="4"><span class="roi-q-meta"><span aria-hidden="true" class="roi-qnum">04</span><span class="roi-qtitle">What is the fully burdened hourly cost per worker?</span></span><span class="roi-qhelp">Wages plus benefits and typical employer burden.</span><span class="u"><i>$/hr</i><input id="rate" min="0" step="1" type="number" value="42"/></span></label>
+<label class="roi-core" data-q="4"><span class="roi-q-meta"><span aria-hidden="true" class="roi-qnum">4</span><span class="roi-qtitle">What is the fully burdened hourly cost per worker?</span></span><span class="roi-qhelp">Wages plus benefits and typical employer burden.</span><span class="u"><i>$/hr</i><input id="rate" min="0" step="1" type="number" value="42"/></span></label>
 <p aria-live="polite" class="roi-labor-echo" data-state="idle" hidden="" id="laborEcho"></p>
 <div aria-label="Build an approval-ready ROI analysis" class="roi-bridge" role="note">
 <p class="roi-bridge-kicker">Next step</p>
@@ -11419,24 +11419,25 @@ sliders.forEach(function(p){p[1].value=p[0].value});paint();window.roiLeadUpdate
 /* Checkmark: reserved slot, no layout shift, no empty ::after on idle */
 #roi .roi-core .roi-qnum{
   position:relative;
-  display:inline-block;
-  min-width:1.7em;
-  padding-right:1em;
   box-sizing:border-box;
 }
 #roi .roi-core.done .roi-qnum::after{
   content:"✓";
   position:absolute;
-  right:0;
-  top:50%;
-  transform:translateY(-50%);
+  right:-5px;
+  top:-5px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  width:17px;
+  height:17px;
+  border-radius:50%;
+  background:#2f7d57;
+  color:#fff;
   font-size:11px;
   font-weight:800;
-  color:#2f7d57;
   line-height:1;
   margin:0;
-  width:auto;
-  display:block;
 }
 #roi .roi-core:not(.done) .roi-qnum::after{
   content:none;
@@ -11832,11 +11833,11 @@ ime-cue::after{content:"";flex:0 0 auto;width:22px;height:9px;background:url("da
 #roi .roi-core{border:1px solid #e2ddd7;border-left:4px solid #a9705a;border-radius:7px;padding:16px 16px 17px;background:#fbfaf8;box-shadow:0 2px 7px rgba(35,31,32,.035)}
 #roi .roi-core:focus-within{border-color:#b78a77;border-left-color:#8a5440;background:#fff;box-shadow:0 0 0 3px rgba(71,106,149,.09)}
 #roi .roi-core.done{border-color:#d7e5dc;border-left-color:#2f7d57;background:#fbfdfb}
-#roi .roi-q-meta{align-items:center;gap:12px;margin-bottom:8px}
-#roi .roi-qnum{display:inline-flex;align-items:center;justify-content:center;width:30px;min-width:30px;height:30px;padding:0;border-radius:50%;background:#f0e6e0;color:#80503e;font-size:12px;letter-spacing:.02em}
-#roi .roi-core.done .roi-qnum{background:#e4f0e8;color:#2f7d57}
-#roi .roi-qtitle{font-size:19px;line-height:1.28;letter-spacing:-.02em}
-#roi .roi-qhelp{font-size:14px;line-height:1.5;margin:0 0 12px 42px;max-width:58em}
+#roi .roi-q-meta{align-items:flex-start;gap:12px;margin-bottom:8px}
+#roi .roi-qnum{display:inline-flex;align-items:center;justify-content:center;flex:none;width:40px;min-width:40px;height:40px;padding:0;border-radius:50%;background:#f0e6e0;color:#80503e;font:800 19px/1 Archivo,sans-serif;box-shadow:inset 0 1px 0 rgba(255,255,255,.85),inset 0 0 0 1px rgba(169,112,90,.28)}
+#roi .roi-core.done .roi-qnum{background:#e4f0e8;color:#2f7d57;box-shadow:inset 0 1px 0 rgba(255,255,255,.85),inset 0 0 0 1px rgba(47,125,87,.3)}
+#roi .roi-qtitle{font-size:19px;line-height:1.28;letter-spacing:-.02em;padding-top:8px}
+#roi .roi-qhelp{font-size:14px;line-height:1.5;margin:0 0 12px 52px;max-width:58em}
 #roi .roi-core .u,#roi .roi-core>input,#roi .roi-core>select{min-height:62px;height:62px;border:1px solid #bdb5ad;border-radius:5px;background:#fff}
 #roi .roi-core .u{margin-top:3px}
 #roi .roi-core .u i{display:flex;align-items:center;padding:0 17px;font-size:17px;background:#f1eeea;border-right:1px solid #e0dbd5}
@@ -11861,7 +11862,7 @@ ime-cue::after{content:"";flex:0 0 auto;width:22px;height:9px;background:url("da
 @media(max-width:900px){#roi .roi-in,#roi .roi-out{padding:22px}}
 @media(max-width:600px){
 #roi .roi-in,#roi .roi-out{padding:16px;border-radius:8px}#roi .roi-quick{padding:15px 12px 13px}#roi .roi-core{padding:14px 12px}
-#roi .roi-qtitle{font-size:18px}#roi .roi-qhelp{margin-left:0;font-size:13.5px}#roi .roi-qnum{width:27px;min-width:27px;height:27px}
+#roi .roi-qtitle{font-size:18px;padding-top:5px}#roi .roi-qhelp{margin-left:0;font-size:13.5px}#roi .roi-qnum{width:34px;min-width:34px;height:34px;font-size:17px}
 #roi .roi-core .u,#roi .roi-core>input,#roi .roi-core>select{height:58px;min-height:58px}
 #roi .roi-core .u input,#roi .roi-core>input,#roi .roi-core>select{font-size:23px}
 #roi .roi-quick>.two>.roi-core>input,#roi .roi-quick>.two>.roi-core>select{height:58px;min-height:58px;max-height:58px}
