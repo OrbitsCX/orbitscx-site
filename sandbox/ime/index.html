@@ -8380,11 +8380,10 @@ new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting
   var v=document.querySelector('.hero-video'); if(!v) return;
   var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches; if(reduce) return;
   var conn=navigator.connection||{}; if(conn.saveData) return;
-
-  /* Start after the slow opening movement, and return to that same point on
-     every loop. Native loop restarts at 0 and replays the hesitation. */
-  var START=3.1, held=false, go=false, ready=false, prepared=false;
-  var seeking=false, srcSet=false, loopPending=false;
+  /* Play the complete action once. Then loop from the moment the robot has
+     lifted the jugs into the foreground, so they reappear as the loop resets. */
+  var LOOP_START=5.9, LOOP_END=11.85;
+  var held=false, go=false, ready=false, prepared=false, resetting=false;
   var spl=document.getElementById('ime-splash');
   if(spl&&!document.documentElement.classList.contains('sp-off')) held=true;
   go=!held;
@@ -8392,52 +8391,59 @@ new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting
   try{
     v.muted=true; v.defaultMuted=true;
     v.setAttribute('muted',''); v.setAttribute('playsinline','');
-    v.playsInline=true; v.loop=false; v.preload='auto';
+    v.playsInline=true; v.loop=false; v.removeAttribute('loop'); v.preload='auto';
+    v.removeAttribute('autoplay');
   }catch(e){}
 
   function heroPlay(){
     if(document.hidden||!ready||!go) return;
     try{v.muted=true; var p=v.play(); if(p&&p.catch)p.catch(function(){});}catch(e){}
   }
-  function tryPlay(){heroPlay()}
-  function finishStart(){
-    if(ready||seeking||!srcSet||v.readyState<2) return;
-    seeking=true;
-    var done=false;
-    function finish(){
-      if(done)return; done=true; seeking=false;
-      ready=true; tryPlay();
+  function markReady(){
+    if(ready||v.readyState<2)return;
+    ready=true;
+    if(go)heroPlay();
+  }
+  function loopToPickup(){
+    if(resetting||!ready||!go)return;
+    resetting=true;
+    try{v.pause();}catch(e){}
+    var finished=false;
+    function resume(){
+      if(finished)return; finished=true; resetting=false;
+      heroPlay();
     }
     try{
-      if(Math.abs((v.currentTime||0)-START)>.12){
-        v.addEventListener('seeked',finish,{once:true});
-        v.currentTime=START;
-        setTimeout(function(){if(!done&&Math.abs(v.currentTime-START)<.2)finish()},1200);
-      }else finish();
-    }catch(e){finish()}
+      v.addEventListener('seeked',resume,{once:true});
+      v.currentTime=LOOP_START;
+      setTimeout(resume,900);
+    }catch(e){resetting=false;heroPlay();}
   }
+  v.addEventListener('timeupdate',function(){
+    if(!resetting&&v.currentTime>=LOOP_END)loopToPickup();
+  });
+  v.addEventListener('ended',loopToPickup);
+
   function release(){
     if(go)return;
     go=true; prepare();
-    if(ready)tryPlay();
+    if(ready)heroPlay();
   }
   function prepare(){
     if(prepared)return; prepared=true;
     v.preload='auto';
-    v.addEventListener('loadedmetadata',finishStart);
-    v.addEventListener('loadeddata',finishStart);
-    v.addEventListener('canplay',finishStart);
+    v.addEventListener('loadeddata',markReady);
+    v.addEventListener('canplay',markReady);
     var d=document.getElementById('heroVideoData');
     var b64=d?d.textContent.replace(/\s+/g,''):'';
-
     function setSrc(url){
-      srcSet=true; v.src=url;
+      v.src=url;
       try{v.load()}catch(e){}
-      if(v.readyState>=2)finishStart();
+      if(v.readyState>=2)markReady();
     }
     if(!b64){
       var ds=v.getAttribute('data-src');
-      if(ds)setSrc(ds); else {ready=true;tryPlay();}
+      if(ds)setSrc(ds); else {ready=true;heroPlay();}
       return;
     }
     d.textContent='';
@@ -8459,24 +8465,8 @@ new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting
     step();
   }
 
-  /* Rewind to the trimmed start rather than allowing native loop to replay
-     the opening frames. Wait for the seek before resuming. */
-  v.addEventListener('timeupdate',function(){
-    if(!ready||seeking||!isFinite(v.duration)||v.duration<=START) return;
-    if(v.currentTime>=v.duration-.08){
-      seeking=true; v.pause();
-      var done=false;
-      function resume(){
-        if(done)return; done=true; seeking=false; tryPlay();
-      }
-      v.addEventListener('seeked',resume,{once:true});
-      try{v.currentTime=START;}catch(e){seeking=false;tryPlay();}
-      setTimeout(resume,900);
-    }
-  });
   v.addEventListener('playing',function(){v.classList.add('is-playing')});
   v.addEventListener('error',function(){v.classList.remove('is-playing')});
-
   if(held){
     setTimeout(prepare,900);
     var hiv=setInterval(function(){
@@ -8489,16 +8479,15 @@ new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting
 
   if('IntersectionObserver' in window){
     new IntersectionObserver(function(entries){
-      entries.forEach(function(e){if(e.isIntersecting)tryPlay();else v.pause();});
+      entries.forEach(function(e){if(e.isIntersecting)heroPlay();else v.pause();});
     },{threshold:.01}).observe(v);
   }
   document.addEventListener('visibilitychange',function(){
-    if(document.hidden)v.pause();else tryPlay();
+    if(document.hidden)v.pause();else heroPlay();
   });
   ['touchstart','pointerdown','click'].forEach(function(ev){
-    document.addEventListener(ev,function(){go=true;if(!ready)finishStart();tryPlay();},{once:true,passive:true});
+    document.addEventListener(ev,function(){go=true;if(!prepared)prepare();heroPlay();},{once:true,passive:true});
   });
-})();
 </script>
 <script id="ime-nav-v142-js">
 (function(){
