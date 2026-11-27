@@ -8380,10 +8380,10 @@ new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting
   var v=document.querySelector('.hero-video'); if(!v) return;
   var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches; if(reduce) return;
   var conn=navigator.connection||{}; if(conn.saveData) return;
-  /* Play the complete action once. Then loop from the moment the robot has
-     lifted the jugs into the foreground, so they reappear as the loop resets. */
-  var LOOP_START=2.0, LOOP_END=5.9;
-  var held=false, go=false, ready=false, prepared=false, resetting=false;
+  /* Start just before the pickup. Every cycle then plays all the way to the
+     actual end of the clip, including the full box-loading action. */
+  var LOOP_START=1.45;
+  var held=false, go=false, ready=false, prepared=false, resetting=false, positioned=false;
   var spl=document.getElementById('ime-splash');
   if(spl&&!document.documentElement.classList.contains('sp-off')) held=true;
   go=!held;
@@ -8396,18 +8396,26 @@ new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting
   }catch(e){}
 
   function heroPlay(){
-    if(document.hidden||!ready||!go) return;
+    if(document.hidden||!ready||!go||resetting) return;
     try{v.muted=true; var p=v.play(); if(p&&p.catch)p.catch(function(){});}catch(e){}
   }
   function markReady(){
     if(ready||v.readyState<2)return;
+    if(positioned&&v.seeking)return;
+    if(!positioned){
+      positioned=true;
+      if(Math.abs((v.currentTime||0)-LOOP_START)>.04){
+        v.addEventListener('seeked',function(){ready=true;if(go)heroPlay();},{once:true});
+        try{v.currentTime=LOOP_START;}catch(e){ready=true;if(go)heroPlay();}
+        return;
+      }
+    }
     ready=true;
     if(go)heroPlay();
   }
   function loopToPickup(){
-    if(resetting||!ready||!go)return;
+    if(resetting||!prepared||!go)return;
     resetting=true;
-    try{v.pause();}catch(e){}
     var finished=false;
     function resume(){
       if(finished)return; finished=true; resetting=false;
@@ -8416,12 +8424,12 @@ new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting
     try{
       v.addEventListener('seeked',resume,{once:true});
       v.currentTime=LOOP_START;
-      setTimeout(resume,900);
+      /* Safety fallback only after the browser has completed the seek. */
+      setTimeout(function(){if(!v.seeking)resume();},1500);
     }catch(e){resetting=false;heroPlay();}
   }
-  v.addEventListener('timeupdate',function(){
-    if(!resetting&&v.currentTime>=LOOP_END)loopToPickup();
-  });
+  /* Do not use a timeupdate cutoff: the ended event preserves every final
+     frame and lets the robot finish placing the jugs into the boxes. */
   v.addEventListener('ended',loopToPickup);
 
   function release(){
