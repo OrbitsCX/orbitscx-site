@@ -11821,6 +11821,58 @@ ime-cue::after{content:"";flex:0 0 auto;width:22px;height:9px;background:url("da
 @media(prefers-reduced-motion:reduce){#engineers .ev-rework-ball{display:none}}
 </style>
 
+<style id="v573-roi-visual-usability">
+/* v573 — ROI calculator visual usability refinement. Presentation only; no markup or calculation changes. */
+#roi .roi-in{padding:32px;border:1px solid #d8d2cc;border-radius:10px;box-shadow:0 16px 42px rgba(22,31,40,.09)}
+#roi .roi-out{padding:30px;border-radius:10px;box-shadow:0 16px 42px rgba(22,31,40,.09)}
+#roi .roi-reset-row{margin:-6px 0 16px;gap:20px}#roi .roi-reset{font-size:13px}
+#roi .roi-banner{font-size:15px;padding:14px 16px;margin-bottom:18px}#roi .roi-progress{font-size:12px;padding:5px 11px}
+#roi .roi-quick{padding:22px;border:1px solid #e0dbd5;border-radius:8px;background:linear-gradient(180deg,#fcfbfa 0%,#fff 100%)}
+#roi .roi-quick>legend{font-size:15px;letter-spacing:.09em;margin-bottom:18px;padding-bottom:14px}
+#roi .roi-core{border:1px solid #e2ddd7;border-left:4px solid #a9705a;border-radius:7px;padding:16px 16px 17px;background:#fbfaf8;box-shadow:0 2px 7px rgba(35,31,32,.035)}
+#roi .roi-core:focus-within{border-color:#b78a77;border-left-color:#8a5440;background:#fff;box-shadow:0 0 0 3px rgba(71,106,149,.09)}
+#roi .roi-core.done{border-color:#d7e5dc;border-left-color:#2f7d57;background:#fbfdfb}
+#roi .roi-q-meta{align-items:center;gap:12px;margin-bottom:8px}
+#roi .roi-qnum{display:inline-flex;align-items:center;justify-content:center;width:30px;min-width:30px;height:30px;padding:0;border-radius:50%;background:#f0e6e0;color:#80503e;font-size:12px;letter-spacing:.02em}
+#roi .roi-core.done .roi-qnum{background:#e4f0e8;color:#2f7d57}
+#roi .roi-qtitle{font-size:19px;line-height:1.28;letter-spacing:-.02em}
+#roi .roi-qhelp{font-size:14px;line-height:1.5;margin:0 0 12px 42px;max-width:58em}
+#roi .roi-core .u,#roi .roi-core>input,#roi .roi-core>select{min-height:62px;height:62px;border:1px solid #bdb5ad;border-radius:5px;background:#fff}
+#roi .roi-core .u{margin-top:3px}
+#roi .roi-core .u i{display:flex;align-items:center;padding:0 17px;font-size:17px;background:#f1eeea;border-right:1px solid #e0dbd5}
+#roi .roi-core .u input,#roi .roi-core>input,#roi .roi-core>select{font:700 25px/1.2 Archivo,"Arial Narrow",sans-serif;color:#231f20;padding:0 16px}
+#roi .roi-core>input,#roi .roi-core>select{width:100%;border-radius:5px}#roi .roi-core>select{font-size:21px}
+#roi .roi-quick>.two{gap:14px}#roi .roi-quick>.two>.roi-core{min-width:0}
+#roi .roi-quick>.two>.roi-core .roi-qtitle{font-size:18px}
+#roi .roi-quick>.two>.roi-core .roi-qhelp{margin-left:0;font-size:13.5px}
+#roi .roi-quick>.two>.roi-core>input,#roi .roi-quick>.two>.roi-core>select{height:62px;min-height:62px;max-height:62px;line-height:1.2}
+#roi .roi-bridge{margin-top:24px;padding-top:20px}#roi .roi-bridge-title{font-size:23px}#roi .roi-bridge-body{font-size:16px;line-height:1.6}
+#roi .roi-in>.roi-section-more{border:1px solid #ded8d1;border-radius:7px;margin-top:12px;overflow:hidden}
+#roi .roi-in>.roi-section-more>summary{padding:18px 17px;min-height:76px;background:#faf9f7}
+#roi .roi-in>.roi-section-more>summary strong{font-size:17px}#roi .roi-in>.roi-section-more>summary small{font-size:14px;line-height:1.4}
+#roi .roi-in>.roi-section-more>fieldset{padding:20px 17px;gap:17px}
+#roi .roi-in>.roi-section-more label:not(.chk){font-size:16px;line-height:1.4;gap:8px}
+#roi .roi-in>.roi-section-more input:not([type=checkbox]),#roi .roi-in>.roi-section-more select{min-height:54px;height:54px;font-size:20px;padding:10px 13px;border-color:#c4bdb5;border-radius:5px}
+#roi .roi-in>.roi-section-more .u{min-height:54px;border-radius:5px;overflow:hidden}
+#roi .roi-in>.roi-section-more .u input{height:52px;min-height:52px;border:0}
+#roi .roi-in>.roi-section-more .u i{display:flex;align-items:center;padding:0 13px;font-size:15px}
+#roi .roi-in>.roi-section-more .chk{font-size:15px}
+#roi .roi-out .big span{font-size:clamp(48px,6vw,76px)}#roi .roi-out .kpi dt{font-size:15px}#roi .roi-out .kpi dd{font-size:28px}
+@media(max-width:900px){#roi .roi-in,#roi .roi-out{padding:22px}}
+@media(max-width:600px){
+#roi .roi-in,#roi .roi-out{padding:16px;border-radius:8px}#roi .roi-quick{padding:15px 12px 13px}#roi .roi-core{padding:14px 12px}
+#roi .roi-qtitle{font-size:18px}#roi .roi-qhelp{margin-left:0;font-size:13.5px}#roi .roi-qnum{width:27px;min-width:27px;height:27px}
+#roi .roi-core .u,#roi .roi-core>input,#roi .roi-core>select{height:58px;min-height:58px}
+#roi .roi-core .u input,#roi .roi-core>input,#roi .roi-core>select{font-size:23px}
+#roi .roi-quick>.two>.roi-core>input,#roi .roi-quick>.two>.roi-core>select{height:58px;min-height:58px;max-height:58px}
+#roi .roi-in>.roi-section-more>summary{padding:15px 13px}#roi .roi-in>.roi-section-more>fieldset{padding:15px 13px}#roi .roi-out .kpi dd{font-size:24px}
+}
+/* v574 — bring the people and shifts controls up to the same visual scale as the other primary inputs. */
+#roi #ops,#roi #shifts{display:block;width:100%;box-sizing:border-box;height:62px;min-height:62px;max-height:62px;padding:0 16px;border:1px solid #bdb5ad;border-radius:5px;background:#fff;color:#231f20;font:700 25px/1.2 Archivo,"Arial Narrow",sans-serif}
+#roi #shifts{font-size:21px}
+@media(max-width:600px){#roi #ops,#roi #shifts{height:58px;min-height:58px;max-height:58px;font-size:23px;padding:0 13px}#roi #shifts{font-size:20px}}
+</style>
+
 </body>
 </html>
 
@@ -11835,4 +11887,12 @@ header .bar a img.tb-static-hidden{display:none !important}
 /* same ink as the footer copy of the logo (it sits on a light surface) */
 header svg.tb-logo [fill="#fff"],header svg.tb-logo [fill="#FFF"],header svg.tb-logo [fill="white"]{fill:#231f20}
 header svg.tb-logo [stroke="#fff"],header svg.tb-logo [stroke="#FFF"],header svg.tb-logo [stroke="white"]{stroke:#231f20}
+</style>
+
+<style id="v604-roi-input-value-color">
+/* Subtle IME blue on entered values, while keeping the fields themselves neutral. */
+#roi input:not([type="checkbox"]):not([type="radio"]),
+#roi select{color:#476a95 !important;font-weight:650}
+#roi input::placeholder{color:#9aa3ad !important;font-weight:400}
+#roi input:focus,#roi select:focus{border-color:#476a95 !important;box-shadow:0 0 0 3px rgba(71,106,149,.14) !important}
 </style>
