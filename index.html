@@ -6065,7 +6065,7 @@ main .wrap, .site-footer .wrap { position: relative; z-index: 2; }
       </div>
     </div>
     <div class="footer-bottom">
-      <span>© 2026 Orbits CX. All rights reserved.</span>
+      <span>© <span id="footer-year">2026</span> Orbits CX. All rights reserved.</span>
       <span>Designed &amp; built by Orbits CX</span>
       <span>St. George, Utah</span>
     </div>
@@ -7610,5 +7610,6 @@ main .wrap, .site-footer .wrap { position: relative; z-index: 2; }
   }
 })();
 </script>
+<script>(function(){try{var y=document.getElementById("footer-year");if(y)y.textContent=new Date().getFullYear();}catch(e){}})();</script>
 </body>
 </html>
